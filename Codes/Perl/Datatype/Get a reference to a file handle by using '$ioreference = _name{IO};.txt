@@ -1,7 +1,0 @@
-open FILEHANDLE, ">file.dat" or die "Couldn't open file.";
-
-$ioref = *FILEHANDLE{IO};
-
-print $ioref "Hello";
-
-close $ioref;

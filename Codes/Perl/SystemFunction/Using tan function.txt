@@ -1,3 +1,0 @@
-use Math::Trig;
-
-print "The tangent of 0 = ", tan(0), "\n";

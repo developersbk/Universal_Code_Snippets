@@ -1,5 +1,0 @@
-
-print "The date is ", 'date /T';     
-print "The date is 'date'", ".\n"; # Backquotes treated literally
-$directory='cd';                  
-print "\nThe current directory is $directory.";

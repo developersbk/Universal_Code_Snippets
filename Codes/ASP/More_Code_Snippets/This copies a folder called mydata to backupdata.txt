@@ -1,5 +1,0 @@
-<%
-Dim objFSO, objFile
-Set objFSO = CreateObject("Scripting.FileSystemObject")
-objFSO.CopyFolder "c:\mydata", "c:\backupdata"
-%>

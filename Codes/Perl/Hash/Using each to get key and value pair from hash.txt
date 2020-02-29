@@ -1,7 +1,0 @@
-$hash2{A} = F;
-$hash2{B} = E;
-$hash2{'C'} = D;
-
-while(($key, $value) = each(%hash)) {
-    print "$key => $value\n";
-}

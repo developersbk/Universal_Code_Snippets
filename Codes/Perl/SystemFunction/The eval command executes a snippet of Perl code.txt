@@ -1,3 +1,0 @@
-#!/usr/bin/perl -w
-
-eval("print \"Hello World\n\";" );

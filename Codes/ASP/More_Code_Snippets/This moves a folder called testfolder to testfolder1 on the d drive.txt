@@ -1,6 +1,0 @@
-This moves a folder called testfolder to testfolder1 on the d drive
-
-<%
-Set fso = CreateObject("Scripting.FileSystemObject")
-fso.MoveFolder "d:\testfolder" , "d:\testfolder1"
-%>

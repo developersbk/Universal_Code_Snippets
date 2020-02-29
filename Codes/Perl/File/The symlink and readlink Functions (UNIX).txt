@@ -1,3 +1,0 @@
-Format: symlink(OLDFILE, NEWFILE)
-
-$ perl -e 'symlink("/home/jody/test/old", "new");'

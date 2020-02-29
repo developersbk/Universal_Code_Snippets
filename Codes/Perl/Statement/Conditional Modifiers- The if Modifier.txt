@@ -1,4 +1,0 @@
-Format: Expression2 if Expression1;
-
-$x = 5;
-print $x if $x == 5;

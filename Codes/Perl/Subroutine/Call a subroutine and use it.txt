@@ -1,6 +1,0 @@
-printhello;
-
-sub printhello
-{
-    print "Hello!";
-}

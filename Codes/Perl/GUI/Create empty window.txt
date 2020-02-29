@@ -1,5 +1,0 @@
-use Tk;  
-
-my $main = MainWindow->new;
-
-MainLoop;

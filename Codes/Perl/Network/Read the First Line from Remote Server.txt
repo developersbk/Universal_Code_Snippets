@@ -1,9 +1,0 @@
-#!/usr/bin/perl
-
-
-use IO::Socket;
-
-my $server = "localhost";
-my $fh     = IO::Socket::INET->new($server);
-my $line   = <$fh>;
-print $line;

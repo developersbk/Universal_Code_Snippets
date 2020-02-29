@@ -1,6 +1,0 @@
-<%
-Set objFile = Server.CreateObject ("Scripting.FileSystemObject")
-objFolder = Server.MapPath("/testfolder")
-Set MyFolder = objFile.GetFolder(objFolder)
-%> 
-<p><% =objFolder %> is <% =MyFolder.Size %> bytes</p>

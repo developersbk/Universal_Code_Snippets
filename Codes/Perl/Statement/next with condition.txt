@@ -1,7 +1,0 @@
-while ($loop_index <= 10) {
-    print "Hello\n";
-    next if $loop_index > 5;
-    print "there\n";
-} continue {
-    $loop_index++;
-}

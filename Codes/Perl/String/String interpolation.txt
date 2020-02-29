@@ -1,4 +1,0 @@
-#!C:\Perl\Bin\
-
-$something = "comfort";
-print "This chair is very ${something}able\n";

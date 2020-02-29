@@ -1,6 +1,0 @@
-#!/usr/bin/perl -w
-use Win32;
-
-@os   = Win32::GetOSVersion();
-
-print "Version $os[1]\.$os[2] Build $os[3]\n";

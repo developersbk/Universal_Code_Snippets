@@ -1,3 +1,0 @@
-for ($loop_index = 1; $loop_index <= 10; $loop_index++) {
-    print "This is iteration number $loop_index\n";
-}

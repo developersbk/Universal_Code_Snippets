@@ -1,9 +1,0 @@
-use Tk;
-
-my $main = MainWindow->new;
-
-$main->Button(-text => 'End',
-    -command => [$main => 'destroy']
-)->pack;
-
-MainLoop;

@@ -1,5 +1,0 @@
-%hash = ( width => '300', height => '150' );
-$hash{ 'color' } = 'blue';
-print "\$hash{ 'width' } = $hash{ 'width' }\n";
-print "\$hash{ 'height' } = $hash{ 'height' }\n";
-print "\$hash{ 'color' } = $hash{ 'color' }\n\n";

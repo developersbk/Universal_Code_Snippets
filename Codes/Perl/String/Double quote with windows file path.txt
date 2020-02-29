@@ -1,6 +1,0 @@
-
-#!/usr/bin/perl -w
-
-print "C:\\WINNT\\Profiles\\\n";
-
-   

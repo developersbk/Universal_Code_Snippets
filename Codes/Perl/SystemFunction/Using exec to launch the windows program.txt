@@ -1,5 +1,0 @@
-#
-# Using exec.
-#
-
-exec("pbrush", "cat.bmp");

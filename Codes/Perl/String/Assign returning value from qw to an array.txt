@@ -1,2 +1,0 @@
-@a = qw/P, e, r, l/;
-print @a;

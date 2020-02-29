@@ -1,3 +1,0 @@
-#!/usr/bin/perl -w
-
-print "12 monkeys"    + 0,  "\n";

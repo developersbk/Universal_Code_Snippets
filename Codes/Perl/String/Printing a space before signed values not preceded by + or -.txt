@@ -1,8 +1,0 @@
-#!usr/bin/perl
-
-use warnings;
-use strict;
-
-printf "% d\n% d\n", 547, -547;
-
-   

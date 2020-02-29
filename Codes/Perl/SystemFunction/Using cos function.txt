@@ -1,7 +1,0 @@
-$angle = 45;
-
-$conversion = 3.14159265358979 / 180;
-
-$radians = $angle * $conversion;
-
-print "The cosine of $angle degrees = ", cos $radians

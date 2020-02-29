@@ -1,8 +1,0 @@
-<%
-Dim objFSO, objFile
-Set objFSO = CreateObject("Scripting.FileSystemObject")
-Set objFile = objFSO.CreateTextFile("c:\test.txt", True)
-objFile.Close
-Set objFile = objFSO.GetFile("c:\test.txt")
-objFile.Delete
-%>

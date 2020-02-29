@@ -1,5 +1,0 @@
-INPUT: $line = <>;
-if ($line !~ /exit/) {
-   print "Try again\n"; 
-   goto INPUT
-}

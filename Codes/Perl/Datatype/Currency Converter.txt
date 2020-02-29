@@ -1,6 +1,0 @@
-#!/usr/bin/perl
-
-use warnings;
-use strict;
-my $yen = 180;
-print "49518 Yen is ", (49_518/$yen), " pounds\n";

@@ -1,3 +1,0 @@
-printf("%s's %s is named %s.\n", "Eric", "cat", "Halloween");
-
-   

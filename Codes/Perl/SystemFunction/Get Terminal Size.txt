@@ -1,5 +1,0 @@
-use Term::ReadKey;
-
-($widthchars, $heightchars, $widthpixels, $heightpixels) = GetTerminalSize();
-
-print "Your screen is $heightpixels x $widthpixels pixels.";

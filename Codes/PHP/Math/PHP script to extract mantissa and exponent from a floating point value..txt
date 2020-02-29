@@ -1,8 +1,0 @@
-<?php
-$float_num = 0.0456;
-$exponent_part = ( floor(log($float_num, 2)) + 1 );
-$mantissa_part = ( $float_num * pow(2, -$exponent_part) );
-echo 'Floating value : '.$float_num."\n";
-echo 'Exponent part  : '.$exponent_part."\n";
-echo 'Mantissa part  : '.$mantissa_part."\n";
-?>

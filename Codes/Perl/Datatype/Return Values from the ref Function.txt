@@ -1,9 +1,0 @@
-What Is Returned       Meaning
-REF                    Pointer to pointer
-SCALAR                 Pointer to scalar
-ARRAY                  Pointer to array
-HASH                   Pointer to hash
-CODE                   Pointer to subroutine
-GLOB                   Pointer to typeglob
-
-   

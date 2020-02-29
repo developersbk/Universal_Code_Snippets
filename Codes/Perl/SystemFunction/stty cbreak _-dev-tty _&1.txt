@@ -1,8 +1,0 @@
-system "stty cbreak </dev/tty >&1"; 
-
-print ">";
-
-while (($char = getc) ne 'q') {
-    print "\n";
-    print "You typed $char\n>";
-}

@@ -1,7 +1,0 @@
-#!/usr/bin/perl -w
-
-use strict;
-
-my $error_status = system 'date';
-
-print "system() returned: $error_status\n";

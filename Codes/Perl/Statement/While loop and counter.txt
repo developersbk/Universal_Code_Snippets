@@ -1,7 +1,0 @@
-#!/usr/bin/perl
-
-$count=10;
-while ($count > 0) {
-    print "$count...\n";
-    $count = $count -1;
-}

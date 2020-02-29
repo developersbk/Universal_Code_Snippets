@@ -1,5 +1,0 @@
-#!/usr/bin/perl -w
-
-$filename = "nofile";
-
-open(TMP, $filename) or die "Can't open \"$filename\"";

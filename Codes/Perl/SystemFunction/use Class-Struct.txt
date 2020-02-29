@@ -1,6 +1,0 @@
-use Class::Struct;
-
-struct( produce => {
-        vegetable => item,
-        fruit => item,
-});

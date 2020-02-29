@@ -1,4 +1,0 @@
-# Format: getprotobyname(NAME);
-
-($name,  $aliases, $proto ) = getprotobyname('tcp');
-print "name=$name\taliases=$aliases\t$protocol number=$proto\n";

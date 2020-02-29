@@ -1,8 +1,0 @@
-<% 
-Dim objFSO , myFile 
-Set objFSO = Server.CreateObject("Scripting.FileSystemObject") 
-Set myFile = objFSO.GetFile(Server.MapPath("sample.txt")) 
-Response.Write "File created on " & myFile.DateCreated 
-Set myFile = Nothing 
-Set objFSO = Nothing 
-%>

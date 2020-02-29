@@ -1,7 +1,0 @@
-my $name="Tommy";
-{   my $name = "Tom";  
-    my $age = 6;
-    $ref = sub{ return "$name is $age.\n"; }
-}
-print "$name is back\n";
-print &{$ref};

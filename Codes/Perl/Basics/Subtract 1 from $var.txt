@@ -1,7 +1,0 @@
-
-#!/usr/bin/perl
-
-$var=0;       
-
-$var -= 1;    # Subtract 1 from $var
-print "\$var -= 1 is $var\n";

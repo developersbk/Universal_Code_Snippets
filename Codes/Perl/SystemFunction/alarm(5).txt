@@ -1,9 +1,0 @@
-print "Type something...\n";
-
-local $SIG{ALRM} = sub { print "Sorry, timed out.\n"; exit; };
-alarm(5);
-
-while(<>) {
-    print "Thanks, please type again...\n";
-    alarm(5);
-}

@@ -1,9 +1,0 @@
-print "Welcome to the Exponentiator!\n";
-print "Enter a number: ";
-
-while ($s = <>) {
-    print "\n";
-    print " $s";
-    print "e  = " . exp($s) . "\n";
-    print "Enter a number: ";
-}

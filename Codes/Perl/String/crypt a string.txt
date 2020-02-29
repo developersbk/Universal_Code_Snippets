@@ -1,5 +1,0 @@
-$text = "Hello";
-$encrypted = crypt $text, "AB";
-print $encrypted;
-
-   

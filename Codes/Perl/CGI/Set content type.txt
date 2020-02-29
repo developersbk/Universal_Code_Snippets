@@ -1,7 +1,0 @@
-#!/usr/bin/perl -w
-
-use strict;
-
-print "Content-Type: text/plain\n";
-print "\n";
-print "hello, world!\n";

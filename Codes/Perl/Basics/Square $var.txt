@@ -1,6 +1,0 @@
-#!/usr/bin/perl
-
-$var=0;       
-
-$var **= 2;        # Square $var
-print "\$var squared is $var\n";

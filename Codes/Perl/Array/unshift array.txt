@@ -1,9 +1,0 @@
-#!/usr/bin/perl -w
-
-use strict;
-
-my @array = ();
-unshift @array, "first";
-print "Array is now: @array\n";
-unshift @array, "second", "third";
-print "Array is now: @array\n";

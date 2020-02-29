@@ -1,7 +1,0 @@
-$hash{fruit} = orange;
-$hash{sandwich} = club;
-$hash{drink} = lemonade;
-
-foreach $key (keys %hash) {
-    print $hash{$key} . "\n";
-}

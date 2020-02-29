@@ -1,7 +1,0 @@
-#!/usr/bin/perl -w
-
-use strict;
-
-my @a = qw(hello world good bye);
-
-print "[$_]\n" foreach @a;

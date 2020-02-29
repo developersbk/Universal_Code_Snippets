@@ -1,6 +1,0 @@
-<% 
-Dim date1 , date2 
-date1 = Now() 
-date2 = "25/12/2004" 
-Response.Write (DateDiff("d" , date1 , date2 ) & " days till Christmas ") 
-%>

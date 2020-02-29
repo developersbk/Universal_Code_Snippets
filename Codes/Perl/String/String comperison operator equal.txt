@@ -1,6 +1,0 @@
-#!/usr/bin/perl -w 
-
-print "Test one: ", "four" eq "six", "\n";
-print "Test two: ", "four" == "six", "\n";
-
-   

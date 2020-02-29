@@ -1,6 +1,0 @@
-format STDOUT =
-@*
-$text
-.
-$text = "Here\nis\nthe\ntext.";
-write;

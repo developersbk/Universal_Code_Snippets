@@ -1,1 +1,0 @@
-print "Hello\tfrom\tPerl.\n";

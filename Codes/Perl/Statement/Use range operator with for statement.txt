@@ -1,6 +1,0 @@
-$factorial = 1;
-
-for (1 .. 6) {
-    $factorial *= $_;
-}
-print "6! = $factorial\n";

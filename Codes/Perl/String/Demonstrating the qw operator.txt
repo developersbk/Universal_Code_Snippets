@@ -1,5 +1,0 @@
-
-@array = qw( this is an array of strings );
-print "@array\n\n";
-
-   

@@ -1,4 +1,0 @@
-$text = "un";
-print "Don't be ${text}happy.";
-
-   

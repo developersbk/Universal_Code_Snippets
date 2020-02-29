@@ -1,7 +1,0 @@
-#!/usr/bin/perl
-
-use strict;
-my @array = qw( hello world );
-
-
-print( 'ref(\\\@array) = ', ref( \\@array ), "\n" );

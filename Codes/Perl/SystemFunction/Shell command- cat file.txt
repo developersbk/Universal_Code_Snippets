@@ -1,5 +1,0 @@
-use Shell;
-
-$text = cat("file.txt");
-
-print $text;

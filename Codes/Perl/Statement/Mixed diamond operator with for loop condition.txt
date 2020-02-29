@@ -1,2 +1,0 @@
-for (print "Type q to quit.\n"; <> ne "q\n"; print 
-    "Don't you want to quit?\n") {}

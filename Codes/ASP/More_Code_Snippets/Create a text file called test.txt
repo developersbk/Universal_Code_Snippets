@@ -1,7 +1,0 @@
-<% 
-Dim objFSO, objFile 
-Set objFSO = CreateObject("Scripting.FileSystemObject") 
-Set objFile = objFSO.CreateTextFile("d:\test.txt", True) 
-objFile.WriteLine("This is a test.") 
-objFile.Close
-%>

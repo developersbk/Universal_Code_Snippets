@@ -1,8 +1,0 @@
-#!/usr/bin/perl
-
-use strict;
-use warnings;
-
-my $dir = "/home";
-my $files = `dir $dir`;
-print $files;

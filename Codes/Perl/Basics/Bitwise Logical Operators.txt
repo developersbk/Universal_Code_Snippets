@@ -1,7 +1,0 @@
-   
-Operator    Example            Meaning
-&           $x & $y            Bitwise and
-|           $x | $y            Bitwise or
-^           $x ^ $y            Bitwise exclusive or
-<<          $x << 1            Bitwise left shift, integer multiply by two
->>          $x >> 1            Bitwise right shift, integer divide by two

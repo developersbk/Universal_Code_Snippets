@@ -1,7 +1,0 @@
-    #!/usr/local/bin/perl -w
-
-    while (<STDIN>)
-    {
-       chop;
-       print "I have found what I'm looking for: <$_>\n" unless $_ ne "Tom";
-    }

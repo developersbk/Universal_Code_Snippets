@@ -1,6 +1,0 @@
-# Setting scalar variables.
-$var = "Text";
-$number_var = 44.5;
-
-print $var;
-print $number_var;

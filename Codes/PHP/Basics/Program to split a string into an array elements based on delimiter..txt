@@ -1,7 +1,0 @@
-<?php
-
-	$str = "Welcome";
-	$arr = explode('c',$str);
-	print_r($arr);
-	
-?>

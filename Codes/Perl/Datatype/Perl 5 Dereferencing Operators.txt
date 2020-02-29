@@ -1,7 +1,0 @@
-Type            Operator                  Example
-Scalar          $$reference               $ref = $name; print "$$ref";
-Array           @$reference               $arrayRef = \@array; print "@$arrayRef";
-Array scalar    $$reference[index]        $ref = \@digits; $nine = $$ref[9];
-Array index     $#$reference              $ref = \@digits; $lastIndex = $#$ref;
-Hash            %$reference               $ref = %inventory; ($item, $cost) = each %$ref;
-Hash scalar     $$reference               $ref = %inventory; $itemCost = $$ref{'BrandX 16oz};

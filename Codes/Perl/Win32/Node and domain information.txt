@@ -1,8 +1,0 @@
-#!/usr/bin/perl -w
-use Win32;
-          
-$node   = Win32::NodeName();
-$domain = Win32::DomainName();
-
-# Print info.
-print "Node=$node, Domain=$domain\n";

@@ -1,4 +1,0 @@
-$s = 65;
-print "The character " . chr($s) . " corresponds to ASCII code $s";
-
-   

@@ -1,6 +1,0 @@
-#!/usr/bin/perl -w
-use Win32;
-
-$fstype = Win32::FsType();
-
-print "File System=$fstype\n";

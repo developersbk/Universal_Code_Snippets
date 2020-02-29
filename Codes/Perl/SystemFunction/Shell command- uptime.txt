@@ -1,5 +1,0 @@
-use Shell;
-
-$uptime = uptime();
-
-print $uptime;

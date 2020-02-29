@@ -1,6 +1,0 @@
-$hash{fruit} = orange;
-$hash{sandwich} = club;
-$hash{drink} = lemonade;
-while(($key, $value) = each(%hash)) {
-    print "$key => $value\n";
-}

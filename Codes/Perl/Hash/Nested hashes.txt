@@ -1,5 +1,0 @@
-%students=( "Math"    => { "A"  => 100,   "B" => 95 },
-             "Science" => { "C" => 85,     "D"  => 76 }
-           );
-print qq/$students{Math}->{Joan}.\n/;
-print qq/$students{Science}->{Bill}.\n/;

@@ -1,6 +1,0 @@
-%hash_of_lists = (
-    List_1 => [1, 2, 3],
-    List_2 => ["Red", "Yellow", "Blue"],
-);
-
-print "$hash_of_lists{List_1}[1]", "\n";

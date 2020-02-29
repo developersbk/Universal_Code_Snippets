@@ -1,1 +1,0 @@
-print "Current number: $_.\n" foreach (1 .. 10);

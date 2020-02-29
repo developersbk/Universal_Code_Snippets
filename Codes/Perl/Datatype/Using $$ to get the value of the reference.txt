@@ -1,7 +1,0 @@
-$variable1 = 5;
-
-$variablename = "variable1";
-
-print "$$variablename\n";
-
-print "$variablename\n";

@@ -1,4 +1,0 @@
-# Top-of-page format, displays page number.
-format WORKORDER_TOP=
-Starfleet Work Orders, page @<<<
-$%

@@ -1,8 +1,0 @@
-print "What version of the operating system are you using? ";
-chomp($os=<STDIN>);
-if ($os > 2) {
-   print "good!\n";
-}
-else {
-   print "Expect some problems.\n";
-}

@@ -1,6 +1,0 @@
-print "${&getmessage}";
-
-sub getmessage {
-    $msg = "Hello!";
-    return "msg"
-};

@@ -1,8 +1,0 @@
-sub definedBeforeWithArguments
-{
-   print "definedBeforeWithArguments: @_\n";
-}
-
-# calling subroutines that are defined before use
-print "Using & and ():\n";
-&definedBeforeWithArguments( 1, 2, 3 );      

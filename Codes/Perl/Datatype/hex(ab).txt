@@ -1,4 +1,0 @@
-print hex("ab") , "\n";
-print hex("Ab") , "\n";
-print hex("aB") , "\n";
-print hex("AB") , "\n";

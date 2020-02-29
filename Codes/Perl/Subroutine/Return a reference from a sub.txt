@@ -1,8 +1,0 @@
-#!/usr/bin/perl
-
-use warnings;
-use strict;
-
-sub now { return \scalar(localtime) };
-
-print "The time is ${&now}\n";

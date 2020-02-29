@@ -1,9 +1,0 @@
-#!//usr/bin/perl
-
-ATTEMPT: {
-   print "Yes/No? ";
-   chomp($answer = <STDIN>);
-   unless ($answer eq "yes"){
-      redo ATTEMPT ;
-   }
-}

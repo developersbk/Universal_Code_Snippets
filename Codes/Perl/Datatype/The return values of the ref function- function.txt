@@ -1,9 +1,0 @@
-#!/usr/bin/perl
-
-use strict;
-sub function 
-{
-   print( "Hello world.\n" );
-}
-
-print( 'ref(\&function) = ', ref( \&function ), "\n" );

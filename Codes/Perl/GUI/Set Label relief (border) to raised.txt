@@ -1,9 +1,0 @@
-use Tk;
-
-my $main = MainWindow->new;
-
-$main->Label(-text => 'Hello!',
-    -relief => 'raised'
-)->pack;
-
-MainLoop;

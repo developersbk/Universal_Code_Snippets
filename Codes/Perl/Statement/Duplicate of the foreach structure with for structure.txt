@@ -1,7 +1,0 @@
-for $letter ( 'A' .. 'G' ) {
-   print "$letter";
-}
-print "\n";
-foreach $letter ( 'A' .. 'G' ) {
-   print "$letter";
-}

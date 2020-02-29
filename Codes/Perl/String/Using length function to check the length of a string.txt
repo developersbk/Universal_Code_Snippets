@@ -1,9 +1,0 @@
-
-#!/usr/bin/perl -w
-
-use strict;
-
-my $song = '12345';
-print 'length: ', length($song), "\n";
-
-   

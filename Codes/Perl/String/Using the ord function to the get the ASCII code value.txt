@@ -1,6 +1,0 @@
-#!/usr/bin/perl -w
-
-print "A # has ASCII value ", ord("#"), "\n";
-print "A * has ASCII value ", ord("*"), "\n";
-
-   

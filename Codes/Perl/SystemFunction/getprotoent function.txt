@@ -1,7 +1,0 @@
-#!/usr/bin/perl
-use warnings;
-use strict;
-
-while (my ($name, $aliases, $proto) = getprotoent) {
-    print "$proto $name ($aliases)\n";
-}

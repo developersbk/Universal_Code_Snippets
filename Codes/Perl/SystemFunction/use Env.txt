@@ -1,6 +1,0 @@
-use Env; 
-
-$path2 = $PATH;
-$path2 =~ tr/:/\n/;
-
-print $path2;

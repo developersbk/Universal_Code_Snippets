@@ -1,5 +1,0 @@
-open(FH, "filename") or die "Couldn't open filename: $!\n";
-if ($input !~ /^\d+$/){
-       print STDERR "Bad input. Integer required.\n";
-       exit(1);
-}

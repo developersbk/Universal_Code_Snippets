@@ -1,3 +1,0 @@
-#!/usr/bin/perl -w
-
-print hex("FFG"), "\n";

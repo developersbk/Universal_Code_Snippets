@@ -1,5 +1,0 @@
-<% 
-For i = 33 to 255 
-response.write "Chr(" & i & ") = " & Chr(i) & "<br>" 
-Next 
-%>

@@ -1,9 +1,0 @@
-use Term::ReadKey;
-
-ReadMode('cbreak');
-
-$char = ReadKey(0);
-
-ReadMode('normal');
-
-print "You typed: $char.\n";

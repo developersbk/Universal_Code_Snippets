@@ -1,5 +1,0 @@
-print "What is your full name? ";
-
-($first, $middle, $last)=split(" ", <STDIN>);# STDIN scalar context
-
-print "Hi $first $last.\n";

@@ -1,6 +1,0 @@
-sub subroutine
-{
-    print "Hello!\n";
-}
-$codereference   = \&subroutine;
-&$codereference;

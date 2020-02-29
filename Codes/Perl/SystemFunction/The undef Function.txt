@@ -1,3 +1,0 @@
-#undef Function undefines an already defined variable. 
-
-undef $name;

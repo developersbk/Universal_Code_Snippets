@@ -1,3 +1,0 @@
-@array= ("unlink", "delete_me.txt");
-
-if(system(@array)) {die "The system call failed with this error: $?"}

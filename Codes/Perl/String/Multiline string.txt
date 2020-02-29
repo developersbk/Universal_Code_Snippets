@@ -1,6 +1,0 @@
-use warnings;
-use strict;
-
-print 
-'La di da            
-   di da di';

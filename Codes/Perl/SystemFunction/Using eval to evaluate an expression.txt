@@ -1,4 +1,0 @@
-$x = 1;
-$y = 0;
-eval {$result = $x / $y};
-print "eval says: $@" if $@;

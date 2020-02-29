@@ -1,5 +1,0 @@
-@array = ( "Hello", 283, "there", 16.439 );
-
-for ( $i = 0; $i < 4; ++$i ) {
-   print "$i   $array[ $i ]\n";
-}

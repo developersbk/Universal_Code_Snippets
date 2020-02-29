@@ -1,9 +1,0 @@
-$hash{fruit} = apple;
-$hash{sandwich} = hamburger;
-$hash{drink} = bubbly;
-
-if (exists($hash{'vegetable'})) {
-    print "Key is in the hash.";
-} else {
-    print "Key is not in the hash.";
-}

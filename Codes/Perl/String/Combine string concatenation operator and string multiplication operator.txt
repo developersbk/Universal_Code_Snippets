@@ -1,4 +1,0 @@
-#!/usr/bin/perl -w
-
-print "Ba" . "na" x 4 ,"\n";
-

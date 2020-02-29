@@ -1,3 +1,0 @@
-$codereference = sub {print shift};
-
-$codereference->("Hello!\n");

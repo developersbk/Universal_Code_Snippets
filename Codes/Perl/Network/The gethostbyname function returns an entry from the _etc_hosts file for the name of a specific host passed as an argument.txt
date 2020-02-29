@@ -1,3 +1,0 @@
-Format: gethostbyname(NAME);
-
-($name, $aliases, $addtrtype, $length,@addrs)=gethostbyname("dolphin");

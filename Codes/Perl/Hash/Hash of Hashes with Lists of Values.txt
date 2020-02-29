@@ -1,3 +1,0 @@
-my $hashptr = { "Teacher"=>{"Subjects"=>[ qw(Science English)]},};
-print $hashptr->{"Teacher"}->{"Subjects"}->[0],"\n";
-print "@{$hashptr->{'Musician'}->{'Instruments'}}\n";

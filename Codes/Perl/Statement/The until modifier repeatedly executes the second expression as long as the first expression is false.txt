@@ -1,4 +1,0 @@
-#Format: Expression2 until Expression1;
-
-$x=1;
-print $x++,"\n" until $x == 5;

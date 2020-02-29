@@ -1,5 +1,0 @@
-use Text::Tabs;
-
-$tabstop = 8;
-
-print expand("Hello\tthere!");

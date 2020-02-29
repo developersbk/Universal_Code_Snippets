@@ -1,8 +1,0 @@
-$string = "Top 10";
-$number = 10.0;
-print "Number is 10.0 and string is 'Top 10'\n\n";
-
-$add = $number + $string;             
-print "Adding a number and a string:        $add\n";
-
-   

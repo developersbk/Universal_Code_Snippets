@@ -1,3 +1,0 @@
-print join(", ", (map {my $value = $_; $value += 1} 1, 2, 3));
-
-   

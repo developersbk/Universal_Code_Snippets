@@ -1,6 +1,0 @@
-print qq/Hello\n/;           # same as: print "Hello\n";
-print q/He owes $5.00/;      #  same as: print 'He owes $5.00', "\n";
-@states=qw( E T A L );       # same as ("E", "T", "A","L")
-$today = qx(date);           # same as $today = 'date';
-
-   

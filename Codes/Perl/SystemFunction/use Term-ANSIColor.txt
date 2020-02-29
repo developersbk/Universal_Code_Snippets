@@ -1,1 +1,0 @@
-print color("red"), "That is an error!\n", color("reset");

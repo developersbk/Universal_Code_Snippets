@@ -1,8 +1,0 @@
-#!/usr/bin/perl -w
-
-$a = 4;
-$b = 10;
-print "Our variables are ", $a, " and ", $b, "\n";
-
-$a = --$b + 4;
-print "Finally, we have ", $a, " and ", $b, "\n";

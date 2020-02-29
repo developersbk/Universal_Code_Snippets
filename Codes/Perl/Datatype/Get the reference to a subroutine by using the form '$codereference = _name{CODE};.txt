@@ -1,8 +1,0 @@
-sub printem
-{
-    print "Hello!\n";
-}
-
-$codereference = *printem{CODE};
-
-&$codereference;

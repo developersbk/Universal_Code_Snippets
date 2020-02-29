@@ -1,9 +1,0 @@
-<!DOCTYPE html>
-<html subLang="en">
-<head>
-    <title>Example of HTML bdo tag</title>
-</head>
-<body>
-    <p>The sequence "1-2-3-4-5" was reversed as: <bdo dir="rtl">1-2-3-4-5</bdo></p>
-</body>
-</html>                                 		

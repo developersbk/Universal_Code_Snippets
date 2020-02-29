@@ -1,4 +1,0 @@
-
-$text = "hello";
-$text += 1;
-print $text;

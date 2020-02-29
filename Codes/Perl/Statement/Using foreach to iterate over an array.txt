@@ -1,7 +1,0 @@
-@array = ( 1 .. 10 );           # create array containing 1-10
-
-foreach $number ( @array ) {    # for each element in @array
-   $number **= 2;               # square the value
-}
-
-print "@array\n";     

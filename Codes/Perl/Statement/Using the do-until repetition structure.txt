@@ -1,8 +1,0 @@
-$counter = 10;
-
-do 
-{
-   print "$counter ";
-} until ( --$counter == 0 );
-
-print "\n";

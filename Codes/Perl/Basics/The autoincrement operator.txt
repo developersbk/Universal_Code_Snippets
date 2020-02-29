@@ -1,9 +1,0 @@
-
-#!/usr/bin/perl
-
-use warnings;
-$a = "A9"; print ++$a, "\n";
-$a = "bc"; print ++$a, "\n";
-$a = "Zc"; print ++$a, "\n";
-$a = "z9"; print ++$a, "\n";
-$a = "9z"; print ++$a, "\n";

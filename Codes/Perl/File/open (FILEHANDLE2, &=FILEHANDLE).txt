@@ -1,7 +1,0 @@
-open FILEHANDLE, "<file.txt" or die "Can not open file";
-
-open (FILEHANDLE2, "<&=FILEHANDLE");
-
-while (<FILEHANDLE2>) {
-    print;
-}

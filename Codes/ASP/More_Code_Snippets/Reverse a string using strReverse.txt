@@ -1,7 +1,0 @@
-<% 
-Dim strSample 
-'our sample string 
-strSample = " This is our sample string" 
-'reverse the string 
-Response.Write strReverse(strSample) 
-%>

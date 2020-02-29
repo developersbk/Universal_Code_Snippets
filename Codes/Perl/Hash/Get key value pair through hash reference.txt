@@ -1,4 +1,0 @@
-%hash = (that => this);
-$hashreference   = \%hash;
-
-print "$$hashreference{that}\n";

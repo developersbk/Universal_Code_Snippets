@@ -1,5 +1,0 @@
-
-#!/usr/bin/perl -w
-
-$a = "bz"; print ++$a, "\n";
-$a = "Zz"; print ++$a, "\n";

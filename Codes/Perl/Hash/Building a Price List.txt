@@ -1,8 +1,0 @@
-#!/usr/local/bin/perl
-%inventory = (A=>45_000.00,b=>120.00,C=>450_000.00,d=>40.00);
-
-open (INV, ">price.list");
-foreach $item (sort keys %inventory){
-   print INV join(":", ($item, $inventory{"$item"})), "\n";
-}
-close INV;

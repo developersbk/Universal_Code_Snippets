@@ -1,6 +1,0 @@
-#!C:\perl\bin
-
-$surname = "Smith";
-$age = 30;
-
-print "Mr $surname is $age years old \n";

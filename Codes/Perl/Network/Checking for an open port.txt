@@ -1,8 +1,0 @@
-#!/usr/bin/perl -w
-
-# Finds an open port.
-$port = 2345;
-while (getservbyport($port, "tcp") ) {
-    $port++;
-}
-print "An open port number is $port\n";

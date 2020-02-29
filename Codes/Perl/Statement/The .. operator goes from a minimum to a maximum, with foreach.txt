@@ -1,6 +1,0 @@
-#!/usr/bin/perl -w
-
-
-foreach $i (5..10) {
-    print "$i\n";
-}

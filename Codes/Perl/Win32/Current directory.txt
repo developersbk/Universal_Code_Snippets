@@ -1,6 +1,0 @@
-#!/usr/bin/perl -w
-use Win32;
-
-$cwd    = Win32::GetCwd();
-
-print "Current directory=$cwd\n";

@@ -1,4 +1,0 @@
-my $arrayptr=\@array;       # creates a pointer to an array
-my $scalarptr=\$scalar;     # creates a pointer to a scalar
-my $hashptr=\%assoc_array;  # creates a pointer to a hash
-my $funcptr=\&subroutine;   # creates a pointer to a subroutine

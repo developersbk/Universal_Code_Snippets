@@ -1,3 +1,0 @@
-#!/usr/bin/perl -w
-
-print "pi is approximately: ", 3.14159, "\n";

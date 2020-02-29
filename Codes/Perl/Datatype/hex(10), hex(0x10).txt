@@ -1,2 +1,0 @@
-print hex("10") , "\n";
-print hex("0x10") , "\n";

@@ -1,7 +1,0 @@
-use Tk;
-
-my $main = MainWindow->new;
-
-my $entry1 = $main->Entry->pack;
-
-MainLoop;

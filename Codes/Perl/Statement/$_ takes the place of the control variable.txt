@@ -1,3 +1,0 @@
-foreach ( 'A ', 'J ', 'S ', 'D ' ) {
-   print "$_";
-}

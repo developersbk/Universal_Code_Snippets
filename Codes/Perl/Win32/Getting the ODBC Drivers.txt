@@ -1,8 +1,0 @@
- use Win32::ODBC;
- %drivers = Win32::ODBC::Drivers();
- local $" = ", ";
- foreach $driver (sort keys %drivers){
-    @attributes = split (/;/,$drivers{$driver});
-    print "Driver = $driver\n";
-    print "@attributes\n\n";
- }

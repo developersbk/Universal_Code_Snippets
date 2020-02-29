@@ -1,1 +1,0 @@
-print "Please enter more text (q to quit).\n"  until (<> eq "q\n");

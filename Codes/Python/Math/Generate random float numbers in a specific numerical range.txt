@@ -1,4 +1,0 @@
-import random
-for x in range(6):
-    print('\n{:04.3f}\n'.format(random.uniform(x, 100)), end=' ')
-print()

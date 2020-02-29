@@ -1,3 +1,0 @@
-foreach $name ( 'A', 'J', 'S', 'D ' ) {
-   print "$name";
-}

@@ -1,9 +1,0 @@
-#!/usr/bin/perl
-use warnings;
-use strict;
-use IO::Socket;
-my $serv = IO::Socket::INET->new(LocalPort => 9876,Listen => 5); # queue up no more than 5 pending clients
-while(my $client = $serv->accept()) { #somebody connected!
-    print $client "The time is now: ".scalar(localtime(time()))."\n";
-    close $client;
-}
