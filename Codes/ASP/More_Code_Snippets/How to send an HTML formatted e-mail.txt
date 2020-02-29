@@ -1,0 +1,25 @@
+<% 
+Dim objCdonts , strHTML 
+Set objCdonts = Server.CreateObject("CDONTS.NewMail") 
+'now we will produce the basis of our email 
+strHTML = strHTML & "<html><head><title>sample html email</title></head>" 
+strHTML = strHTML & "<body>" 
+strHTML = strHTML & "<p>some text to display</p>" 
+strHTML = strHTML & "<br><hr>" 
+strHTML = strHTML & "<a href=""asp.programmershelp.co.uk"">asp site</a>" 
+strHTML = strHTML & "</body></html>" 
+'your address 
+objCdonts.From ="youraddress@email.com" 
+'recipients address 
+objCdonts.To = "someones@email.com" 
+'what is the email about 
+objCdonts.Subject ="an HTML email example" 
+'these next lines are vital for HTML formatted mail 
+objCdonts.BodyFormat = 0 
+objCdonts.MailFormat = 0 
+'your message 
+objCdonts.Body = strHTML 
+'send that email 
+objCdonts.Send 
+Set objCdonts = Nothing 
+%>

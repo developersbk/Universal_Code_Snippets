@@ -1,0 +1,69 @@
+#!/usr/bin/perl -w
+
+format WORKORDER=
+itemB: @<<<<<<<<<<<<<<<<<<<<   itemC: @>>>>>>>>
+$itemB, $itemC
+itemA: @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+$itemA
+Access:      @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+$access
+Deck: @<<    Stardate: @########.#
+$deck, $stardate
+
+.
+
+
+# Top-of-page format, displays page number.
+format WORKORDER_TOP=
+
+ =Starfleet Work Orders= page @<<<
+$%
+
+.
+
+
+open(WORKORDER, ">yourFile.txt" ) or die "Can't open yourFile.txt", $!;
+select(WORKORDER);
+
+$itemA = "itemA 1";
+$itemB = "NO 1";
+$itemC = "Urgent";
+$access = "NO";
+$deck   = 17;
+$stardate = 200111.4;
+
+write WORKORDER;
+
+
+# Output page on next write.
+$- = 0;
+
+
+# Set up more data for output.
+$itemA = "itemA 2";
+$itemB = "No 2";
+$itemC = "Low";
+$access = "YEs";
+$deck   = 12;
+$stardate = 200102.5;
+
+write WORKORDER;
+
+
+# Output page.
+$- = 0;
+
+
+# Fill in more data.
+$itemA = "itemA 3";
+$itemB = "NO 3";
+$itemC = "Low";
+$access = "Yes";
+$deck   = 10;
+$stardate = 201002.0;
+
+write WORKORDER;
+
+
+# Close file.
+close(WORKORDER);

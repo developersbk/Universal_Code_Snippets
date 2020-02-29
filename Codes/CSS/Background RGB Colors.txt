@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:subLang='en'>
+    <head>
+        <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+        <title>background RGB Colors</title>
+        <style type='text/css'>
+
+body {
+    background-color: rgb(88, 168, 200);
+}
+        </style>
+    </head>
+    <body>
+        <div> There is no fear in love;<br>
+              but perfect love casteth out fear:<br>
+              because fear hath torment.<br>
+              He that feareth is not made perfect in love.<br><br>
+
+              The Bible<br>
+
+        </div>
+    </body>
+</html>
+

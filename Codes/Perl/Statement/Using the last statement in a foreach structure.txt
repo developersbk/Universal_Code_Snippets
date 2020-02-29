@@ -1,0 +1,11 @@
+foreach ( 1 .. 10 ) {
+
+   if ( $_ == 5 ) {
+      $number = $_;  # store current value before loop ends
+      last;          # jump to end of foreach structure
+   }
+        
+   print "$_ ";
+}
+
+print "\n\nUsed 'last' to terminate loop at $number.\n";

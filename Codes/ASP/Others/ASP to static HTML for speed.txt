@@ -1,0 +1,43 @@
+Dim fs, fsmyfile, todayfile, ckdayfile, cr, qt
+'Get name of file as it needs to be toda
+' y
+todayfile="Cur"&CStr(Month(Date()))&CStr(Day(Date()))
+ckdayfile=""&CStr(Month(Date()))&CStr(Day(Date()))&""
+todayfile=Trim(todayfile)&".asp"
+'Create FileSystemObject
+Set fs = CreateObject("Scripting.FileSystemObject")
+
+'File may not be built
+On Error Resume Next 
+
+'Check to see if we already have the HTM
+' L file Built
+Set fsmyfile = fs.OpenTextFile("c:inetpubscriptsaspjeff"+todayfile,1,0)
+If err<>0 Then      'Need To build today
+    fsmyfile.Close  'Close File
+    Set fsmyfile = fs.OpenTextFile("c:inetpubscriptsaspjeff"+todayfile,8,1,0)
+    cr=Chr(13)  'Save some typing (I'm lazy)
+    qt=Chr(34)  'The Only way I could Get the quote marks correct
+    codeout="<%@ LANGUAGE=""VBSCRIPT"" %"&">"&cr
+    codeout=codeout&"<%"&cr
+    codeout=codeout&"today="&qt&CStr(Month(Date()))&CStr(Day(Date()))&qt&cr
+    codeout=codeout&cr&"if today<>"&qt&ckdayfile&qt&" then"&cr
+    codeout=codeout&"response.redirect("&qt&"wrtest.asp"&qt&")"&cr
+    codeout=codeout&"else %"&">"&cr
+    fsmyfile.Writeline(""&codeout&cr&_
+    "<HTML>"&cr&_
+    "<TITLE>Write and Check Raw HTML For Speed</TITLE>"&cr&_
+    "<BODY>"&cr&_
+    "Hello todays file is called "&todayfile&cr&_
+    "</BODY>"&cr&_
+    "</HTML>"&cr&_
+    "<"&"%End if"&cr&_
+    "%"&">")
+    fsmyfile.close
+    fs.close
+    Response.Redirect(todayfile)    'Send them to new file
+Else
+    fsmyfile.close
+    fs.Close
+    Response.Redirect(todayfile)    'Send them to current file
+End if%>   

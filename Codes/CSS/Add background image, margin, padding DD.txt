@@ -1,0 +1,17 @@
+Add background image, margin, padding DD
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:subLang="en" subLang="en">
+<head><title>Add background image margin padding DD</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <style type="text/css" media="screen">
+  #divID dd {
+    margin-left: 12px;
+    padding-left: 12px;
+    color: #888;
+    background: url(http://www.happycodings.com/images/happy.gif) no-repeat 0 4px;
+  }
+  </style>
+</head>
+
+<body>

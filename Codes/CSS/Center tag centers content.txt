@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>center tag centers content</title>
+</head>
+<body>
+   <center>
+      <table width="600" border="5" cellspacing="4" cellpadding="4" align="center">
+      <caption valign="bottom" style="color:green">
+         This table is centered within the margins of the page.
+      </caption>
+      <tr>
+         <td>not centered<br><br>
+	     The sweetest joy, the wildest woe is love<br><br>
+
+             Pearl Bailey	 
+	 </td>
+         <td><center>centered<br><br>
+	             A kiss makes the heart young again and wipes out the years.<br><br>
+
+                     Rupert Brooke 
+	 </center></td>
+      </tr>
+      <tr>
+          <td><center>centered</center></td>
+          <td>not centered</td>
+      </tr>
+      </table>
+  </center>
+  <center>Centered</center>
+  <br>
+  not centered<br><br>
+
+  Poetry is the song of the heart, molded by the mind.<br><br>
+
+  Roger W. Hancock 
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:subLang='en'>
+    <head>
+        <title>border-spacing</title>
+        <style rel='stylesheet' type='text/css'>
+body {
+    font-family: verdana;
+}
+table {
+    border: 2px solid rgb(196, 105, 86);
+    caption-side: bottom;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 20px 0;
+}
+th {
+    background: pink;
+}
+th, td {
+    border: 1px solid rgb(106, 150, 180);
+    padding: 4px;
+    overflow: hidden;
+}        
+        </style>
+    </head>
+    <body>
+        <table>
+            <caption>
+                One's first love is always perfect until one meets one's second love. Elizabeth Aston
+            </caption>
+            <colgroup>
+                <col/>
+                <col/>
+                <col/>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Column 1</th><th>Colunm 2</th><th>Column 3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> j1</td><td> x1</td><td> w1</td>
+                </tr>
+                <tr>
+                    <td> j2</td><td> x2</td><td> w1</td>
+                </tr>
+                <tr>
+                    <td> j3</td><td> x3</td><td> w3</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
+

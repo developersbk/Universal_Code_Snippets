@@ -1,0 +1,16 @@
+use IO::Socket;
+
+$socket = IO::Socket::INET->new
+(
+    Proto     => "tcp",
+    PeerAddr  => "reference.perl.com",
+    PeerPort  => 80,
+);
+$socket->autoflush(1);
+print $socket "GET /query.cgi?cgi HTTP/1.0\015\012\015\012";
+open FILEHANDLE, ">local.html";
+while (<$socket>) {
+    print FILEHANDLE;
+}
+close FILEHANDLE;
+close $socket;

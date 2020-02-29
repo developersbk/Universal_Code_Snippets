@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>border size pattern color padding overflow visible</title>
+<style type="text/css">
+* .box {
+  display: static;
+  overflow: visible;
+  visibility: visible;
+  width: 240px;
+  height: 180px;
+  padding: 40px;
+  border-top: 45px solid blue;
+  border-bottom: 45px solid pink;
+  border-left: 45px solid orange;
+  border-right: 45px solid black;
+  margin-left: 240px;
+  margin-top: 100px;
+  background-color: green;
+}
+</style>
+</head>
+<body>
+
+
+<h1>Love Sayings</h1> 
+
+<div class="box">Man's love is of man's life a part;<br>
+                 It is a woman's whole existence.<br><br>
+
+                 Lord Byron
+
+</div> 
+
+</body> 
+</html>

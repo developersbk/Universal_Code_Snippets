@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+
+use User::pwent();
+
+sub User::pwent::has {
+    my $self = shift;
+    return User::pwent::pw_has(@_);
+}
+
+print "Supported fields: ", scalar(User::pwent::has), "\n";
+
+while (my $user = User::pwent::getpwent) {
+    print 'Name    : ', $user->name, "\n";
+    print 'Password: ', $user->passwd, "\n";
+    print 'User ID : ', $user->uid, "\n";
+    print 'Group ID: ', $user->gid, "\n";
+
+    print 'Expire  : ', $user->expire, "\n" if $user->has('expire');
+}  

@@ -1,0 +1,4 @@
+#Format: Expression2 while Expression1;
+
+$x=1;
+print $x++,"\n" while $x != 5;

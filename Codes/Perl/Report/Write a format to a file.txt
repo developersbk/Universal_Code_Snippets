@@ -1,0 +1,24 @@
+format standardformat_top =
+                  Employees
+First Name   Last Name    ID       Extension
+--------------------------------------------
+.
+
+format standardformat =
+@<<<<<<<<<<<<@<<<<<<<<<<<<@<<<<<<<<@<<<<
+$firstname   $lastname    $ID      $extension
+.
+
+$firstname = "B"; 
+$lastname = "A";
+$ID = 1234; $extension = x456;
+open FILEHANDLE, ">report.frm" or die "Can't open file";
+select FILEHANDLE;
+
+select FILEHANDLE;
+
+$~ = standardformat;
+$^ = standardformat_top;
+
+write;
+close;

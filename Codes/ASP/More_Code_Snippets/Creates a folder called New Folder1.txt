@@ -1,0 +1,5 @@
+<%
+Dim fso
+Set fso = CreateObject("Scripting.FileSystemObject")
+fso.CreateFolder("d:\New Folder1")
+%>

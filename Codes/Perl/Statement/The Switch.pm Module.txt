@@ -1,0 +1,12 @@
+use Switch;
+
+print "What is your favorite color? ";
+chomp($color=<STDIN>);
+switch("$color"){
+   case "red"  { print "Red!\n"; }
+   case "blue" { print "blues.\n"; }
+   case "green" { print "green\n";}
+   case "yellow" { print "yellow";}
+   else          { print "$color is not in our list.\n";}
+}
+print "Execution continues here....\n";

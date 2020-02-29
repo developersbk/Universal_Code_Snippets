@@ -1,0 +1,9 @@
+<html>
+<title>Input Type Text Accept Element</title>
+<body>
+<input type="text" 
+       size=50 
+       accept="image/jpg,text/html" 
+       value='The content type this field accepts is "image/jpg,text/html"'>
+</body>
+</html>

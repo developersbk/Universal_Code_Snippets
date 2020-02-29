@@ -1,0 +1,30 @@
+<?xml version = "1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml">
+   <head>
+      <title>Declaring A Style Sheet In The Header Section</title>
+      <style type = "text/css">
+         em       { background-color: pink;
+                    color: blue }   
+
+         h1       { font-family: verdana, sans-serif }
+
+         p        { font-size: 16px }
+
+         .special { color: aqua } 
+
+      </style>
+   </head>
+   <body>
+      <h1 class = "special">Love Sayings</h1>
+
+      <p>The way to love anything is to realize that it may be lost. Gilbert K. Chesterton</p>
+
+      <h1>Love Love Love</h1>
+      <p class = "special">All thoughts, all passions, all delights Whatever stirs this mortal frame<br>
+                           All are but ministers of Love And feed his sacred flame.<br><br>
+                           <em>Samuel Taylor Coleridge</em></p>
+
+   </body>
+</html>

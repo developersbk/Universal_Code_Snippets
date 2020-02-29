@@ -1,0 +1,10 @@
+#!/usr/bin/perl -w
+
+$upper = "ALL UPPERCASE";
+
+$lower = lc($upper);
+
+print "$lower\n";
+
+   
+  

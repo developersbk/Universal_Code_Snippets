@@ -1,0 +1,9 @@
+# The syntax is (name, altnames, addrtype, net) = getnetent(); 
+
+#!/usr/local/bin/perl 
+
+while (($name, $altnames, $addrtype, $rawaddr) = getnetent()) { 
+    @addrbytes = unpack ("C4", $rawaddr); 
+    $address = join (".", @addrbytes); 
+    print ("$name, at address $address\n"); 
+} 

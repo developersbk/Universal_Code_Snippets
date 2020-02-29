@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Class Style Overwrites The Wildcard Style</title>
+        <style type='text/css'>
+      * {
+          font-family: verdana;
+      }
+      div {
+          font-family: "Times New Roman";
+      }
+        </style>
+    </head>
+  <body>
+      This font is verdana.
+      <div>
+          This font is Times New Roman.<br>
+          Love alone is capable of uniting living beings in such<br>
+          a way as to complete and fulfill them,<br>
+          for it alone takes them and joins them<br>
+          by what is deepest in themselves.<br><br>
+
+          Pierre Teilhard de Chardin 
+      </div>
+  </body>
+</html>

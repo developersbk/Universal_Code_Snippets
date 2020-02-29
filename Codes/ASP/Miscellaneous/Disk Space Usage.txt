@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<TITLE>New Page 1</TITLE>
+</HEAD>
+<BODY>
+<P><%<BR>
+'Capture the name of the page as well as
+' directory structure <BR>
+script_name=Request.ServerVariables("script_name")<BR>
+<BR>
+'Split the directory tree into an arry b
+' y /<BR>
+split_name=Split(script_name,"/")<BR>
+<BR>
+' Sets the number of directory levels do
+' wn<BR>
+num_directory=UBound(split_name)-1<BR>
+<BR>
+%><BR>
+<HTML><BR>
+<TITLE>CodeAve.com(Directory Size)</TITLE><BR>
+<BODY bgcolor="#FFFFFF"><BR>
+<BR>
+<TABLE align="center"><BR>
+<TR><BR>
+<TD width=150><BR>
+<B>Directory</B><BR>
+</TD><BR>
+<TD width=150><BR>
+<B>Megabytes</B><BR>
+</TD><BR>
+<TD width=150><BR>
+<B>Kilobytes</B><BR>
+</TD><BR>
+<TD width=150><BR>
+<B>Bytes</B><BR>
+</TD><BR>
+</TR><BR>
+<%<BR>
+' Create a file system object to read al
+' l the directories<BR>
+' beneath the current directory split_na
+' me(num_directory)<BR>
+' You can hard code the directory name i
+' f you like<BR>
+Set directory=Server.CreateObject("scripting.filesystemobject")<BR>
+Set allfiles=directory.getfolder(Server.MapPath("../"& split_name(num_directory)& "/"))<BR>
+<BR>
+' Lists all the files found in the direc
+' tory<BR>
+For Each directory In allFiles.subfolders<BR>
+' Removes certain MSFrontPage was direct
+' ories <BR>
+If Right(directory.Name,3) <> "cnf" Then <BR>
+'Adds the folder sizes up for a total<
+' ;BR>
+total_size=total_size + directory.size %><BR>
+<BR>
+<TR><BR>
+<TD width=150><BR>
+<%= directory.name %><BR>
+</TD><BR>
+<TD width=150><%= FormatNumber((directory.size/1024/1024),2) %></TD><BR>
+<TD width=150><%= FormatNumber((directory.size/1024),0) %></TD> <BR>
+<TD width=150><%= FormatNumber(directory.size,0) %></TD> <BR>
+</TR><BR>
+<% End If 'end check For FrontPage directories <BR>
+Next 'end of the For next Loop %><BR>
+<TR><BR>
+<TD width=150><B>Total</B></TD><BR>
+<TD width=150><%= FormatNumber((total_size/1024/1024),2) %></TD><BR>
+<TD width=150><%= FormatNumber((total_size/1024),0) %></TD> <BR>
+<TD width=150><%= FormatNumber(total_size,0) %></TD> <BR>
+</TR><BR>
+</TABLE><BR>
+<BR>
+</BODY><BR>
+</HTML></P>
+</BODY>
+</HTML>

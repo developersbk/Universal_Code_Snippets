@@ -1,0 +1,7 @@
+<% 
+Dim strText 
+'here is our original text 
+strText = "welcome to my beginners ASP" 
+'display the modified text 
+Response.Write (Replace(strText , "ASP", "php")) 
+%>

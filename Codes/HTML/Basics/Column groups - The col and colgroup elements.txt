@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <title>Example of HTML table column groups</title>
+</head>
+<body>
+	<table border="1" cellpadding="10">
+        <colgroup>
+            <col style="background: #bed65a;">
+            <col style="background: #f8d97f;">
+        </colgroup>
+        <tr>
+            <td>row 1, cell 1</td>
+            <td>row 1, cell 2</td>
+        </tr>
+        <tr>
+            <td>row 2, cell 1</td>
+            <td>row 2, cell 2</td>
+        </tr>
+    </table>
+</body>
+</html>                                		

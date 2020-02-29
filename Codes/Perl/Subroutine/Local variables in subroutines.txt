@@ -1,0 +1,24 @@
+# Perl allows you to create local variables inside subroutines. 
+# The local variables can have the same names as any global variables.
+# The local won't overwrite the global variables.
+# To make a variable local, use the my command 
+
+#!/usr/bin/perl -w
+
+$a = 1;
+$b = 4;
+
+# sum is global.
+$sum = 10;
+$value = add();
+
+print "$a plus $b is $value.\n";
+print "Global sum remains $sum.\n";
+
+sub add {
+    # This sum is local.
+    my($sum) = $a + $b;
+
+    print "Local sum=$sum.\n";
+    return $sum;
+}

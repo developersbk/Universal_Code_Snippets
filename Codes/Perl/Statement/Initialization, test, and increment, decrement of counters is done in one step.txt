@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+
+for ($i=1, $total=10, $remain=$total, $where="on the shelf";$i <= $total; $i++, $remain--){
+    if ($remain == 1){
+          print "$remain bottle of beer $where" ;
+    }else {
+          print "$remain bottles of beer $where.";
+    }
+    print "Now ", $total - $i , " bottles of beer $where!\n";
+    if ($i == 10 ){
+       print "Party's over.\n";
+    }
+}

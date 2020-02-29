@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:subLang='en'>
+    <head>
+        <title>Div Opacity</title>
+<style type='text/css'>
+body {
+    background: red;
+    font: 16px arial;
+}
+div {
+    width: 250px;
+    height: 250px;
+    border: 2px solid rgb(169, 196, 101);
+    opacity: 0.7;
+}
+div#one {
+    background: blue;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+div#two {
+    background: blue;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+div#three {
+    background: yellow;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+div#four {
+    background: gray;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+</style>
+
+    </head>
+    <body>
+        <p>Love isn't blind; it just only sees what matters. William Curry</p>
+      
+        <div id='one'>The magic of first love is our ignorance that it can never end. Benjamin Disraeli </div>
+        <div id='two'>I am two fools, I know, For loving, and for saying so in Whining poetry. John Donne </div>
+        <div id='three'>If ever two were one, then surely we. If ever man were loved by wife, then thee. Anne Bradstreet</div>
+        <div id='four'>Love Love Love</div>
+    </body>
+</html>

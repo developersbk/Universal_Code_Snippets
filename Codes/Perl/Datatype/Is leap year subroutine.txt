@@ -1,0 +1,14 @@
+$my_year = 2000;
+
+if ( is_leap_year( $my_year ) ) {  
+   print "$my_year is a leap year\n";
+}
+else {
+   print "$my_year is not a leap year";
+}
+
+sub is_leap_year {        
+   my $year = shift(@_);          # Shift off the year from the parameter list, @_
+   return ((($year % 4 == 0) && ($year % 100 != 0)) ||
+   ($year % 400 == 0)) ? 1 : 0;   # What is returned from the function
+}

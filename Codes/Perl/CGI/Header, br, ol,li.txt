@@ -1,0 +1,14 @@
+#!c:/perl/bin
+
+use CGI ':standard';
+
+print header();
+print "Here is some ",em("emphasised text "), b("and this is bold.");
+print br(), i("This is italic text"), br(), br(), br();
+
+print h3("Languages"),
+         ol(
+          li('C++'),
+          li('PHP'),
+          li('Perl')
+         );

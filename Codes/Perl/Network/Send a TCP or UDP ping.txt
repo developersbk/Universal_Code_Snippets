@@ -1,0 +1,8 @@
+#!/usr/bin/perl
+use warnings;
+
+use Net::Ping;
+$hostname = shift @ARGV;
+$p = Net::Ping->new("icmp"); #could be "udp" or "tcp" instead
+print "$host is alive.\n" if $p->ping($host);
+$p->close();

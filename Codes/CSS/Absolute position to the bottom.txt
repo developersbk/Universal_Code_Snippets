@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:subLang="en" subLang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Absolute position to the bottom</title>
+  <style type="text/css">
+body {
+  margin: 2px;
+  padding: 2px;
+  color: aqua;
+  background-color: blue;
+}
+
+
+.myStyle1 {
+  position: static;
+  padding: 8px;
+  margin: 4px;
+  background-color: white;
+  border: 1px solid black;
+  width: 20%;
+}
+
+
+.myStyle2 {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  padding: 8px;
+  margin: 4px;
+  background-color: #fff;
+  border: 2px solid #000;
+  width: 25%;
+}
+
+
+  </style>
+</head>
+
+
+<body>
+  <div class="myStyle2">If I don't know what true love is, how will I ever find it?<br>
+  Anonymous </div>
+
+  <div class="myStyle1">A kiss is a lovely trick designed by nature to stop speech<br>
+  when words become superfluous.<br>
+  Ingrid Bergman </div>
+
+  <div class="myStyle1">True love is just like rain; it touches us all.<br>
+  Anonymous </div>
+
+  <div class="myStyle1">In real love you want the other person's good.<br>
+  In romantic love, you want the other person.<br>
+  Margaret Anderson </div>
+</body>
+
+
+</html>

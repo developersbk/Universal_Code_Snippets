@@ -1,0 +1,84 @@
+<%@language=vbscript%>
+<%
+'Create the MyConnection Object and Open the connection to the database using your DSN
+Set MyConnection = Server.CreateObject("Adodb.Connection")
+MyConnection.open "DSN=DSNtest;Username=admin;Password=password;"
+
+'Write your Query
+MyQuery = "Select FieldName from TableName"
+perpage = 10
+        
+Const adOpenForwardOnly = 0
+Const adOpenKeyset = 1
+Const adOpenDynamic = 2
+Const adOpenStatic = 3
+Const adLockReadOnly = 1
+Const adLockPessimistic = 2
+Const adLockOptimistic = 3
+Const adLockBatchOptimistic = 4
+Set myrs = Server.CreateObject("adodb.recordset")
+myrs.open myquery, MyConnection, adopenkeyset, adlockoptimistic
+If myrs.eof Then
+Response.Write "<table cellspacing=0 border=0 cellpadding=0 border=0 width=640 bgcolor=black><tr><td><table cellspacing=1 border=0 cellpadding=2 border=0 width=100% bgcolor=black><tr><td align=center bgcolor=Gray><font face=""Verdana"" size=1>Sorry, no records were found.</font></td></tr></table></td></tr></table>"
+ElseIf  request("start") = "" Then
+start = 1
+Else
+start = CInt(request("start"))
+End If
+     
+     torecs = ((start+perpage)-1)
+     
+     If torecs > myrs.recordcount Then
+        torecs = myrs.recordcount
+     End If
+     
+     i = 1
+     mypagenavigationbar = ""
+     For n = 1 To myrs.recordcount step perpage
+If n <> 1 Then mypagenavigationbar = mypagenavigationbar & " | "
+             If n = CInt(start) Then
+                mypagenavigationbar = mypagenavigationbar & "<b>"&i&"</b>"
+            Else
+                mypagenavigationbar = mypagenavigationbar & "<a href="""
+                mypagenavigationbar = mypagenavigationbar & Request.ServerVariables("url") & "?start=" & n
+                mypagenavigationbar = mypagenavigationbar & """>"
+                mypagenavigationbar = mypagenavigationbar & i & "</a>" 
+      End If
+        i = i + 1
+     Next
+    i = 1
+    myrs.move start - 1
+Response.Write "<table cellspacing=0 border=0 cellpadding=0 border=0 width=640 bgcolor=black><tr><td><table cellspacing=1 border=0 cellpadding=2 border=0 width=100% bgcolor=black>"
+Response.Write "<tr><td bgcolor=Gray align=right><font face=""Verdana"" size=1><b>Records </b> ("&start& "-" & torecs & " of " & myrs.recordcount&")  <b>Page(s)</b> : "&mypagenavigationbar&"</font></td></tr>"
+Response.Write "</table></td></tr><tr><td><table cellspacing=1 border=0 cellpadding=2 border=0 width=640 bgcolor=black><tr bgcolor=Silver>"
+Response.Write "<td align=Left><font face=""Verdana"" size=1>FieldNameHeading</font></td>"
+
+Response.Write "</tr>"
+
+iscolor = True
+For row = start To start + (perpage - 1)
+If myrs.eof Then Exit For
+If iscolor Then
+Response.Write "<tr bgcolor=Olive>"
+iscolor=False
+Else
+Response.Write "<tr bgcolor=Purple>"
+iscolor=True
+End If
+Response.Write "<td align=Left><font face=""Verdana"" size=1>"& Myrs("FieldName")& " </font></td>"
+
+Response.Write "</tr>"
+i = i + 1
+myrs.movenext
+Next
+
+Response.Write "</table></td></tr></table>"
+'Close the Recordset
+myrs.close
+Set myrs = Nothing
+
+'Close the Connection
+MyConnection.close
+Set MyConnection = Nothing
+%>
+

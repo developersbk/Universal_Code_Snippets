@@ -1,0 +1,20 @@
+<%
+	'Know all drive properties through file system object
+	
+	Dim fso, drv, s,strDir
+	'if directory name is H:\docuemnts    strDir="H:\docuemnts\"
+
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    Set drv = fso.GetDrive(fso.GetDriveName(strDir))
+
+	s = "Drive " & UCase(drv.Path) & "<br>"
+	s = s & drv.driveType & "<br>"
+	s = s & drv.FileSystem & "<br>"
+	s = s & drv.IsReady & "<br>"
+	s = s & drv.Path & "<br>"
+	s = s & drv.RootFolder & "<br>"
+	s = s & drv.ShareName & "<br>"
+	s = s & drv.VolumeName & "<br>"
+	s = s & drv.driveType & "<br>"
+	Response.Write s
+%>

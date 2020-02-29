@@ -1,0 +1,12 @@
+#!/usr/local/bin/perl -w
+use Tk;
+use strict;
+
+my $mw = MainWindow->new(-title => 'My List');
+foreach (qw/A B C D/) {
+    $mw->Checkbutton(-text => $_)->pack(-side => 'left');
+}
+
+$mw->Button(-text => "Purchase")->pack(-side => 'bottom');
+
+MainLoop;

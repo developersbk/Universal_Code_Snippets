@@ -1,0 +1,8 @@
+    $CryptFile = "crypt.out";
+
+    open(OUT,"| crypt > $CryptFile") || die "Can't run crypt\n";
+
+    while(<>) {
+        print OUT;
+    }
+    close(OUT);

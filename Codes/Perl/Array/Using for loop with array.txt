@@ -1,0 +1,4 @@
+@array = ("Hello ", "there.\n");
+for (@array) {
+   print;
+}

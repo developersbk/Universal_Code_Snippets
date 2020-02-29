@@ -1,0 +1,12 @@
+#First we create an anonymous hash, 
+#then bless it into a package
+
+package House;
+
+my $ref = { "Owner"=>"Tom", 
+            "Price"=>"25000", # Properties/attributes
+          };
+bless($ref, House);
+
+print "\$ref is: $ref.\n";
+print ref($ref), ".\n";

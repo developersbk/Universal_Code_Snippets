@@ -1,0 +1,39 @@
+Function weeknummer (iYear, iMonth,  iDay)
+		 dim thursdayofweek
+		 dim firstthursdayofyear
+		 dim MyDay
+		 dim dayofWeek
+		 dim thursdaysyear
+
+		 MyDay = DateSerial(iYear, iMonth, iDay)
+
+		 dayofWeek		 = Weekday(MyDay)
+		 if dayofWeek = 1 then
+		 		  thursdayofweek = dateadd("d", -3 , MyDay)
+		 else
+		 		  thursdayofweek = dateadd("d",(5 - dayofWeek), MyDay)
+		 end if
+		 thursdaysyear = Year( thursdayofweek )
+
+		 firstthursdayofyear = first_thursday_of_year (thursdaysyear)
+
+		 weeknummer = (datediff("ww", firstthursdayofyear ,thursdayofweek) + 1)
+end		 Function
+
+function first_thursday_of_year (iYear)
+		 dim first_jan
+		 dim dayofWeek
+
+		 first_jan = DateSerial(iYear, 1, 1)
+		 dayofWeek = Weekday(first_jan)
+		 select case dayofweek
+		 		 case 1 first_thursday_of_year = dateadd("d", 4 ,first_jan)
+		 		 case 2 first_thursday_of_year = dateadd("d", 3 ,first_jan)
+		 		 case 3 first_thursday_of_year = dateadd("d", 2 ,first_jan)
+		 		 case 4 first_thursday_of_year = dateadd("d", 1 ,first_jan)
+		 		 case 5 first_thursday_of_year = first_jan
+		 		 case 6 first_thursday_of_year = dateadd("d", 6 ,first_jan)
+		 		 case 7 first_thursday_of_year = dateadd("d", 5 ,first_jan)
+   End Select
+end function
+

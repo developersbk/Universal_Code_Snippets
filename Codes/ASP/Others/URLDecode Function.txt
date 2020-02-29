@@ -1,0 +1,34 @@
+<%
+Private Function URLDecode(ByVal encodedstring)
+    Dim strIn, strOut, intPos, strLeft
+    Dim strRight, intLoop
+    strIn = encodedstring : strOut = _
+         "" : intPos = InStr(strIn, "+")
+    Do While intPos
+        strLeft = "" : strRight = ""
+        If intPos > 1 Then _
+            strLeft = Left(strIn, intPos - 1)
+        If intPos < Len(strIn) Then _
+            strRight = Mid(strIn, intPos + 1)
+        strIn = strLeft & " " & strRight
+        intPos = InStr(strIn, "+")
+        intLoop = intLoop + 1
+    Loop
+    intPos = InStr(strIn, "%")
+    Do While intPos
+        If intPos > 1 Then _
+            strOut = strOut & _
+                Left(strIn, intPos - 1)
+        strOut = strOut & _
+            Chr(CInt("&H" & _
+                Mid(strIn, intPos + 1, 2)))
+        If intPos > (Len(strIn) - 3) Then
+            strIn = ""
+        Else
+            strIn = Mid(strIn, intPos + 3)
+        End If
+        intPos = InStr(strIn, "%")
+    Loop
+    URLDecode = strOut & strIn
+End Function
+%>

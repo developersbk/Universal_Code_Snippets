@@ -1,0 +1,24 @@
+#!/usr/local/bin/perl
+ $count = 0; 
+ while ($count < 4){
+    print "Inside the while loop the count is $count\n";
+    $count++;
+ }
+ print "now $count\n\n";
+ until ($count > 7){
+    $count++;
+    print "Inside the until loop the count is $count\n";
+ }
+ print "now $count\n\n";
+ do {
+    print "The do statement is always executed at least once.The count is $count\n";
+    $count++;
+ } until ($count >7);
+ do {
+    print "The do statement is always executed at least once. The count is $count\n\n";
+    $count++;
+ } while ($count < 4);
+ do {
+    print "The do statement can act as a loop. Here the count is $count\n";
+    $count++;
+ } while ($count < 14);

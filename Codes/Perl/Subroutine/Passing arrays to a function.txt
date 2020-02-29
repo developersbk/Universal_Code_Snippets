@@ -1,0 +1,23 @@
+#!/usr/bin/perl
+
+
+use warnings;
+use strict;
+
+my @array1 = ( 1 .. 8 );
+my @array2 = ( 'a' .. 'e' );
+my @mixed = arrayMixer( \@array1, \@array2 );
+print( "@mixed\n" );
+
+sub arrayMixer
+{
+   my @firstArray = @{ $_[ 0 ] };
+   my @secondArray = @{ $_[ 1 ] };
+   my ( $first, $second, @array );
+
+   while ( ( $first = shift( @firstArray ) ) && ( $second = shift( @secondArray ) ) ) {
+      push( @array, $first, $second );
+   }
+
+   return @array;
+}

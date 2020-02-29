@@ -1,0 +1,30 @@
+use LWP::Simple;
+require HTML::Parser;
+
+require HTML::LinkExtor;
+
+$html = get("http://www.google.com");
+
+$link_extor = HTML::LinkExtor->new(\&handle_links);
+
+$link_extor->parse($html);
+
+sub handle_links 
+{
+
+     ($tag, %links) = @_;
+
+     if ($tag = 'a href' && $links{href} ne '') {
+
+        $url = $links{href};
+
+        $file = $url;
+        $file =~ s/http:\/\/www\.//;
+        $file =~ s/http:\/\///g;
+        $file =~ tr/\//-/;
+
+        print "Creating $file.\n";
+
+        mirror ($url, $file);
+     };
+}

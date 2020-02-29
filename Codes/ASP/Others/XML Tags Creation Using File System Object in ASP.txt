@@ -1,0 +1,79 @@
+<html>
+
+<head>
+<title></title>
+</head>
+
+<body>
+<%
+     
+    Set ObjCon=Server.CreateObject("ADODB.Connection")
+    Set ObjRec=Server.CreateObject("ADODB.Recordset")   
+    Set ObjRec1=Server.CreateObject("ADODB.Recordset")  
+
+    ObjCon.Provider="MICROSOFT.JET.OLEDB.4.0"
+    ObjCon.Open server.mappath("intranet.mdb")
+        
+    DIM tsql,tsql4,Splitme,TableName    
+    tsql=""
+    tsql4=""
+        
+    tsql="Select * from bookmaster where 1=2"   
+    ObjRec.Open tsql,ObjCon,3,1
+    
+    tsql4="Select * from bookmaster"    
+    ObjRec1.Open tsql4,ObjCon,3,1
+
+
+   splitme=split(tsql,"from")(1)
+   TableName=split(splitme,"where")(0)
+
+   filename="c:\" & trim(tablename) & ".xml"  
+    Set MyFileObject=Server.CreateObject("Scripting.FileSystemObject")
+    Set MyTextFile=MyFileObject.CreateTextFile(filename)
+
+%>
+
+<form name="form1" method="post" action="Access(OLEDB).asp">
+Creating the Tags ..........
+
+<% ObjRec1.MoveFirst %>
+    <% MyTextFile.WriteLine ("<" & trim(TableName) & ">") %>
+
+    <div align="center">
+        <center>
+        <table border="0">
+            <% dim RecNo
+               RecNo=1
+            %>
+               
+          <%  While Not ObjRec1.Eof %>
+            
+             <% MyTextFile.WriteLine ("<RecNo" & RecNo & ">" ) %> 
+
+                <% for i = 0 to ObjRec.Fields.Count-1 %>              
+                                <tr>                    
+                                <% MyTextFile.WriteLine ("<" & ObjRec.Fields(i).Name & ">" & ObjRec1(i) &   "</" & ObjRec.Fields(i).Name & ">") %>
+                           </tr>                
+                <% Next %>         
+                
+                <% MyTextFile.WriteLine ("</RecNo" & RecNo & ">" ) %>       
+                <% RecNo=RecNo+1 %>
+                <% ObjRec1.MoveNext %>  
+            <% Wend %>
+
+     </table>
+      </center>
+    </div>
+    <% MyTextFile.WriteLine ("</" & trim(TableName) & ">") %>
+    <%  MyTextFile.Close %>
+    
+
+<font color="#800000">File Created With Tags <a href="<%=filename%>"> ClickHere</a> to
+<a href="<%=filename%>"> View</a> the File</font>   
+
+</form>
+
+</body>
+
+</html>

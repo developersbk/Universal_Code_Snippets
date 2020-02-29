@@ -1,0 +1,82 @@
+CREATE PROC sp_import_errorlog
+(
+    @log_name sysname,
+    @log_number Int = 0,
+    @overwrite bit = 0
+)
+As
+
+Purpose:    To import the SQL Server Error Log into a table, so that it can be queried
+
+Tested On:  SQL Server 2000
+
+Limitation:     With Error messages spanning more than one line only the first line Is included In the table
+
+Example 1:  To import the current Error Log To table myerrorlog
+        EXEC sp_import_errorlog 'myerrorlog'
+
+Example 2:  To import the current Error Log To table myerrorlog, And overwrite the table
+        'myerrorlog' if it already exists
+        EXEC sp_import_errorlog 'myerrorlog', @overwrite = 1
+
+Example 3:  To import the previous Error Log To table myerrorlog
+        EXEC sp_import_errorlog 'myerrorlog', 1
+
+Example 4:  To import the Second previous Error Log To table myerrorlog
+        EXEC sp_import_errorlog 'myerrorlog', 2
+
+
+BEGIN
+    Set NOCOUNT On
+    
+    Declare @sql varchar(500) --Holds To SQL needed To create columns from Error Log
+
+    If (Select OBJECT_ID(@log_name,'U')) IS NOT NULL
+        BEGIN
+            If @overwrite = 0
+                BEGIN
+                    RAISERROR('Table already exists. Specify another name or pass 1 to @overwrite parameter',18,1)
+                    RETURN -1
+                End
+            Else
+                BEGIN
+                    EXEC('DROP TABLE ' + @log_name)
+                End
+        End
+
+    
+    --Temp table To hold the output of sp_readerrorlog
+    CREATE TABLE #errlog
+    (
+        err varchar(1000),
+        controw tinyint
+    )
+
+    --Populating the temp table using sp_readerrorlog
+    INSERT #errlog 
+    EXEC sp_readerrorlog @log_number
+
+    --This will remove the header from the errolog
+    Set ROWCOUNT 4
+    DELETE #errlog
+    Set ROWCOUNT 0
+
+    
+    Set @sql =  'SELECT 
+                CONVERT(DATETIME,Left(err,23)) [Date], 
+                SUBSTRING(err,24,10) [spid], 
+                Right(err,Len(err) - 33) [Message], 
+                controw 
+            INTO ' + QUOTENAME(@log_name) + 
+            ' FROM #errlog ' + 
+            'WHERE controw = 0'
+    
+    --Creates the table With the columns Date, spid, message And controw
+    EXEC (@sql) 
+    
+    --Dropping the temporary table
+    DROP TABLE #errlog
+    
+    Set NOCOUNT OFF
+Print 'Error log successfully imported to table: ' + @log_name
+End

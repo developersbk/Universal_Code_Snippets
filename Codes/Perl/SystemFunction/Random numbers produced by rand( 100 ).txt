@@ -1,0 +1,5 @@
+print "\nRandom numbers produced by rand( 100 ):\n";
+
+for ( 1 .. 3 ) {
+   print "   ", rand( 100 ), "\n";
+}

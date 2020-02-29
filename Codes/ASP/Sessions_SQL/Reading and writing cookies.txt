@@ -1,0 +1,26 @@
+<%@ LANGUAGE="VBSCRIPT" %>
+<%option Explicit
+Response.Buffer = True
+Dim strCookieName 
+Dim strCookieValue 
+' Get the values passed in by the other 
+' script
+strCookieName = "MyOwnCookie"
+strCookieValue = "23"
+' set the domain of the cookie to your o
+' wn domain
+' so it doesn't get confused with
+' cookies created for Microsoft.com for 
+' example.
+Response.Cookies(strCookieName).Domain = ".MyDomain.com"
+'set cookie value
+Response.Cookies(strCookieName) = strCookieValue
+'set cookie expiration date
+'note:set this to yesterday (or earlier)
+' and you can 
+'delete the cookie!
+Response.Cookies(strCookieName).Expires = Date() + 1
+%>
+The cookie <%= strCookieName%> Is =
+<%= Request.Cookies(strCookieName)
+%>

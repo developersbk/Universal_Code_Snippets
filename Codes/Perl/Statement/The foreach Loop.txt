@@ -1,0 +1,10 @@
+#Format:
+
+#foreach VARIABLE (ARRAY)
+#{BLOCK}
+
+
+#!/usr/bin/perl
+foreach $pal ('A', 'B', 'H', 'P') {
+    print "Hi $pal!\n";
+}

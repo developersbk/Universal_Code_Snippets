@@ -1,0 +1,26 @@
+<%
+Private Function PNum(ByVal number)
+    Dim tmp, ext
+    If IsNumeric( number ) = False Then
+        PNum = Null
+    Else
+        Select Case CInt( Right( number, 2 ) )
+            Case 11, 12, 13
+                ext = "th"
+            Case Else
+                tmp = Right( number, 1 )
+                Select Case CInt( tmp )
+                    Case 1
+                        ext = "st"
+                    Case 2
+                        ext = "nd"
+                    Case 3
+                        ext = "rd"
+                    Case Else
+                        ext = "th"
+                End Select
+        End Select
+        PNum = CStr( number & ext )
+    End If
+End Function
+%>

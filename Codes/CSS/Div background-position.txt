@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" subLang="en-US" xml:subLang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Div Background Position</title>
+<style rel="stylesheet" type="text/css">
+.date {
+  font-family: verdana;
+  font-size: 16px;
+  font-weight: bold;
+  color: pink;
+  float: left;
+  line-height: 15px;
+  padding: 0 16px 0 8px;
+  margin-top: -1px;
+  border-top: 1px solid #f898ff;
+  background-image: url(images/background-image.jpg);
+  background-position: right -1px;
+  background-repeat: no-repeat;
+  background-color: #f6f7f8;
+}
+</style>
+</head>
+<body>
+   <div class="date">Love is an energy - it can neither be created nor destroyed.<br>
+                     It just is and always will be,<br>
+                     giving meaning to life and direction to goodness...<br>
+                     Love will never die. (Celeste in "April Fools Day")<br><br>
+
+                     Bryce Courtney </div>
+
+</body>
+
+</html>

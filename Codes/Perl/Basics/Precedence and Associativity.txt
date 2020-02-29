@@ -1,0 +1,22 @@
+Operator                Description                                        Associativity
+() [ ] { }              Function call, array subscripts                    Left to right
+**                      Exponentiation                                     Right to left
+! ~ \ + -               Logical not, bitwise not, backslash, plus,minus    Right to left
+=~ !~                   Match and not match                                Left to right
+* / % x                 Multiply, divide, modulus, string repetition       Left to right
++ -.                    Add, subtract, string concatenation                Left to right
+<< >>                   Bitwise left shift, right shift                    Left to right
+-r -w -x -o etc.        File test operators                                None
+< <= > >= lt le gt ge   Numeric and string: less than, greater than, etc.  None
+== != <=> eq ne cmp     Numeric and string: equal to, not equal to, etc.   None
+&                       Bitwise and                                        Left to right
+| ^                     Bitwise or, exclusive or (xor)                     Left to right
+&&                      Logical and                                        Left to right
+||                      Logical or                                         Left to right
+..                      Range operator                                     None
+? :                     Ternary, conditional                               Right to left
+= += -= *= /= %=        Assignment                                         Right to left
+, =>                                                                       Left to right
+not                     !                                                  Right
+and                     &&                                                 Left to right
+or xor                  ||, ^                                              Left to right

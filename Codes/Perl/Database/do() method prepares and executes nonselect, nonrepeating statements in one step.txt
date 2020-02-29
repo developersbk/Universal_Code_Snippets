@@ -1,0 +1,7 @@
+#$rows_affected = $dbh->do("UPDATE your_table SET foo = foo + 1");
+
+use DBI;
+my $dbh= DBI->connect("DBI:mysql:host=localhost;user=root,password=;database=sample_db");
+
+$dbh->do("INSERT INTO employee(name)VALUES('A')");
+my $dbh->disconnect();

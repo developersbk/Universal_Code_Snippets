@@ -1,0 +1,10 @@
+
+use IO::File;
+$filehandle = new IO::File;
+
+if ($filehandle->open("<hello.txt")) {
+
+    print <$filehandle>;
+
+    undef $filehandle;
+}

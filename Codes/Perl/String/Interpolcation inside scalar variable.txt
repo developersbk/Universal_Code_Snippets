@@ -1,0 +1,9 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my $name = "Tom";
+my $salutation = "Dear $name,";
+print $salutation, "\n";
+
+  

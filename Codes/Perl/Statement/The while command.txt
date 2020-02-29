@@ -1,0 +1,15 @@
+#The while command loops while a condition is true.
+#So long as the condition remains true, all of the commands inside the block execute again and again. 
+
+#while (condition) {
+#  # ...
+#}
+
+
+#!/usr/bin/perl -w
+
+$i = 0;
+while ($i < 10) {
+   print "Iteration $i.\n";
+   $i++;
+}

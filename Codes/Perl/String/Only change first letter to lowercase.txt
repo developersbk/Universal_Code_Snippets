@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+my $string = "hello there\n";
+print "The original string: ", 'hello there\n', "\n\n";
+
+$string = lcfirst( $string );
+print "First letter changed to lowercase: $string";
+
+   

@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <title>Example of moving outside of an iframe</title>
+</head>
+<body>
+    <p>Want to move outside the iframe and go to the home page: <a href="http://www.tutorialrepublic.com/">Click here!</a></p>
+</body>
+</html>                                 		

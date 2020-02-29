@@ -1,0 +1,11 @@
+
+chdir '..';
+
+opendir(DIRECTORY, '.') 
+    or die "Can't open directory.";
+
+print join (', ', readdir(DIRECTORY));
+
+closedir DIRECTORY;
+
+   

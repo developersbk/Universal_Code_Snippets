@@ -1,0 +1,7 @@
+
+if ($bottom) {
+    $result = $top / $bottom;
+}
+else {
+    $ result = 0;
+}

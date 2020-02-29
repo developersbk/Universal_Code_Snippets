@@ -1,0 +1,11 @@
+%presidents = ( George => "Washington",
+                Abe    => "Lincoln",
+                Thomas => "Jefferson",
+                Harry  => "Truman" );
+      
+# obtain the list of keys and display each key-value pair
+@keys = keys( %presidents );
+
+
+@values = values( %presidents );
+print "\nThe values of the hash are:\n@values\n\n";

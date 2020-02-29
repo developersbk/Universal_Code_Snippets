@@ -1,0 +1,6 @@
+def is_decimal(num):  
+import re  
+text = "The quick brown fox jumps over the lazy dog."  
+# remove words between 1 and 3  
+shortword = re.compile(r'\W*\b\w{1,3}\b')  
+print(shortword.sub('', text)) 

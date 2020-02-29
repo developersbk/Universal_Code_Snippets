@@ -1,0 +1,11 @@
+%presidents = ( George => "A",
+                Abe    => "B",
+                Thomas => "C",
+                Harry  => "D" );
+      
+
+@keys = keys( %presidents );
+
+while ( $key = pop( @keys ) ) {
+   print "$key => $presidents{ $key }\n";
+}

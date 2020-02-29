@@ -1,0 +1,18 @@
+#  $start = index($string, $look_for);
+
+#  If you intend to search a string for multiple occurrences of the look-for substring, you can use the optional start position:
+
+#  $start = index($string, $look_for, $start_position);
+
+
+#!/usr/bin/perl -w
+
+# Look for a substring with index.
+
+$look_for = "then";
+
+$start = index("First A, then B", $look_for);
+
+print "$look_for starts at $start\n";
+
+   

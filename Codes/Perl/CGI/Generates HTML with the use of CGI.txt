@@ -1,0 +1,18 @@
+#!/usr/bin/perl -w
+
+use strict;
+use CGI ':standard';
+
+print header();
+print start_html('Generating HTML');
+print h1('Now Is:');
+print p('The current date and time is:', scalar(localtime));
+print hr();
+print h1('This is heading 1');
+
+my $file_listing = '';
+$file_listing .= "<br />$_" foreach <*.pl>;
+
+print p('This is a ', ' file list:', $file_listing);
+print p('Check out the',a({ href => 'http://www.java2s.com/' }, 'www.java2s.com Home Page'));
+print end_html();

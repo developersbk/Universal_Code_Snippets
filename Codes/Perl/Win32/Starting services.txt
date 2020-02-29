@@ -1,0 +1,22 @@
+$status = Win32::Service::StartService($host, $service);
+
+#!/usr/bin/perl -w
+
+use Win32::Service;
+
+$num_args = scalar( @ARGV );
+
+$host = '';
+
+$service = "yourServiceName";
+
+$status = Win32::Service::StartService($host, $service);
+
+if ($status) {
+print "Started $service.\n";
+} else {
+    print_error();
+}   
+sub print_error {
+    print Win32::FormatMessage( Win32::GetLastError() );
+}

@@ -1,0 +1,10 @@
+<html>
+<head>
+<title>Dfn Element Example</title>
+</head>
+<body>
+<p>
+<acronym>Love Sayings</acronym>Love means not ever having to say you're sorry.<dfn>Erich Segal</dfn>
+</p>
+</body>
+</html>

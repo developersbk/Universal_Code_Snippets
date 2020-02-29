@@ -1,0 +1,20 @@
+Public function GetFilename(ByVal strGetPath)
+ Dim nPos, strFilename
+ Dim strDir
+ strFilename = ""
+    strGetPath = cstr(strGetPath)
+    if Not len(strGetPath) = 0 Then
+        nPos = InStrRev(strGetPath, "", Len(strGetPath))
+        if nPos > 0 Then
+            strFilename = Right(strGetPath, Len(strGetPath) - nPos)
+            'Response.Write strFilename
+        End if
+        nPos = InstrRev(strGetPath, "", Len(strGetPath) - nPos)
+        if nPos > 0 Then
+            strDir = Right(strGetPath, Len(strGetPath) - nPos)
+        Else
+            strDir = ""
+        End if 
+    End if
+    GetFilename = strFilename
+ End function

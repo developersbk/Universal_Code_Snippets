@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>Border Samples - Border styles color size</title>
+<style>
+body {
+  background-color: rgb(40%, 40%, 40%);
+  font-size: 16px;
+  color: green;
+}
+
+.dotted {
+  border-color: pink;
+  border-width: medium;
+  border-style: dotted;
+  margin-right: 60%;
+  text-align: center;
+  margin-left: 8%;
+}
+
+.dashed {
+  border-color: blue;
+  border-width: medium;
+  border-style: dashed;
+  margin-right: 60%;
+  text-align: center;
+  margin-left: 8%;
+}
+
+.solid {
+  border-color: orange;
+  border-width: medium;
+  border-style: solid;
+  margin-right: 60%;
+  text-align: center;
+  margin-left: 8%;
+}
+
+.double {
+  border-color: black;
+  border-width: medium;
+  border-style: double;
+  margin-right: 60%;
+  text-align: center;
+  margin-left: 8%;
+}
+
+.groove {
+  border-color: green;
+  border-width: medium;
+  border-style: groove;
+  margin-right: 60%;
+  text-align: center;
+  margin-left: 8%;
+}
+
+.ridge {
+  border-color: red;
+  border-width: medium;
+  border-style: ridge;
+  margin-right: 60%;
+  text-align: center;
+  margin-left: 8%;
+}
+
+.inset {
+  border-color: yellow;
+  border-width: medium;
+  border-style: inset;
+  margin-right: 60;
+  text-align: center;
+  margin-left: 8%;
+}
+
+.outset {
+  border-color: blue;
+  border-width: medium;
+  border-style: outset;
+  margin-right: 60%;
+  text-align: center;
+  margin-left: 8%;
+}
+</style>
+</head>
+<body>
+<p class="dotted">Dotted - One's first love is always perfect until one meets one's second love. Elizabeth Aston</p>
+
+<p class="dashed">Dashed - One's first love is always perfect until one meets one's second love. Elizabeth Aston</p>
+
+<p class="solid">Solid - One's first love is always perfect until one meets one's second love. Elizabeth Aston</p>
+
+<p class="double">Double - One's first love is always perfect until one meets one's second love. Elizabeth Aston</p>
+
+<p class="groove">Groove - One's first love is always perfect until one meets one's second love. Elizabeth Aston</p>
+
+<p class="ridge">Ridge - One's first love is always perfect until one meets one's second love. Elizabeth Aston</p>
+
+<p class="inset">Inset - One's first love is always perfect until one meets one's second love. Elizabeth Aston</p>
+
+<p class="outset">Outset - One's first love is always perfect until one meets one's second love. Elizabeth Aston</p>
+
+
+</body>
+</html>

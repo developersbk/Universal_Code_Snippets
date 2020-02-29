@@ -1,0 +1,10 @@
+    #!/usr/local/bin/perl
+
+    # Create a list of the days of the week.
+    @days = qw (Monday Tuesday Wednesday Thursday Friday Saturday Sunday);
+
+    # Cycle through the loop, and print out the contents.
+    foreach $day (@days)
+    {
+       print "$day\n";
+    }

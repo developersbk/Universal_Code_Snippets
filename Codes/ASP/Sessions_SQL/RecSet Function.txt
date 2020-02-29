@@ -1,0 +1,28 @@
+<%
+Private Function RecSet(ByVal connstring, ByVal SQL)
+    Const adOpenForwardOnly = 0, adOpenKeyset = 1
+    Const adOpenDynamic = 2, adOpenStatic = 3
+    Const adLockReadOnly = 1, adLockPessimistic = 2
+    Const adLockOptimistic = 3, adLockBatchOptimistic = 4
+    Const adUseServer = 2, adUseClient = 3
+    Dim DebugRs, Tmp
+
+    Set DebugRs = Server.CreateObject("ADODB.Recordset")
+    With DebugRs
+        .CursorType = adOpenStatic
+        .CursorLocation = adUseServer
+        .LockType = adLockReadOnly
+        .ActiveConnection = connstring
+        .Source = SQL
+        .Open
+        If .BOF Then
+            Tmp = Null
+        Else
+            Tmp = .GetRows()
+        End If
+        .Close
+    End With
+    Set DebugRs = Nothing
+    RecSet = Tmp
+End Function
+%>

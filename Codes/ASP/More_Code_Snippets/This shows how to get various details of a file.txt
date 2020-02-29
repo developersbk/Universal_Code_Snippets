@@ -1,0 +1,16 @@
+<% 
+Dim strPath 
+strPath = Server.MapPath("index.php") 
+Dim objFSO , objFile 
+set objFSO = CreateObject("Scripting.FileSystemObject") 
+set objFile = objFSO.GetFile(strPath) 
+
+%> 
+
+File size is <%= objFile.Size %> bytes 
+<br> 
+File type is <%= objFile.Type %> 
+<br> 
+File last modified on <%= objFile.DateLastModified %> 
+<br> 
+File name is <%= objFile.Name %> 

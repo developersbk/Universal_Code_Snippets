@@ -1,0 +1,27 @@
+Create a button when the page loads
+
+<StackPanel
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="WpfApplication1.FELoaded" Loaded="OnLoad" Name="root">
+</StackPanel>
+//File:Window.xaml.cs
+
+using System;
+using System.Windows;
+using System.Windows.Controls;
+
+namespace WpfApplication1 {
+    public partial class FELoaded {
+        void OnLoad(object sender, RoutedEventArgs e)
+        {
+            Button b1 = new Button();
+            b1.Content = "Button";
+            root.Children.Add(b1);
+            b1.Height = 36;
+            b1.Width = 240;
+            b1.HorizontalAlignment = HorizontalAlignment.Left;
+        }
+    }
+}
+

@@ -1,0 +1,22 @@
+Use Slider to control Drop Shadow
+
+<Window x:Class="BitmapEffects.Window4"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Title="Bitmap Effects" Height="550" Width="650"
+  >
+    <StackPanel>
+        <Rectangle Height="60" Width="240" Fill="Cyan" Stroke="Black">
+            <Rectangle.BitmapEffect>
+                <DropShadowBitmapEffect 
+            ShadowDepth="{Binding Path=Value, ElementName=sliderDrop}" 
+              />
+            </Rectangle.BitmapEffect>
+        </Rectangle>
+        <Slider Minimum="0" Maximum="10" Name="sliderDrop" Value="14"/>
+        <TextBox Text="{Binding ElementName=sliderDrop, Path=Value}"/>
+
+
+    </StackPanel>
+</Window>
+

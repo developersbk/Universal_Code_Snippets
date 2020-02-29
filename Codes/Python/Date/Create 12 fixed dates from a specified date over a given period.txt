@@ -1,0 +1,10 @@
+import datetime  
+def every_20_days(date):  
+    print('Starting Date: {d}'.format(d=date))  
+    print("Next 12 days :")  
+    for _ in range(12):  
+        date=date+datetime.timedelta(days=20)  
+        print('{d}'.format(d=date))  
+  
+dt = datetime.date(2016,8,1)  
+every_20_days(dt) 

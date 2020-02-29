@@ -1,0 +1,10 @@
+    sub Factorial {
+        my($n) = @_;
+
+        $n <= 2 and return $n;
+        return $n * Factorial($n-1);
+    }
+
+    for $i (1..9) {
+        print "$i Factorial =\t", Factorial($i), "\n";
+    }

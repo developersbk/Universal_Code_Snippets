@@ -1,0 +1,29 @@
+# Module: House.pm
+#!/usr/bin/perl
+package House;
+sub new{          
+     my $class = shift;
+     my $ref={};   
+     bless($ref);
+     return $ref;
+}
+sub set_owner{    
+     my $self = shift;
+     print "\$self is a class ", ref($self)," reference.\n";
+     $self->{"Owner"} = shift;
+}
+sub display_owner {
+     my $self = shift;
+     print $self->{"Owner"},"\n";
+}
+1;
+
+
+
+
+# main.pl
+#!/usr/bin/perl
+use House;
+my $house = House->new;      # Call class method
+$house->set_owner ("Tom");   
+$house->display_owner;       # Call instance method

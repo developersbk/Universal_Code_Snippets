@@ -1,0 +1,15 @@
+use DBI;
+my $dbh=DBI->connect(qq(DBI:mysql:database=sample_db;user=root;password=)) or die "Can't connect";
+my $sth=$dbh->prepare("SELECT name, salary, age FROM employee");
+
+$sth->execute();
+
+while(my @row=$sth->fetchrow_array()){ 
+      print "name=$row[0]\n";      
+      print "salary=$row[1]\n";    
+      print "age=$row[2]\n\n";  
+}
+print $sth->rows, " rows were retrieved.\n";
+
+$sth->finish();
+$dbh->disconnect();

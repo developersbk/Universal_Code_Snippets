@@ -1,0 +1,10 @@
+#!/usr/bin/perl -w
+
+# Associative array or hash values.
+$hash{"Name"} = "G ";
+$hash{"Address"} = "1.";
+$hash{"City"} = "W";
+
+@values = values(%hash);
+
+print "Values are: @values\n\n";

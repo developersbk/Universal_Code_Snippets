@@ -1,0 +1,199 @@
+#Determine if a string has a digit.!
+
+use strict;
+use warnings;
+
+$string = "hello there";
+
+if ( $string =~ /[0-9]/ ) {
+   print "'$string' has a digit.\n";
+}
+else {
+   print "'$string' has no digit.\n";
+}
+
+$string = "this one has a 2";
+
+
+if ( $string =~ /[0-9]/ ) {
+   print "'$string' has a digit.\n";
+}
+else {
+   print "'$string' has no digit.\n";
+}
+
+   
+    
+#Check for no digit!
+
+#!/usr/bin/perl -w
+
+foreach $patt (@ARGV) {
+
+    # Check for no digit.
+    if ($patt =~ /\D/) {
+        print "\tFound non-digit in \"$patt\".\n";
+    }
+}
+
+   
+    
+ #Check for digit!
+
+#!/usr/bin/perl -w
+
+foreach $patt (@ARGV) {
+    # Check for digit.
+    if ($patt =~ /\d/) {
+        print "\tFound a digit in \"$patt\".\n";
+    }
+
+}
+
+   
+    
+ #if ($text =~ /(\d+)/) {print "Here's the number of apples: $1.\n";}!
+
+$text = "I have 4 apples.";
+if ($text =~ /(\d+)/) {print "Here's the number of apples: $1.\n";}
+
+   
+    
+    
+#if ($text =~ /\D/) {print "It's not a number.";}!
+
+$text = "Hello!";
+
+if ($text =~ /\D/) {print "It's not a number.";}
+
+   
+    
+    
+ #if ($text =~ /^[+-]\d+\.\d*$/) {print "It's a number.";}!
+
+$text = "-3.1415";
+if ($text =~ /^[+-]\d+\.\d*$/) {print "It's a number.";}
+
+   
+    
+#if ($text =~ /^\d+$/) {print "It's a number.";}!
+
+$text = "345";
+if ($text =~ /^\d+$/) {print "It's a number.";}
+
+   
+    
+    
+ #A simple integer-validation program.!
+  
+#!/usr/local/bin/perl 
+
+print ("Enter a number:\n"); 
+$number = <STDIN>; 
+chop ($number); 
+if ($number =~ /^-?\d+$|^-?0[xX][\da-fa-F]+$/) { 
+    print ("$number is a legal integer.\n"); 
+} else { 
+    print ("$number is not a legal integer.\n"); 
+} 
+
+   
+    
+    
+ # Get all numbers!
+
+#!/usr/bin/perl
+
+use warnings;
+
+my $text = "3 A, 2 B, and 0 C";
+
+$text =~ s/\b(\d+)\b/$1 > 0?$1 > 1?$1 > 2? "Several":"A pair of":"One":"No"/ge;
+
+print $text, "\n";
+
+   
+    
+    
+ #Match the one or more alphanumerics.!
+
+$p = "This is a pattern test.";
+
+if ($p =~ /(\w)*/){ print "$1\n"; }
+
+if ($p =~ /(\w)+/){ print "$1\n"; }
+
+   
+    
+    
+ #Match numbers!
+
+#!/usr/bin/perl
+use warnings;
+use strict;
+
+my $text = "One Two Three 456 Seven";
+while ($text =~ /[0-9]+/g) {
+    print " \$& = $& \n \$` = $` \n \$' = $' \n";
+}
+
+   
+    
+    
+  #Matching Any Letter or Number!
+
+range [a-z] matches any lowercase letter
+range [A-Z] matches any uppercase letter
+/[A-Z][A-Z]/ matches any two uppercase letters. 
+To match any uppercase letter, lowercase letter, or digit, use the following range: /[0-9a-zA-Z]/ 
+
+   
+    
+    
+   #Match one or zero alphanumerics followed by a single space character!
+
+$p = "This is a pattern test.";
+
+if ($p =~ /(\w?\s)/){ print "$1\n"; }
+if ($p =~ /(\w\s)/){ print "$1\n"; }
+
+   
+    
+    
+    
+  
+ 
+  
+
+
+   
+    
+    
+    
+  
+  
+  
+   
+  
+   
+  
+  
+  
+   
+  
+    
+    
+  
+   
+  
+    
+  
+   
+    
+  
+   
+    
+  
+    
+    
+  

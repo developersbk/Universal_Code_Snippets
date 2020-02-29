@@ -1,0 +1,8 @@
+#!c:/perl/bin
+
+@letters = (aa..dd);
+
+for($loopcount=0; $loopcount<82; $loopcount++)
+{
+        print " (@letters[$loopcount]) ";
+}

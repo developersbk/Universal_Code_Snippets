@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Class Name Nested Tag Names</title>
+<style type="text/css">
+p {
+ text-indent: 40%;
+ line-height: 2em;
+}
+p span.initcap {
+ font-size: 20px;
+ line-height: 0.6em;
+ font-weight: normal;
+}
+</style>
+</head>
+
+<body>
+  <p><span class="initcap">Bigamy is having one wife too many. Monogamy is the same. Oscar Wilde</span><br>
+  We perceive when love begins and when it declines<br>
+  by our embarrassment when alone together.<br><br>
+
+  Jean de la Bruyere 
+  </p>
+</body>
+</html>

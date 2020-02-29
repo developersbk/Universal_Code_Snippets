@@ -1,0 +1,12 @@
+<html>
+
+<head><title>background-position</title></head>
+
+<body>
+<form>
+   <input type="button" value="Enabled Button">
+   <input disabled=true type="button" value="Disabled Button">
+   <input type="button" value="Button New">
+</form>
+</body>
+</html>

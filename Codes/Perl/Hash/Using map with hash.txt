@@ -1,0 +1,5 @@
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+print map "$_ => $hash{$_}\n", keys %hash;

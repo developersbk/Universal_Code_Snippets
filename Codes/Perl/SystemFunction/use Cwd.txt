@@ -1,0 +1,4 @@
+use Cwd;
+
+$dir = cwd;
+print $dir;

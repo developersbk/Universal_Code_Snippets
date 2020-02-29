@@ -1,0 +1,9 @@
+<% 
+Dim strText 
+'here is our string 
+strText = "This is our sample text to be searched" 
+'we will look for the word sample 
+strSearch = InStr(strText , "sample") 
+'display the results 
+Response.Write strSearch 
+%>

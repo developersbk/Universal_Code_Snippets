@@ -1,0 +1,167 @@
+
+function CheckEmailAddr(sCheckEmail)
+    Dim sEmail, sTld
+    
+    sEmail = Trim(lcase(sCheckEmail))
+    'Must have at least two characters bef,e the @
+    If Instr(2, sEmail, "@") then 
+        'Must be a valid Top Level domain
+        If ValidateTLD(Mid(sEmail,Instr(1,sEmail , ".") + 1)) then 
+            CheckEmailAddr = True
+        End If 
+    End If 
+End function
+
+function ValidateTLD(sTLD) 
+'Validate the TLD extension to make sure it is a valid.
+        
+    Select Case lCase(trim(sTLD))
+        'Test f, American TLD's 
+        'Seperated in case you want only US email Addrs
+        Case "com" ,"net" ,"org" ,"edu" ,"mil"
+             ValidateTLD = True 
+        'Add the new Seven           
+        Case "firm" , "st,e" , "web" , "arts" , "rec" , "info" , "nom"
+            ValidateTLD = true
+            
+        'Start with the A's
+        Case "ac"   , _ 
+            "af"  , _
+            "am"  , _
+            "as"  , _
+            "at"  , _
+            "au"  , _
+            "ar"
+            
+             ValidateTLD = True 
+        Case "be"  , _
+            "br"  , _ 
+            "bt"  , _ 
+            "bo" ' .com.bo com.bo
+            
+            ValidateTLD = True 
+            
+        Case "ca"  , _ 
+            "cc"  , _ 
+            "ch"  , _ 
+            "cn"  , _ 
+            "cz"  , _ 
+            "cl"  , _ 
+            "cx" , _
+            "cr"
+
+            ValidateTLD = True 
+        Case "de"  , _ 
+            "dk" 
+            
+             ValidateTLD = True 
+        Case "ec"  , _ 
+            "eg"  , _ 
+            "es" 
+
+             ValidateTLD = True 
+             
+        Case "fo"  , _ 
+            "fr" 
+            
+             ValidateTLD = True 
+             
+        Case "gf"  , _ 
+            "gs"  , _ 
+            "gr"
+            
+             ValidateTLD = True 
+             
+        Case "hm" 
+
+            ValidateTLD = True
+            
+             
+        Case "il"  , _ 
+            "in"  , _ 
+            "is"  , _ 
+            "it"  , _ 
+            "ie" ' .ie ie
+            
+             ValidateTLD = True 
+        Case "jp" ' .ac.jp Japan Academic
+                        
+             ValidateTLD = True 
+        
+        Case "kr" ' .ac.kr K,ea Academic
+            
+             ValidateTLD = True 
+        
+        Case "li"  , _ 
+            "lt"  , _ 
+            "lu"  , _ 
+            "lb"  , _ 
+            "la"
+            
+             ValidateTLD = True 
+        
+        Case "mc"  , _
+            "mm"  , _ 
+            "ms"  , _ 
+            "mx"  , _ 
+            "my"  , _ 
+            "md"
+
+            
+             ValidateTLD = True 
+        
+        Case "nl"  , _ 
+            "no"  , _ 
+            "nu"  , _ 
+            "nz" ' .co.nz co.nz
+            
+             ValidateTLD = True 
+             
+        Case "pl"  , _ 
+            "pt"  , _ 
+            "pk"  , _ 
+            "pe"  , _ 
+            "ph"
+            
+             ValidateTLD = True 
+             
+        Case "ro"  , _ 
+            "ru"  , _ 
+            "ro" ' .ro ro
+            
+             ValidateTLD = True 
+             
+        Case "se"  , _ 
+            "si"  , _ 
+            "sg"  , _ 
+            "sk"  , _ 
+            "st"  , _ 
+            "sv"  , _ 
+            "sa"
+            
+             ValidateTLD = True 
+             
+        Case "tc" ,"tf", "th", "tj", "tm", "to", "tr", "tw", "tv" 
+            
+             ValidateTLD = True 
+             
+        Case "uk" ' .plc.uk UK Plc
+            
+            ValidateTLD = True 
+        
+        Case "vg"  , _
+            "vu"' .vu vu
+            
+            ValidateTLD = True 
+        
+        CAse "ws"
+            ValidateTLD = True 
+
+        Case "za" ' .web.za South Africa Web
+            ValidateTLD = True 
+        
+        Case Else
+            ValidateTLD = false
+    End Select
+
+End Function

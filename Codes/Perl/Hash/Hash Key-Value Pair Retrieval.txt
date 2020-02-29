@@ -1,0 +1,11 @@
+$separator = "=" x 80;
+while (($key, $value) = each %ENV){
+   print "$key \t\t==> $value\n";
+
+}
+
+print "$separator\n";
+foreach $key (sort keys %ENV){
+   print qq|$key \t\t==> $ENV{"$key"}\n|;
+
+}

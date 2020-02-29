@@ -1,0 +1,33 @@
+<% MkSheet Server.MapPath("/file.xls") %>
+
+source code:
+<%
+Private Sub MkSheet(ByVal pathname)
+    Dim objXls, objBook, objFSO
+    Set objFSO = Server.CreateObject("Scripting.FileSystemObject")
+    If objFSO.FileExists( pathname ) Then
+        Set objFSO = Nothing
+        Err.Raise 5150, "MkSheet Statement", _
+            "File Already Exists! MkSheet " & _
+            "can only create sheets."
+        Exit Sub
+    End If
+    Set objFSO = Nothing
+    On Error Resume Next
+    Set objXls = CreateObject("Excel.Application")
+    If Err Then
+        Err.Clear
+        On Error GoTo 0
+        Err.Raise 5150, "MkSheet Statement", _
+            "Microsoft Excel Is Not Installed " & _
+            "On This Server!"
+        Exit Sub
+    End If
+    Set objBook = objXls.Workbooks.Add
+    objBook.SaveAs( pathname )
+    Set objBook = Nothing
+    objXls.Quit
+    Set objXls = Nothing
+    On Error GoTo 0
+End Sub
+%>

@@ -1,0 +1,12 @@
+use Tk;
+
+my $main = MainWindow->new;
+
+my $entry1 = $main->Entry->pack;
+
+$entry1->insert(
+    0,
+    'Here is some long text that you have to scroll to see.'
+);
+
+MainLoop;

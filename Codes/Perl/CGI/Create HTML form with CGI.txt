@@ -1,0 +1,26 @@
+#!c:/perl/bin
+
+use CGI ':standard';
+
+print header();
+print "Form Elements", br(), br(), br();
+
+print start_form;
+
+print "A Text Box: &nbsp; &nbsp; &nbsp; ", textfield('surname', 'Default', 50), br();  
+print "A Select Box: &nbsp; &nbsp; &nbsp;  ", popup_menu('SelectBox', ['Perl', 'Web', 'Development'], 'Fast');  
+print p, "Text Area: &nbsp; &nbsp; &nbsp;", textarea('comments', 'Default Text', 10, 50);
+print p, "CheckBoxes: ", checkbox_group('check1', ['one', 'two', 'three']);
+print p, "Radio Buttons: ", radio_group('radio1', ['a', 'b', 'c']);
+print p, submit();
+
+print end_form;
+
+if (param()) 
+{
+    print "The surname you entered was: ",em(param('surname')),
+       p, "The Selections are: ",em(join(", ",param('SelectBox'))),
+       p, "The comments box contains: ",em(param('comments')), 
+       p, "you selected checkbox: ",em(param('check1')), 
+       p, "you selected radio: ",em(param('radio1'));
+}

@@ -1,0 +1,9 @@
+#if ( expression ){
+#       statements;
+#}
+
+
+# Example
+$a = 0;
+$b = 4;
+if ( $a == $b ){ print "$a is equal to $b"; }

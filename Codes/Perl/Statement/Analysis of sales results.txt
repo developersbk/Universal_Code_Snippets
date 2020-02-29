@@ -1,0 +1,19 @@
+$metQuota = 0;           
+$didNotMeetQuota = 0;    
+$employeeCounter = 1;    
+
+while ( $employeeCounter <= 10 ) {
+   print "Enter quota result, (yes or no): ";
+   chomp( $result = <STDIN> );
+
+   $result eq 'yes' ? ++$metQuota : ++$didNotMeetQuota;
+
+   $employeeCounter++;
+}
+
+print "\nMet quota: $metQuota\n";
+print "Failed to meet quota: $didNotMeetQuota\n";
+
+if ( $metQuota > 8 ) {
+   print "Raise holiday bonuses!\n"; 
+}

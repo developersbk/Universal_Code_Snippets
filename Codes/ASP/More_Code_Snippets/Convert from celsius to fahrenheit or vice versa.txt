@@ -1,0 +1,26 @@
+<% 
+'our two functions 
+'convert fahrenheit to celsius 
+Function DegC (ByVal fahr) 
+DegC = (fahr - 32) / 1.8 
+End Function 
+'convert celsius to fahrenheit 
+Function DegF(ByVal cels) 
+DegF = cels * 1.8 + 32 
+End Function 
+%> 
+
+And here is an example of how to use these functions 
+
+<% 
+'test our functions 
+'declare 2 variables to store a couple of temperature values 
+Dim Temp1 , Temp2 
+'our two values 
+Temp1 = 90 
+Temp2 = 23 
+'convert Temp1 to its celsius equivalent 
+Response.Write (Temp1 & " is equal to " & DegC(Temp1) & " celsius<br> " ) 
+'convert Temp2 to its fahrenheit equivalent 
+Response.Write (Temp2 & " is equal to " & DegF(Temp2) & " fahrenheit<br>") 
+%> 

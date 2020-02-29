@@ -1,0 +1,79 @@
+<%@ LANGUAGE="VBSCRIPT" %>
+<HTML>
+<HEAD>
+<TITLE>Document</TITLE>
+</HEAD>
+<BASEfont FACE="Arial, Helvetica, sans-serif" size=2>
+<LInk REL="STYLESHEET" HREF="../../Stylesheets/MENUPAGES.css">
+<BODY BACKGROUND="../../Images/Redside/Background/Back2.jpg" BGCOLOR="White">
+
+<STYLE MEDIA="print">/* turn off navigation And ad bar */
+#header, .menu, .header, #adbar, DIV#jumpbar, #navbar {display: none}
+/* remove position of contents */#why {position: static; width: auto}
+/* cleanup all the colors */#why H3, PRE, FONT {color: black}
+/* cleanup the copyright */
+DIV#why P.copyright {color: black; font: 10pt verdana}
+/* display the Print header */#printMessage {display: block} </STYLE>
+<%
+Dim totals(30)
+Dim Names(30) 
+StatIndex = -1
+%>
+<FORM ACTION="Inboundstats.asp" METHOD="POST" NAME="Inboundstats">
+<% 
+On Error Resume Next 
+Randomize 
+'---------------------------------------
+' Purpose: To generate random colors
+'-------------------------
+Function rndcolor() 
+Dim LightDarkRange 
+LightDarkRange = 150 
+forered = Int(Rnd * LightDarkRange) 
+foregreen = Int(Rnd * LightDarkRange) 
+foreblue = Int(Rnd * LightDarkRange) 
+color = "#" & CStr(Hex(RGB(forered, foregreen, foreblue))) 
+rndcolor=color 
+End Function 
+%> 
+<CENTER>
+<TABLE border="0">
+<TD align="left"><Img src="../../images/ac204.gif"></CENTER></TD>
+<TD></TD>
+<TD align=center></TD>
+<TD align="center"><H1><FONT color=blue>Inbound Calls </FONT><H1></TD>
+</TABLE>
+</CENTER>
+<CENTER>
+<TABLE border="1">
+<TR VALIGN=BOTTOM>
+<% 
+For I = 0 To 20 
+    vol = Int(chartinfo(I)) 
+    label = Int(chartinfo(I))
+    
+<TD align="center"> 
+<TABLE> 
+<TD height="<% response.write vol %>" bgcolor="<% response.write rndcolor() %>" align="bottom"> 
+<B><FONT color="#FFFFFF"><% Response.Write label %></B> 
+</FONT></TD></TABLE></TD> 
+Next 
+%> 
+</TR> 
+<TR>
+<%
+For i = 0 To StatIndex
+%>
+<%if totals(i) > 0 Then%>
+<TD>
+<TABLE>
+<TD><FONT face="Small Fonts" size=1 color="blue"><STRONG> <%response.write names(i)%> <STRONG><FONT></TD>
+</TABLE>
+<%end if%>
+<%next%>
+</TD>
+</TR>
+</TABLE>
+</CENTER>
+</BODY>
+</HTML>

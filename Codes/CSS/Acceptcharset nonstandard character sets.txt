@@ -1,0 +1,12 @@
+<html>
+<title>Acceptcharset UTF-8</title>
+<body>
+<form name="form1" method="post" action="" acceptcharset="UTF-8">
+   <input type="text" 
+          size=100 
+          accept="image/jpg" 
+          value="If you type a character not in the list, 
+                 then the UTF-8 character set will be used">
+   </form>
+</body>
+</html>

@@ -1,0 +1,11 @@
+#!/usr/local/bin/perl
+
+use CGI;                             
+
+$co = new CGI;                        
+
+print $co->redirect('http://www.java2s.com');
+
+print $co->start_html, 
+
+$co->end_html;

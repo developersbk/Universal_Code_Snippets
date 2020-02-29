@@ -1,0 +1,8 @@
+#!c:/perl/bin
+
+@months=(1..12);
+
+for($loopcount=0; $loopcount<13; $loopcount++)
+{
+        print "@months[$loopcount] \n";
+}

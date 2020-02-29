@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+
+print "Content-type: text/html\n\n";
+
+print "Your browser is a $ENV{'HTTP_USER_AGENT'} <BR>";
+print "The Server Protocol is $ENV{'SERVER_PROTOCOL'}<BR>";
+print "The HTTP Host is $ENV{'HTTP_HOST'}<BR>";

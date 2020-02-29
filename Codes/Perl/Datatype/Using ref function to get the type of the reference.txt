@@ -1,0 +1,4 @@
+$variable1 = 5;
+$scalarref = \$variable1;
+
+print (ref $scalarref);

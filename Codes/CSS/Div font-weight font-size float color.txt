@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" subLang="en-US" xml:subLang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Div Font Weight Font Size Float</title>
+<style rel="stylesheet" type="text/css">
+.date {
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: bold;
+  color: red;
+  float: left;
+  line-height: 18px;
+  padding: 0 18px 0 8px;
+  margin-top: -1px;
+  border-top: 1px solid pink;
+  background-image: url(images/background-image.jpg);
+  background-position: right -1px;
+  background-repeat: no-repeat;
+  background-color: green;
+}
+</style>
+</head>
+<body>
+   <div class="date">It's not that I can't live without you,<br>
+                     It's that I don't even want to try.<br><br>
+                     Anonymous
+   </div>
+
+</body>
+</html>

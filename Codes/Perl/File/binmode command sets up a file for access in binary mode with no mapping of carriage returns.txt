@@ -1,0 +1,21 @@
+#!/usr/bin/perl -w
+
+# Usage:
+#   copy1.pl infile outfile
+
+$input = $ARGV[0];
+
+$output = ">" . $ARGV[1];
+
+open(INPUT, $input) or die "Can't open $input due to $!.";
+
+open(OUTPUT, $output) or die "Can't open $output due to $!.";
+
+# Use shorthand for reading file.
+while ( <INPUT> ) {
+    print OUTPUT $_;
+} 
+
+# Close the files when done.
+close (INPUT);
+close (OUTPUT);

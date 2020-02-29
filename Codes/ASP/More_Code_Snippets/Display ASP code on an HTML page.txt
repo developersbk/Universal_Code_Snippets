@@ -1,0 +1,21 @@
+<% 
+'declare our variables 
+Dim objFSO , objFile , strText 
+'our page to display 
+file = Server.MapPath("pagetodisplay.php") 
+'create an instance of the file system object 
+Set objFSO = Server.CreateObject("Scripting.FileSystemObject") 
+'open the page , for reading 
+Set objFile = objFSO.OpenTextFile(file , 1 , False) 
+'while we are not at the end of the file read lines and store in strText 
+Do While Not objFile.AtEndOfStream 
+strText = objFile.ReadLine 
+'display the text 
+Response.Write Server.HTMLEncode(strText) & "<br>" 
+Loop 
+'close 
+objFile.Close 
+'destroy objects 
+Set objFile = Nothing 
+Set objFSO = Nothing 
+%>

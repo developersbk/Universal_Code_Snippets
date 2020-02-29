@@ -1,0 +1,7 @@
+#Format:
+
+#close (FILEHANDLE);
+#close FILEHANDLE;
+
+open(INFILE, "datebook");
+close(INFILE);

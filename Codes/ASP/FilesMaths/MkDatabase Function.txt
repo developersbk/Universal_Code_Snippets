@@ -1,0 +1,50 @@
+click an example below 
+VBScript: SQLServerTools ... 
+
+MkDatabase Function 
+< prev proc
+MkArchive Function Next proc >
+MkDir Statement 
+
+syntax:
+MkDatabase pathname
+example usage:
+<%
+MkDatabase "C:database.mdb"
+%>
+source code:
+<%
+Private Sub MkDatabase(ByVal pathname)
+    Dim objAccess, objFSO
+    If LCase( Right( pathname, 4 ) ) <> ".mdb" Then
+        Err.Raise 5155, "MkDatabase Statement", _
+             "Database name must end with '.mdb'"
+        Exit Sub
+    End If
+    Set objFSO = Server.CreateObject("Scripting.FileSystemObject")
+    If objFSO.FileExists( pathname ) Then
+        Set objFSO = Nothing
+        Err.Raise 5155, "MkDatabase Statement", _
+             "Specified MS Access database already exists."
+        Exit Sub
+    End If
+    Set objFSO = Nothing
+    On Error Resume Next
+    Set objAccess = CreateObject("Access.Application")
+    If Err Then 
+        On Error GoTo 0
+        Err.Raise 5155, "MkDatabase Statement", _
+             "MS Access is not installed on this server."
+        Exit Sub
+    End If
+    With objAccess
+        .Echo False
+        .NewCurrentDatabase pathname
+        .CloseCurrentDatabase
+        .Quit
+    End With
+    Set objAccess = Nothing
+    On Error GoTo 0
+End Sub
+%>
+

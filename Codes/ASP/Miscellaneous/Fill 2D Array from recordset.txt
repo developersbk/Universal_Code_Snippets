@@ -1,0 +1,38 @@
+Function FillArray(strSQL,strConn)
+    Dim oConn
+    Dim oRs
+    Dim Array
+
+    Set oConn= Server.CreateObject("ADODB.Connection")
+    oConn.ConnectionString  = strConn
+    oConn.Mode = adModeRead
+    oConn.ConnectionTimeout = 15
+    oConn.Open
+
+    
+    Set oRs = Server.CreateObject("ADODB.Recordset")
+    oRs.Source = strSQL
+    oRs.ActiveConnection = oConn
+    oRs.CursorType = adOpenForwardOnly
+    oRs.LockType = adLockReadOnly
+    oRs.Open
+
+    If Not(oRs.EOF) Then
+            Array = oRs.GetRows
+    Else
+        oRs.Close
+        Set oRs = Nothing
+        oConn.Close
+        Set oConn = Nothing
+                Response.Write "Error"
+        Response.End
+    End If
+
+        oRs.Close
+    Set oRs = Nothing
+    oConn.Close
+    Set oConn = Nothing
+
+    FillArray = Array
+
+End Function

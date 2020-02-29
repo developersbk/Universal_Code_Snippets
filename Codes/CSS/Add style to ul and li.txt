@@ -1,0 +1,40 @@
+Add style to ul and li
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Add style to ul and li</title>
+<style type="text/css">
+ul, li {
+ display: inline;
+ margin: 10;
+ padding: 10;
+ font-weight: normal; 
+ font-style: italic;
+}
+</style>
+</head>
+
+<body>
+
+  <h1>Add style to ul and li</h1>
+  <p>Sections:</p>
+  <ul>
+   <li>I love thee, I love but thee</li>
+   <li>With a love that shall not die</li>
+   <li>Till the sun grows cold</li>
+   <li>And the stars grow old</li>
+   <li class="last">I Love Clementine</li>
+  </ul>
+  <p> I love thee, I love but thee<br>
+      With a love that shall not die<br>
+      Till the sun grows cold<br>
+      And the stars grow old.<br><br>
+
+      Willam Shakespeare</p>
+  
+</body>
+</html>
+
+

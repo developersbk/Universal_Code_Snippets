@@ -1,0 +1,15 @@
+%presidents = ( George => "A",
+                Abe    => "B",
+                Thomas => "C",
+                Harry  => "D" );
+      
+@keys = keys( %presidents );
+@values = values( %presidents );
+
+
+print "%presidents with its keys and values reversed\n";
+%hash = reverse( %presidents );
+
+while ( ( $key, $value ) = each( %presidents ) ) {
+   print "$key => $value\n";
+}

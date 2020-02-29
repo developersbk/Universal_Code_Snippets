@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example of Inserting Video Using embed Element</title>
+</head>
+<body>
+	<embed src="../video/blur.swf" width="400px" height="200px">
+</body>
+</html>                                		

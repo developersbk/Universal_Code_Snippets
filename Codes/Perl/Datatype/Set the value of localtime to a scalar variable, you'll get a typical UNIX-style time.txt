@@ -1,0 +1,7 @@
+#!/usr/bin/perl -w
+
+$t = time();
+
+$now = localtime($t);
+
+print "Time is: $now\n";

@@ -1,0 +1,14 @@
+sub printem
+{
+    my $file = shift;
+
+    while (<$file>) {
+         print;
+    }
+}
+
+open FILEHANDLE, "<file.txt" or die "Can not open file";
+
+printem *FILEHANDLE{IO};
+
+   

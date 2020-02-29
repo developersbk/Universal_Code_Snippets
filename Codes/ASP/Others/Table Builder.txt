@@ -1,0 +1,32 @@
+Dim rs As ADODB.Recordset
+Dim conn As ADODB.Connection
+Public Function buildtable(dsn As String, table As String, Optional username As String, Optional password As String) As String
+Dim sql As String
+Dim flds As Integer
+Set conn = New ADODB.Connection
+Set rs = New ADODB.Recordset
+conn.Open "dsn=" & dsn, username, password
+
+sql = "select * from " & table
+
+rs.Open sql, conn, 3, 3
+
+flds = rs.Fields.Count
+
+
+buildtable = buildtable & "<TABLE>" & vbCrLf
+Do While Not rs.EOF
+buildtable = buildtable & "<TR>" & vbCrLf
+
+For i = 0 To flds - 1
+buildtable = buildtable & "<TD>" & rs.Fields(i).Value & "</TD>"
+
+Next
+buildtable = buildtable & vbCrLf & "</TR>"
+rs.MoveNext
+
+Loop
+rs.Close
+Set rs = Nothing
+buildtable = buildtable & vbCrLf & "</TABLE>"
+End Function

@@ -1,0 +1,24 @@
+using System;
+
+public class Exercise20
+{
+    public static void Main()
+    {
+        string str1;
+        string findstring;
+        string insertstring;
+        int i;
+        Console.Write("\n\nInsert a substing before the first occurence of a string :\n");
+        Console.Write("--------------------------------------------------------------\n");
+        Console.Write("Input the original string : ");
+        str1 = Console.ReadLine();
+        Console.Write("Input the string to be searched for : ");
+        findstring = Console.ReadLine();
+        Console.Write("Input the string to be inserted : ");
+        insertstring = Console.ReadLine();
+        i=str1.IndexOf(findstring);  // locate the position of the first occurence of the string
+        insertstring = " " + insertstring.Trim() + " ";
+        str1 = str1.Insert(i, insertstring);
+        Console.Write("The modified string is : {0}\n\n",str1);
+    }
+}

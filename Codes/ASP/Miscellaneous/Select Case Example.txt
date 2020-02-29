@@ -1,0 +1,33 @@
+<html><head>
+<TITLE>case.asp</TITLE>
+</head><body bgcolor="#FFFFFF">
+<form action="caserespond.asp" method="get">
+Your First Name<Input NAME="FirstName" MaxLength=20><p>
+Your Last Name<Input NAME="LastName" MaxLength=20><p>
+<Input Type=submit><p><Input Type=reset>
+</form>
+</body></html>
+
+
+Here Is the Select Case that will determine what the form Input means.
+
+<html><head>
+<TITLE>caserespond.asp</TITLE>
+</head><body bgcolor="#FFFFFF">
+<%
+fname=Request.QueryString("Firstname")
+lname=Request.QueryString("Lastname")
+%>
+Nice To Meet You <%=fname%> <%=lname%><p>
+<%If fname="" then%>
+Sorry we are Not On a first name basis...<p>
+<%end If
+Select Case LCase(lname)
+Case "washington","adams"
+Response.Write "The first president has same last name<p>"
+Case "jefferson"
+Response.Write "The third president has same last name<p>"
+Case "lincoln"
+Response.Write "The sixteenth president has same last name<p>"
+End select%>
+</body></html>

@@ -1,0 +1,71 @@
+<%
+Option Explicit
+    Dim DOM
+    ' create instance of MS XML object
+    Set DOM = CreateObject("microsoft.xmldom")
+    DOM.async = False   ' we want the whole file In one go
+    ' open file.
+    Dim loadBool
+    Dim StrURI
+    StrURI="C:yourxmlfilehere.xml"
+    If request("xml") > "" Then
+        StrURI=request("xml")
+    End If
+    loadBool = DOM.load (StrURI)
+    If loadBool=False Then
+        Response.Write("Failed To load XML data source<P>" & StrURI)
+        Response.End
+    End If
+    Response.Write("<B>XML WALKER</B><P>")
+    Dim objNodeList
+    Set objNodeList = DOM.getElementsByTagName("*")
+    Response.Write("<PRE>")
+    xmlwalk objNodeList.item(0),"",""   ' start With root node
+    Response.Write("</PRE>")
+    Function xmlwalk (node,disdepth,path)
+        Dim blue,red,endcolor
+        red="<FONT COLOR=""#FF0000"">"
+        blue="<FONT COLOR=""#0000FF"">"
+        endcolor="</FONT>"
+        Dim outStr,tstAttrib,c,tstchild
+        outStr = "" 
+        If node.nodeName <> "#text" Then
+            outStr =disdepth & outStr & blue & "<" & endcolor & red & node.nodeName & endcolor & blue & ">" & endcolor
+            path=path & "/" & node.nodeName
+        End If
+        If node.nodeValue>"" Then 
+            outStr=outStr & "" & node.nodeValue & "<!-- #######" & path & "######-->"   ' i want this To be part of the href i create later.
+        Else
+            outStr=outStr & "<!--NULL-->"
+        End If
+        outStr=outStr & "<!--[" & node.nodeTypeString & "]-->"
+        Set tstAttrib = node.attributes 
+        If node.nodeTypeString="element" Then
+            If Not IsNull(tstAttrib) Then 
+                If (tstAttrib.length) >0 Then outStr= disdepth & blue & "<" & endcolor & red & node.nodeName & endcolor & " "
+                For c=0 To (tstAttrib.length -1)
+                    outStr= outStr & " " & red & tstAttrib.item(c).nodeName & endcolor & blue & "=""" & endcolor & "<B>" & tstAttrib.item(c).text & "</B>" & blue & """ " & endcolor
+                Next
+                If (tstAttrib.length) >0 Then outStr= outStr & blue & ">"   & endcolor
+            End If      
+            Set tstChild = (node.childNodes)
+            disdepth=disdepth & " "
+            Response.Write "<BR>" & outStr
+            For c=0 To tstChild.length -1
+                disdepth = xmlwalk(tstChild.item(c),disdepth,path)
+            Next
+            If Len(disdepth)>0 Then
+                disdepth=Left(disdepth,Len(disdepth)-2)
+            End If
+            If Len(path)>0 Then
+                path=Left(path,InStrRev(path,"/")-1)
+            End If
+            
+            Response.Write (disdepth & blue & "</" & endcolor & red & node.nodeName & endcolor & blue & "><BR>" & endcolor)
+        Else
+            Response.Write ("<B>" & LTrim(outStr) & "</B>")
+        End If
+        xmlwalk = disdepth
+    End Function
+    Response.Write ("<P>EOP")
+%>

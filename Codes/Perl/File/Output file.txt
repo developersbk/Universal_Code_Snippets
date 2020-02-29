@@ -1,0 +1,4 @@
+open(SORT, "| sort" ) or die;  # Open pipe to write to
+print SORT "dogs\ncats\nbirds\n"    #  Sorts birds, cats, dogs on separate lines.
+
+   

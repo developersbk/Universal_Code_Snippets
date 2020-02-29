@@ -1,0 +1,31 @@
+Operator        Example             Meaning
+
++=              $a += 3;            Add 
+
+-=              $a -= 3;            Subtract
+
+*=              $a *= 3;            Multiply
+
+/=              $a /= 3;            Divide
+
+**=             $a **= 3;           Raise the power
+
+%=              $a %= 3;            Modulo
+
+.=              $a .= "String Value";       Append
+
+x=              $a x= 3;            Multiply (replicate) the expression (string)
+
+&=              $a &= 3;            Binary AND
+
+|=              $a |= 3;            Binary OR
+
+^=              $a ^= 3;            Exclusive OR
+
+<<=             $a <<= 3;           Left shift
+
+>>=             $a >>= 3;           Right shift
+
+&&=             $a &&= 1;           Logical AND
+
+||=             $a ||= 0;           Logical OR

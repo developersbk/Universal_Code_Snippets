@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" subLang="en-US" xml:subLang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Div Position Absolute</title>
+<style rel="stylesheet" type="text/css">
+
+#footer {
+  width: 900px;
+  position: absolute;
+  bottom: 0px;
+  height: 120x;
+  background-image: url(images/background-image.jpg);
+  background-position: top left;
+  background-repeat: no-repeat;
+}
+
+.navigation {
+  padding: 50px 0 0 80px;
+  display: block;
+  float: left
+}
+
+.navigation li {
+  display: inline;
+  font-family: arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: green;
+}
+
+.navigation li a {
+  color: #f9f944;
+  text-decoration: none;
+  font-weight: normal;
+  margin: 0 12px 0 8px
+}
+
+.navigation li a:visited {
+  text-decoration: none
+}
+
+.navigation li a:hover {
+  text-decoration: underline
+}
+
+
+</style>
+</head>
+<body>
+  <div id="footer">
+    <ul class="navigation">
+      <li><a href="http://csharp.happycodings.com/index.html">csharp</a>|</li>
+      <li><a href="http://cplusplus.happycodings.com/index.html">cplusplus</a>|</li>
+      <li><a href="http://java.happycodings.com/index.html">java</a>|</li>
+      <li><a href="http://visualbasic.happycodings.com/index.html">visualbasic</a>|</li>
+      <li><a href="http://html-css.happycodings.com/index.html">html-css</a>|</li>
+      <li><a href="http://android.happycodings.com/index.html">android</a>|</li>
+      <li><a href="http://www.happycodings.com/index.html">happycodings</a></li>
+    </ul>
+  </div>
+
+</body>
+</html>

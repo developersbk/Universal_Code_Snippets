@@ -1,0 +1,8 @@
+#!/usr/bin/perl -w
+
+# Convert hash to array
+$hash{"Name"} = "G ";
+$hash{"Address"} = "1";
+$hash{"City"} = "W";
+
+@array = %hash;

@@ -1,0 +1,14 @@
+<html>
+<body>
+<a datasrc="#DataSource" 
+   datafld="column1" 
+   dataformatas="html"
+   target="_blank">datafld attribute Example</a>
+   <object id="DataSource" 
+           classid="clsid:456SDFXD3664-45FR-145GY-BCF6-2346TGDY7JHJ">
+       <param name="DataURL" value="YourDatafldDatasrc.txt">
+       <param name="FieldDelim" value="\">
+       <param name="RowDelim" value="\">
+   </object>
+</body>
+</html>

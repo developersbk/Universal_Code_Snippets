@@ -1,0 +1,9 @@
+use LWP::Simple;
+
+$content = get("http://www.cpan.org/doc/FAQs/index.html");
+
+open FILEHANDLE, ">file.txt";
+
+print FILEHANDLE $content;
+
+close FILEHANDLE;

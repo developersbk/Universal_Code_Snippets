@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Div Tag Position Descendant</title>
+        <style type='text/css'>
+            div {
+                padding: 12px;
+                border: 1px solid red;
+                opacity: 0.7;
+                background: pink;
+            }
+            #div1 {
+                position: relative;
+                margin: 60px;
+            }
+            #div2 {
+                position: absolute;
+                top: 36px;
+                left: 36px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='div1'>
+            If ever two were one, then surely we.<br>
+            If ever man were loved by wife, then thee.<br><br>
+            
+            <div id='div2'>
+                Anne Bradstreet
+            </div>
+        </div>
+    </body>
+</html>

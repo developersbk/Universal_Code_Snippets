@@ -1,0 +1,11 @@
+   
+
+print "Please enter positive numbers up to 100\n";
+while (<>) {
+    chomp;
+    if ($_ > 0 && $_ < 100) {
+        print "Thank you - let's have another!\n";
+    } else {
+        print "Please enter positive numbers up to 100\n";
+    }
+}

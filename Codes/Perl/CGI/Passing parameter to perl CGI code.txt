@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>A Simple Form</title>
+  </head>
+  <body>
+    <h1>Please Enter Your Name</h1>
+    <form action="http://localhost/cgi-bin/form.pl">
+      First name: <input type="text" name="firstname">
+      <br>
+      Last name: <input type="text" name="lastname">
+      <br>
+      <input type="submit">
+    </form>
+  </body>
+</html>
+
+
+#!/usr/bin/perl -w
+
+use strict;
+use CGI ':standard';
+
+my @params    = param();
+my $firstname = param('firstname') || 'you have no first name!';
+my $lastname  = param('lastname')  || 'you have no last name!';
+
+print 
+    header(),
+    start_html(
+        -title   => 'Welcome!',
+  -text    => '#520063'
+    ),
+    h1("Hello, $firstname $lastname!"),
+    end_html();

@@ -1,0 +1,35 @@
+<%@ Language="Javascript" %>
+<%
+
+//setup connection:
+
+var connectionString = "File Name=" + Server.MapPath("go.udl");
+var connection = Server.CreateObject("ADODB.Connection");
+connection.connectionString = connectionString;
+connection.open();
+connection.defaultDatabase = "Northwind";
+
+var SqlCommand = "SELECT * FROM [Customers] WHERE [CustomerId]=? AND [CompanyName]=?";
+
+//THE LONG WAY:
+
+var adVarChar = 200;
+var adParamInput = 1;
+
+var command = Server.CreateObject("ADODB.Command");
+command.activeConnection = connection;
+command.commandText = SqlCommand;
+command.parameters.append(command.createParameter("", adVarChar, adParamInput, 255, "ALFKI"));
+command.parameters.append(command.createParameter("", adVarChar, adParamInput, 255, "Alfreds Futterkiste"));
+var rs = command.execute();
+
+//THE SHORT WAY (parameters are passed as an array to the execute method):
+
+var command2 = Server.CreateObject("ADODB.Command");
+command2.activeConnection = connection;
+command2.commandText = SqlCommand;
+var rs2 = command2.execute(null, ["ALFKI", "Alfreds Futterkiste"]);
+
+%>
+
+using the Long way, you have to create and append a parameter for every parameter in the commandtext. but in the short way you just add another value to the array, and you don't have to worry about datatypes.

@@ -1,0 +1,11 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+print "contents of the new directory:\n";
+opendir DH, '.' or die "opendir failed: $!";
+my $filename;
+while ($filename = readdir(DH)) {
+    print "    $filename\n";
+}
+close DH;

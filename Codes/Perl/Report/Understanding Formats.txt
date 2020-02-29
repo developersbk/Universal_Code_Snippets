@@ -1,0 +1,26 @@
+A format defines how data will appear. 
+The format command defines a format. 
+The basic syntax follows: 
+
+format NAME = formatdata
+
+The format definition ends with a single period on its own on a line. 
+The format data come in pairs of lines. 
+In each pair, the first line, called the picture line, lists how the data will look; 
+the second line, called the argument line, lists the global Perl variables that will hold the data. 
+When the report is generated, the data values get plugged into the picture lines.
+
+For example,
+
+format NAMES=
+Last name : @<<<<<<<<<<<<<<<<<<<<
+$lastname
+First name: @<<<<<<<<<<<
+$firstname
+
+.
+
+
+The @<<<<<<<<<<< format defines a left-justified data field. 
+The number of < characters defines how many spaces are allotted for the field. The lines with variables, $lastname and $firstname, aren't printed. 
+Only the lines that define the format are printed.

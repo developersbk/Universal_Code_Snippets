@@ -1,0 +1,13 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+log_warning("A", "B");
+log_warning("C");
+log_warning();
+
+sub log_warning {
+    my $message = shift || "Something's wrong";
+    my $time    = shift || localtime; # Default to now.
+    print "[$time] $message\n";
+}

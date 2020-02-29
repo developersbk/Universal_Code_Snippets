@@ -1,0 +1,13 @@
+<% 
+Dim starttime 
+starttime = Timer 
+%> 
+
+this would be placed right at the top of your page . Now for the second part of the script this would be ideally be placed after any other scripts in your page , graphics , main content etc 
+
+<% 
+Dim endtime , timetaken 
+endtime = Timer 
+timetaken = FormatNumber(endtime - starttime , 4) 
+Response.Write "This page took " & timetaken & "seconds to load" 
+%> 

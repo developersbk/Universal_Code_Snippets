@@ -1,0 +1,13 @@
+
+close(filehandle);
+
+#!/usr/bin/perl -w
+
+# Test of open and die with $!.
+
+$filename = "nofile";
+
+open(TMP, $filename)
+    or die "Can't open \"$filename\" due to $! ";
+
+   

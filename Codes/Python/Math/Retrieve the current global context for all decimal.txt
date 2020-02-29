@@ -1,0 +1,13 @@
+import decimal  
+context = decimal.getcontext()  
+print('Emax     =', context.Emax)  
+print('Emin     =', context.Emin)  
+print('capitals =', context.capitals)  
+print('prec     =', context.prec)  
+print('rounding =', context.rounding)  
+print('flags    =')  
+for x, y in context.flags.items():  
+    print('  {}: {}'.format(x, y))  
+print('traps    =')  
+for x, y in context.traps.items():  
+    print('  {}: {}'.format(x, y)) 

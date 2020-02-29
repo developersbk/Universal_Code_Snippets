@@ -1,0 +1,5 @@
+$scalar = $$scalarreference;
+@array = @$arrayreference;
+%hash = %$hashreference;
+&$codereference($argument1, $argument2);
+*glob = *$globreference;

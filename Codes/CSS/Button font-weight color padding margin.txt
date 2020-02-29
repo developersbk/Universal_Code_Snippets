@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Button font-weight color padding margin</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style rel="stylesheet" type="text/css">
+.button {
+  background: url(background.jpg) repeat-x bottom left #f988f4;
+  border-bottom: 1px solid #c5c599;
+  border-left: 4px solid #aaa;
+  border-right: 1px solid #c9f533;
+  border-top: 1px solid #ceff88;
+  color: #9633ff;
+  font-weight: 20px;
+  margin: 0 0 12px;
+  padding: 10px 10px 10px 13px;
+  width: 200px;
+}
+
+</style>
+
+</head>
+<body>
+    <button class='button'>css button example</button>
+     
+</body>
+</html>

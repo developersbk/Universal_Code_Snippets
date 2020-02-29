@@ -1,0 +1,4 @@
+LOOP: for ( $number = 1; $number <= 10; ++$number ) {
+         next LOOP if ( $number % 2 == 0 );
+         print "$number ";   # displays only odd numbers
+      }

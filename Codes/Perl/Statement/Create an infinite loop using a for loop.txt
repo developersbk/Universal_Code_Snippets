@@ -1,0 +1,6 @@
+    #!/usr/local/bin/perl -w
+
+    for (;;)
+    {
+       print "This is the loop that never ends...\n";
+    }

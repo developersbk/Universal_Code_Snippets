@@ -1,0 +1,10 @@
+#!/usr/local/bin/perl 
+
+opendir(HOMEDIR, "/u/jqpublic") || die ("Unable to open directory"); 
+@files = readdir(HOMEDIR); 
+closedir(HOMEDIR); 
+foreach $file (sort @files) { 
+    print ("$file\n"); 
+} 
+
+   

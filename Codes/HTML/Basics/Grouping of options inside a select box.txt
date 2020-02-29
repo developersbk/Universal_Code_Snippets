@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <title>Example of HTML optgroup tag</title>
+</head>
+<body>
+    <form>
+        <select>
+            <optgroup label="Sports cars">
+                <option value="ferrari">Ferrari</option>
+                <option value="lamborghini">Lamborghini</option>
+            </optgroup>
+            <optgroup label="Luxury cars">
+                <option value="mercedes">Mercedes</option>
+                <option value="bentley">Bentley</option>
+            </optgroup>
+        </select>
+    </form>
+</body>
+</html>                                 		

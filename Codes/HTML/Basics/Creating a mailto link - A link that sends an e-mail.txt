@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <title>Example of HTML email link</title>
+</head>
+<body>
+    <p>This is an email link:
+        <a href="mailto:someone@mail.com?Subject=Test%20Mail">Send Mail</a>
+    </p>
+    <p><strong>Note:</strong> Spaces between words should be replaced by %20 to ensure that the browser will display the text correctly.</p>
+</body>
+</html>                                 		

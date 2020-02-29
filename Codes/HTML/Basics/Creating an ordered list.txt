@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example of HTML Ordered List</title>
+</head>
+<body>
+	<h1>HTML Ordered List</h1>
+	<ol>
+        <li>Mix ingredients</li>
+        <li>Bake in oven for an hour</li>
+        <li>Allow to stand for ten minutes</li>
+    </ol>
+</body>
+</html>                                		

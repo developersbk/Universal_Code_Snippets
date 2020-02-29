@@ -1,0 +1,38 @@
+<%
+Private Function Recs(ByVal connstring, ByVal sql)
+    Const adOpenStatic = 3, adLockReadOnly = 1, adCmdText = &H0001
+    Dim objCn, bErr1, bErr2, strErrDesc, objRs
+    On Error Resume Next
+    Set objCn = Server.CreateObject("ADODB.Connection")
+    objCn.Open ConnString
+    If Err Then 
+        bErr1 = True
+    Else
+        Set objRs = Server.CreateObject("ADODB.Recordset")
+        objRs.Open sql, objCn, _
+            adOpenStatic, adLockReadOnly, adCmdText
+        If objRs.BOF Then
+            Recs = 0
+        Else
+            Recs = CLng( objRs.RecordCount )
+        End If
+        objRs.Close
+        Set objRs = Nothing
+        If Err Then 
+            bErr2 = True
+            strErrDesc = Err.description
+        End If
+    End If
+    objCn.Close
+    Set objCn = Nothing
+    On Error GoTo 0
+    If bErr1 Then
+        Err.Raise 5109, "Recs Function", "Bad connection " & _
+                "string. Database cannot be accessed."
+        Recs = Null
+    ElseIf bErr2 Then
+        Err.Raise 5109, "Recs Function", strErrDesc
+        Recs = Null
+    End If
+End Function
+%>

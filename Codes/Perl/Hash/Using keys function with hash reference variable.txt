@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my %hash = ( A => "AA",
+             B => "BB",
+             C => "CC",
+             D => "DD",
+             E => "EE" );
+
+my $hashReference = \%hash;
+
+foreach ( keys( %$hashReference ) ) {
+   print( "The $_ goes $hashReference->{ $_ }.\n" );
+}

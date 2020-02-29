@@ -1,0 +1,37 @@
+<html>
+<head>
+<TITLE>dbtablegetstring.asp</TITLE>
+</head>
+<body bgcolor="#FFFFFF">
+<% 
+whichDSN="DSN=Student;uid=student;pwd=magic"
+mySQL="select * from publishers where state='NY'"
+
+Set conntemp=Server.CreateObject("adodb.connection")
+conntemp.open whichDSN
+Set rstemp=conntemp.execute(mySQL)
+If rstemp.eof Then
+Response.Write "No records matched<br>"
+Response.Write mySQL & "<br>So cannot make table..."
+Call CloseAll
+Response.End
+End If
+
+Response.Write "<table border='1'><tr>"
+'Put Headings On The Table of Field Names
+For Each whatever In rstemp.fields
+Response.Write "<td><b>" & whatever.name & "</B></TD>"
+Next
+Response.Write "</tr><tr><td>"
+Response.Write rstemp.getstring(,, "</td><td>", "</td></tr><TR><TD>", "-null-")
+Response.Write "</td></tr></table>"
+Call CloseAll
+
+Sub CloseALL
+rstemp.close
+Set rstemp=Nothing
+conntemp.close
+Set conntemp=Nothing 
+End Sub
+%>
+</body></html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Div Tag Font Weight Lighter</title>
+        <style type='text/css'>
+            body {
+                font-family: arial;
+                font-weight: bold;
+            }
+            div {
+                font-weight: lighter;
+            }
+        </style>
+    </head>
+  <body>
+      This font is bold.<br>
+      Love is all we have, the only way that each can help the other.<br><br>
+
+      Euripides
+      <div>
+          This font is lighter than the font for the body element.<br> 
+          The thing about falling in love,<br>
+          is that if you do it right,<br>
+          you never have to hit the ground.<br><br>
+
+          Kendall Lepitzki
+      </div>
+  </body>
+</html>
+

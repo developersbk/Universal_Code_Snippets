@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:subLang='en'>
+    <head>
+        <title>background-position</title>
+        <style rel='stylesheet' type='text/css'>
+
+div#repeat-x {
+    width: 250px;
+    height: 250px;
+    border: 1px solid rgb(196, 126, 202);
+    margin: 2px;
+    float: left;
+    background-image: url('http://www.lovelylovesayings.com/images/Notebook-romantic-kiss-and-rain.jpg');
+
+
+    background-position: center center;
+    background-repeat: repeat-x;
+}
+        </style>
+    </head>
+    <body>
+        <div id='repeat-x'>
+	 One look<br>
+         One smile<br>
+         One touch<br>
+         One embrace<br>
+         One kiss<br>
+         One love<br>
+         Two people<br>
+         Two minds<br>
+         Two souls<br>
+         Two destinies<br>
+         One road<br>
+         One journey<br>
+         One ending<br>
+         Together.<br><br>
+
+         Melissa Higgins 
+	
+	</div>
+
+    </body>
+</html>

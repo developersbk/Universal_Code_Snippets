@@ -1,0 +1,11 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use IO::Socket;
+my $sock = IO::Socket::INET->new('remote.host.com:7777');
+while (<$sock>) {
+    print "Server: $sock\n";
+    print "Response?";
+    my $response = <STDIN>;
+    print $sock $response;
+}

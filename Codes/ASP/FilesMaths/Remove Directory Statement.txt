@@ -1,0 +1,21 @@
+example usage:
+<% RmDir "C:New Folder" %>
+
+<% RmDir Server.MapPath("/New Folder") %>
+source code:
+<%
+Private Sub RmDir(ByVal path)
+    Dim objFSO, boolErr, strErrDesc
+    boolErr = False
+    On Error Resume Next
+    Set objFSO = Server.CreateObject("scripting.filesystemobject")
+    objFSO.DeleteFolder path
+    If Err Then 
+        boolErr = True
+        strErrDesc = Err.description
+    End If
+    Set objFSO = Nothing
+    On Error GoTo 0
+    If boolErr Then Err.Raise 5100, "RmDir Statement", strErrDesc
+End Sub
+%>

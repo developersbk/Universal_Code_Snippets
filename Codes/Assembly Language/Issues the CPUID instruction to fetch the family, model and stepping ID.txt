@@ -1,0 +1,72 @@
+; pentid.asm
+;
+; this program issues the CPUID instruction (valid only on Pentium class
+; processors!) and prints three hex digits which correspond to the
+; family, model, and stepping ID.  If you run this on a 8088, 80386, or
+; 80486 processor, it will return to the command line without printing
+; anything.  If you run this on an 80286, NEC V20 or NEC V30, your machine
+; will probably crash.  If you're smart enough to run this program only
+; on Pentium machines, you can remove all the code between Start and
+; RealTest and you'll reduce the code size from 84 to 49 bytes.
+;
+;       TASM /m2 pentid               ; two pass mode
+;       TLINK /Tdc pentid             ; link as COM file
+;
+        .MODEL tiny
+        .586                            ; allow Pentium instructions
+
+        .CODE
+        ORG     100h
+Start:
+        pushf                           ; assure this is a Pentium
+        pop     ax                      ; flags in ax
+        rol     ah,1                    ; put EFLAGS reserved bit 15 in CF
+        sahf                            ; store in regular flags
+        jc      BailOut                 ; if carry flag set, it's an 8088!
+        ; assume we're 80386+ (80286 users prepare for crash)
+        pushfd                          ; push EFLAGS
+        pop     eax                     ; now pull them into reg
+        mov     ecx,eax                 ; save original copy in ECX
+        xor     eax,00200000h           ; flip bit 21 (CPUID capable)
+        push    eax                     ; pass altered flags back on stack
+        popfd                           ; allow cpu to balk
+        pushfd                          ; see what it did with our flag
+        pop     eax                     ; let's test...
+        cmp     eax,ecx                 ; if bit can't be flipped it's
+        je      BailOut                 ;  not a Pentium processor
+RealTest:                               ;
+        xor     eax,eax                 ; clear eax
+        inc     al                      ; put a 1 in eax
+        cpuid                           ; opcode is 0fh 0a2h
+        mov     bx,ax                   ; save the lower 16 bits
+        call    hex                     ; convert low nybble (step ID)
+        mov     ah,'$'                  ; add terminator char
+        push    ax                      ; put it on stack
+        mov     ax,bx                   ; recall other bits
+        shr     al,4                    ; get 'em all lined up
+        call    hex                     ; convert middle nybble (model)
+        xchg    al,ah                   ; swap results
+        call    hex                     ; convert third nybble (family)
+        push    ax                      ; put that on stack, too
+        mov     dx,sp                   ; print the stack (!)
+        mov     ah,9h                   ; print string function
+        int     21h                     ; DOS interrupt
+        pop     eax                     ; restore stack
+        mov     al,bl                   ; recall original value
+BailOut:
+        mov     ah,4Ch                  ; terminate program with
+        int     21h                     ; model & stepping ID as errcode
+
+;
+; convert low nybble of al to ASCII char.
+; al = {00h - 0Fh } becomes al = { '0'-'9', 'A'-'F' }
+;
+hex proc
+        and     al,0Fh                  ; use only low nybble in al
+        cmp     al,0Ah                  ; set CY flag appropriately
+        sbb     al,69h                  ; al = al - 069h - (al > 10)
+        das                             ; al = 30h-39h or 41h-45h
+        ret                             ; pass back our result
+hex endp
+
+        END     Start

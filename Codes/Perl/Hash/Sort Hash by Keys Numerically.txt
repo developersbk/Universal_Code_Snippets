@@ -1,0 +1,21 @@
+sub desc_sort_subject {
+    $b <=> $a;           # Numeric sort descending
+}
+sub asc_sort_subject{
+    $a <=> $b;           # Numeric sort ascending
+}
+%courses = (
+        "101" => "I",
+        "221" => "L",
+        "300" => "A",
+        "102" => "P",
+        "103" => "P",
+        "200" => "L",
+);
+
+foreach $key (sort asc_sort_subject(keys(%courses))) {
+    printf "\t%-5d%s\n", $key, $courses{"$key"};
+}
+foreach $key (sort desc_sort_subject(keys(%courses))) {
+    printf "\t%-5d%s\n", $key, $courses{"$key"};
+}

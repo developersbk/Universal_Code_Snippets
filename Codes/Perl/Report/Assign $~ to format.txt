@@ -1,0 +1,7 @@
+format standardformat =
+@||||||||||||||||||||||||||
+$text
+.
+$text = "Hello!";
+$~ = standardformat;
+write;

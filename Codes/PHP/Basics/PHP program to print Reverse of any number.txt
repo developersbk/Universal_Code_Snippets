@@ -1,0 +1,14 @@
+<?php
+if(isset($_POST['rev2']))
+{
+         $rev=0;
+         $num=$_POST['rev'];
+           
+          while($num>=1)
+                {
+                  $re=$num%10;
+                  $rev=$rev*10+$re;
+                  $num=$num/10;
+                 }
+}
+?>

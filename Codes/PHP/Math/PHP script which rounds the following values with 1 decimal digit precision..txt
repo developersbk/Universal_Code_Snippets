@@ -1,0 +1,5 @@
+<?php
+echo round( 1.65, 1, PHP_ROUND_HALF_UP)."\n";   //  1.7
+echo round( 1.65, 1, PHP_ROUND_HALF_DOWN)."\n"; //  1.6
+echo round(-1.54, 1, PHP_ROUND_HALF_EVEN)."\n"; // -1.5
+?>

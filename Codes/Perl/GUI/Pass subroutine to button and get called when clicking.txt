@@ -1,0 +1,18 @@
+use Tk;
+
+my $main = MainWindow->new;
+
+$main->Button(-text => 'Hello',
+    -command => [\&printem, "Hello\n"]
+)->pack;
+
+$main->Button(-text => 'End',
+    -command => [$main => 'destroy']
+)->pack;
+
+MainLoop;
+
+sub printem
+{
+    print shift;
+}

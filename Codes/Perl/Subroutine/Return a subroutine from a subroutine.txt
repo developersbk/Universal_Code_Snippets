@@ -1,0 +1,8 @@
+sub printem
+{
+    my $string1 = shift;
+    return sub {my $string2 = shift; print "$string1 $string2\n";};
+}
+$hellosub = printem("Hello");
+&$hellosub("today.");
+&$hellosub("there.");

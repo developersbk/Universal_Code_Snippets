@@ -1,0 +1,23 @@
+<%
+Private Sub FileWrite(ByVal pathname, ByVal strToWrite, ByVal boolOverWrite)
+    Dim objFSO, objFile, boolErr, strErrDesc, lngWriteMethod
+    On Error Resume Next
+    Set objFSO = Server.CreateObject("Scripting.FileSystemObject")
+    If boolOverWrite Then
+        lngWriteMethod = 2
+    Else
+        lngWriteMethod = 8
+    End If
+    Set objFile = objFSO.OpenTextFile(pathname, lngWriteMethod, False)
+    objFile.Write strToWrite
+    If Err Then
+        boolErr = True
+        strErrDesc = Err.description
+    End If
+    objFile.Close
+    Set objFile = Nothing
+    Set objFSO = Nothing
+    On Error GoTo 0
+    If boolErr Then Err.Raise 5107, "FileWrite Statement", strErrDesc
+End Sub
+%>

@@ -1,0 +1,40 @@
+Sort arrays
+
+'--------Begin Function----
+Function fnSort(aSort, intAsc)
+Dim intTempStore
+Dim i, j 
+For i = 0 To UBound(aSort) - 1
+For j = i To UBound(aSort)
+'Sort Ascending
+If intAsc = 1 Then
+If aSort(i) > aSort(j) Then
+intTempStore = aSort(i)
+aSort(i) = aSort(j)
+aSort(j) = intTempStore
+End If 'i > j
+'Sort Descending
+Else
+If aSort(i) < aSort(j) Then
+intTempStore = aSort(i)
+aSort(i) = aSort(j)
+aSort(j) = intTempStore
+End If 'i < j
+End If 'intAsc = 1
+Next 'j
+Next 'i
+fnSort = aSort
+End Function 'fnSort
+'-------------------------
+Dim aUnSort(3), aSorted
+aUnSort(0) = 4
+aUnSort(1) = 2
+aUnSort(2) = 6
+aUnSort(3) = 20
+'call the function
+'second argument:
+' * ascending sorted = 1
+' * descending sorting = any other chara
+' cter
+aSorted = fnSort(aUnSort, 1)
+Erase aUnSort

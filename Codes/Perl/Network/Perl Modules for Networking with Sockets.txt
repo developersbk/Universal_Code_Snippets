@@ -1,0 +1,10 @@
+Option         Value
+Listen         Size of the incoming listen queue. Normally set to SOMAXCONN.
+LocalAddr      IP address or hostname for a server socket, optional.
+LocalPort      Port number for a server socket to listen on.
+PeerAddr       IP address or hostname of the server, for client sockets.
+PeerPort       Port number of the server, for client sockets.
+Proto          Protocol to use, usually tcp or udp.
+Reuse          Set to 1 for servers.
+Timeout        Sets network timeouts.
+Type           Type of socket, normally SOCK_STREAM (TCP) or SOCK_DGRAM (UDP).

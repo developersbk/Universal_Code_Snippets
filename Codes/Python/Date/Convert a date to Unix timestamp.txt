@@ -1,0 +1,6 @@
+import datetime  
+import time  
+dt = datetime.datetime(2016, 2, 25, 23, 23)  
+print()  
+print("Unix Timestamp: ",(time.mktime(dt.timetuple())))  
+print() 

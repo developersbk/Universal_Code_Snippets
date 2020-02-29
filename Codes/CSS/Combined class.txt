@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Combined Class</title>
+<style type="text/css">
+* .button {
+  width: 240px;
+  padding: 4px 12px;
+  margin: 22px 0;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 40px;
+  line-height: normal;
+}
+
+* .button.rounded {
+  color: pink;
+  background-color: blue;
+  line-height: 40px;
+  margin-top: 32px;
+  background: url("http://www.happycodings.com/images/happy.gif") no-repeat center
+    center;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Subclass Selector</h1> 
+
+<div> 
+
+<p class="button rounded">We loved with a love that was more than love. Edgar Allan Poe </p> 
+
+</div> 
+
+</body> 
+</html>

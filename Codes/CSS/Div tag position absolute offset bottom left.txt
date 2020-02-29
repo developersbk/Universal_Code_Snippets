@@ -1,0 +1,40 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Div Tag Position Absolute Offset Bottom Left</title>
+        <style type='text/css'>
+            div {
+                position: absolute;
+                width: 360px;
+                height: 240px;
+                padding: 12px;
+                border: 1px solid pink;
+                opacity: 0.8;
+                background: blue;
+            }
+            div#div1 {
+                bottom: 0;
+                left: 0;   
+            }
+            div#div2 {
+                bottom: 25px;
+                left: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='div1'>
+             Two hearts are stronger than three,<br>
+             but only if you instill yours inside of me.<br><br>
+
+             Matthew K. Free
+        </div>
+        <div id='div2'>
+            He that falls in love with himself will have no rivals.<br><br>
+
+            Benjamin Franklin
+        </div>
+    </body>
+</html>
+

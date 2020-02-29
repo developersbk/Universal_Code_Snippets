@@ -1,0 +1,10 @@
+FlowDocument with Section
+
+<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Section LineHeight="2" Foreground="Red" Background="Blue">
+    <Paragraph FontSize="18">WPF Unleashed</Paragraph>
+    <Paragraph FontSize="32" FontWeight="Bold">Notes from Chapter 1</Paragraph>
+  </Section>
+</FlowDocument>
+

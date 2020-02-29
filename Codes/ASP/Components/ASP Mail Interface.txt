@@ -1,0 +1,130 @@
+<SCRIPT LANGUAGE="VBScript" RUNAT=SERVER>
+
+' requires: _const, _err
+
+Function GetMailObject
+Dim mo
+
+On Error Resume Next
+
+PushLocalError
+
+GetMailObject = Null
+
+Set mo = Server.CreateObject("SMTPsvg.Mailer")
+If CheckPopError Then
+Exit Function
+End If
+
+mo.CharSet = 2
+mo.ContentType = "text/html"
+
+mo.FromName = fromname
+mo.FromAddress = fromaddress
+mo.Organization = company
+
+mo.Priority = 3
+mo.RemoteHost = mailhost
+
+Set GetMailObject = mo
+
+PopError
+End Function
+
+Function SendMailEx(SendName, SendAddr, Subject, Body)
+Dim mo, i, result
+
+On Error Resume Next
+
+PushLocalError
+
+If (root = "Local") Then
+SendMailEx = True
+PopError
+Exit Function
+End If
+
+SendMailEx = False
+
+Set mo = GetMailObject
+If CheckError Or IsNull(mo) Then
+PopError
+Exit Function
+End If
+
+' mo.SMTPLog = uploadroot & "log.txt"
+
+mo.Subject = Subject
+mo.BodyText = Body
+If IsArray(SendName) And IsArray(SendAddr) Then
+For i = LBound(SendName) To UBound(SendName)
+mo.AddBCC SendName(i), SendAddr(i)
+Next
+Else
+mo.AddRecipient SendName, SendAddr
+End If
+
+result = mo.SendMail
+If CheckPopError Then
+Exit Function
+End If
+
+SendMailEx = result
+
+PopError
+End Function
+
+Function SendMail(SendTo, Subject, Body)
+SendMail = SendMailEx(SendTo, SendTo, Subject, Body)
+End Function
+
+Function SendMailFromFile(SendTo, Subject, FileName)
+Dim mo, i, result
+
+On Error Resume Next
+
+PushLocalError
+
+If (root = "Local") Then
+SendMailFromFile = True
+PopError
+Exit Function
+End If
+
+SendMailFromFile = False
+
+Set mo = GetMailObject
+If CheckError Or IsNull(mo) Then
+PopError
+Exit Function
+End If
+
+' mo.SMTPLog = uploadroot & "log.txt"
+
+mo.Subject = Subject
+If IsArray(SendTo) Then
+For i = LBound(SendTo) To UBound(SendTo)
+mo.AddBCC SendTo(i), SendTo(i)
+Next
+Else
+mo.AddRecipient SendTo, SendTo
+End If
+
+result = mo.GetBodyTextFromFile(FileName, False, False)
+If CheckPopError Then
+Exit Function
+End If
+
+If result Then
+result = mo.SendMail
+If CheckPopError Then
+Exit Function
+End If
+End If
+
+SendMailFromFile = result
+
+PopError
+End Function
+
+</SCRIPT>

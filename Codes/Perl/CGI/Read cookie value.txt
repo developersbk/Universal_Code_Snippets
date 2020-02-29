@@ -1,0 +1,16 @@
+#!c:/perl/bin
+
+use CGI;
+$q1 = new CGI;
+
+print $q1->header;
+$cookie1 = $q1->cookie('FIRST_NAME');
+
+if($cookie1)
+{
+   print $cookie1;
+}
+else
+{
+  print "No such Cookie!";
+}

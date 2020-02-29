@@ -1,0 +1,27 @@
+ #!/usr/local/bin/perl -w
+
+    # Do this forever.
+    for (;;)
+    {
+       print "Enter a word: ";
+       my $word1 = <STDIN>; chomp $word1;
+       print "Enter another word: ";
+       my $word2 = <STDIN>; chomp $word2;
+
+       if ($word1 eq $word2)
+       {
+          print "The two phrases are equivalent.\n";
+       }
+       elsif ($word1 lt $word2)
+       {
+          print "<$word1> is alphabetically less than <$word2>\n";
+       }
+       elsif ($word1 gt $word2)
+       {
+          print "<$word1> is alphabetically greater than <$word2>\n";
+       }
+    }
+
+   
+    
+    

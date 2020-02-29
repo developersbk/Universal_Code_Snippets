@@ -1,0 +1,23 @@
+English                         Code        Description
+
+$FORMAT_AUTOFLUSH               $|          Auto flush on/off flag
+
+$FORMAT_FORMFEED                $^L         Character string to output before a new page (excluding the first page)
+
+
+$FORMAT_LINE_BREAK_ CHARACTERS  $:          Format line break characters
+
+
+$FORMAT_LINES_LEFT              $-          Number of lines left before this format page starts a new page
+
+
+$FORMAT_LINES_PER_PAGE          $=          Number of lines per page
+
+
+$FORMAT_NAME                    $~          Format name
+
+
+$FORMAT_PAGE_NUMBER             $%          Current format page number
+
+
+$FORMAT_TOP_NAME                $^          Top-of-form name

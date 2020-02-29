@@ -1,0 +1,24 @@
+$age = 25;
+@siblings = qw("A", "B", "C","D");
+%home = ("owner" => "A",
+         "price" => "B",
+         "style" => "C",
+);
+
+# Create pointer
+$pointer1 = \$age;       
+$pointer2 = \@siblings;  
+$pointer3 = \%home; 
+$pointer4 = [ qw(red yellow blue green) ]; # Create anonymous array
+$pointer5 = { "A" => "a", "B" => "b", "C" => "c" };
+                                           # Create anonymous hash
+
+
+print $$pointer1; # Dereference pointer to scalar; 
+print @$pointer2; # Dereference pointer to array;
+print %$pointer3; # Dereference pointer to hash; 
+print $pointer2->[1];   
+print $pointer3->{"style"}; 
+print @{$pointer4}; # prints elements of anonymous array
+
+   

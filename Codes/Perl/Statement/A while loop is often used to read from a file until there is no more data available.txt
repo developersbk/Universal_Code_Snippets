@@ -1,0 +1,10 @@
+    #!/usr/local/bin/perl
+
+    # Set the value of x
+    $x=1;
+
+    while ($x <= 10)
+    {
+       print $x++ . ", ";
+    }
+    print "\n";

@@ -1,0 +1,12 @@
+# Subroutines return the value of the last expression evaluated. 
+# Or you can use the return statement to clearly delineate the value you want returned from the subroutine..
+
+#!/usr/bin/perl -w
+
+$value = two();
+
+print "Two is $value.\n";
+
+sub two {
+   return 2;
+}

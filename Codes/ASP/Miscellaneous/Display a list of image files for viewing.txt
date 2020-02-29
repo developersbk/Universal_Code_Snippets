@@ -1,0 +1,81 @@
+<%@LANGUAGE="VBSCRIPT"%>
+
+<%  
+            Dim oFSO
+            Dim oFolder
+            Dim oFolders
+            Dim oFile
+            Dim strPhysicalPath
+        
+            
+        'Initialize counter for file counting       
+            intCount = 0
+    
+            'Get a reference to the scripting library
+            Set oFSO = Server.CreateObject("Scripting.FileSystemObject")
+            
+            'Set the path to the images
+                    strPhysicalPath = Server.MapPath("/Images/Product")
+
+        'Set a reference to the folder with the images
+            Set oFolder = oFSO.GetFolder(strPhysicalPath)
+            
+        'Create a files collections
+        Set oFolders = oFolder.Files
+            
+%>
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Display image filenames and hyperlink to the images</title>
+
+<link rel="stylesheet" type="text/css" href="Main.css">
+
+</head>
+<body  topmargin="0" leftmargin="0" >
+<table border="1" width="502" cellspacing="0" cellpadding="0" height="1">
+    
+<%
+            
+    'Begin enumerating through the files
+    For Each oFile in oFolders
+        Response.Write "<tr><td width='50%' colspan='2'><font size='2'><a href=Images\Product\" & oFile.Name & " class='screenlink'>" & _
+        oFile.Name & "</font></a></td></tr>"
+    Next
+
+%>
+
+</table>
+
+<%
+    
+    'Destory the objects and clean up
+    Set oFSO = Nothing
+    Set oFolder = Nothing
+    Set oFolders = Nothing
+    Set oFile = Nothing 
+    
+%>
+
+
+********  This is the style sheet - save this as Main.css in the save directory as the page  **************
+
+.screenlink:A {
+    color: blue; 
+    text-decoration: none;
+} 
+.screenlink:A:visited {
+    color: blue; 
+    text-decoration: none;
+} 
+.screenlink:A:active {
+    color: blue; 
+    text-decoration: none;
+} 
+.screenlink:A:hover {
+    color: red;  
+    text-decoration: underline; 
+    font-weight: none;
+}

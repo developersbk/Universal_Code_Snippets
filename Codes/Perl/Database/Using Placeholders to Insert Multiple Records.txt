@@ -1,0 +1,22 @@
+
+use DBI;
+my $dbh=DBI->connect("DBI:mysql:host=localhost;user=root;password=;database=sample_db");
+
+my $sth=$dbh->prepare("INSERT INTO Employee(name)VALUES(?)");
+my @rows = (['A'],
+             ['B'],
+             ['C'],
+             ['D'],
+            );
+
+foreach my $row (@rows ){
+     $name = $row->[0];
+     $sth->execute($name);
+}
+$sth=$dbh->prepare("SELECT * FROM employee");
+$sth->execute();
+while(my @row = $sth->fetchrow_array()){
+   print "name=$row[0]\n";
+}
+$sth->finish();
+$dbh->disconnect();

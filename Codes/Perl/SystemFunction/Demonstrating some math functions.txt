@@ -1,0 +1,8 @@
+$_ = -2;
+print "Absolute value of 5 is: ", abs( 5 ), "\n",
+      "Absolute value of -5 is: ", abs( -5 ), "\n",
+      "Absolute value of $_: ", abs, "\n\n";
+
+print "exp( $_ ): ", exp, "\n";
+print "log( 5 ): ", log( 5 ), "\n";
+print "sqrt( 16 ): ", sqrt( 16 ), "\n";

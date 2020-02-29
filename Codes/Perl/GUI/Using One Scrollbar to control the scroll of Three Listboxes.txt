@@ -1,0 +1,38 @@
+#!/usr/local/bin/perl -w
+use Tk;
+use strict;
+
+my $mw = MainWindow->new();
+$mw->title("This is the title");
+$mw->Button(-text => "Exit", 
+            -command => sub { exit })->pack(-side => 'bottom');
+
+my $scroll = $mw->Scrollbar();
+my $listboxes = [ $mw->Listbox(), $mw->Listbox(), $mw->Listbox() ];
+
+sub scroll_listboxes {
+    my ($sb, $scrolled, $lbs, @args) = @_;
+    $sb->set(@args); # tell the Scrollbar what to display
+    my ($top, $bottom) = $scrolled->yview();
+    foreach my $list (@$lbs) {
+     $list->yviewMoveto($top); # adjust each lb
+    }
+}
+
+foreach my $list (@$listboxes) {
+    $list->configure(-yscrollcommand => [ \&scroll_listboxes, $scroll,
+            $list, $listboxes ]);
+}
+
+$scroll->configure(-command => sub {
+           foreach my $list (@$listboxes) {
+            $list->yview(@_);
+           }});
+
+$scroll->pack(-side => 'left', -fill => 'y');
+foreach my $list (@$listboxes) {
+    $list->pack(-side => 'left');
+    $list->insert('end', qw/one two three four five six seven eight nine ten eleven twelve thirteen/);
+}
+
+MainLoop;

@@ -1,0 +1,5 @@
+while (<>) {
+    print "Here's what you typed lowercased: " . lc . "\n";
+    print "Here's what you typed uppercased: " . uc . "\n";
+}
+

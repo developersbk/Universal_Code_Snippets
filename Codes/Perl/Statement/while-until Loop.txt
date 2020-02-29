@@ -1,0 +1,9 @@
+#while ( conditional expression ) {
+#       code block A
+#}
+
+$count=0;              # Initial value
+while ($count < 10 ){  # Test
+   print $n;
+   $count++;           # Increment value
+}

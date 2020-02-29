@@ -1,0 +1,16 @@
+use Getopt::Long;
+
+GetOptions("german"  => \$german,
+           "french"  => \$french);
+
+if ($german) {
+    print "Guten Tag!\n";
+}
+
+if ($french) {
+    print "Bonjour!\n";
+}
+
+if (!$german && !$french) {
+    print "Hello!\n";
+}

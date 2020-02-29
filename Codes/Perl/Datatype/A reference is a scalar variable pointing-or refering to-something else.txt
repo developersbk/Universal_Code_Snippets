@@ -1,0 +1,17 @@
+#To set up a reference, you use a backslash (\) character before the name of what you're referring to.
+#$reference = \$referred_to;
+#The reference is a scalar variable. 
+#To access the value of the data referred to:
+#$new_var = ${ $reference };
+#You can also use a shorthand syntax like the following: 
+#$new_var = $$reference;
+
+
+#!/usr/bin/perl -w
+
+# Reference to a scalar variable.
+$var = "Hello";
+
+$reference = \$var;
+
+print "Scalar reference = $$reference\n\n";

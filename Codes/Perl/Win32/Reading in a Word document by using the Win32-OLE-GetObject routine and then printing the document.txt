@@ -1,0 +1,11 @@
+#!/usr/bin/perl -w
+
+use Win32::OLE;
+
+$filename = 'wordFile.doc';
+
+$doc = Win32::OLE->GetObject( $filename ) 
+    or die "Cannot load file $filename from Word, $!";
+
+# Print document.
+$doc->PrintOut();

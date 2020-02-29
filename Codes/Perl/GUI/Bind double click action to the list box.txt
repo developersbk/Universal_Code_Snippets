@@ -1,0 +1,23 @@
+use Tk;
+
+$main = MainWindow->new();
+
+$listbox1 = $main->Listbox("-width" => 25, 
+    "-height" => 5
+)->pack;
+
+$listbox1->insert('end', "Apples", "Bananas",
+    "Oranges", "Pears", "Pineapples");
+
+$listbox1->bind('<Double-1>', \&getfruit);
+
+$text1 = $main->Text ('-width'=> 40, '-height' 
+    => 2
+)->pack;
+
+sub getfruit {
+    $fruit = $listbox1->get('active');
+    $text1->insert('end', "$fruit ");
+}
+
+MainLoop;

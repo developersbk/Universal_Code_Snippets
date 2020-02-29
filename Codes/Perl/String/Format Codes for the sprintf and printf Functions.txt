@@ -1,0 +1,44 @@
+
+Flag                Description                                  Example
+
+Blank (default)     Positive numbers begin with a blank.         printf FH "% 04.2\n", $D;
+                    Negative numbers begin with a minus sign. 
+                    Align characters to right. 
+                    Pad from left with blanks.                   
+                    
+                      
+-                   Align characters to left.                    $V = sprintf "%-4.2",$D;
+                    Pad from right with blanks.    
+
++                   Align characters to right.                   $V = sprintf "%+4.2", $D;
+                    Pad from left with blanks.    
+
+c                   Character format
+
+d                   Decimal format
+
+e                   Exponential format
+
+f                   Floating-point format
+
+g                   Compact format
+
+ld                  Long decimal format
+
+lo                  Long octal format
+
+lu                  Long unsigned decimal format
+
+lx                  Long hexadecimal format
+
+o                   Octal format
+
+s                   String format
+
+u                   Unsigned decimal format
+
+x                   Hexadecimal format
+
+X                   Uppercase hexadecimal format
+
+   

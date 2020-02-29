@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" subLang="en-US" xml:subLang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Anchor in a LI tag</title>
+<style rel="stylesheet" type="text/css">
+#footer ul {
+  width: 800px;
+  text-align: center;
+}
+#footer li {
+  display: inline;
+  list-style-type: none;
+  line-height: 38px;
+}
+#footer li a {
+  color: #89FFAA;
+  text-decoration: none;
+  margin: 0 8px;
+}
+#footer li a:visited {
+  text-decoration: none
+}
+#footer li a:hover {
+  text-decoration: underline
+}
+</style>
+</head>
+<body>
+  <div id="footer">
+    <ul>
+      <li><a href="happycodings.com">happycodings</a>|</li>
+      <li><a href="android.happycodings.com">android</a>|</li>
+      <li><a href="csharp.happycodings.com">csharp</a>|</li>
+      <li><a href="java.happycodings.com">java</a>|</li>
+      <li><a href="javascript.happycodings.com">javascript</a>|</li>
+      <li><a href="c.happycodings.com">c</a>|</li>
+      <li><a href="html-css.happycodings.com">html-css</a></li>
+    </ul>
+
+  </div>  
+  
+</body>
+
+</html>

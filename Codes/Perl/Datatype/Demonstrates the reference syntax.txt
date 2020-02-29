@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+
+
+use warnings;
+use strict;
+use CGI::Pretty qw( :standard );
+
+print( header(), 
+       start_html( 'Demo' ),
+       p( 'Some', 'random', 'text' ),
+       p( { -align => 'right' }, 'right', 'aligned text' ),
+       p( { -align => 'center' },
+          [ 'on', 'separate', 'lines' ] ),
+       end_html() );

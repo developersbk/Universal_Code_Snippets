@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+
+
+use warnings;
+use strict;
+
+my $greeting = 'Hello';
+my $planet = 'world';
+write();
+
+$greeting = 'Greetings';
+$planet = 'Mars';
+write();
+
+$greeting = 'Howdy';
+$planet = 'Pluto';
+write();
+
+format STDOUT =
+I would like to say @<<<<<<<<< @<<<<<<<!
+                    $greeting, $planet

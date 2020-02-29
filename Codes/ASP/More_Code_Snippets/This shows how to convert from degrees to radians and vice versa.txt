@@ -1,0 +1,20 @@
+<% 
+'convert from degrees to radians 
+function DegToRad(degrees) 
+DegToRad = degrees * 3.14 / 180 
+end function 
+'convert from radians to degrees 
+function RadToDeg(radians) 
+RadToDeg = radians * 180 / 3.14 
+end function 
+%> 
+
+And here is the code to test this 
+
+<% 
+'convert 90 degrees to radians 
+Response.Write DegToRad(90) 
+Response.Write ("<br>") 
+'convert 0.78 radians to degrees 
+Response.Write RadToDeg(0.78) 
+%> 

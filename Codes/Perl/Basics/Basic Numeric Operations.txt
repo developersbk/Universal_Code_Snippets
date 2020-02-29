@@ -1,0 +1,17 @@
+#! /usr/local/bin/perl
+
+$a = 4.2 + 3;
+print "The result of 4.2 + 3 is $a \n";
+
+$a = 4.2 - 3;
+print "The result of 4.2 - 3 is $a \n";
+
+$a = 4.2 * 3;
+print "The result of 4.2 * 3 is $a \n";
+
+$a = 26 / 8;
+print "The result of 26 / 8 is $a \n";
+
+$a = 26 % 8;
+
+print "The result of 26 % 8 is $a \n";

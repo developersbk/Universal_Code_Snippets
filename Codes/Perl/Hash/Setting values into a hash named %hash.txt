@@ -1,0 +1,14 @@
+#!/usr/bin/perl -w
+
+$hash{"Name"} = "G ";
+
+$hash{23} = 365;
+$hash{123.45} = "Hello world";
+
+$key = 123.45;
+
+print "Element 123.45: $hash{$key}\n";
+
+$key = "Name";
+
+print "Element Name: $hash{$key}\n";

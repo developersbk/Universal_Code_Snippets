@@ -1,0 +1,15 @@
+#Format: for (Expression1;Expression2;Expression3) {Block}
+
+#The above format is equivalent to the following while statement:
+
+#Expression1;
+
+#while (Expression2)
+#     {Block; Expression3};
+
+
+#!/usr/bin/perl
+for ($i=0; $i<10; $i++){   # Initialize, test, and increment $i
+    print "$i ";
+}
+print "\nOut of the loop.\n";

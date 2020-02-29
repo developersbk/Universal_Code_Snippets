@@ -1,0 +1,18 @@
+Proportional Tiles
+
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Microsoft.Samples.Graphics.RectangleExample"
+    WindowTitle="Example">
+  <Canvas>
+
+    <TextBlock Grid.Row="1" Margin="4">Proportional Tiles</TextBlock>
+    <Rectangle Grid.Row="1" Grid.Column="1" Stroke="Aqua">
+      <Rectangle.Fill>
+        <ImageBrush ImageSource="c:\image.jpg" TileMode="Tile"
+                    Viewport="0 0 0.2 0.2"></ImageBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+  </Canvas>
+</Page>
+

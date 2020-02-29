@@ -1,0 +1,23 @@
+#    if (Expression) {Code Segment}
+#    if (Expression) {Code Segment} else {Code Segment}
+#    if (Expression) {Code Segment} elsif {Code Segment} ... else {Code Segment}
+
+    #!/usr/local/bin/perl -w
+
+    while (<STDIN>)
+    {
+       chomp;
+
+       if ($_ < 10)
+       {
+          print "$_ is less than 10.\n";
+       }
+       elsif ($_ < 20)
+       {
+          print "$_ is between the values of 10 and 19.\n";
+       }
+       else
+       {
+          print "$_ is greater than or equal to 20.\n";
+       }
+    }

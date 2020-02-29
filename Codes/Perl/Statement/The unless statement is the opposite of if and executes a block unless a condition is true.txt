@@ -1,0 +1,11 @@
+unless (condition) {
+  # ...
+}
+
+or:
+
+unless (condition) {
+  # ...
+} else {
+  # ...
+}

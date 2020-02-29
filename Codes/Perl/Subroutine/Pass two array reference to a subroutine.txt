@@ -1,0 +1,14 @@
+@a = (1, 2, 3);
+@b = (4, 5, 6);
+
+sub addem
+{
+    my ($reference1, $reference2) = @_;
+    for ($loop_index = 0; $loop_index <= $#$reference1; $loop_index++) {
+        $result[$loop_index] = @$reference1[$loop_index] + @$reference2[$loop_index];
+    }
+    return @result;
+}
+
+@array = addem (\@a, \@b);
+print join (', ', @array);

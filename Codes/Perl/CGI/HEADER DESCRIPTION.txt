@@ -1,0 +1,40 @@
+HTTP_ACCEPT                   MIME types, for example,"image/gif, image/xxbitmap, image/jpeg, image/pjpeg,image/png, */*".
+HTTP_ACCEPT_CHARSET           Character sets, for example, "iso88591,*,utf8".
+HTTP_ACCEPT_ENCODING          Character coding types, for example, "gzip".
+HTTP_ACCEPT_LANGUAGE          The languages, for example, "en".
+HTTP_AUTHORIZATION            The authorization data of an HTTP authentication.
+HTTP_CACHE_CONTROL            Set if a request can be cached by the server.
+HTTP_CONNECTION               The connection type, for example, "Keep-alive".
+HTTP_COOKIE                   The cookie or cookies transmitted by the client.
+HTTP_HOST                     The name of the server requested by the client.
+HTTP_REFERER                  The URL of the page from which this page was accessed.
+HTTP_USER_AGENT               The user agent, for example, "Mozilla/4.72 [en] (X11; I; Linux 2.2.9 i686)". Note that user agents often pretend to be other agents to work with web sites that treat particular agents differently.
+HTTP_VIA                      Proxy cache or caches.
+REQUEST_METHOD                GET or POST.
+PATH_INFO                     The relative path of the requested resource.
+PATH_TRANSLATED               The absolute path of the requested resource.
+QUERY_STRING                  Additional supplied parameters.
+SCRIPT_NAME                   The name the script was called with.
+DOCUMENT_ROOT                 Root of the HTML document tree, for example, /home/sites/myserver.com/html/.
+GATEWAY_INTERFACE             The revision of the CGI specification, for example, CGI/1.1.
+SERVER_NAME                   The server's hostname, for example, www.myserver.com.
+SERVER_SOFTWARE               The server software's name,for example, Apache/1.3.11 (Unix).
+AUTH_TYPE                     The authorization type, for example, Basic, if authentication is being used. 
+CONTENT_LENGTH                Length content sent by the client in bytes.
+CONTENT_TYPE                  Type of the content sent by the client, for example, text/html.
+PATH                          The search path for remotely executable programs.
+PATH_INFO                     The extra path information given by the client. 
+PATH_TRANSLATED               The value of PATH_INFO converted into a physical file location.
+QUERY_STRING                  The information that follows the ? in a URL.
+REMOTE_ADDR                   The IP address of the remote host.
+REMOTE_HOST                   The hostname of the remote host. This may be the same as
+REMOTE_ADDR                   If the server is not doing name lookups.
+REMOTE_IDENT                  The remote user name retreived from the ident protocol. This is usually unset, as servers rarely perform this lookup.
+REMOTE_PORT                   The port number of the network connection on the client side.
+REMOTE_USER                   The user name that was authenticated by the server, if authentication is being used.
+REQUEST_METHOD                How the script was called (GET, PUT, POST...).
+SCRIPT_NAME                   The virtual path to the script, for example, /perl/askname.plx.
+SCRIPT_FILENAME               The absolute path to the script, for example, /home/sites/myserver.com/scripts/askname.plx.
+SERVER_ADMIN                  The email address of the web server administrator, for example, webmaster@myserver.com.
+SERVER_PORT                   The port number to which the request was sent, for example, 80.
+SERVER_PROTOCOL               The name and revision of the protocol used to make the request, for example, HTTP/1.1.

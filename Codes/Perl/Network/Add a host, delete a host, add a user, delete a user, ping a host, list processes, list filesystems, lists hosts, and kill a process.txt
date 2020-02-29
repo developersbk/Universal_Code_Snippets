@@ -1,0 +1,442 @@
+#To add or delete hosts and users, ptadmin.pl must be ran as root. Normal user may only kill their own processes.
+
+#! /usr/bin/perl
+use Tk;
+
+# anderson.stephen@gmail.com
+# Copyright (C) 2006 Stephen W. Anderson
+#
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License
+#as published by the Free Software Foundation; either version 2
+#of the License, or (at your option) any later version.
+#
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#
+#You should have received a copy of the GNU General Public License
+#along with this program; if not, write to the Free Software
+#Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+# 02/18/01 - Birth of ptadmin. 
+# Updated for Ubuntu 01/07/05
+# Fixed Add User - will now create home directory, add encrypted password
+# Process listing will no longer list the ps -ef command used to get the processes
+# Widened the GUI so all buttons are readable
+# Fixed the order of the added host entries (e.g. IP, fqdn, hostname, alias)
+#
+   $computer =`hostname`;
+   $seconds_time = time();
+   $time = localtime($seconds_time);
+   chomp($computer);
+   chomp($time);
+   my $mw = MainWindow->new;
+   $mw->geometry("710x375+0+0");
+   $mw->title("$computer - $time");
+   $mw->iconname("ptadmin");
+   $mw->iconmask();
+   $mw->iconmask("info");
+   $mw->client();
+   $mw->client("ptadmin");
+
+#----------------- Main Window
+   my $f = $mw->Frame(-highlightbackground => 'blue',
+      -highlightthickness => 4)->pack(-side => 'top');
+   $lb = $f->Scrolled("Listbox", -selectmode => "single", -width => "100", -height => "5",
+            -scrollbars => 'osoe');
+
+   @dfk = `df -k`;
+   $how_many = scalar @dfk;
+   for ($count=0;$count<$how_many;$count++){
+       chomp($dfk[$count]);
+       }
+
+   $lb->insert('end', @dfk);
+   $lb->bind('<Button-1>', sub { 
+            my $selected = $lb->get($lb->curselection());
+            });
+
+   foreach $part_disk (@dfk){
+           @part_use = split (/\s+/, $part_disk);
+           $part_use[4] =~ s/%//;
+        #Change this number to the percentage that you desire
+        $part_limit = 95;
+           if (($part_use[4] > $part_limit) && ($part_use[4] cmp 'Use')) {
+                $lb->insert('end', "Warning! $part_use[0] Usage Percentage exceeds $part_limit");
+            }
+           else {
+           #do nothing
+                } 
+            }
+   $lb->pack(-side => 'top', -fill => 'both', -expand => 1);
+   @proc = `ps -ef|grep -v "ps -ef"`;
+   $how_many = scalar @proc;
+   for ($count=0;$count<$how_many;$count++){
+       chomp($proc[$count]);
+       }
+   $lb4 = $f->Scrolled("Listbox", -selectmode => "single",
+                        -height => "5",-width => "100",
+                        -scrollbars => 'osoe')->pack(-side=>'bottom', 
+                        -fill => 'both', -expand => 1);
+   $lb4->insert('end',@proc);
+   $lb4->bind('<Button-1>', sub { 
+              my $selected4 = $lb4->get($lb4->curselection());
+              });
+   @hosts = `cat /etc/hosts`;
+   $how_many = scalar @hosts;
+   for ($count=0;$count<$how_many;$count++){
+       chomp($hosts[$count]);
+       $hosts[$count] =~ s/\t/ /g;
+       }
+
+   $lb2 = $f->Scrolled("Listbox", -selectmode => "single",
+                        -height=> "5", -width => "60",
+                        -scrollbars => 'osoe')->pack(-side=>'right', 
+                        -fill => 'both', -expand => 1);
+   $lb2->insert('end',@hosts);
+   $lb2->bind('<Button-1>', sub {
+             my $selected1 = $lb2->get($lb2->curselection());
+             });
+
+   @users = `cat /etc/passwd | awk -F : '{if (\$3 > 99) print \$1"  "  \$3"  " \$4"  " \$5}'`;
+   $how_many = scalar @users;
+
+   for ($count=0;$count<$how_many;$count++){
+       chomp($users[$count]);
+       }
+
+   $lb3 = $f->Scrolled("Listbox", -selectmode => "single",
+                        -height=> "5", -width => "40",
+                        -scrollbars => 'osoe')->pack(-side=>'left',
+                        -fill => 'both', -expand => 1);
+   $lb3->insert('end',@users);
+   $lb3->bind('<Button-1>', sub { 
+              my $selected3 = $lb3->get($lb3->curselection());
+             });
+
+   my $g = $mw->Frame(-highlightbackground => 'blue',
+      -highlightthickness => 4);
+   my $but = $g->Button(-text => "Exit",
+             -command => sub { exit } )->pack(-side => "right",
+             -fill => "x");
+
+   my $but1 = $g->Button(-text => "Ping",
+              -command => \&ping)->pack(-side => "right",
+              -fill => "x");
+
+   my $but2 = $g->Button(-text => "Kill Process",
+              -command => \&kill_proc)->pack(-side => "right",
+              -fill => "x");
+
+   my $but3 = $g->Button(-text => "Refresh",
+              -command => \&StatsClear)->pack(-side => "right",
+              -fill => "x");
+
+   my $but5 = $g->Button(-text => "Hosts",
+              -command => \&HostClear)->pack(-side => "right",
+              -fill => "x");
+
+   my $but4 = $g->Button(-text => "Add Host",
+              -command => \&add_host)->pack(-side => "right",
+              -fill => "x");
+
+   my $but6 = $g->Button(-text => "Delete Host",
+              -command => \&DelHost)->pack(-side => "right",
+              -fill => "x");
+
+   my $but8 = $g->Button(-text => "Add User",
+              -command => \&UserAdd)->pack(-side => "right",
+              -fill => "x");
+
+   my $but7 = $g->Button(-text => "Delete User",
+              -command => \&UserDel)->pack(-side => "right",
+              -fill => "x");
+
+   $f->pack(-side => 'top', -fill => 'x');
+   $g->pack(-side => 'top', -fill => 'x');
+
+   MainLoop;
+
+   sub ping {
+            if (!$lb2->selectionIncludes('active')){
+         print "Select a host to Ping!";
+            }
+           else{
+               my $selected1 = $lb2->get($lb2->curselection());
+               @ip = split (/ /, $selected1);
+               chomp ($ip[0]);
+               if (!`ping -c 1 $ip[0]`) { 
+               $lb2->delete(0, 'end');
+               $lb2->insert('end',"IP appears to be invalid!");
+                   }
+            else {
+                     `ping -c 3 $ip[0]>ptping.txt`;
+                     @ping_results = `cat ptping.txt`;
+                     $how_many = scalar @ping_results;
+                     for ($count=0;$count<$how_many;$count++){
+                         chomp($ping_results[$count]);
+                         }
+                     $lb2->delete(0, 'end');
+                     $lb2->insert('end',@ping_results);
+              }
+               }
+   }
+
+   sub kill_proc {
+                 if (!$lb4->selectionIncludes('active')){
+              print "Select a process to kill!";
+                 }
+                 else{
+                     my $selected4 = $lb4->get($lb4->curselection());
+                     @proc = split (/\s+/,$selected4);
+                     `kill -9 $proc[1]`;
+                     $lb4->delete(0, 'end');
+                     @proc = `ps -ef`;
+                     $how_many = scalar @proc;
+                     for ($count=0;$count<$how_many;$count++){
+                         chomp($proc[$count]);
+                         }
+                    $lb4->insert('end',@proc);
+                 }
+   }  
+
+   sub disk {
+          $lb->delete(0, 'end');
+          @dfk = `df -k`;
+          $how_many = scalar @dfk;
+          for ($count=0;$count<$how_many;$count++){
+              chomp($dfk[$count]);
+              }
+          $lb->insert('end', @dfk);
+          foreach $part_disk (@dfk){
+              @part_use = split (/\s+/, $part_disk);
+              $part_use[4] =~ s/%//;
+           $part_limit = 95;
+              if ($part_use[4] > $part_limit && $part_use[4] ne "Use") {
+                 $lb->insert('end', "Warning! $part_use[0] Usage Percentage exceeds $part_limit%");
+                }
+             else {
+                   #does nothing
+                  }
+           }
+   } 
+
+   sub add_host {
+                 if (! Exists ($HostAdd)) {
+                 $HostAdd = $mw->Toplevel();
+                 $HostAdd ->title("ptadmin - Add Host");
+                 $HostAdd->geometry("290x210+0+0");
+                 $b1 = $HostAdd->Frame(-highlightbackground => 'blue',
+                          -highlightthickness => 4)->pack(side=>'top', -fill => 'x');
+                    $b2 = $b1->Frame(-highlightbackground => 'blue',
+                -highlightthickness => 4)->pack(side=>'top', -fill => 'x');
+                 $b2->Label(-text => "Host Name" ) ->pack(-side => 'top');
+                 $b2->Entry(-width => 25, -textvariable => \$hostname) 
+                         ->pack(-side => 'top');
+                 $b2->Label(-text => "IP Address" ) ->pack(-side => 'top');
+                 $b2->Entry(-width => 16, -textvariable => \$ipaddress) 
+                         ->pack(-side => 'top');
+                 $b2->Label(-text => "Fully Qualified Name (hostname.domainname)" ) 
+                         ->pack(-side => 'top');
+                 $b2->Entry(-width => 25, -textvariable => \$fqdn) 
+                         ->pack(-side => 'top');
+                 $b2->Label(-text => "Alias" ) ->pack(-side => 'top');
+                 $b2->Entry(-width => 15, -textvariable => \$alias) 
+                         ->pack(-side => 'top');
+              $b1->Button(-text => "Cancel", -command => sub {$HostAdd->destroy})
+                                ->pack(-side => 'right');
+                    $b1->Button(-text => "Add the Host", -command => \&host_end)
+                               ->pack(-side => 'right');
+                 } else {
+                       $HostAdd->raise();
+                        }
+   }
+
+   sub host_end {
+                 $line_cnt=`cat /etc/hosts|wc -l`;
+                 open(OLD, "</etc/hosts") ||print "Could not open hosts";
+                 open (NEW, ">/etc/hosts.txt")||print "Could not open hosts.txt";
+                 select (NEW);
+                 while (<OLD>) {
+                                print NEW $_;
+                                if ($. == $line_cnt && $ipaddress ne "") {
+                                print NEW "$ipaddress\t$fqdn\t$hostname\t$alias\n"; 
+                                   }
+                                }
+                 close (OLD);
+                 close (NEW);
+                 select (STDOUT);
+                 rename ("/etc/hosts", "/etc/hosts.orig")||print "HELP1";
+                 rename("/etc/hosts.txt", "/etc/hosts")||print "HELP";
+                 @hosts = `cat /etc/hosts`;
+                 $how_many = scalar @hosts;
+                 for ($count=0;$count<$how_many;$count++){
+                      chomp($hosts[$count]);
+                      $hosts[$count] =~ s/\t/ /g;
+                      }
+                 $lb2->delete(0, 'end');
+                 $lb2->insert('end',@hosts);
+
+                 $HostAdd->destroy;
+   }
+
+   sub DelHost {
+                if (!$lb2->selectionIncludes('active')){
+                 print "Select Host!";
+                   }
+               else{
+                    my $selected1 = $lb2->get($lb2->curselection());
+                    @hosts = `cat /etc/hosts`;
+                    $how_many = scalar @hosts;
+                    for ($count=0;$count<$how_many;$count++){
+                         chomp($hosts[$count]);
+                         $hosts[$count] =~ s/\t/ /g;
+                         if ($hosts[$count] eq $selected1){
+                         $delete_line=$count+1;
+                         }
+                     }
+               $line_cnt=`cat /etc/hosts|wc -l`;
+               open(OLD, "</etc/hosts") ||print "Could not open hosts";
+               open (NEW, ">/etc/hosts.txt")||print "Could not open hosts.txt";
+               select (NEW);
+               while (<OLD>) {
+                              next if ($. == $delete_line);
+                              print NEW $_;
+                             }
+               close (OLD);
+               close (NEW);
+               select (STDOUT);
+               rename ("/etc/hosts", "/etc/hosts.orig")||print "HELP1";
+               rename("/etc/hosts.txt", "/etc/hosts")||print "HELP";
+               @hosts = `cat /etc/hosts`;
+               $how_many = scalar @hosts;
+               for ($count=0;$count<$how_many;$count++){
+                     chomp($hosts[$count]);
+                     $hosts[$count] =~ s/\t/ /g;
+                    }
+               $lb2->delete(0, 'end');
+               $lb2->insert('end',@hosts);
+               }
+   }
+
+   sub UserDel {
+                if (!$lb3->selectionIncludes('active')){
+                 print "Select User!";
+                }
+                else{
+               if (! Exists ($UserWarn)) {
+                                $UserWarn = $mw->Toplevel();
+                 $UserWarn ->title("ptadmin Warning!");
+                 $UserWarn->geometry("200x80+0+0");
+                 $b1 = $UserWarn->Frame(-highlightbackground => 'blue',
+                    -highlightthickness => 4)->pack(side=>'top', -fill => 'x');
+                    $b2 = $b1->Frame(-highlightbackground => 'blue',
+                -highlightthickness => 4)->pack(side=>'top', -fill => 'x');
+                    $b2->Label(-text => "Warning! User directories \n will be permanently removed!" ) ->pack(-side => 'top');
+                    $b1->Button(-text => "Remove the User!", -command => \&RemoveUser)
+                                ->pack(-side => 'right');
+              $b1->Button(-text => "Cancel", -command => sub {$UserWarn->destroy})
+                 ->pack(-side => 'right');
+                    } else {
+                          $UserWarn->raise();
+                           }
+           }
+         }
+
+   sub RemoveUser{
+                     my $selected3 = $lb3->get($lb3->curselection());
+                     my @login = split (/\s+/, $selected3);
+                     `/usr/sbin/userdel -r $login[0]`;
+                     @users = `cat /etc/passwd | awk -F : '{if (\$3 > 99) print \$1"  "  \$3"  " \$4"  " \$5}'`;
+                     $how_many = scalar @users;
+                     for ($count=0;$count<$how_many;$count++){
+                          chomp($users[$count]);
+                          }
+                    $lb3->delete(0, 'end');
+                    $lb3->insert('end',@users);
+              $UserWarn->destroy;
+           }
+   
+
+   sub UserAdd {
+                if (! Exists ($UserAdd)) {
+                 $UserAdd = $mw->Toplevel();
+                 $UserAdd ->title("ptadmin - Add User");
+                 $UserAdd->geometry("240x215+0+0");
+                 $b1 = $UserAdd->Frame(-highlightbackground => 'blue',
+                    -highlightthickness => 4)->pack(side=>'top', -fill => 'x');
+                    $b2 = $b1->Frame(-highlightbackground => 'blue',
+                -highlightthickness => 4)->pack(side=>'top', -fill => 'x');
+                 $b2->Label(-text => 'Login (Required)' ) ->pack(-side => 'top');
+                 $b2->Entry(-width => 25, -textvariable => \$login) 
+                         ->pack(-side => 'top');
+                 $b2->Label(-text => 'User Name (Optional)' ) ->pack(-side => 'top');
+                 $b2->Entry(-width => 25, -textvariable => \$username) 
+                         ->pack(-side => 'top');
+                 $b2->Label(-text => 'Password (Required)' ) ->pack(-side => 'top');
+                 $b2->Entry(-width => 25, -show => "*", 
+                         -textvariable => \$password) ->pack(-side => 'top');
+                 $b2->Label(-text => 'Home Directory (Required)' ) ->pack(-side => 'top');
+                 $b2->Entry(-width => 25, -textvariable => \$homedir) 
+                        ->pack(-side => 'top');
+                    $b1->Button(-text => "Add the User", -command => \&AddUser)
+                                ->pack(-side => 'right');
+              $b1->Button(-text => "Cancel", -command => sub {$UserAdd->destroy})
+                                ->pack(-side => 'right');
+                    } else {
+                          $UserAdd->raise();
+                           }
+   }
+
+   sub AddUser {
+           $enc_password = crypt($password,L3);
+                 `/usr/sbin/useradd -c "$username" -m -d "$homedir" -p $enc_password $login`;
+                 @users = `cat /etc/passwd | awk -F : '{if (\$3 > 99) print \$1"  "  \$3"  " \$4"  " \$5}'`;
+                 $how_many = scalar @users;
+                 for ($count=0;$count<$how_many;$count++){
+                      chomp($users[$count]);
+                      }
+                 $lb3->delete(0, 'end');
+                 $lb3->insert('end',@users);
+                 $UserAdd->destroy;
+   }
+
+   sub HostClear{
+               @hosts = `cat /etc/hosts`;
+               $how_many = scalar @hosts;
+               for ($count=0;$count<$how_many;$count++){
+                     chomp($hosts[$count]);
+                     $hosts[$count] =~ s/\t/ /g;
+                    }
+               $lb2->delete(0, 'end');
+               $lb2->insert('end',@hosts);
+   }
+
+   sub UserClear {
+                 @users = `cat /etc/passwd | awk -F : '{if (\$3 > 99) print \$1"  "  \$3"  " \$4"  " \$5}'`;
+                 $how_many = scalar @users;
+                 for ($count=0;$count<$how_many;$count++){
+                      chomp($users[$count]);
+                      }
+                 $lb3->delete(0, 'end');
+                 $lb3->insert('end',@users);
+   }
+  
+   sub ProcClear {
+                $lb4->delete(0, 'end');
+                @proc = `ps -ef`;
+                $how_many = scalar @proc;
+                for ($count=0;$count<$how_many;$count++){
+                     chomp($proc[$count]);
+                    }
+                $lb4->insert('end',@proc);
+   }
+
+   sub StatsClear {
+                   disk();
+                   HostClear();
+                   UserClear();
+             ProcClear();
+   }

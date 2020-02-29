@@ -1,0 +1,28 @@
+use strict;
+use warnings;
+use CGI qw( :standard );
+use Fcntl qw( :flock );
+
+my @vars = qw( REMOTE_ADDR REMOTE_PORT REQUEST_URI QUERY_STRING );
+my @stuff = @ENV{ @vars };
+my $info = join( " | ", @stuff );
+
+open( FILE, "+>>log.txt" ) or die( "Could not open log.txt: $!" );
+flock( FILE, LOCK_EX ) or die( "Could not get exclusive lock: $!" );
+print( FILE "$info\n\n" );
+flock( FILE, LOCK_UN ) or die( "Could not unlock file: $!" );
+
+close( FILE );
+
+if ( $stuff[3] ne "" ) {
+   print( header( -Refresh=> '5; URL=http://www.java2s.com' ) );
+   print( start_html( "log.txt" ) );
+   print( p( i( "You will now be redirected to our home page." ) ) );
+}
+else {
+   print( header() );
+   print( start_html( "log.txt" ) );
+   print( h1( "Please add a \"?\" and your name to the URL.\n" ) );
+}
+
+print( end_html() ); 

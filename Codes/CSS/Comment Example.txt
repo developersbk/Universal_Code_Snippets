@@ -1,0 +1,16 @@
+<html>
+<head>
+<title>Comment Element Example</title>
+</head>
+<body>
+   <comment>comment:<br>
+    The desire for possession is insatiable,<br>
+    to such a point that it can survive even love itself.<br>
+    To love, therefore, is to sterilize the person one loves.<br><br>
+
+    Albert Camus   
+   </comment>
+   <p>There is no instinct like that of the heart. Lord Byron
+</p> 
+</body>
+</html>

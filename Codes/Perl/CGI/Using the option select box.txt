@@ -1,0 +1,47 @@
+<HTML>  
+<body>  
+<FORM METHOD="POST" ACTION="index.cgi">  
+  
+<H2>Option</H2>  
+<p>  
+ 
+<SELECT NAME="pro" SIZE=4>  
+<OPTION>Pro1
+<OPTION>Pro2
+<OPTION>Pro3
+<OPTION>Pro4
+</SELECT>  
+<p>  
+  
+Option:  
+<SELECT NAME="wing" SIZE=1>  
+<OPTION>wing1 
+<OPTION>wing2
+</SELECT>  
+<p>  
+  
+<INPUT TYPE="submit" VALUE="Specify Candidate">  
+<p>  
+</FORM>  
+  
+</body>  
+</html>
+#!/usr/bin/perl -w
+
+use CGI;  
+
+$form = new CGI;  
+$favor = $form->param('pro');  
+$wing  = $form->param('wing');  
+print $form->header();  
+print $form->start_html(-title=>'Political Candidate',-BGCOLOR=>'white');
+print "<h1>Option</h1>\n";  
+  
+if ($favor eq "") {  
+    print "Is in favor of: nothing<p>\n";  
+} else {  
+    print "Is: $favor<p>\n";  
+}  
+  
+print "and leans to the $wing views.<p>\n";  
+print $form->end_html();  

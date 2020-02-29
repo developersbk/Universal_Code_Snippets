@@ -1,0 +1,7 @@
+    #!/usr/local/bin/perl -w
+
+    my $hashRef = {'Name' => 'Tom', 'Age' => 3, 'Height' => '10 cm'};
+
+    print $hashRef->{'Name'} . "\n";
+    print $hashRef->{'Age'} . "\n";
+    print $hashRef->{'Height'} . "\n";

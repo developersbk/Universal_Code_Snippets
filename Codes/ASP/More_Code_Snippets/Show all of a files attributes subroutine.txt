@@ -1,0 +1,58 @@
+<% 
+Sub ShowFileAtts(strFileName) 
+Dim objFSO , objFile 
+Set objFSO = Server.CreateObject("Scripting.FileSystemObject") 
+Set objFile = objFSO.GetFile(strFileName) 
+If objFile.Attributes = 0 Then 
+Response.Write "No file attributes are set" 
+Else 
+If objFile.Attributes AND 1 Then 
+Response.Write "File is read only<br>" 
+Else 
+Response.Write "File isnt read only<br>" 
+End if 
+If objFile.Attributes AND 2 then 
+Response.Write "File is hidden<br>" 
+Else 
+Response.Write "File is not a hidden type<Br>" 
+End if 
+If objFile.Attributes AND 4 then 
+Response.Write " File is a system type<br>" 
+Else 
+Response.Write "File is not a system type<br>" 
+End If 
+If objFIle.Attributes AND 8 then 
+Response.Write "File is a disk drive volume label<br>" 
+Else 
+response.Write " File is not a disk drive volume label<br>" 
+End If 
+If objFile.Attributes AND 16 Then 
+Response.Write "the file is a directory<br>" 
+Else 
+Response.Write "the file is not a directory<br>" 
+End If 
+If objFile.Attributes AND 32 Then 
+response.Write " the file needs to be archived<br>" 
+Else 
+Response.Write "The file does not need to be archived<br>" 
+End If 
+If objFile.Attributes AND 64 Then 
+Response.Write "the file is a shortcut<br>" 
+Else 
+Response.Write "the file is not a shortcut<br>" 
+End If 
+If objFile.Attributes AND 128 Then 
+Response.Write "the file is a compressed type<br>" 
+Else 
+Response.Write "The file is not compressed<br>" 
+End If 
+End if 
+End Sub 
+%> 
+
+Now call this like this 
+
+
+<% 
+ShowFileAtts Server.MapPath("index.php") 
+%> 

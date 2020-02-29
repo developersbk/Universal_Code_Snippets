@@ -1,0 +1,12 @@
+use Tk;
+$main = MainWindow->new;
+
+$canvas1 = $main->Canvas('-width' => 400,
+    -height => 200
+)->pack;
+
+$canvas1->create ('oval', '50', '50', '160',
+    '160', -fill => 'red');
+
+
+MainLoop;

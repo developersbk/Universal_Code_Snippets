@@ -1,0 +1,83 @@
+
+ Option Explicit
+ Const ForReading = 1
+ Dim TheString  'The String we are looking For
+ Dim g_ShellObj 'Object used For sending text To a message box
+ ''''''''''''''''''''''''''''''''''''''
+ 'change INI File here
+ Const Filespec="\SERVERC$FILENAME.INI"
+ ''''''''''''''''''''''''''''''''''''''
+ Set g_ShellObj = CreateObject("Wscript.Shell")
+ 'Starting Main function
+ ''''''''''''''''''''''''''''''''''''''
+    'Proper use is: ReadFromINI(INI file, Item in brackets, Item we are looking for)
+    TheString=ReadFromINI(Filespec,"PutBracketItemHere","PutItemBeingLookedForHere")
+ ''''''''''''''''''''''''''''''''''''''
+    
+    'This shows what has been found
+    WScript.Echo Now() & " --> Ended **" & TheString & "**" 
+ function ReadFromINI(INIfile,BracketItem,TheItem)
+ Dim fsoIN, Fin                 'Objects For Reading.
+ Dim FoundBracket, FoundTheItem     'Keeps tracks of what we have found so far.
+ Dim CurrStr                        'Last String that was read from the INI file.
+ Dim I                      'Integer used For stepping through CurrStr.
+ Dim StringFound                    'String we are looking for.
+ Dim C                          'Current character While stepping through CurrStr
+ 'Initialize variables
+ FoundBracket=False
+ FoundTheItem=False
+ CurrSTr=""
+ StringFound=""
+    'Create an object and open file For reading.    
+    Set fsoIN = CreateObject("Scripting.FileSystemObject")
+    Set Fin = FsoIN.OpenTextFile(INIfile, ForReading)
+    'Stepping through file line by line To find what we are looking for.
+    Do While Fin.AtEndOfStream <> True
+        CurrStr=Fin.readline
+        if left(CurrStr,1)="[" Then 'Looking For an item in brackets
+            if ucase(mid(CurrSTr,2,len(BracketItem)))=ucase(BracketItem) Then
+                FoundBracket=True
+            Else
+                FoundBracket=False
+            End if
+        Else
+            'Once we are within the right section we start searching For 
+            'the correct item we are looking for.
+            if FoundBracket Then
+                'Compare Each item To the item we are looking for.
+                if ucase(left(CurrSTr,len(TheItem)))=ucase(TheItem) Then
+                    'We found the item! We must find where the equal sign
+                    'is so we don't include it in our result.
+                    I = len(TheItem)+1
+                    Do While I<len(CurrStr)
+                        C = MID(CurrStr,I,1)
+                        if C<>" " And C<>"=" Then
+                            'This is Not the right item but similar name.
+                            'example: We're looking For "TheGreatThing" While
+                            'we found "TheGreatThingy". (Notice the "y")
+                            i=Len(CurrStr)+10
+                        Else
+                            if C="=" Then
+                                'We found the equal sign, we can now create our
+                                'String!
+                                StringFound=Right(CurrStr,Len(CurrStr)-I)
+                                I=Len(CurrStr)
+                                FoundTheItem=True
+                            Else
+                                'Just a space, we got To keep stepping through
+                                'the String until we find that equal sign.
+                                I=I+1
+                            End if
+                        End if
+                    Loop
+                End if
+            End if      
+        End if
+    Loop
+    'Close the file and clear the object.
+    Fin.close
+    Set fsoIN=Nothing
+    'Can't forget To Set the function's variable
+    ReadFromINI=TRIM(StringFound)
+ End function
+ 'Have a nice day!

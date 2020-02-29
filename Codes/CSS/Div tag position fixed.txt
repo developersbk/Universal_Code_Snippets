@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Div Tag Position Fixed</title>
+        <style type='text/css'>
+            html, body {
+                height: 900px;   
+            }
+            div {
+                position: fixed;
+                padding: 12px;
+                border: 1px solid green;
+                opacity: 0.8;
+                background: red;
+            }
+            div#div1 {
+                top: 0;
+                left: 0;   
+            }
+            div#div2 {
+                top: 25px;
+                left: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='div1'>
+             Bitterness imprisons life; love releases it.<br>
+             Bitterness paralyzes life; love empowers it.<br>
+             Bitterness sours life; love sweetens it.<br>
+             Bitterness sickens life; love heals it.<br>
+             Bitterness blinds life; love anoints its eyes.<br><br>
+
+            Harry Emerson Fosdick
+        </div>
+        <div id='div2'>
+            Love is the whole history of a woman's life,<br>
+            it is an episode in man's.<br><br>
+
+            Germaine De Stael
+        </div>
+    </body>
+</html>
+

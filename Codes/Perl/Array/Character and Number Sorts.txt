@@ -1,0 +1,13 @@
+@names = (Tom, Tom, James, Pete, Cindy, Carol);
+@names = sort @names;
+print "@names\n";
+
+@numbers = (12,45,36,14,258,1,2,4,);
+@numbers = sort @numbers;
+print "@numbers\n";
+
+@numbers = sort sortNumbers @numbers;
+print "@numbers\n";
+sub sortNumbers(){
+   $a <=> $b;
+}

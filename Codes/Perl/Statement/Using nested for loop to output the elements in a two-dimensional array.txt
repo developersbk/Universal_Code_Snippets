@@ -1,0 +1,18 @@
+@array = (
+    ["A", "F"],
+    ["B", "E", "G"],
+    ["C", "D"],
+
+);
+
+for $outer (0..$#array) {
+
+    for $inner (0..$#{$array[$outer]}) {
+
+        print $array[$outer][$inner], " ";
+
+    }
+
+    print "\n";
+
+}

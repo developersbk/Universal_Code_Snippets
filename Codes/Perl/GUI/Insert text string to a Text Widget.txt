@@ -1,0 +1,10 @@
+#!/usr/local/bin/perl -w
+use Tk;
+use strict;
+
+my $mw = MainWindow->new;
+my $t = $mw->Text()->pack();
+$t->tagConfigure('bold',  -font => "{Courier New} 24 {bold}");
+$t->insert('end', "This is some normal text\n");
+
+MainLoop;

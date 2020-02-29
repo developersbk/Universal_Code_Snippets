@@ -1,0 +1,33 @@
+<?php
+
+error_reporting(E_ALL);
+
+$num =23;
+
+for( $j = 2; $j <= $num; $j++ )
+{
+for( $k = 2; $k < $j; $k++ )
+{
+if( $j % $k == 0 )
+{
+break;
+}
+
+}
+if( $k == $j )
+echo “Prime Number : “, $j, “
+”;
+}
+
+?>/* 
+Output
+	
+Prime Number : 2
+Prime Number : 3
+Prime Number : 5
+Prime Number : 7
+Prime Number : 11
+Prime Number : 13
+Prime Number : 17
+Prime Number : 19
+Prime Number : 23

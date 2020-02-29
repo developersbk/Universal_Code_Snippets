@@ -1,0 +1,30 @@
+<%
+Private Function MkGraph(ByVal arraytograph, ByVal arrayofnames, _
+             ByVal bordersize, ByVal alignment, _
+             ByVal width, ByVal color, ByVal title)
+    Dim i, tmp
+    tmp = "<TABLE BORDER=" & bordersize & " ALIGN=""" & _
+     alignment & """ WIDTH=""" & width & "%""><TR><TD>" & vbCrLf
+    tmp = tmp & "<CENTER><B>" & title & "</B></CENTER>" & vbCrLf
+    tmp = tmp & "<TABLE WIDTH=""100%"" STYLE=""font-size:7pt;"" " & _
+         "ALIGN=CENTER>" & vbCrLf
+    For i = 0 To UBound( arraytograph )
+        tmp = tmp & "<TR><TD ALIGN=LEFT WIDTH=""5%"" " & _
+            "NOWRAP>" & CStr( arrayofnames( i ) ) & _
+            "</TD><TD ALIGN=CENTER " & _
+            "WIDTH=""5%"" NOWRAP>[ " & _
+            CDbl( arraytograph( i ) ) & " ]</TD><TD WIDTH" & _
+            "=""90%""><SPAN BGCOLOR=""" & color & _
+            """ STYLE=""width:" & _
+            CLng( 2 * (arraytograph( i ) / _
+            UBound( arraytograph ) + 4) ) & _
+            ";background-color:" & color & _
+            ";"" WIDTH=""" & CLng( 2 * (arraytograph( i ) / _
+            UBound( arraytograph ) + 4) ) & _
+            """> </SPAN></TD></TR>" & vbCrLf
+    Next
+    tmp = tmp & "</TABLE>" & vbCrLf
+    tmp = tmp & "</TD></TR></TABLE>" & vbCrLf
+    MkGraph = tmp
+End Function
+%>

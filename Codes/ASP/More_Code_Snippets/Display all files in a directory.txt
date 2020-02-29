@@ -1,0 +1,19 @@
+<% 
+Dim objFSO , objFolder , file 
+Set objFSO = Server.CreateObject("Scripting.FileSystemObject") 
+Set objFolder = objFSO.GetFolder(Server.MapPath("images/")) 
+For Each file in objFolder.SubFolders 
+%> 
+<a href="images/<%= file.Name %>"><%= file.name %></a><br> 
+<% 
+Next 
+%> 
+<% 
+For Each file in objFolder.Files 
+%> 
+<a href="images/<%= file.name %>"><%= file.name %></a><br> 
+<% 
+Next 
+Set objFolder = Nothing 
+Set objFSO = Nothing 
+%> 

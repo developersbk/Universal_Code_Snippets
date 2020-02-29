@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+print<<'eof';
+Content-Type: text/html
+<html>
+<head><title>CGI Environment Variables</title></head>
+<body>
+eof
+foreach $index (keys %ENV){
+   print "$index => $ENV{$index} <br>";
+}
+print<<'eof';
+</body>
+</html>
+eof

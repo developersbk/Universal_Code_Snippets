@@ -1,0 +1,27 @@
+#!/usr/local/bin/perl
+
+%priceList = (
+    "A"=>2.2,
+    "B"=>3.1,
+    "C"=>4.0,
+    "D"=>5.1,
+    "E"=>6.7,
+    "F"=>7.6,
+
+);
+
+@keyList = keys %priceList;
+print "@keyList";
+
+foreach $index (keys(%myPriceList)){
+   print "The price of item $key is $priceList{$index}\n";
+}
+
+print "\n\n";
+foreach $key (@keyList){
+   print "The price of item $key is $priceList{$key}\n";
+}
+
+@valueList = values %priceList;
+print "\n";
+print "@valueList";

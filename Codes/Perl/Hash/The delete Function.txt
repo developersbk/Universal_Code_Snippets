@@ -1,0 +1,14 @@
+Format: delete $ASSOC_ARRAY{KEY}
+
+#!/usr/bin/perl
+%employees=(
+            "Tester" => "Joe",
+            "Coder" => "Teddy",
+            "Clerk" => "Tom",
+           );
+$layoff=delete $employees{"Colder"};
+print "We had to let $layoff go.\n";
+
+while(($key, $value)=each(%employees)){
+    print "$key: $value\n";
+}

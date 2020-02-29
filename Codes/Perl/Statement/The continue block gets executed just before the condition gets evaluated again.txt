@@ -1,0 +1,17 @@
+#while (condition) {
+#  # ...
+#} continue {
+#  # ..
+#}
+
+
+#!/usr/bin/perl -w
+
+$i = 0;
+
+while ($i < 10) {
+   print "Iteration $i.\n";
+
+} continue {
+   $i++;
+}

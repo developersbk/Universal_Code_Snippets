@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>display width height padding border margin background overflow and visibility</title>
+<style type="text/css">
+* .box {
+  display: static;
+  overflow: visible;
+  visibility: visible;
+  width: 200px;
+  height: 120px;
+  padding: 40px;
+  border-top: 40px solid blue;
+  border-bottom: 40px solid black;
+  border-left: 40px solid black;
+  border-right: 40px solid red;
+  margin-left: 300px;
+  margin-top: 100px;
+  background-color: pink;
+}
+</style>
+</head>
+<body>
+
+
+<h1>Box Model</h1> 
+
+<div class="box">A kiss is a lovely trick designed by nature to stop speech<br>
+                 when words become superfluous.<br><br>
+
+                 Ingrid Bergman
+</div> 
+
+</body> 
+</html>

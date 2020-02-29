@@ -1,0 +1,38 @@
+use HTTP::Request::Common; 
+use LWP::UserAgent;
+$user_agent = LWP::UserAgent->new;
+$request = POST 'http://www.yourserver.com/cgireader.cgi',[text1 => 'Hello', text2 => 'there'];
+$response = $user_agent->request($request);
+print $response->as_string;
+
+
+
+
+#File: cgireader.cgi
+
+#!/usr/local/bin/perl
+
+use CGI;                             
+
+$co = new CGI;                        
+print $co->header,                    
+
+$co->start_html(
+    -title=>'CGI Example', 
+    -author=>'yourName', 
+    -BGCOLOR=>'white', 
+    -LINK=>'red'
+);
+
+if ($co->param()) {
+    print 
+        "You entered this text: ", 
+        $co->em($co->param('text1')), 
+        " ",
+        $co->em($co->param('text2')), 
+        ".";
+} else {
+    print "Sorry, I did not see any text.";
+}
+
+print $co->end_html;

@@ -1,0 +1,8 @@
+use warnings;
+use strict;
+
+print "Content-type: text/html\n\n";
+print "<html><head><title>Current date and time</title>";
+print "</head>\n<body>";
+print scalar( localtime() );
+print "</body></html>";

@@ -1,0 +1,16 @@
+<?php
+	
+	$arr = array(10,20,30);
+	
+    // to display array using print_r()
+	
+    print_r($arr);
+    
+    // to display array using foreach()
+    
+    foreach($arr as $v)
+    {
+    	echo "<br>".$v;
+    }
+	
+?>

@@ -1,0 +1,105 @@
+#Greedy Matches!
+
+$p="pattern";
+#A greedy match matches the entire pattern
+$p =~ /(.*)/;
+
+print "1==>$1<==\n";
+
+   
+    
+   #Greedy and non-greedy quantifiers!
+ 
+#!usr/bin/perl
+
+
+use strict;
+use warnings;
+
+my $string1 = "there  here  There  here there Here";
+my $string2 = $string1;
+
+print "$string1\n";
+$string1 =~ s/N.*here\.//;
+print "$string1\n";
+print "$string2\n";
+$string2 =~ s/N.*?here\.//;
+print "$string2\n\n";
+
+   
+    
+    
+  #Greedy searches!  
+
+greedy means that each pattern will try to match as much as it can. 
+The pattern /a.*a/ matches as many characters as possible between the first a and the last a. 
+If your text string is ababacdea, /a.*a/ will match the whole string.
+You can control the greediness using a question mark. 
+The question mark matches a minimum number of times. 
+The following table shows how to minimize the greediness. 
+
+Syntax         Means
+*?             Match zero or more times, minimal number of times
++?             Match one or more times, minimal number of times
+??             Match zero or one time, minimal number of times
+{num}?         Match exactly num times, minimal number of times
+{num,}?        Match at least num times, minimal number of times
+{num,max}?     Match at least num but not more than max times, minimal number of times
+
+   
+    
+    #The Greedy Metacharacters!
+
+Metacharacter   What It Matches
+x?              Matches 0 or 1 occurrences of x
+(xyz)?          Matches 0 or 1 occurrences of pattern xyz
+x*              Matches 0 or more occurrences of x
+(xyz)*          Matches 0 or more occurrences of pattern xyz
+x+              Matches 1 or more occurrences of x
+(xyz)+          Matches 1 or more occurrences of pattern xyz
+x{m,n}          Matches at least m occurrences of x and no more than n occurrences of x
+
+   
+    
+   #The greedy quantifier!
+
+$string="ABCdefghiCxyzwerC YOU!";
+$string=~s/.*C/HEY/;
+print "$string", "\n";
+
+   
+    
+    
+    #Turning Off Greediness!
+
+    
+Metacharacter   What It Matches
+x??             Matches 0 or 1 occurrences of x
+(xyz)??         Matches 0 or 1 occurrences of pattern xyz
+x*?             Matches 0 or more occurrences of x
+(xyz)*?         Matches 0 or more occurrences of pattern xyz
+x+?             Matches 1 or more occurrences of x
+(xyz)+?         Matches 1 or more occurrences of pattern xyz
+x{m,n}?         Matches at least m occurrences of x and no more than n occurrences of x
+x{m}?           Matches at least m occurrences of x
+x{m,}?          Matches at least m times
+
+   
+    
+    
+    
+  
+
+    
+  
+ 
+    
+  
+
+    
+  
+  
+  
+ 
+    
+  

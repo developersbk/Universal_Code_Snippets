@@ -1,0 +1,8 @@
+
+open FILEHANDLE, "<file.txt" or die "Can not open file";
+
+*FILEHANDLE2 = *FILEHANDLE;
+
+while (<FILEHANDLE2>) {
+    print;
+}

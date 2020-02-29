@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Balloontip With A Picture</title>
+<style type="text/css">
+blockquote {
+ width: 300px;
+}
+blockquote p {
+ background: url(http://www.lovelylovesayings.com/images/Notebook-romantic-kiss-and-rain.jpg);
+ background-repeat: no-repeat;
+ background-position: bottom;
+ padding-bottom: 24px;
+}
+blockquote p span {
+ display: block;
+ padding:  2px 2px 2px 2px;
+ border: 1pt solid pink;
+ border-bottom-width: 0;        
+ font-size: 16px;
+ font-family: Verdana, sans-serif;
+ line-height: 2px;
+}
+cite {
+ text-align: right;
+ display: block;
+ width: 300px;
+}
+</style>
+</head>
+<body>
+
+  <blockquote>
+   <p>
+    <span>
+      Love is always open arms.<br>
+      If you close your arms about love,<br>
+      you will find that you are left holding only yourself.<br>
+    </span>
+   </p>
+   <cite>Leo Buscaglia</cite>
+  </blockquote>
+
+</body>
+</html>

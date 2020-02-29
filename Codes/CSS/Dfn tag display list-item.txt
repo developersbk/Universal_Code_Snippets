@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Dfn Tag Display List-item</title>
+<style type="text/css">
+dfn {
+  display: list-item;
+  list-style-type: square;
+}
+
+</style>
+</head>
+<body>
+
+<div class="ul"><dfn>dfn tag<code>j++ clear; fileopen();</code></dfn><dfn>dfn tag</dfn></div> 
+
+</body> 
+</html>

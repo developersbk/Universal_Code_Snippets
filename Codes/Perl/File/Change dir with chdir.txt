@@ -1,0 +1,9 @@
+
+#! /usr/local/bin/perl
+use Cwd;
+$dir = cwd;
+print "dir=> $dir\n";
+chdir ('D:\\mydir');
+$dir = cwd;
+
+   

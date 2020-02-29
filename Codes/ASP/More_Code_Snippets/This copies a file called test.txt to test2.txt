@@ -1,0 +1,9 @@
+<%
+Dim objFSO, objFile
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+Set objFile = objFSO.CreateTextFile("d:\test.txt", True)
+objFile.WriteLine("This is a test.")
+objFile.Close
+Set objFile = objFSO.GetFile("d:\test.txt")
+objFile.Copy ("d:\test2.txt")
+%>

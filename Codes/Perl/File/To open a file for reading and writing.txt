@@ -1,0 +1,2 @@
+open(FH, "+<filename");    # Opens "filename" for read, then write.
+open(FH, "+>filename");    # Opens "filename" for write, then read.

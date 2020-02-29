@@ -1,0 +1,16 @@
+#!/usr/bin/perl -w
+use Win32::Shortcut;
+
+$ApplicationName = 'c:/winnt/system32/notepad.exe';
+$BaseName        = 'Notepad';
+
+$lnk = new Win32::Shortcut();
+
+$lnk->{'Path'} = $ApplicationName;
+$lnk->{'Arguments'} = "";
+$lnk->{'WorkingDirectory'} = ".";
+$lnk->{'Description'} = "Launches application";
+$lnk->{'ShowCmd'} = SW_SHOWNORMAL;
+
+$lnk->Save( $BaseName . ".lnk" );
+$lnk->Close();

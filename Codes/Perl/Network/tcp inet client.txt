@@ -1,0 +1,26 @@
+#!/usr/bin/perl 
+
+use warnings;
+use strict;
+
+use Socket;
+
+my $proto = getprotobyname('tcp');
+my $host = inet_aton('localhost');
+my $port = 4444;
+
+my $servaddr = sockaddr_in($port, $host);
+
+socket SERVER, PF_INET, SOCK_STREAM, $proto or die "Unable to create socket: $!";
+
+connect SERVER, $servaddr or die "Unable to connect: $!";
+
+select SERVER; $| = 1; select STDOUT;
+
+print "Client connected.\n";
+print "Server says: ", scalar(<SERVER>);
+print SERVER "Hello from the client!\n";
+print "Server says: ", scalar(<SERVER>);
+print SERVER "And goodbye!\n";
+print "Server says: ", scalar(<SERVER>);
+close SERVER;

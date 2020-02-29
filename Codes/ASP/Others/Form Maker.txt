@@ -1,0 +1,164 @@
+<HTML>
+<HEAD>
+<title>Online Form Maker</title>
+
+<script>
+window.windowname= "Add Form Page"
+orpage= window.windowname
+Function startForm(form) {
+nname= form.fname.value;
+nname= ((nname== "") ? nname= "" : nname= " NAME=" + nname);
+ntarget= form.ftarget.value;
+ntarget= ((ntarget== "") ? ntarget= "" : ntarget= " TARGET=" + ntarget);
+nenctype= form.fenctype.value;
+nenctype= ((nenctype== "") ? nenctype= "" : nenctype= " ENCTYPE=" + nenctype);
+whtml= form.HTML.value;
+mymethods= form.chosenmethod.selectedIndex;
+mymethodsarray= New Array();
+mymethodsarray[0] = "";
+mymethodsarray[1] = "GET";
+mymethodsarray[2] = "POST";
+mymethod= mymethodsarray[mymethods];
+mymethod= ((mymethod== "") ? mymethod= "" : mymethod= " METHOD=" + mymethod);
+myaction= form.chosenaction.value;
+myaction= ((myaction== "") ? myaction= "" : myaction= " METHOD="" + myaction + """);
+nhtml= whtml + "
+ <FORM" + nname + myaction + mymethod + ntarget + nenctype + ">";
+form.HTML.value = nhtml;
+}
+Function endForm(form) {
+whtml= form.HTML.value;
+nhtml= whtml + "
+ </FORM>";
+form.HTML.value = nhtml;
+}
+Function newItem(textarea, form) {
+addbre= (form.addbr.checked== True) ? addbre=form.addbr.value : addbre= "";
+crows= form.chooserows.value;
+ccols= form.choosecols.value;
+crows= ((crows== "") ? crows= "" : crows= " ROWS=" + crows);
+ccols= ((ccols== "") ? ccols= "" : ccols= " COLS=" + ccols);
+ntoit= form.choosevalue.value;
+cname= form.choosename.value;
+cname= ((cname== "") ? cname= "" : cname= " NAME="" + cname + """);
+ctype= form.choosetype.selectedIndex;
+ctypearray= New Array();
+ctypearray[0] = "text";
+ctypearray[1] = "radio";
+ctypearray[2] = "checkbox";
+ctypearray[3] = "button";
+ctypearray[4] = "hidden";
+ctypearray[5] = "reset";
+ctypearray[6] = "submit";
+ctypearray[7] = "password";
+ntoit= ((0 < ctype) ? ntoit= ntoit : ntoit= "");
+ntoit= ((ctype > 2) ? ntoit= "" : ntoit= ntoit);
+check= form.checks.value
+checktf= form.checks.checked
+check= ((ctype== 2) | (ctype== 1) ? check= check : check= "")
+check= (checktf== True) ? check= check : check= "";
+cvalue= form.choosevalue.value;
+cvalue= ((cvalue== "") ? cvalue= "" : cvalue= " VALUE="" + cvalue + """);
+csize= form.choosesize.value;
+csize= ((ctype== 7) | (ctype== 0) ? csize= csize : csize= "")
+csize= ((csize== "") ? csize= "" : csize= " SIZE=" + csize);
+clength= form.chooselength.value;
+clength= ((clength== "") ? clength= "" : clength= " MAXLENGTH=" + clength);
+clength= ((ctype > 0) ? clength="" : clength= clength);
+whtml= form.HTML.value;
+ctype= " TYPE="" + ctypearray[ctype] + """;
+nhtml= whtml + "
+ <INPUT" + check + cname + ctype + cvalue + csize + clength + ">" + ntoit + addbre;
+txtdsply= "Default Text"
+nwhtml= whtml + "
+ <TEXTAREA" + cname + crows + ccols + ">" + txtdsply + "</TEXTAREA>" + addbre;
+nhtml= ((textarea== 8) ? nhtml= nwhtml : nhtml= nhtml);
+form.HTML.value = nhtml;
+}
+Function genNewPage(form) {
+header= "<HTML>
+<HEAD>
+<TITLE>Generated Form</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="white">";
+newhtml= form.HTML.value;
+footer= "</BODY>
+</HTML>";
+newpage= header + "
+
+" + newhtml + "
+
+" + footer;
+preWin= Open("", "Preview", "width=400,height=400,status=no,toolbar=no,menubar=no");
+preWin.document.open();
+preWin.document.write(newpage);
+preWin.document.close();
+}
+</script>
+
+<base target="leftframe">
+</HEAD>
+<BODY>
+<TABLE WIDTH="100%" HEIGHT="40" BORDER="0" BGCOLOR="#FFFFFF" BORDERCOLOR="#FFFFFF">
+<TR>
+    <TD><FONT SIZE=3 COLOR=Blue FACE="Arial,Helvetica,Times New Roman"><CENTER><STRONG>FORM MAKER</STRONG></CENTER></FONT>
+<BR>
+<CENTER><table WIDTH="96%" BORDER="0" CELLSPACING="5" CELLPADDING="5">
+<tr>
+<td WIDTH="100%"><FONT SIZE=2 FACE="Arial,Helvetica,Times New Roman"><STRONG><CENTER>Make your own feedback form With FormMaker:</CENTER></STRONG></FONT> <font
+FACE="ARIEL,HELVETICA, TIMES NEW ROMAN" SIZE="-1"><form NAME="addform">
+<p>Form options:</p>
+<p>Name: <Input NAME="fname" Type="text" size="20"><br>
+Action: <Input Type="text" NAME="chosenaction" size="20"><br>
+Method: <Select NAME="chosenmethod" SIZE="1">
+<Option SELECTED>none </Option>
+<Option>Get </Option>
+<Option>POST </Option>
+</Select><br>
+Target: <Input NAME="ftarget" Type="text" VALUE="code" size="20"><br>
+Enctype: <Input NAME="fenctype" Type="text" size="20"><br>
+</p>
+<p><Input VALUE="Start Form" Type="button" NAME="start"
+onClick="startForm(document.addform)"> <Input VALUE="End Form" Type="button" NAME="end"
+onClick="endForm(document.addform)"></p>
+<p>Description of form item To add:</p>
+<p>Type:<Select NAME="choosetype" SIZE="1">
+<Option SELECTED>Text Field </Option>
+<Option>Radio Button </Option>
+<Option>Check Box </Option>
+<Option>Button </Option>
+<Option>Hidden </Option>
+<Option>Reset </Option>
+<Option>Submit </Option>
+<Option>Password </Option>
+<Option>Text Area </Option>
+</Select><br>
+Value:<Input NAME="choosevalue" Type="text" VALUE size="20"><br>
+Name:<Input NAME="choosename" Type="text" VALUE size="20"><br>
+Size:<Input NAME="choosesize" Type="text" VALUE size="20"><br>
+Maximum Length:<Input NAME="chooselength" Type="text" VALUE size="20"><br>
+Rows:<Input NAME="chooserows" Type="text" VALUE size="20"><br>
+Columns:<Input NAME="choosecols" Type="text" VALUE size="20"><br>
+<Input NAME="addbr" Type="checkbox" VALUE="<BR>">Add <BR> tag after form item?<br>
+<Input NAME="checks" Type="checkbox" VALUE=" CHECKED">Is checkbox/radio button checked?</p>
+<p><Input VALUE="Add Item" Type="button" NAME="additem"
+onClick="newItem(document.addform.choosetype.selectedIndex,document.addform)"></p>
+<p>HTML:<br>
+<textarea NAME="HTML" ROWS="10" COLS="45"></textarea></p>
+<p><Input VALUE="Reset" Type="reset" NAME="reset"> <Input VALUE="Preview" Type="button"
+NAME="preview" onClick="genNewPage(document.addform)"> </font></p>
+</form>
+</td>
+</tr>
+</table></CENTER>
+<!--content stop-->
+<BR><BR>
+    
+</TD>
+</TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

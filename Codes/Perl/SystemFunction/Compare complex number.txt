@@ -1,0 +1,7 @@
+use Math::Complex;
+
+$c1 = Math::Complex->new(1,1);
+
+$c2 = Math::Complex->new(2,2);
+
+print "$c2 > $c1" if $c2 > $c1;

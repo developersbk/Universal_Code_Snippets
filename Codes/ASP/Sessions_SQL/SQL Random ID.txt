@@ -1,0 +1,47 @@
+Function SQLRandomIDs(proc, params, fname, count)
+Dim i, rs, records, reccount, normalized
+
+On Error Resume Next
+
+PushError
+
+SQLRandomIDs = Null
+
+Set rs = iOpen(proc, params)
+If CheckPopError Then
+Exit Function
+End If
+
+If rs.EOF Then
+rs.Close
+Set rs = Nothing
+Exit Function
+End If
+
+records = rs.GetRows(adGetRowsRest, , fname)
+If CheckPopError Then
+Exit Function
+End If
+rs.Close
+Set rs = Nothing
+
+reccount = UBound(records, 2) - LBound(records, 2) + 1
+If IsNull(count) Or IsEmpty(count) Then
+count = reccount
+ElseIf (count < 0) Then
+count = reccount
+End If 
+
+If (reccount >= count) Then
+normalized = RandomArray(count, LBound(records, 2), UBound(records, 2))
+For i = LBound(normalized) To UBound(normalized)
+normalized(i) = records(0, normalized(i))
+Next
+Else
+normalized = RandomArray(reccount, LBound(records, 2), UBound(records, 2))
+For i = LBound(normalized) To UBound(normalized)
+normalized(i) = records(0, normalized(i))
+Next
+End If
+SQLRandomIDs = normalized
+End Function

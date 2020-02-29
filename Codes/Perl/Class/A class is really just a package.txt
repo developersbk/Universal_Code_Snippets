@@ -1,0 +1,9 @@
+#!/bin/perl
+package main;
+
+$name = "Tom";
+my $birthyear = 1942;
+
+package nosy;
+print "$main::name.\n";
+print "$main::birthyear?\n";

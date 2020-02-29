@@ -1,0 +1,25 @@
+#!/usr/local/bin/perl
+
+use CGI;                             
+
+$co = new CGI;                        
+
+print $co->start_form
+(
+    -method=>'POST', 
+    -action=>"http://www.yourserver.com/user/cgi/cgi2.cgi"
+),
+
+$co->textarea
+(
+    -name=>'textarea', 
+    -value=>'Hello!', 
+    -rows=>10, 
+    -columns=>60
+), 
+
+$co->submit('Submit'),  
+
+$co->reset,
+
+$co->end_form;

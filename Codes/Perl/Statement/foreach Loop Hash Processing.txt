@@ -1,0 +1,9 @@
+#!/usr/local/bin/perl
+print " SORTED INDEXES OF THE HASH %ENV \n";
+foreach $key (sort (keys %ENV)){
+   print "key = $key and retrieves: $ENV{$key}\n";
+}
+print "\n  SORTED VALUES OF THE HASH %ENV \n";
+foreach $value (sort (values %ENV)){
+  print "value = $value}\n";
+}

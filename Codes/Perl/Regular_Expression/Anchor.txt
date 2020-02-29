@@ -1,0 +1,312 @@
+# The ^ and $ Pattern Anchors!
+^ and $ matches only at the beginning or the end of a string. 
+
+/^def/ matches def only if these are the first three characters in the string. 
+/def$/ matches def only if these are the last three characters in the string. 
+
+combine ^ and $ to force matching of the entire string. 
+/^def$/ matches only if the string is def. 
+
+
+
+
+
+# Check beginning!
+
+#!/usr/bin/perl -w
+
+foreach $patt (@ARGV) {
+
+
+    # Check beginning.
+    if ($patt =~ /^perl/) {
+        print "\tFound perl at start in \"$patt\".\n";
+    }
+}
+
+
+
+
+#Check beginning and end!
+
+#!/usr/bin/perl -w
+
+foreach $patt (@ARGV) {
+
+
+    # Check beginning and end.
+    if ($patt =~ /^perl$/) {
+        print "\tFound only perl in \"$patt\".\n";
+    }
+
+}
+
+
+
+
+#Check end!
+
+#!/usr/bin/perl -w
+
+foreach $patt (@ARGV) {
+
+    
+    # Check end.
+    if ($patt =~ /perl$/) {
+        print "\tFound perl at end in \"$patt\".\n";
+    }
+}
+
+
+
+
+
+#End of line anchor!
+
+while(<DATA>){
+    print if /10$/;
+}
+__DATA__
+    1.10
+    .5
+    555.10
+    4.01
+    .501
+    601
+
+
+
+
+
+
+    #A negative look ahead!
+
+while(<DATA>){
+   print if/^\w+\s(?![BC])/;
+}
+__DATA__
+    ABC
+    CBC
+
+
+
+
+    #A negative look behind!
+
+while(<DATA>){
+    print if /(?<!B) B[a-z]*/;
+}
+__DATA__
+    Betty
+    CBC
+    ABC
+
+
+
+
+    #A positive look ahead!   
+
+$string="I love chocolate.";
+$string =~ s/chocolate(?= ice)/vanilla/;
+print "$string\n";
+
+$string="this is a test.";
+$string =~ s/this(?=is)/test/g;
+print "$string\n";
+
+
+
+
+
+#A positive look behind!
+
+$string="chocolate/cake/milk/ice cream.";
+$string =~ s/(?<= chocolate) milk/ candy/;
+print "$string\n";
+
+$string="this is a test.";
+$string =~ s/(?<=a test) is/ is not/;
+print "$string\n";
+
+   
+    
+    
+ #Anchoring Metacharacters!    
+
+Metacharacter   What It Matches
+^               Matches to beginning of line or beginning of string
+$               Matches to end of line or end of a string
+\A              Matches the beginning of the string only
+\Z              Matches the end of the string or line
+\z              Matches the end of string only
+\G              Matches where previous m//g left off
+\b              Matches a word boundary (when not inside [ ])
+\B              Matches a nonword boundary
+
+   
+    
+    
+  #Beginning of line anchor!
+    
+while(<DATA>){
+
+   print if /^[JK]/;
+}
+__DATA__
+    Mark 
+    Mary
+    Jack
+    Kate
+
+
+
+
+   #Clustering and anchors!
+
+while(<DATA>){
+    # print if /^A|B/;
+    print if /^(S|B)/;
+}
+__DATA__
+    S B
+    B B
+    A C
+    N C
+    J D
+    K E
+
+   
+  
+
+
+  #Beginning and end of word anchors!
+
+while(<DATA>){
+   print if /\bJon\b/;
+}
+__DATA__
+    Jonathan 
+    Jason
+    Mary
+    Mark
+
+   
+    
+ #Get begin of the line!
+
+$_ = "This text\nhas multiple lines.";
+s/^/BOL/g;
+s/$/EOL/g;
+print;
+
+   
+    
+    
+#Searching from the beginning and the end!
+
+You can search for a pattern at a specified location, such as the beginning or end of the string.
+
+Pattern     Interpretation
+/^a/        Match against a only at beginning of string.
+/a$/        Match against a only at end of string.
+/a\b/       Match a at end of word.
+/a\B/       Match a not at end of word.
+
+
+
+/$a/ means to match the value of $a.
+/a$/ matches against an a at the end of the string. 
+/$a$/ matches against the value of the variable $a at the end of the string.
+The ^ character acts differently depending on whether it is inside a square bracket or not. 
+/^a/ looks for a at the start of the string. 
+/[^a]/ will return true if there is any character other than a anywhere in the word. 
+
+   
+    
+    
+ #Shouldn't start a sentence with a period!
+
+$line = ".Hello!";
+
+if ($line =~ m/\A\./) {
+    print "Shouldn't start a sentence with a period!";
+}
+
+   
+    
+    
+ #Word-Boundary Pattern Anchors!
+
+\b and \B, specify whether a matched pattern must be on a word boundary or inside a word boundary. 
+The \b pattern anchor specifies that the pattern must be on a word boundary. 
+
+/\bdef/ matches only if def is the beginning of a word. 
+
+\b to indicate the end of a word. 
+/def\b/ matches def and abcdef
+
+/\bdef\b/ matches only the word def. 
+
+   
+    
+    
+    
+  
+   
+  
+   
+  
+    
+  
+   
+    
+  
+  
+    
+  
+
+
+   
+    
+    
+    
+  
+  
+  
+   
+  
+
+   
+    
+    
+    
+  
+
+
+   
+    
+    
+    
+  
+
+
+   
+    
+    
+    
+  
+
+
+   
+    
+    
+    
+  
+
+
+   
+    
+    
+    
+  
+

@@ -1,0 +1,30 @@
+use XML::Parser;
+
+$parser = new XML::Parser(Handlers => {Start => \&start_handler, Char  => \&char_handler});
+          
+$parser->parsefile("yourXML.xml");
+  
+$customer = 0;
+$data_ok = 0;
+
+sub start_handler
+{
+    $data_ok = 0;
+
+    if ($_[1] eq "tagName"){
+        $customer++;
+    }
+
+    if ($customer == 2){
+        if($_[1] eq "tagName2"){
+            $data_ok++;
+        }
+    }
+}
+
+sub char_handler
+{
+    if(($_[1] =~ /[^ \n\t\r]/g) && $data_ok){
+        print "First name: $_[1]\n";
+    }
+}

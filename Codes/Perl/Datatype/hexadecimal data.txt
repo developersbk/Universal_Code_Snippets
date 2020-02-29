@@ -1,0 +1,1 @@
+  $binaryData = "\x0B\0F\xAC\xBC"             # hexadecimal data. 'hello' in ascii 

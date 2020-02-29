@@ -1,0 +1,11 @@
+<% 
+Dim intNumber1 , intNumber2 
+'our two numbers 
+intNumber1 = 22 
+intNumber2 = 65 
+'convert them both 
+Response.Write "The octal of " & intNumber1 & " is " & Oct(intNumber1) & "<br>" 
+Response.Write "The octal of " & intNumber2 & " is " & Oct(intNumber2) & "<br>" 
+Response.Write "The hexadecimal of " & intNumber1 & " is " & Hex(intNumber1) & "<br>" 
+Response.Write "The hexadecimal of " & intNumber2 & " is " & Hex(intNumber2) & "<br>" 
+%> 

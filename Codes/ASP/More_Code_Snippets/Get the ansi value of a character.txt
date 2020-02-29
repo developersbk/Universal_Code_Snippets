@@ -1,0 +1,8 @@
+
+<% 
+Dim strChar1 , strChar2 
+strChar1 = "a" 
+strChar2 = "A" 
+Response.Write "The ansi value of a is " & Asc(strChar1) & "<br>" 
+Response.Write "The ansi value of A is " & Asc(strChar2) & "<br>" 
+%>

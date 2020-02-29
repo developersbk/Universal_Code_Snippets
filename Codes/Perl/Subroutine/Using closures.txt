@@ -1,0 +1,11 @@
+#!/usr/bin/perl 
+sub errorMsg { 
+    my $lvl = shift; 
+    
+    return sub { 
+        my $msg = shift; 
+        print "Err Level $lvl:$msg\n";
+    };
+} 
+$severe = errorMsg("Severe"); 
+&$severe("Divide by zero"); 

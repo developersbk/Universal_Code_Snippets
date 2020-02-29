@@ -1,0 +1,10 @@
+<% 
+'the string to check 
+strText = "This is our sample text for this example" 
+'split the strText 
+arrText = Split(strText ," ") 
+'store the amount of words into intWords 
+intWords = Ubound(arrText ) 
+'display how many words are in the sentence 
+Response.Write "There are " & intWords & " words in " & strText 
+%>

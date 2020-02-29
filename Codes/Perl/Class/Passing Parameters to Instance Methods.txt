@@ -1,0 +1,28 @@
+# Module: House.pm
+#!/bin/perl
+package House;
+
+sub new{
+    my $class = shift;
+    my ($owner, $salary, $style) = @_;
+    my $ref={ "Owner"=>$name,
+              "Price"=>$salary,
+              "Style"=>$style,
+            };
+    return bless($ref, $class);
+}
+sub display {           
+    my $self = shift;   
+    foreach $key ( @_){
+       print "$key: $self->{$key}\n";
+    }
+}
+1;
+
+
+
+# main.pl
+#!/bin/perl
+use House;
+my $house = House->new("A", 2, "House");
+$house->display ("Owner", "Style");

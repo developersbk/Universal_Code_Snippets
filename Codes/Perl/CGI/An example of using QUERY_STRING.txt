@@ -1,0 +1,27 @@
+# Name this Perl script file as test.pl
+
+use warnings;
+use strict;
+use CGI qw( :standard );
+
+my $query = $ENV{ "QUERY_STRING" };
+
+print header(), start_html( "QUERY_STRING example" );
+print h2( "Name/Value Pairs" );
+
+if ( $query eq "" ) {
+   print 'Please add some name-value pairs to the URL above. ';
+   print 'Or try <a href = "test.pl?name=Joe&age=29">this</a>.';
+}
+else {
+   print i( "The query string is '$query'." ), br();
+
+   my @pairs = split ( "&", $query );
+
+   foreach my $pair ( @pairs ) {
+      my ( $name, $value ) = split ( "=", $pair );
+      print "You set '$name' to value '$value'.", br();
+   }
+}
+
+print end_html();

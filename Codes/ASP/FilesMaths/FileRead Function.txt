@@ -1,0 +1,18 @@
+<%
+Private Function FileRead(ByVal pathname)
+    Dim objFSO, objFile, tmp
+    On Error Resume Next
+    Set objFSO = Server.CreateObject("Scripting.FileSystemObject")
+    Set objFile = objFSO.OpenTextFile(pathname, 1, False)
+    tmp = objFile.ReadAll
+    If Err Then
+        FileRead = Null
+    Else
+        FileRead = tmp
+    End If
+    objFile.Close
+    Set objFile = Nothing
+    Set objFSO = Nothing
+    On Error GoTo 0
+End Function
+%>

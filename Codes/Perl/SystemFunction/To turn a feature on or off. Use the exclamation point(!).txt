@@ -1,0 +1,13 @@
+#Getopt::Long::GetOptions('print_header!' => \$print_header); 
+
+#This option sets up --print_header or --noprint_header to turn off the option.
+
+#!/usr/bin/perl -w
+
+use Getopt::Long;
+
+Getopt::Long::GetOptions('print_header!'   => \$print_header);
+
+if ( defined( $print_header ) ) {
+    print "print_header flag set to $print_header\n";
+}

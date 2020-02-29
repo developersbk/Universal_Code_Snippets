@@ -1,0 +1,9 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my $money = 105.6;
+
+print "49518 money is ", (49_518/$money), " dollars\n";
+print "360 money is   ", (   360/$money), " dollars\n";
+print "30510 money is ", (30_510/$money), " dollars\n";

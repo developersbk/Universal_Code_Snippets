@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my @array = qw( A B C D E );
+
+
+my $arrayReference = \@array;
+
+sub returnReference
+{
+   return \@array;
+}
+
+
+print( "\${returnReference()}[ 1 ] = ${returnReference()}[ 1 ]\n\n" );

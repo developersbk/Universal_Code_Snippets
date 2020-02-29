@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Background Attachment</title>
+</head>
+<body>
+<div style="background:blue url(http://www.lovelylovesayings.com/images/A-Red-Rose.jpg) repeat top left; 
+            width:1000; 
+            border:3; 
+            height:450; font-size:16">
+
+            To fall in love is to create a religion that has a fallible god.<br><br>
+
+            Jorge Luis Borges
+            </div>
+            <br><br><br><br>
+<div style="background-color:pink; 
+            background-attachment:fixed; 
+            background-image:url(http://www.lovelylovesayings.com/images/A-Red-Rose.jpg); 
+            background-repeat:repeat; 
+            background-position-x:top; 
+            background-position-y:left; 
+            width:1000; 
+            border:3; 
+            height:450; 
+            font-size:16">
+
+            background-attachment is fixed.<br><br>
+
+            My love, you know you are my best friend.<br>
+            You know that I'd do anything for you<br>
+            And my love, let nothing come between us.<br>
+            My love for you is strong and true.<br><br>
+
+            Sarah McLachlan 
+
+            </div>
+</body>
+</html>

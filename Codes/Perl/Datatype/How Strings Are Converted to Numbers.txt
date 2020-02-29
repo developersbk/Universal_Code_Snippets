@@ -1,0 +1,8 @@
+String           Converts to Number
+"123 abc"        123
+"hi"             0
+"4e3"            4000
+"-6**3xyz"       -6
+" .456!"         0.456
+"x.1234"         0
+"0xf"            0

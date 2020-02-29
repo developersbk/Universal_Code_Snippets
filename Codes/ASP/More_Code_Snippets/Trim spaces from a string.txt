@@ -1,0 +1,12 @@
+<% 
+'our text 
+strText = " myname " 
+'display the normal text 
+Response.Write "Hello" & strText & "how are you<br>" 
+'remove left spaces 
+Response.Write "Hello" & ltrim(strText) & "how are you<br>" 
+'remove right spaces 
+Response.Write "Hello" & rtrim(strText) & "how are you<br>" 
+'remove left and right spaces 
+Response.Write "Hello" & trim(strText) & "how are you<br>" 
+%>

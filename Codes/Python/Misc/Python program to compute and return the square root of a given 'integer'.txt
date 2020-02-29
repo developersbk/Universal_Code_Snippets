@@ -1,0 +1,15 @@
+def my_sqrt(x):  
+   if x<2: return x  
+   left=1  
+   right=int(x/2)+1  
+   while left<=right:  
+            mid=int((left+right)/2)  
+            if mid*mid==x:  
+                return mid  
+            if mid*mid>x:  
+                right=mid-1  
+            else:  
+                left=mid+1  
+   return right  
+  
+print(my_sqrt(16)) 

@@ -1,0 +1,15 @@
+Operator     Example         Meaning
+=            $var = 5;       Assign 5 to $var
++=           $var += 3;      Add
+-=           $var -= 2;      Subtract
+.=           $str.="ing";    Concatenate ing to $str
+*=           $var *= 2;      Multiply $var by 2
+/=           $var /= 2;      Divide $var by 2
+**=          $var **= 2;     Square $var
+%=           $var %= 2;      Divide $var by 2
+x=           $str x= 2;      Repeat value of $str 2 times
+<<=          $var <<= 1;     Left-shift bits in $var one position
+>>=          $var>>= 2;      Right-shift bits in $var two positions
+&=           $var &= 1;      One is bitwise-ANDed to $var
+|=           $var |= 2;      Two is bitwise-ORed to $var
+^=           $var ^= 2;      Two is bitwise-exclusive ORed to $var

@@ -1,0 +1,158 @@
+<html>
+<head>
+<title>File Upload</title>
+</head>
+<body>
+<%response.buffer=True
+Func = Request("Func")
+If IsEmpty(Func) Then
+    Func = 1
+End If
+Select Case Func
+Case 1
+'You do not need to use this form to sen
+' d your files.
+'However you should not give your submit
+' button a NAME or ID.    
+%>
+    <font face=verdana>
+<H2>Please Select a File To Upload.</H1>
+    <FORM ENCTYPE="multipart/form-data" ACTION="saveany.asp?func=2" METHOD=POST id=form1 name=form1>
+    <TABLE>
+        <TR><TD>Type In the full path And name of the file To upload.</TD></TR>
+        <TR><TD>-Or-</TD></TR> 
+        <TR><TD>Hit the [Browse] button To find the file On your computer.<BR><BR></TD></TR>
+        <TR><TD>Then hit the [Upload] button.<BR><BR></TD></TR>
+        <TR><TD><STRONG>File Name...</STRONG></TD></TR>
+        <TR><TD><Input NAME=File1 SIZE=30 Type=file><BR></TD></TR>
+        <TR><TD><Input NAME=File2 SIZE=30 Type=file><BR></TD></TR>
+        <TR><TD><Input NAME=File2 SIZE=30 Type=file><BR></TD></TR>
+        <TR><TD align=Left><Input Type="submit" value="Upload File"><BR><BR></TD></TR>
+        <TR><TD>NOTE: Please be patient, you will Not receive any notification until the file Is completely transferred.<BR><BR></TD></TR>
+    </TABLE>
+        </font>
+<%
+Case 2
+ForWriting = 2
+    adLongVarChar = 201
+    lngNumberUploaded = 0
+    
+'Get binary data from form        
+    noBytes = Request.TotalBytes 
+    binData = Request.BinaryRead (noBytes)
+'convery the binary data to a string
+    Set RST = CreateObject("ADODB.Recordset")
+    LenBinary = LenB(binData)
+    
+    If LenBinary > 0 Then
+        RST.Fields.Append "myBinary", adLongVarChar, LenBinary
+        RST.Open
+            RST.AddNew
+                RST("myBinary").AppendChunk BinData
+            RST.Update
+        strDataWhole = RST("myBinary")
+    End If
+'Creates a raw data file for with all da
+' ta sent. Uncomment for debuging.    
+    'Set fso = CreateObject("Scripting.FileSystemObject")
+    'Set f = fso.OpenTextFile(server.mappath(".") & "
+aw.txt", ForWriting, True)
+    'f.Write strDataWhole
+    'set f = nothing
+    'set fso = nothing
+'get the boundry indicator
+strBoundry = Request.ServerVariables ("HTTP_CONTENT_TYPE")
+lngBoundryPos = InStr(1,strBoundry,"boundary=") + 8 
+strBoundry = "--" & Right(strBoundry,Len(strBoundry)-lngBoundryPos)
+'Get first file boundry positions.
+lngCurrentBegin = InStr(1,strDataWhole,strBoundry)
+lngCurrentEnd = InStr(lngCurrentBegin + 1,strDataWhole,strBoundry) - 1
+Do While lngCurrentEnd > 0
+'Get the data between current boundry an
+' d remove it from the whole.
+strData = Mid(strDataWhole,lngCurrentBegin, lngCurrentEnd - lngCurrentBegin)
+strDataWhole = Replace(strDataWhole,strData,"")
+            
+'Get the full path of the current file.
+    lngBeginFileName = InStr(1,strdata,"filename=") + 10
+    lngEndFileName = InStr(lngBeginFileName,strData,Chr(34)) 
+'Make sure they selected at least one fi
+' le.    
+    If lngBeginFileName = lngEndFileName And lngNumberUploaded = 0 Then
+    
+            Response.Write "<font face=verdana><H2> The following Error occured.</H2>"
+            Response.Write "You must Select at least one file To upload"
+            Response.Write "<BR><BR>Hit the back button, make the needed corrections and resubmit your information."
+            Response.Write "<BR><BR><INPUT type='button' onclick='history.go(-1)' value='<< Back' id='button'1 name='button'1></font>"
+            Response.End 
+    End If
+'There could be one or more empty file b
+' oxes.    
+    If lngBeginFileName <> lngEndFileName Then
+        strFilename = Mid(strData,lngBeginFileName,lngEndFileName - lngBeginFileName)
+'Creates a raw data file with data betwe
+' en current boundrys. Uncomment for debug
+' ing.    
+    'Set fso = CreateObject("Scripting.FileSystemObject")
+    'Set f = fso.OpenTextFile(server.mappath(".") & "
+aw_" & lngNumberUploaded & ".txt", ForWriting, True)
+    'f.Write strData
+    'set f = nothing
+    'set fso = nothing
+        
+'Loose the path information and keep jus
+' t the file name.    
+        tmpLng = InStr(1,strFilename,"")
+        Do While tmpLng > 0
+            PrevPos = tmpLng
+            tmpLng = InStr(PrevPos + 1,strFilename,"")
+        Loop
+        
+        FileName = Right(strFilename,Len(strFileName) - PrevPos)
+    
+'Get the begining position of the file d
+' ata sent.
+'if the file type is registered with the
+' browser then there will be a Content-Typ
+' e
+        lngCT = InStr(1,strData,"Content-Type:")
+    
+        If lngCT > 0 Then
+            lngBeginPos = InStr(lngCT,strData,Chr(13) & Chr(10)) + 4
+        Else
+            lngBeginPos = lngEndFileName
+        End If
+'Get the ending position of the file dat
+' a sent.
+        lngEndPos = Len(strData) 
+        
+'Calculate the file size.    
+        lngDataLenth = lngEndPos - lngBeginPos
+'Get the file data    
+        strFileData = Mid(strData,lngBeginPos,lngDataLenth)
+'Create the file.    
+        Set fso = CreateObject("Scripting.FileSystemObject")
+        Set f = fso.OpenTextFile(Server.MapPath(".") & "" & FileName, ForWriting, True)
+        f.Write strFileData
+        Set f = Nothing
+        Set fso = Nothing
+    
+        lngNumberUploaded = lngNumberUploaded + 1
+    
+    End If
+        
+'Get then next boundry postitions if any
+' .
+    lngCurrentBegin = InStr(1,strDataWhole,strBoundry)
+    lngCurrentEnd = InStr(lngCurrentBegin + 1,strDataWhole,strBoundry) - 1
+Loop
+    
+        
+        Response.Write "<H2>File(s) Uploaded</H2>"
+        Response.Write lngNumberUploaded & " files have been uploaded.<BR>"
+        Response.Write "<BR><BR><INPUT type='button' onclick='document.location=" & Chr(34) & "saveany.asp" & Chr(34) & "' value='<< Back to Listings' id='button'1 name='button'1>"                            
+    
+End Select  
+%>
+</BODY>
+</HTML>

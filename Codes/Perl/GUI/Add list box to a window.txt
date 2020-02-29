@@ -1,0 +1,7 @@
+use Tk;
+
+$main = MainWindow->new();
+
+$listbox1 = $main->Listbox("-width" => 25, 
+    "-height" => 5
+)->pack;

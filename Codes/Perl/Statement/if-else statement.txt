@@ -1,0 +1,14 @@
+#if ( expression ){
+#       statements;
+#else{
+#       statements;
+#}
+
+$coin = int (rand(2 )) + 1; # Generate a random number between 1 and 2
+
+if( $coin == 1 ) {
+   print "HEAD\n";
+}
+else {
+   print "TAIL\n";
+}

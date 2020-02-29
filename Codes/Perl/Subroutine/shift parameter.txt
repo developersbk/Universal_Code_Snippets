@@ -1,0 +1,9 @@
+sub addem
+{
+    $value1 = shift;
+    $value2 = shift;
+    print "$value1 + $value2 = " . ($value1 + $value2) . "\n";
+}
+
+$value = addem 2, 2;
+print $value;

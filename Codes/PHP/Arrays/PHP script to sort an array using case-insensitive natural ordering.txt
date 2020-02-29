@@ -1,0 +1,9 @@
+<?php
+$colors = array(
+    "color1", "color20", "color3", "color2"
+);
+sort($colors, SORT_NATURAL | SORT_FLAG_CASE);
+foreach ($colors as $key => $val) {
+    echo "Colors[" . $key . "] = " . $val . "\n";
+}
+?>

@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Create A Class Inside Blockquote</title>
+<style type="text/css">
+blockquote .source {
+ text-align: right;
+ font-style: normal;
+ margin-right: 3em;
+}
+</style>
+</head>
+<body>
+  <p>Paragraph1 - There is no instinct like that of the heart. Lord Byron</p>
+
+  <blockquote>
+    <p>Paragraph2 - There is no instinct like that of the heart. Lord Byron</p>
+    <div class="source">
+      Paragraph3 - There is no instinct like that of the heart. Lord Byron
+    </div>
+  </blockquote>
+
+  <p>Paragraph4 - There is no instinct like that of the heart. Lord Byron</p>
+</body>
+</html>

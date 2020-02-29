@@ -1,0 +1,135 @@
+<%
+'TO DO:
+' cross-browser event handling (caption 
+' onclick, field on change)
+'shouldn't use HTML tags for formatting,
+' use CSS
+'verify with all SQL Server types.
+'add 'goto hyperlink' and 'sendmail' ico
+' ns if field contains (only) a url
+'fix maxlength. shows number of bits for
+' numbers.
+' end to do
+Class CRecordEdit
+    Public moreTblTags
+    Public moreRowTags
+    Public moreCaptionTags
+    Public moreCellTags
+    
+    Private m_iPKFld
+    
+    Public Property Let uniqueField(ByVal p)
+        m_iPKFld=uniqueField
+    End Property
+    
+    Private Sub class_initialize()
+        m_iPKFld=0
+    End Sub
+    Public Sub Print(ByRef rs)
+        With response
+            .write "<TABLE"
+            .write " " & moreTblTags
+            .write ">" & vbCr
+            Dim fld
+            For Each fld In rs.fields
+                .write vbTab & "<TR"
+                .write " " & moreRowTags
+                .write ">"
+                .write "<TH"
+                Select Case fld.type
+                    Case 3,17,2,131,5,6,4,130,129,202,200,72,7,135,203,201
+                        .write " onClick=""" & fld.name & ".focus();"""
+                    Case 11 : .write " onClick=""" & fld.name & ".checked=!" & fld.name & ".checked;""" 'boolean
+                End Select
+                .write " " & moreCaptionTags
+                .write ">"
+                .write fld.name
+                .write "</TH>"
+                .write "<TD"
+'                .write " " & moreCellTags
+                .write ">"
+                Call showControl(fld)               
+                .write "</TD>"
+                .write "</TR>" & vbCr
+            Next
+            .write "</TABLE>"
+            .write vbCr & "<INPUT type=""hidden"" name=""query"" value=""" & rs.source & """>"
+            .write vbCr & "<INPUT type=""hidden"" name=""dateAccessed"" value=""" & Now() & """>"
+            .write vbCr & "<INPUT type=""hidden"" name=""uniqueField"" value=""" & rs.fields(m_iPKFld).name & """>"
+            .write vbCr & "<INPUT type=""hidden"" name=""changedFields"" value="""">"
+            .write vbCr & "<INPUT type=""hidden"" name=""selectedField"" value="""">"
+            .write vbCr & "<INPUT type=""hidden"" name=""selectedValue"" value="""">"           
+        End With
+    End Sub
+    Private Sub showControl(ByRef fld)
+        Dim name,val,maxLength,width,ftype
+        name=fld.name
+        val=fld.value
+        maxLength=fld.definedSize
+        width=""
+        ftype=fld.type
+        
+        'took out widths, use CSS
+        Select Case ftype
+            Case 7,135 'dates
+                maxLength=22
+'                width=21
+            Case 3,4,5,6
+                maxLength=99 'should figure this out actually
+            Case 2 'adSmallInt (-32,000)
+                maxLength=7
+'                width=7
+            Case 72 'GUID
+                maxLength=38
+'                width=43
+            Case 17 'byte
+                maxlength=3
+'                width=3
+        End Select
+        
+        Select Case ftype
+            Case 3,17,2,131,5,6,4,130,129,202,200,72,7,135 'regular text
+                With response
+                    .write "<INPUT"
+                    .write " type=""text"""
+                    .write " name=""" & name & """"
+                    .write " value=""" & val & """"
+                    If Len(maxLength)>0 Then .write " maxlength=""" & maxLength & """"
+'                    if len(width)>0 then .write " s
+' ize=""" & width & """"
+                    .write " onFocus=""this.select();"""
+                    .write " " & moreCellTags
+                    .write ">"
+                End With
+            Case 203,201 'memo
+                With response
+                    .write "<TEXTAREA"
+                    .write " name=""" & name & """"
+                    .write " rows=""4"""
+                    .write " cols=""40"""
+                    .write " onFocus=""this.select();"""                                        
+                    .write " " & moreCellTags
+                    .write ">"
+                    .write val
+                    .write "</TEXTAREA>"
+                End With
+            Case 11 'boolean
+                With response
+                    .write "<INPUT"
+                    .write " type=""checkBox"""
+                    .write " name=""" & name & """"
+                    .write " value=""true"""
+                    If val Then .write " checked "
+                    .write moreCellTags
+                    .write ">"
+                End With
+            Case Else
+                Response.Write "<Binary>"
+        End Select
+                With response
+                    .write vbCr & vbTab & "<INPUT type=""hidden"" name=""" & name & "UNDERLYING"" value=""" & val & """>"
+                    .write vbCr & vbTab & "<INPUT type=""hidden"" name=""" & name & "ADOTYPE"" value=""" & ftype & """>"
+                End With
+    End Sub
+End Class
+%>

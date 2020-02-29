@@ -1,0 +1,17 @@
+@a = (1, 2, 3);
+@b = (4, 5, 6);
+
+sub addem {
+    local(*array1, *array2) = @_;
+
+    while (@array1) {
+
+        unshift @result, pop(@array1) + pop(@array2);
+
+    }
+
+    return @result
+}
+
+@result = addem(*a, *b);
+print join(", ", @result);

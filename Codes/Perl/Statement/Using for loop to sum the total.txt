@@ -1,0 +1,8 @@
+@a = (1, 2, 3, 4, 5, 6, 7, 8, 9);
+$running_sum = 0;
+
+for ($loop_index = 0; $loop_index <= $#a + 1; $loop_index++) {
+    $running_sum += $a[$loop_index];
+}
+
+print "Average value = " . $running_sum / ($#a + 1);

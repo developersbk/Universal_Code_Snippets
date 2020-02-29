@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" subLang="en-US"   xml:subLang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Div As Container</title>
+<style rel="stylesheet" type="text/css">
+
+* { padding: 0; margin: 0; }
+
+body {
+ font-family: verdana, sans-serif;
+ font-size: 16px;
+}
+#wrapper { 
+ margin: 0 auto;
+ width: 920px;
+}
+#header {
+ width: 900px;
+ color: pink;
+ padding: 12px;
+ border: 1px solid #f8f;
+ height: 120px;
+ margin: 10px 0px 0px 0px;
+ background: blue;
+}
+#content { 
+ width: 920px;
+ color: gray;
+ border: 1px solid blue;
+ background: green;
+ margin: 0px 0px 10px 0px;
+ padding: 12px;
+ height: 400px;
+}
+</style>
+</head>
+<body>
+
+   <!-- Begin Wrapper -->
+   <div id="wrapper">
+   
+     <!-- Begin Header -->
+     <div id="header">Love Sayings</div>
+     <!-- End Header -->
+     
+     <!-- Begin Content -->
+     <div id="content">I will find out where she has gone,<br>
+                       And kiss her lips and take her hands.<br>
+                       And pluck till time and times are done<br>
+                       The silver apples of the moon,<br>
+                       The golden apples of the sun.<br><br>
+
+                       William Butler Yeats                        
+     </div>
+     <!-- Begin Content -->
+     
+   </div>
+   <!-- End Wrapper -->
+
+</body>
+</html>

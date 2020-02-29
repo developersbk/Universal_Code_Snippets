@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+my %default_animals = (Cat => 'Tom', Mouse => 'Jerry');
+my %input_animals = (Cat => 'Ginger', Mouse => 'Jerry');
+
+my %animals = (%default_animals, %input_animals);
+print "$animals{Cat}\n"; # prints 'Ginger'

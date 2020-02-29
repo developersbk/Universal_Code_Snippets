@@ -1,0 +1,10 @@
+ScrollViewer and Big Ellipse
+
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  HorizontalAlignment="Center" VerticalAlignment="Center">
+<ScrollViewer HorizontalScrollBarVisibility="Auto">
+  <Ellipse Fill="Red" Height="800" Width="1200" />
+</ScrollViewer>
+</Page>
+

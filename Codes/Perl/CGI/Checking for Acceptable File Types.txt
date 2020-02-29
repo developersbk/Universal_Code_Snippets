@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+
+use strict;
+use CGI qw/:standard/;
+
+my $q = new CGI;
+
+my $filename = $q->param('uploaded_file');
+my $contenttype = $q->uploadInfo($filename)->{'Content-Type'};
+
+print header;
+print start_html;
+if ($contenttype !~ /^text\/html$/) {
+    print "Only HTML is allowed<P>";
+    print end_html;
+    exit;
+} else {
+    print "Type is $contenttype<P>";
+}
+
+print end_html;

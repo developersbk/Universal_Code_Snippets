@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <title>Example of HTML hr tag</title>
+</head>
+<body>
+    <p>This is the first paragraph of text.</p>
+    <hr>
+    <p>This is second paragraph of text.</p>
+</body>
+</html>                                 		

@@ -1,0 +1,18 @@
+
+
+<% 
+'variables to store banned IP and the users IP 
+Dim strIP , strBannedIP 
+'this is the banned IP address 
+strBannedIP = "127.0.0.1" 
+'get the users IP address 
+strIP = Request.ServerVariables("LOCAL_ADDR") 
+'if users address is the same as the banned IP address 
+'display a message 
+If strBannedIP = strIP Then 
+Response.Write "You are not permitted to view this website" 
+'if usersa ddress is different welcome message is displayed 
+Else 
+Response.Write "welcome" 
+End If 
+%>

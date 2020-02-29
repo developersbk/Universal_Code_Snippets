@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+my @words = split ('\s+',<>);
+die "Enter two words \n" unless scalar(@words) == 2;
+
+my $result = $words[0] cmp $words[1];
+print $result;
+
+   
+    

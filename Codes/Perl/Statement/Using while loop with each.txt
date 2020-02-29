@@ -1,0 +1,15 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my %where = (
+     G     => "A",
+     L     => "B",
+     I     => "C",
+     S     => "D"
+);
+
+my($k, $v);
+while (($k, $v) = each %where) {
+    print "$k lives in $v\n";
+}

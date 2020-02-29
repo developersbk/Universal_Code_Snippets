@@ -1,0 +1,23 @@
+ #!/usr/local/bin/perl -w
+
+    use Getopt::Long;
+
+    my $ret = GetOptions ("f|filename:s", "p|permission:s");
+    my $filename = $opt_f || die "Usage: $0 -f filename -p Permission\n";
+    my $newPerm = $opt_p || die "Usage: $0 -f filename -p Permission\n";
+
+    # Does the file exist?
+    if (! -e $filename)
+    {
+       print "The file $filename does not exist.\n";
+       exit;
+    }
+
+    # Translate the string mode to an octal value
+    my $mode = oct($newPerm);
+
+    # Change the permissions of the file.
+    if ((chmod $mode, $filename) != 1)
+    {
+       print "Error: Could not change permissions on $filename : $!\n";
+    }

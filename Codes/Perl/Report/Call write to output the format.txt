@@ -1,0 +1,14 @@
+format STDOUT =
+@*
+$text
+@<<<<<<<<<<<<@<<<<<<<<<<<<@<<<<<<<<@<<<<
+$firstname   $lastname    $ID      $extension
+.
+
+$text = "First Line...";
+$firstname = "Cary";
+$lastname = "Grant";
+$ID = 1234;
+$extension = x456;
+
+write;

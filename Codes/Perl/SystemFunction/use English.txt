@@ -1,0 +1,5 @@
+use English;
+
+$text = 'This is the time.';
+$text =~ /time/;
+print "Matched: \"$MATCH\".\n";

@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" subLang="en" xml:subLang="en">
+
+<head>
+  <title>A hidden control</title>
+</head>
+
+<body>
+
+
+Truly love you endlessly.<br>
+Every day without you is like a book without pages.<br>
+I love you, I will always do, for the rest of our earthly and heavenly life.<br>
+<br><br>
+<b>F. Abahusain</b>
+
+
+<form action="" method="get" name="Vote">
+  <input type="hidden" name="hidPageSentFrom" value="www.happycodings.com" />
+  <input type="submit" value="Click if you like this web site." />
+</form>
+</body>
+</html>

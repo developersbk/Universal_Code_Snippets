@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:subLang="en" subLang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Clear Left To Start A New Line</title>
+  <style type="text/css">
+body {
+  margin: 0px;
+  padding: 0px;
+  color: pink;
+  background-color: blue;
+}
+
+.myStyle {
+  float: left;
+  padding: 12px;
+  margin: 4px;
+  background-color: green;
+  border: 1px solid #0f0;
+  width: 20%;
+}
+p {
+  clear: left;
+  margin: 4px;
+  padding: 12px;
+}
+
+
+  </style>
+</head>
+
+<body>
+  <div class="myStyle">Never marry but for love; but see that thou lovest what is lovely. William Penn</div>
+  <p>Love withers with predictability;<br>
+     its very essence is surprise and amazement.<br>
+     To make love a prisoner of the mundane is to<br>
+     take its passion and lose it forever.<br><br>
+
+     Leo Buscaglia</p>
+</body>
+</html>

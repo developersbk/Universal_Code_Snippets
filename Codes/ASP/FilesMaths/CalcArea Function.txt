@@ -1,0 +1,37 @@
+<%
+Private Function CalcArea(ByVal formula, ByVal values)
+    Const Pi = 3.1415926535897932
+    Dim mth, b, b1, b2, h, r, r1, r2, s, s1, s2
+    Select Case LCase( formula )
+        Case "triangle"
+            b = CDbl( values(0) )
+            h = CDbl( values(1) )
+            mth = b * h * 0.5
+        Case "square"
+            s = CDbl( values(0) )
+            mth = s ^ 2
+        Case "rectangle"
+            s1 = CDbl( values(0) )
+            s2 = CDbl( values(1) )
+            mth = s1 * s2
+        Case "parallelogram"
+            b = CDbl( values(0) )
+            h = CDbl( values(1) )
+            mth = b * h
+        Case "trapezoid"
+            b1 = CDbl( values(0) )
+            b2 = CDbl( values(1) )
+            h = CDbl( values(2) )
+            mth = h / 2 * (b1 + b2)
+        Case "circle"
+            r = CDbl( values(0) )
+            mth = pi * r ^ 2
+        Case "ellipse"
+            r1 = CDbl( values(0) )
+            r2 = CDbl( values(1) )
+            mth = pi * r1 * r2
+    End Select
+    mth = CDbl( mth )
+    CalcArea = mth
+End Function
+%>

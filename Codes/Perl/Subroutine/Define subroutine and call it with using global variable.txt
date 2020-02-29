@@ -1,0 +1,14 @@
+sub printifOK
+{
+    if ($value > 10 ) {
+        print "Value is $value.\n";
+    } else {
+        print "Value is too small.\n";
+    }
+}
+
+$value = 10;
+printifOK;
+
+$value = 12;
+printifOK;

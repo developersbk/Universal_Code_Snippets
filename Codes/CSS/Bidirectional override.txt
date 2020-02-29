@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:subLang="en" subLang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Bidirectional override</title>
+</head>
+
+<body>
+  <p>A passage of text containing one <em subLang="en" xml:subLang="en"><bdo dir="rtl">reversed</bdo></em> word.
+
+  I have learned not to worry about love;<br>
+  but to honor its coming with all my heart.<br><br>
+
+  Alice Walker
+
+  <em subLang="en" xml:subLang="en"><bdo dir="rtl">Alice Walker</bdo></em>
+
+  </p>
+
+
+</body>
+</html>
+

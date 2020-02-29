@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" subLang="en-US"
+  xml:subLang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Centered Footer</title>
+<style rel="stylesheet" type="text/css">
+
+#bottom_menu {
+  width: 800px;
+  float: left;
+  padding: 40px 40px 0 0;
+}
+
+#footer {
+  height: 200px;
+  font-family: verdana, sans-serif;
+  font-size: 16px;
+  color: blue;
+}
+
+#footer ul {
+  display: block;
+  float: right
+}
+
+#footer li {
+  list-style-type: none;
+  display: inline;
+}
+
+#footer li a {
+  color: #f9f944;
+  margin: 0 10px;
+  text-decoration: none
+}
+
+#footer li a:visited {
+  text-decoration: none
+}
+
+#footer li a:hover {
+  text-decoration: underline
+}
+
+
+</style>
+</head>
+<body>
+    <div id="footer">
+      <div id="bottom_menu">
+        <ul>
+          <li><a href="http://www.happycodings.com">happycodings</a></li>
+          <li>|<a href="http://java.happycodings.com">java</a></li>
+          <li>|<a href="http://android.happycodings.com">android</a></li>
+        </ul>
+      </div>
+    </div>
+
+
+</body>
+
+</html>

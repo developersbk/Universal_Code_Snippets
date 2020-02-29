@@ -1,0 +1,17 @@
+use Win32::ODBC;
+ $DSN = "Email Contacts";
+ my $myDb = Win32::ODBC->new($DSN);
+ if (! $myDb){
+    print "Failed to Connect $DSN\n";
+    Win32::ODBC::DumpError();
+    die;
+ }
+ $SQLStatment = qq|Create Table emailContacts(address char(40) NOT NULL,
+                                lastName char(20),
+                                firstName char(10),
+                                MI char (2))|;
+ if ($myDb->Sql($SQLStatment)){
+    print "Error creating the initial Table\n";
+    Win32::ODBC->DumpError();
+ }
+ $myDb->Close();

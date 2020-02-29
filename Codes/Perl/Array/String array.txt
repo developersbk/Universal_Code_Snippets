@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+my @questions = qw(Java Python Perl C);
+my @punchlines = ("A","B","D",'E');
+print "Please enter a number between 1 and 4: ";
+my $selection = <STDIN>;
+$selection -= 1;
+print "How many $questions[$selection] ";
+print "programmers does it take to change a lightbulb?\n\n";
+sleep 2;
+print $punchlines[$selection], "\n";

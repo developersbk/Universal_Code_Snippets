@@ -1,0 +1,2 @@
+$hash{name} = "AAA";
+print $hash{name};

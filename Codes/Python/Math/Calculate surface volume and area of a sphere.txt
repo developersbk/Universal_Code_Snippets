@@ -1,0 +1,12 @@
+# A sphere is a perfectly round geometrical object in three-dimensional space that is the surface of a completely round ball.
+Python : Surface volume and area of a sphere
+A sphere is a perfectly round geometrical object in three-dimensional space that is the surface of a completely round ball.
+In three dimensions, the volume inside a sphere is derived to be V = 4/3*π*r3 where r is the radius of the sphere
+
+
+pi=22/7  
+radian = float(input('Radius of sphere: '))  
+sur_area = 4 * pi * radian **2  
+volume = (4/3) * (pi * radian ** 3)  
+print("Surface Area is: ", sur_area)  
+print("Volume is: ", volume)  

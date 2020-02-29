@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Button border-left border-right border-top border-bottom solid</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style rel="stylesheet" type="text/css">
+.button {
+  background: url(background.jpg) repeat-x bottom left #f8bbf4;
+  border-bottom: 1px solid #dedf45;
+  border-left: 4px solid #bbb;
+  border-right: 1px solid #d8d8d8;
+  border-top: 1px solid #c599d8;
+  color: #f0f950;
+  font-weight: 800;
+  margin: 0 0 13px;
+  padding: 5px 5px 5px 5px;
+  width: 120px;
+}
+
+</style>
+
+</head>
+<body>
+    <button class='button'>button</button>
+    
+ 
+</body>
+</html>
+

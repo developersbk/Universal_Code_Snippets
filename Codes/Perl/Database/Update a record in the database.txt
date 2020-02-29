@@ -1,0 +1,35 @@
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+use DBI;
+use DBD::ODBC;
+
+my $dbh = DBI->connect( "dbi:ODBC:employeeDB", "", "", { RaiseError => 1 } );
+ 
+my $ID = "1";
+
+my $query = "UPDATE employee SET firstName = 'new Value' WHERE EmployeeID = '$ID'";
+   
+print( "$query \n" );
+$dbh->do( $query );
+
+# Now print the updated database
+my $sth = $dbh->prepare( q{ SELECT * FROM employee  } );
+
+$sth->execute();
+
+print( "\n" );
+my @array;
+
+while ( @array = $sth->fetchrow_array() ) {
+   write();
+}
+
+warn( $DBI::errstr ) if $DBI::err;
+$sth->finish();
+$dbh->disconnect();
+
+format STDOUT = 
+@<<<<<<@<<<<<<<<<@<<<<<<<<<<@<<<<<@<<<<<<<<<<<
+$array[ 0 ], $array[ 1 ], $array[ 2 ], $array[ 3 ], $array[ 4 ]

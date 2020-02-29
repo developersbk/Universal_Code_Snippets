@@ -1,0 +1,1 @@
+$octalData = "\07\04\00\01";                # octal data. (\01 equals '1' octal)   

@@ -1,0 +1,15 @@
+Abbreviation       Definition                 Example
+
+d                  Days                       +1d (expire 1 day from now)
+
+h                  Hours                      +8h (expire 8 hours from now)
+
+M                  Months                     +1M (expire 1 month from now)
+
+m                  Minutes                    -1m (expire immediately)
+
+now                Immediately                now (expire immediately)
+
+s                  Seconds                    +30s (expire 30 seconds from now)
+
+y                  Years                      +1y (expire 1 year from now)

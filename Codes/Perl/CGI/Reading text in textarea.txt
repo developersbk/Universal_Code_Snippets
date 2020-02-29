@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>TEXTAREA</title>
+</head>
+<body>
+<FORM METHOD="POST" ACTION="/cgi-bin/textarea.cgi">
+Suggestion:
+<p>
+<TEXTAREA NAME="suggestion" ROWS=6 COLS=60>
+Default data goes here.
+</TEXTAREA>
+<p>
+<INPUT TYPE="submit" VALUE="Submit">
+<INPUT TYPE="reset" VALUE="Reset Form">
+</FORM>
+</body>
+</html>
+
+#!/usr/bin/perl -w 
+use CGI;  
+$form = CGI->new();  
+@suggest = $form->param('suggestion');  
+print $form->header();  
+  
+print $form->start_html(-title=>'Thanks',-BGCOLOR=>'white');   
+print "<h1>Thanks For Your Suggestion</h1>\n";  
+  
+print "<hr>";
+print "@suggest\n";  
+print "<p>\n";
+print "<hr>";
+  
+print "Thank you!";  
+print "<p>\n";
+  
+print $form->end_html();

@@ -1,0 +1,9 @@
+$hashref = {
+    fruit => apple,
+    sandwich => hamburger,
+    drink => bubbly,
+};
+
+while(($key, $value) = each(%$hashref)) {
+    print "$key => $value\n";
+}

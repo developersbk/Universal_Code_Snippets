@@ -1,0 +1,23 @@
+<%
+Function fncReplaceSingleQuotes( _
+ByVal strToReplace _
+)
+
+On Error Resume Next
+Const Proc = "fncReplaceSingleQuotes"
+
+strToReplace = Replace(strToReplace, "'", "''")
+
+fncReplaceQuote = strToReplace
+
+If Err.number <> 0 Then
+Call subWriteError(Err.number, Proc, Err.description)
+End If
+
+End Function
+'
+'...
+' 
+strVar = Request.Form("txtField1")
+strVar = fncReplaceSingleQuotes(strVar)
+%>

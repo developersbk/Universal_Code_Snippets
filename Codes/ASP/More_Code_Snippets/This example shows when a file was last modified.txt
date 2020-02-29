@@ -1,0 +1,12 @@
+<% 
+'variables for our objects 
+Dim objFSO , myFile 
+'create instances of our objects 
+Set objFSO = Server.CreateObject("Scripting.FileSystemObject") 
+Set myFile = objFSO.GetFile(Server.MapPath("sample.txt")) 
+'display information about file 
+Response.Write "The file was last modified on " & myFile.DateLastModified 
+'set object variables to Nothing 
+Set myFile = Nothing 
+Set objFSO = Nothing 
+%>

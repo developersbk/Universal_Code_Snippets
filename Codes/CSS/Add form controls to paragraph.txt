@@ -1,0 +1,33 @@
+Add form controls to paragraph
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:subLang="en" subLang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Add form controls to paragraph</title>
+  <style type="text/css" media="screen">
+  
+  div {
+    margin-bottom: 20px;
+  }  
+  
+  #divID p {
+    margin: 4px 0;
+  }
+
+  </style>
+</head>
+<body>
+
+<div id="divID">
+<form action="" method="post">
+  <p>
+    Your Name: <input type="text" name="name" /><br />
+    Your Email: <input type="text" name="email" /><br />
+    <input type="submit" value="submit" />
+  </p>
+</form>
+</div>
+
+</body>
+</html>

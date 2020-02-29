@@ -1,0 +1,22 @@
+
+
+    #!/usr/local/bin/perl -w
+
+    print "Enter the first number : ";
+    my $num1 = <STDIN>; chomp $num1;
+    print "Enter the second number: ";
+    my $num2 = <STDIN>; chomp $num2;
+    print "Enter the third number : ";
+    my $num3 = <STDIN>; chomp $num3;
+
+    # A*B-C
+    my $answer = $num1 * $num2 - $num3;
+    print "$num1 * $num2 - $num3 = $answer \n";
+
+    # (A*B)-C
+    $answer = ($num1 * $num2) - $num3;
+    print "($num1 * $num2) - $num3 = $answer \n";
+
+    # A*(B-C)
+    $answer = $num1 * ($num2 - $num3);
+    print "$num1 * ($num2 - $num3) = $answer \n";

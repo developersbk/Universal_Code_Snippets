@@ -1,0 +1,19 @@
+<form action = "<%= Request.ServerVariables("SCRIPT_NAME")%>" method="post"> 
+<input type = "radio" name = "page" value = "home" checked>home<br> 
+<input type = "radio" name = "page" value = "tutorials">tutorials<br> 
+<input type = "radio" name = "page" value = "downloads">downloads<br> 
+<input type = "submit" value = "go"> 
+</form> 
+<% 
+'get the users selection from the form 
+strURL = Request.Form("page") 
+'depending on the users selection redirect to that page 
+Select Case lcase(strURL) 
+Case "home" 
+Response.Redirect "index.php" 
+Case "tutorials" 
+Response.Redirect "tutorials.php" 
+Case "downloads" 
+Response.Redirect "downloads.php" 
+End Select 
+%>

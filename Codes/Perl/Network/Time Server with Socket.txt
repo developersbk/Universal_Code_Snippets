@@ -1,0 +1,32 @@
+#!/bin/perl  -Tw
+require 5.6;
+use strict;
+use Socket;
+use FileHandle;
+
+#Usage: timeserver
+my($this, $now);
+my $port = shift || 99999;
+
+$this = pack('Sna4x8', AF_INET, $port, "\0\0\0\0");
+print "Port = $port\n";
+my $prototype = getprotobyname('tcp');
+socket(SOCKET, PF_INET, SOCK_STREAM, $prototype) || die "socket: $!\n";
+print "Socket ok.\n";
+
+bind(SOCKET, $this) || die "bind: $!\n";
+print "Bind ok.\n";
+
+listen(SOCKET, SOMAXCONN) || die "connect: $!\n";
+print "Listen ok.\n";
+
+COMM_SOCKET->autoflush;
+SOCKET->autoflush;
+
+while(1){
+     print "In loop.\n";
+     accept(COMM_SOCKET, SOCKET) || die "$!\n";
+     print "Accept ok.\n";
+     $now = time;
+     print COMM_SOCKET $now;
+}

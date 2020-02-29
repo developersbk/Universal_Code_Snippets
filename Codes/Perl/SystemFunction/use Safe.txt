@@ -1,0 +1,7 @@
+use Safe;
+
+$safecompartment = new Safe;
+
+$safecompartment->permit(qw(print));
+
+$result = $safecompartment->reval("print \"Hello!\";");

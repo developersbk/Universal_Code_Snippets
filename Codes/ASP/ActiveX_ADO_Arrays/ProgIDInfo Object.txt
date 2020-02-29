@@ -1,0 +1,62 @@
+<%
+Class Program
+    Public Description, ClsID, ProgID, Path, TypeLib, Version, DLLName
+End Class
+
+Class ProgIDInfo
+    Private WshShell, sCVProgID, oFSO
+
+    Private Sub Class_Initialize()
+        On Error Resume Next
+        Set oFSO = CreateObject("Scripting.FileSystemObject")
+        Set WshShell = CreateObject("WScript.Shell")
+    End Sub
+
+    Private Sub Class_Terminate()
+        If IsObject(WshShell) Then Set WshShell = Nothing
+        If IsObject(oFSO) Then Set oFSO = Nothing
+    End Sub
+
+    Private Function IIf(ByVal conditions, ByVal trueval, ByVal falseval)
+        If CBool(conditions) Then IIf = trueval Else IIf = falseval
+    End Function
+
+    Public Function LoadProgID(ByVal sProgramID)
+        Dim sTmpProg, oTmp, sRegBase, sDesc, sClsID
+        Dim sPath, sTypeLib, sProgID, sVers, sPathSpec
+        If IsObject(WshShell) Then
+            On Error Resume Next
+            sCVProgID = WshShell.RegRead("HKCR" & _
+                sProgramID & "CurVer")
+            sTmpProg = IIf(Err.number = 0, sCVProgID, sProgramID)
+
+            sRegBase = "HKCR" & sTmpProg
+            sDesc = WshShell.RegRead(sRegBase & "")
+            sClsID = WshShell.RegRead(sRegBase & "clsid")
+            sRegBase = "HKCRCLSID" & sClsID
+            sPath = WshShell.RegRead(sRegBase & "InprocServer32")
+            sPath = WshShell.ExpandEnvironmentStrings(sPath)
+            sTypeLib = WshShell.RegRead(sRegBase & "TypeLib")
+            sProgID = WshShell.RegRead(sRegBase & "ProgID")
+            sVers = oFSO.getFileVersion(sPath)
+            sPathSpec = Right(sPath, Len(sPath) - _
+                InStrRev(sPath, ""))
+
+            Set oTmp = New Program
+            oTmp.Description = sDesc
+            oTmp.ClsID = IIf(sClsID <> "", sClsID, "undetermined")
+            oTmp.Path = IIf(sPath <> "", sPath, "undetermined")
+            oTmp.TypeLib = IIf(sTypeLib <> "", _
+                sTypeLib, "undetermined")
+            oTmp.ProgID = IIf(sProgID <> "", _
+                sProgID, "undetermined")
+            oTmp.DLLName = IIf(sPathSpec <> "", _
+                sPathSpec, "undetermined")
+            oTmp.Version = IIf(sVers <> "", sVers, "undetermined")
+            Set LoadProgID = oTmp
+        Else
+            Set LoadProgID = Nothing
+        End If
+    End Function
+End Class
+%>

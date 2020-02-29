@@ -1,0 +1,90 @@
+; It will play 12 notes of the octave starting at middle C.
+;-----------------------------------------------------------------------------
+; How to generate sound on the IBM PC :
+;
+; The 8255 (port 61H) bit 0 controls the 8253 timer
+;                     bit 1 controls the speaker
+;
+; The output channel 2 from the 8253 timer will be ANDed with the 
+; speaker control bit in order to turn on/off the speaker.
+;
+; Timer channel 2 internal count register (port 42h) is loaded in
+; two successive OUT operations with the lower byte being loaded first.
+; For this to work properly, timer command register has to be loaded first
+; with B6H.
+;
+; Since the input clock to the timer chip is 1.19318 MHz, the counter value
+; to generate the frequency X can be calculated by 1193180 / X.
+;-----------------------------------------------------------------------------
+; CX is used as a note counter with the frequency effectively being
+; incremented by a half tone and the corresponding count being loaded
+; into the count register on each iteration.
+;
+; No stack segment is needed for this small program, so don't panic
+; when you receive the 'No stack segment' warning.
+;
+; Arne Asplem 880731 (MASM 4.0)
+
+
+
+dseg    segment                         ; data segment
+notes   dw      262,277,294,311,330,349,370,392,415,440,466,494
+dseg    ends
+
+cseg    segment
+
+sound   proc far
+        assume  cs:cseg, ds:dseg, ss:nothing
+
+start:  
+        mov     ax, dseg
+        mov     ds, ax                  ; set up data segment (DS) reg.
+        xor     si, si
+        mov     bx, 12                  ; note count
+
+; set up timer command register and counter register
+
+        mov     al, 0b6h                ; set 8253 command register
+        out     43h, al                 ; for channel 2, mode 3
+
+nloop:
+        mov     ax, 34dch               ; low part of clock freq.
+        mov     dx, 12h                 ; hight part of clock freq.
+        div     [notes + si]            ; get note from data segment
+        out     42h, al                 ; 8253 command register (low byte)
+        mov     al, ah
+        out     42h, al                 ; 8253 command regsieter (high byte)
+
+; turn on low bits in 8255 output port
+
+        in      al, 61h                 ; read current value of 8255 port
+        or      al, 3                   ; clear low bits
+        out     61h, al                 ; send new value to port
+
+; loop while note is sounding
+
+        mov     cx, 6d60h       
+
+rpta:
+        loop    rpta                    ; 1/10 sec delay
+
+; turn off speaker, check note count, set up next note
+
+        xor     al, 3                   
+        out     61h, al                 ; turn off speaker
+        mov     cx, 0af0h
+        
+rptb:
+        loop    rptb                    ; 1/100 sec delay
+        inc     si                      ; increment note pointer
+        inc     si
+        dec     bx                      ; decrement note counter
+        
+        jnz     nloop                   ; loop until bx = 0
+
+        mov     ax, 4c00h               ; terminate program
+        int     21h
+
+sound   endp
+cseg    ends
+        end     start

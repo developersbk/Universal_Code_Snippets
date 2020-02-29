@@ -1,0 +1,3 @@
+$s = -5;
+
+print "The absolute value of $s = ", abs $s;

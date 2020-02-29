@@ -1,0 +1,44 @@
+    <HTML>
+    <HEAD>
+    <TITLE>CGI Form</TITLE>
+    </HEAD>
+    <BODY>
+    <FORM METHOD="GET" ACTION="index.pl">
+    <P>Name: <INPUT TYPE = "text" NAME = "name" VALUE = "" ></P>
+    <P>Address: <INPUT TYPE = "text" NAME = "street" VALUE = "" ></P>
+    City: <INPUT TYPE = "text" NAME = "city" VALUE = "" >
+    State: <INPUT TYPE = "text" NAME = "state" VALUE = "" >
+    Zip: <INPUT TYPE = "text" NAME = "zip" VALUE = "" >
+    <P>Overall rating:</P>
+    Needs Improvement: <INPUT TYPE = "radio" NAME = "rating" VALUE = "NI">
+    Average: <INPUT TYPE = "radio" NAME = "rating" VALUE = "AV">
+    Above Average: <INPUT TYPE = "radio" NAME = "rating" VALUE = "AA">
+    Excellent: <INPUT TYPE = "radio" NAME = "rating" VALUE = "EX">
+    <BR>
+    <P>Comments:</P>
+    <P><TEXTAREA NAME = "comments"></TEXTAREA></P>
+    <INPUT TYPE = "reset" name="reset" value = "Reset the Form">
+    <INPUT type = "submit" name="submit" value = "Submit Comment">
+    </FORM></H4>
+    </BODY>
+    </HTML>
+
+    ############################################################
+
+    $requestType = $ENV{"REQUEST_METHOD"};
+
+    print "Content-type: text/plain\n\n";
+    if($requestType eq "GET")
+    {
+        &readGetData(*data);
+        # Print the data that we read
+        print "The GET data is:\n\n";
+        print $data;
+        print "\n";
+    }
+    sub readGetData
+    {
+        local(*queryString) = @_ if @_;
+        $queryString = $ENV{"QUERY_STRING"};
+        return 1;
+    }

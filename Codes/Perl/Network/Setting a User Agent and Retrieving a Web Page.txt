@@ -1,0 +1,10 @@
+#!/usr/bin/perl -w
+
+use LWP;
+use strict;
+
+my $browser = LWP::UserAgent->new(agent => 'Perly v1');
+my $result = $browser->get("http://www.braingia.org/ewfojwefoj");
+die "An error occurred: ", $result->status_line() unless $result->is_success;
+
+print $result->content;
