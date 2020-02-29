@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Absolute Position Offset no-width no-height</title>
+        <style type='text/css'>
+            div {
+                position: absolute;
+                background: red;
+            }
+            div#div1 {
+                top: 20px;
+                left: 20px;   
+            }
+            div#div2 {
+                top: 60px;
+                left: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='div1'>
+            True love is indescribable, yet self-explanatory.<br><br>
+            Anonymous<br>
+            
+        </div>
+        <div id='div2'>
+           A baby is born with a need to be loved - and never outgrows it.<br><br>
+           Frank Howard Clark<br>
+        </div>
+    </body>
+</html>

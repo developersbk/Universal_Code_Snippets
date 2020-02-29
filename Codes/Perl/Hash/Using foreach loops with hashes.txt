@@ -1,0 +1,14 @@
+@opinions = qw( A b c d e f g h jk r e r t r e  e  e e  e  ww );
+
+foreach ( @opinions ) {
+   ++$hash{ $_ };
+}
+
+
+# display sorted by frequency in descending order
+print "\nWord\tFrequency\n";
+print "----\t---------\n"; 
+
+foreach ( sort { $hash{ $b } <=> $hash{ $a } } keys( %hash ) ) {
+   print "$_\t", "*" x $hash{ $_ }, "\n";
+}

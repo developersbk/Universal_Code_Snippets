@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:subLang='en'>
+    <head>
+        <title>Class and ID Selectors</title>
+<style type='text/css'>
+body {
+    font-family: Arial;
+}
+p.container {
+    border: 1px solid rgb(125, 88, 250);
+    background: rgb(163, 145, 178);
+    padding: 8px;
+    width: 400px;
+    height: 400px;
+    float: left;
+    margin: 8px;
+}
+p#container2 {
+    border: 1px solid rgb(154, 232, 181);
+    background: rgb(82, 157, 245);
+}
+
+</style>
+    </head>
+    <body>
+        <p class='container'>
+             Did my heart love till now ? forswear it sight,<br>
+             for I ne'er saw true beauty till this night.<br><br>
+
+             Romeo and Juliet by William Shakespeare
+        </p>
+        <p class='container' id='container2'>
+             There is nothing like love in this world unless you experience it.<br><br>
+
+             Meenu Baheti
+        </p>
+    </body>
+</html>
+
+

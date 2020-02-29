@@ -1,0 +1,15 @@
+use News::NNTPClient;
+
+$nntp = new News::NNTPClient('news.yourserver.com');
+
+($first, $last) = $nntp->group("comp.subLang.perl.moderated");
+
+open FILEHANDLE, ">file.txt";
+
+for ($loop_index = $first; $loop_index <= $last; $loop_index++) {
+
+    print FILEHANDLE $nntp->article($loop_index);
+
+}
+
+close FILEHANDLE;

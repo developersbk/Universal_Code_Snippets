@@ -1,0 +1,7 @@
+#!/usr/local/bin/perl
+@digits = (1..10);
+foreach $number (@digits){
+   print $number;
+   $number += 10;
+}
+print "\n\n@digits";

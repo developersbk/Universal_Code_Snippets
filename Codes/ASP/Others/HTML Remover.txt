@@ -1,0 +1,56 @@
+<SCRIPT LANGUAGE=VBScript>
+<!--
+'By Warlock 
+Function RemoveHTML(strHTM)
+Dim strTmp, strTmp1, i, lngLen, charOne, ynWait4End
+strTmp=""
+strTmp1=CStr(strHTM)
+strTmp1 = Replace(CStr(strHTM),"<BR>", vbCrLf)
+strTmp = Replace(strTmp1,"<TR>", vbCrLf)' Got To try all Cases TR Tr tr tR
+strTmp1 = Replace(strTmp,"</TR>", vbCrLf)
+strTmp = Replace(strTmp1,"<TR>", vbCrLf)
+strTmp1 = Replace(strTmp,"</TR>", vbCrLf)
+strTmp = Replace(strTmp1,"<TR>", vbCrLf)
+strTmp1 = Replace(strTmp,"</TR>", vbCrLf)
+strTmp = Replace(strTmp1,"<TR>", vbCrLf)
+strTmp1 = Replace(strTmp,"</TR>", vbCrLf)
+strTmp = Replace(strTmp1,"<TD>", " ")'<- 4 spaces
+strTmp1 = Replace(strTmp,"</TD>", " ")
+strTmp = Replace(strTmp1,"<TD>", " ")
+strTmp1 = Replace(strTmp,"</TD>", " ")
+strTmp = Replace(strTmp1,"<TD>", " ")
+strTmp1 = Replace(strTmp,"</TD>", " ")
+strTmp = Replace(strTmp1,"<TD>", " ")
+strTmp1 = Replace(strTmp,"</TD>", " ")
+strTmp = Replace(strTmp1,"<P>", vbCrLf)
+strTmp1 = Replace(strTmp,"</P>", vbCrLf)
+strTmp = Replace(strTmp1,"<P>", vbCrLf)
+strTmp1 = Replace(strTmp,"</P>", vbCrLf)
+strTmp = Replace(strTmp1,"<BR>", vbCrLf)
+strTmp1 = Replace(strTmp,"</BR>", vbCrLf)
+strTmp = Replace(strTmp1,"<BR>", vbCrLf)
+strTmp1 = Replace(strTmp,"</BR>", vbCrLf)
+strTmp = Replace(strTmp1,"<BR>", vbCrLf)
+strTmp1 = Replace(strTmp,"</BR>", vbCrLf)
+strTmp=""
+ynWait4End = False
+lngLen = Len(strTmp1)
+For i = 1 To lngLen
+charOne=Mid(strTmp1,i,1)
+If charOne="<" Then
+ynWait4End = True
+charOne=""
+End If
+If ynWait4End = True Then
+If charOne = ">" Then
+ynWait4End = False
+End If
+charOne = ""
+End If
+strTmp = strTmp & charOne
+Next
+RemoveHTML= strTmp
+End Function
+//-->
+</SCRIPT>
+

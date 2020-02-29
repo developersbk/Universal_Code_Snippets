@@ -1,0 +1,4 @@
+
+#!/usr/bin/perl -w
+
+print "\tThis is a double quoted string.\n";

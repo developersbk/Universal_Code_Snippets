@@ -1,0 +1,7 @@
+%hash = qw(
+    fruit      apple
+    sandwich   hamburger
+    drink      bubbly
+);
+
+print "$hash{'fruit'}\n";

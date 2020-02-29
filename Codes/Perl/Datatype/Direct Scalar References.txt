@@ -1,0 +1,16 @@
+$title = "Reference Color";
+
+$bodyColor = "FF0000";
+$HTMLHead = "<html> <head> <title> $title </title> </head>";
+$HTMLBodyColor="<body bgcolor=$bodyColor>";
+$headReference = \$HTMLHead;
+$bodyReference = \$HTMLBodyColor;
+open (OUTFILE, ">refColor.html");
+print OUTFILE <<eof;
+$$headReference
+$$bodyReference
+<test>
+</body>
+</html>
+eof
+close(OUTFILE);

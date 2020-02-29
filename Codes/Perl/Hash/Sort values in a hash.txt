@@ -1,0 +1,7 @@
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+foreach $value (sort values %hash) {
+    print "$value\n";
+}

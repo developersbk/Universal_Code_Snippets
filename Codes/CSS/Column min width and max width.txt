@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitionalt//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" subLang="en" xml:subLang="en">
+  <head>
+    <title>Layout Example - Column min width and max width</title>
+<style type='text/css'>
+body {
+  margin:0px;
+  background-color:pink;
+  font-family:arial, sans-serif;}
+
+#header {
+  background-color:#f94489;
+  padding:12px;
+  height:150px;}
+
+#navigation {
+  background-color:#f5f5f5;
+  padding:12px;
+  height:45px;}
+
+#footer {
+  background-color:green;
+  padding:12px;
+  height:60px;
+  clear:both;
+  border-top:20px solid gray;}
+
+.column1, .column2, .column3 {
+  float:left;
+  width:32%;
+    margin-left:2%;
+  background-color:#cc98ff;
+  padding:1%;
+  margin-top:22px;
+  height:180px;
+  min-width:200px;
+  max-width:450px;}
+
+#header, #navigation, #footer, .columns123 {min-width:750px;}
+</style>
+
+  </head> 
+  <body>
+    <div id="header">Love Sayings</div>
+    <div id="navigation">Oh, give thanks to the Lord, for He is good;<br>
+                         His love and His kindness go on forever." 1 Chronicles 16:34<br><br>
+
+                         The Bible </div>
+<div class="columns123">
+    <div class="column1"><img src="http://www.happycodings.com/images/happy.gif" width="200" height="10" alt="happycodings" />Column 1</div>
+    <div class="column2">Column 2</div>
+    <div class="column3">Column 3</div>
+</div>
+    <div id="footer">Happy Codings</div>
+  </body>
+</html>
+
+

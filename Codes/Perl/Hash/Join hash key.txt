@@ -1,0 +1,5 @@
+$hash2{A} = F;
+$hash2{B} = E;
+$hash2{'C'} = D;
+
+print join(" ", %hash);

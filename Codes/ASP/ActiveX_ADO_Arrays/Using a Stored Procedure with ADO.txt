@@ -1,0 +1,19 @@
+Using a Stored Procedure with ADO
+
+Dim cn As New ADODB.Connection
+cn.Open sConStr
+Dim cmd As New ADODB.Command
+cn.CursorLocation = adUseClient
+Set cmd.ActiveConnection = cn
+cmd.CommandText = "addNew_Service"
+cmd.CommandType = adCmdStoredProc
+cmd.Parameters.Refresh
+cmd.Parameters.Item("@wsdlfilename") = CStr(services(serviceId).wsdlfilename)
+cmd.Parameters.Item("@WSMLFileName") = CStr(services(serviceId).WSMLFileName)
+cmd.Parameters.Item("@name") = CStr(services(serviceId).name)
+cmd.Parameters.Item("@description") = CStr(services(serviceId).description)
+cmd.Parameters.Item("@uuid") = CStr(sUUID)
+cmd.Parameters.Item("@Service_ID") = 0
+cmd.Execute
+Debug.Print Err.description
+newService_ID = cmd.Parameters("@Service_ID").Value

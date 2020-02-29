@@ -1,0 +1,5 @@
+#!/usr/bin/perl -w
+
+$return_value = system("NOTEPAD");
+
+print "System returned $return_value\n";

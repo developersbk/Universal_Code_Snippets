@@ -1,0 +1,11 @@
+sub printhello
+{
+    print "Hello!\n";
+}
+
+sub printem
+{
+    &{@_[0]};
+}
+
+printem \&printhello;

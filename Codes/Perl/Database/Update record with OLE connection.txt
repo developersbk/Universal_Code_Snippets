@@ -1,0 +1,17 @@
+#!c:/perl/bin
+
+use Win32::OLE;
+use Win32::OLE::Const 'Microsoft ActiveX Data Objects';
+
+$table = "addresstable";
+$conn = Win32::OLE->new("ADODB.Connection");
+$rs   = Win32::OLE->new("ADODB.Recordset");
+
+$conn->Open("address");
+$conn->Execute("UPDATE $table SET address='A' WHERE firstname='A'");
+
+print "Content-type: text/html\n\n";
+print "Record Updated ...";
+
+$rs->Close;
+$conn->Close;

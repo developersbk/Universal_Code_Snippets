@@ -1,0 +1,6 @@
+#!C:/perl/bin
+
+for($linenumber = 1; $linenumber < 10; $linenumber++)
+{
+    print "Perl Fast & Easy \n";
+}

@@ -1,0 +1,86 @@
+<HTML>
+<TITLE>listmakedemo.asp</TITLE>
+<body bgcolor="#FFFFFF">
+<br>
+City: <!--#include virtual="/learn/test/listcity.asp"-->
+<br>
+State: <!--#include virtual="/learn/test/liststate.asp"-->
+<br>
+Zip: <!--#include virtual="/learn/test/listzip.asp"-->
+</BODY></html>
+
+ListCity.asp displays listbox of cities.
+
+<!--#include virtual="/learn/test/lib_listmake.asp"-->
+<%
+If application("list_city")="" Then
+myDSN="DSN=student;uid=student;pwd=magic"
+mySQL="select distinct city from publishers"
+application("list_city")=query2htmlist(mySQL,"cities",myDSN)
+End If
+Response.Write application("list_city") 
+%>
+
+
+ListState.asp displays listbox of states
+
+<!--#include virtual="/learn/test/lib_listmake.asp"-->
+<%
+If application("list_states")="" Then
+myDSN="DSN=student;uid=student;pwd=magic"
+mySQL="select distinct state from publishers"
+application("list_states")=query2htmlist(mySQL,"state",myDSN)
+End If
+Response.Write application("list_states") 
+%>
+
+
+ListZip.asp displays listbox ofzips.
+
+<!--#include virtual="/learn/test/lib_listmake.asp"-->
+<%
+If application("list_zips")="" Then
+myDSN="DSN=student;uid=student;pwd=magic"
+mySQL="select distinct zip from publishers"
+application("list_zips")=query2htmlist(mySQL,"zip",myDSN)
+End If
+Response.Write application("list_zips") 
+%>
+
+
+
+Lib_Listmake.asp Is a library that makes it easier To make listboxes.
+
+<%
+Function query2htmList(myquery,myname,myDSN)
+Dim conntemp, rstemp
+Set conntemp=Server.CreateObject("adodb.connection")
+conntemp.open myDSN
+Set rstemp=conntemp.execute(myquery)
+query2HTMlist="<Select name='" & myname & "'>"
+Do until rstemp.eof
+thisfield=Trim(RStemp(0))
+If IsNull(thisfield) Or thisfield="" Then
+' ignore
+Else
+query2HTMlist=query2HTMlist & "<option>" & thisfield & "</option>"
+End If
+rstemp.movenext
+Loop
+query2HTMlist=query2HTMlist & "</select>"
+rstemp.close
+Set rstemp=Nothing
+conntemp.close
+Set conntemp=Nothing
+End Function
+%>
+
+
+ListMakeClear.asp Is a crude mechanism To force all the listboxes To refresh. It could be invoked On a timed basis (every 15 minutes For example) Or triggered by data-changes.
+
+<%
+application("list_city")=""
+application("list_states")=""
+application("list_zips")=""
+%>
+

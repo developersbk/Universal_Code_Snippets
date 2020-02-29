@@ -1,0 +1,10 @@
+<html>
+<title>Accesskey Attribute</title>
+<BODY>
+<form>
+<input type="Button" 
+       accesskey="J" 
+       value="Press Alt + J to bring this button intofocus">
+</form>
+</body>
+</html>

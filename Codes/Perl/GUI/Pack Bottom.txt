@@ -1,0 +1,32 @@
+#!/usr/bin/perl -w
+
+use Tk;
+
+
+$side = "bottom";
+
+$Tk::strictMotif = 1;
+
+$main = MainWindow->new();
+
+$button1 = $main->Button(-text => "Button 1",
+                         -command => \&exit_button);
+
+$button1->pack(-side=>$side);
+
+$button2 = $main->Button(-text => "Button 2",
+                         -command => \&exit_button);
+
+$button2->pack(-side=>$side);
+
+$button3 = $main->Button(-text => "Button 3",
+                         -command => \&exit_button);
+
+$button3->pack(-side=>$side);
+
+MainLoop();
+
+sub exit_button {
+    print "You pushed the button!\n";
+    exit;
+}

@@ -1,0 +1,5 @@
+#If your data already have quotes, you can use 'q' operators to create strings with quotes.
+
+$var = q('Single-quoted string.');
+
+print "$var\n";

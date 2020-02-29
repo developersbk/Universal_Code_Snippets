@@ -1,0 +1,10 @@
+<% 
+Dim strSample 
+'our sample string 
+strSample = "Our Sample String To Convert" 
+'convert to lower case 
+Response.Write LCase(strSample) 
+Response.Write "<br>" 
+'convert to upper case 
+Response.Write UCase(strSample) 
+%>

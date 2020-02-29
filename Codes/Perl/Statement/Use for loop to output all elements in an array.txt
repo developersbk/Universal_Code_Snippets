@@ -1,0 +1,7 @@
+@array = ("one", "two", "three");
+for ($loop_index = 0; $loop_index <= $#array; $loop_index++) 
+{
+    print $array[$loop_index] . " ";
+}
+
+   

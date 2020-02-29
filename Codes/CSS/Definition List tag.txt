@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" subLang="en">
+<head>
+<title>Definition List Example</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+</head>
+<body>
+
+<div class="head">Definition List Example</div>
+<div class="content">
+
+<h1 align="center">Definition List Tag</h1>
+<dl>
+<dt>Never marry but for love; but see that thou lovest what is lovely. William Penn</dt>
+<dd>Never marry but for love; but see that thou lovest what is lovely. William Penn</dd>
+<dt>Never marry but for love; but see that thou lovest what is lovely. William Penn</dt>
+<dd>Never marry but for love; but see that thou lovest what is lovely. William Penn</dd>
+</dl>
+
+</div>
+
+</body>
+</html>
+

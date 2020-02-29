@@ -1,0 +1,24 @@
+#!/usr/bin/perl 
+
+use warnings;
+use strict;
+
+use IO::Socket;
+
+my $host = 'localhost'; 
+my $port = 4444;
+
+my $server = new IO::Socket::INET(
+    Proto => 'tcp',
+    PeerAddr => $host,
+    PeerPort => $port,
+);
+die "Connect failed: $!\n" unless $server;
+
+print "Client connected.\n";
+print "Server says: ", scalar(<$server>);
+print $server "Hello from the client!\n";
+print "Server says: ", scalar(<$server>);
+print $server "And goodbye!\n";
+print "Server says: ", scalar(<$server>);
+close $server;

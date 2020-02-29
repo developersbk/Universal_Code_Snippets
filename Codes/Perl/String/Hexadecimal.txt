@@ -1,0 +1,7 @@
+
+#!/usr/bin/perl -w
+
+$wid = 255;
+printf("Window ID=%x\n", $wid);
+
+   

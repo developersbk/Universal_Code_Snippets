@@ -1,0 +1,60 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>blockquote with image</title>
+<style type="text/css">
+blockquote {
+ background-image: url(background-image.jpg);
+ background-repeat: no-repeat;
+ float: left;
+ width: 400px;
+ margin: 2 2 2 2;
+ padding: 12px 0 0 22px;
+ font-family: Times, Verdana;
+ font-size: 16px;
+ font-style: italic;
+ color: blue;
+}
+blockquote p {
+ margin: 4;
+ padding: 0 20px 8px 0;
+ width: 400px;
+ text-align: justify;
+ line-height: 1.2em;
+ background-image: url(background-image.jpg);
+ background-repeat: no-repeat;
+ background-position: bottom right;
+}
+
+</style>
+</head>
+
+<body>
+
+  <p>Love is life. And if you miss love, you miss life. Leo Buscaglia</p>
+
+  <blockquote>
+    <p>To laugh often and love much... to appreciate beauty,<br>
+       to find the best in others, to give one's self...<br>
+       this is to have succeeded.<br><br>
+
+       Ralph Waldo Emerson</p>
+  </blockquote>
+
+  <p>We waste time looking for the perfect lover,<br>
+     instead of creating the perfect love.<br><br>
+
+     Tom Robbins</p>
+
+  <p>To love deeply in one direction makes us more loving in all others.<br><br>
+
+     Anne-Sophie Swetchine</p>
+
+  <p>Love is always bestowed as a gift - freely,<br>
+     willingly and without expectation.<br>
+     We don't love to be loved; we love to love.<br><br>
+
+     Leo Buscaglia</p>
+</body>
+</html>

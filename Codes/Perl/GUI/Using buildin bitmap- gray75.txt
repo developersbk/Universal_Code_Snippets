@@ -1,0 +1,9 @@
+use Tk;
+
+my $main = MainWindow->new;
+
+$main->Label(-bitmap => 'gray75')->pack;
+
+MainLoop;
+
+   

@@ -1,0 +1,19 @@
+use Net::Telnet;
+
+$telnet = Net::Telnet->new
+( 
+    Timeout => 90,
+    Prompt  => '%', 
+    Host => 'server.com' 
+);
+
+$telnet->login('username', 'password');
+
+$telnet->cmd("cd folder1");
+
+@listing = $telnet->cmd("ls");
+
+print "Here are the files:\n";
+print "@listing";
+
+$telnet->close;

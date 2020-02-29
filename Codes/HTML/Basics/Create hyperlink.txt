@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <title>Example of HTML a tag</title>
+</head>
+<body>
+	<p><a href="http://www.tutorialrepublic.com/">Tutorial Republic</a></p>
+    <p><a href="../images/kites.jpg"><img src="../images/kites-thumb.jpg" alt="Hot Air Ballons"></a></p>
+    <p><a href="http://www.google.com/">Google Search</a></p>
+</body>
+</html>                                 		

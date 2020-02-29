@@ -1,0 +1,36 @@
+#!/usr/bin/perl
+
+use DBI;
+use strict;
+use CGI qw/:standard/;
+
+my $username = "dbuser";
+my $password = "dbpassword";
+my $dsn = "dbi:mysql:mysql:192.168.1.10";
+my $dbh = DBI->connect($dsn,$username,$password)
+  or die "Cannot connect to database: $DBI::errstr";
+
+my $sth = $dbh->prepare("SELECT host,user FROM mysql.user");
+
+$sth->execute()
+    or die "Cannot execute sth: $DBI::errstr";
+
+print header,
+        start_html('MySQL Hosts and Users'),
+        table({-border=>1}),
+                Tr({-align=>'CENTER',-valign=>'TOP'},
+                [
+                        th(['User','Host'])
+                ]);
+while (my ($hostname,$username) = $sth->fetchrow_array()) {
+        if ($hostname eq "") {
+                $hostname = "<b>undef</b>";
+        }
+        print Tr({-align=>'CENTER',-valign=>'TOP'},
+                [td(["$username","$hostname"])
+                ]);
+}
+
+print end_html;
+
+$dbh->disconnect();

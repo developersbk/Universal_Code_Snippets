@@ -1,0 +1,13 @@
+use CGI;
+
+$q1 = new CGI;
+
+$cookie1 = $q1->cookie(
+       -name=>'FIRST_NAME', -value=>'Joe',
+       -expires=>'Fri, 30-Aug-2002 15:30:30 GMT;',
+       -path=>'/',
+       -domain=>'127.0.0.1');
+
+print $q1->header(-cookie=>$cookie1);
+
+print "Cookie Created ...";

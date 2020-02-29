@@ -1,0 +1,12 @@
+#!usr/bin/perl
+
+use strict;
+use warnings;
+
+print "Opening file for output:\n";
+open OUTFILE, ">file.txt" or die "Can't find file.txt : $!";
+print "Outputting to file.\n";
+print OUTFILE "There was an old lady\n";
+close OUTFILE or die "Can not close file.txt : $!";
+
+  

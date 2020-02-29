@@ -1,0 +1,8 @@
+#!/usr/bin/perl
+
+$name="Tom";
+
+$name .= " and";  # Concatenate string
+print "$name is the girl's version of Dan.\n";
+
+   

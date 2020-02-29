@@ -1,0 +1,10 @@
+<% 
+strText="Sample text" 
+Set objFSO = CreateObject("Scripting.FileSystemObject") 
+Set objFile = objFSO.CreateTextFile("c:\testfile.txt", True) 
+objFile.Write (strText) 
+
+objFile.close 
+Set objFile=nothing 
+Set objFSO=nothing
+%>

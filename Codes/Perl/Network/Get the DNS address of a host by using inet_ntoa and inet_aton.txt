@@ -1,0 +1,7 @@
+use Socket;
+
+$site_name = 'www.cpan.org';
+
+$address = inet_ntoa(inet_aton($site_name));
+
+print "The DNS address of www.cpan.org is $address";

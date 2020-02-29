@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+print format_email('me@m.net', 'y@y.org', "Wishing","message!", "Regards, Me");
+
+sub format_email {
+    my ($me, $to_addr, $subject, $body_of_message, $signature) = @_;
+
+    return <<_EMAIL_
+            To: $to_addr
+            From: $me
+            Subject: $subject
+            $body_of_message
+            --
+            $signature
+            _EMAIL_;
+}

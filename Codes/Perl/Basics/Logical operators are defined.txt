@@ -1,0 +1,12 @@
+ 
+
+$a || $b # logical or: true if either is nonzero 
+$a && $b # logical and: true only if both are nonzero 
+! $a # logical not: true if $a is zero 
+Perl 5 also defines these logical operators: 
+$a or $b # another form of logical or 
+$a and $b # another form of logical and 
+not $a # another form of logical not 
+$a xor $b # logical xor: true if either $a or $b is nonzero, but not both 
+
+   

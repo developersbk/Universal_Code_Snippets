@@ -1,0 +1,47 @@
+#The dbmopen function associates a DBM database with a Perl hash or associative array. 
+#The dbmopen function takes the following syntax: 
+
+#dbmopen(%hash, $database, $mode) or die "Cant open \"$database\" due to $!";
+
+#The $mode value contains the file permissions used to create the DBM file if it doesnt exist.
+         
+#When youre done with a DBM database, call dbmclose to close it: 
+#dbmclose(%hash)
+#You pass the hash to dbmclose, not the database file name.
+
+
+#!/usr/bin/perl -w
+
+$directory = "db";
+$database  = "mydb";
+
+# Read directory.
+opendir(DIR, $directory) or die
+  "Cant open \"$directory\" due to $!.";
+  
+@entries = readdir(DIR);
+
+closedir(DIR);
+@sorted = sort(@entries);
+
+print "Read $directory.\n";
+$mode = 0666;
+
+dbmopen(%execs, $database, $mode) or die "Cant open \"$database\" due to $!";
+  
+foreach $entry (@sorted) {
+    print "$entry\n";
+    $fullname = $directory . "/" . $entry;
+
+    # Dont store if . or ..
+    if ( ( -x $fullname ) && 
+         ( ! -d $fullname ) && 
+         ($entry !~ /^\./ ) ) {
+
+        $execs{$entry} = $fullname;
+
+        print "Storing $entry=$fullname\n";
+    }
+}
+
+dbmclose(%execs);

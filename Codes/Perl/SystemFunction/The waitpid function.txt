@@ -1,0 +1,23 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+
+my ( $pid, $pid2 );
+$| = 1;
+
+if ( ( $pid = fork() ) && ( $pid2 = fork() ) ) {
+   print( "I have to wait for my kids.\n" );
+   my $straggler = waitpid( $pid, 0 );
+   print( "Finally $straggler finished, now I can go.\n" );
+}
+elsif ( $pid && defined( $pid2 ) ) {
+   print( "Kid 2: Mine is not...\n" );
+   print( "Kid 2: Hey! Wait for me!!!\n" );
+   exit();
+}
+elsif ( defined( $pid ) ) {
+   print( "Kid 1: My parent is very patient...\n" );
+}
+else {
+   die( "Forking problems: " );
+}

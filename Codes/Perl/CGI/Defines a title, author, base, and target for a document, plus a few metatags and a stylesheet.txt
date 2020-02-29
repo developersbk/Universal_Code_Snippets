@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+use warnings;
+use CGI qw(Link myheadertag);
+use strict;
+my $cgi=new CGI;
+print $cgi->header();
+print $cgi->start_html(-title => 'A HTML document header',
+                       -author=> 's@h.org',
+                       -xbase => 'http://h.net',
+                       -target => '_map_panel',
+                       -meta => {keywords => 'CGI header HTML',
+                                 description => 'Header',
+                                 message => 'Hello World!'},
+                       -style => {src => '/my.css'},
+                       -head => [Link({-rel=>'origin',
+                                       -href=>'http://h.org/'}),
+                                 myheadertag({-myattr=>'myvalue'}),]
+      );
+print $cgi->end_html();

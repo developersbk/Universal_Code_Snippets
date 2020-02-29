@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+
+use CGI::Push;
+
+$co = new CGI::Push;
+
+$co->do_push(-next_page=>\&page);
+
+sub page
+{
+    my($obj, $counter) = @_;
+    return undef if $counter > 50;
+    return
+        $co->start_html,
+        $co->br,
+        $co->center($co->h1('Server Push Example')),
+        $co->br,
+        $co->center($co->h1('Counter: ', $counter)),
+        $co->end_html;
+}

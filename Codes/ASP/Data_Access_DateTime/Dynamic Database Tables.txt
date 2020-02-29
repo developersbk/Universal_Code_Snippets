@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<TITLE>Document</TITLE> 
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+    <FORM ACTION=DynamicTableResults.asp METHOD=Post>
+    <TABLE BORDER='1'>
+    <TR>
+    <TD BGCOLOR=#EEEEEE COLSPAN=3>
+    Get table Data and Column Headers From A Table
+    </TD>
+    </TR>
+    <TR>
+    <TD>Enter The Table Name:</TD>
+    <TD><INPUT TYPE=Text Name=Table SIZE=25></TD>
+    </TR>
+    <TR>
+    <TD>Enter The DSN:</TD>
+    <TD><INPUT TYPE=Text NAME=DSN SIZE=25></TD>
+    </TR>
+    </TABLE><BR>
+    <INPUT TYPE=Submit VALUE=Submit> <INPUT TYPE=Reset VALUE=Reset>
+    </FORM>
+</BODY>
+</HTML>
+
+
+Here is the code that does all the work.
+
+<%@ LANGUAGE="VBSCRIPT" %>
+<%   
+Option Explicit
+'---------------------- WEB SITE: -----------------------
+' File Name: DynamicTableResults.asp
+'
+'   Purpose: This will take a table name from DynamicTable.asp 
+'       (you must specify the DSN also) 
+'   and list all the data and table column names. 
+'   Good to see what's in a table when you forgot or don't know.                
+    'Dim and Construct the SQL Query notice the request.form entry
+    'To get a table name entered by the user
+    Dim strSQL
+    strSQL = "SELECT * FROM " & Request.Form("Table") & ""
+    
+    'This will display the SQL string on the page, 
+    'i use it to check for errors
+    Response.Write strSQL 
+    
+    'Dim and create a connection object, notice the request.form to get 
+    'a DSN entered by the user in the objConn.Open line. You must have
+    'a DSN created for the database on your machine and know it's name.
+    Dim objConn
+    Set objConn = Server.CreateObject("ADODB.Connection")
+    objConn.Open "DSN=" & Request.Form("DSN") & ""
+    
+    'Dim and create a recordset object
+    Dim objRS
+    Set objRS = Server.CreateObject("ADODB.Recordset")
+    objRS.Open strSQL, objConn
+    
+    Dim fCount, i
+    fCount = objRS.Fields.Count - 1
+    
+    Response.Write "<table border=1><tr bgcolor='#EEEEEE'>"
+    
+    for i=0 to fCount
+        Response.Write "<th>" & objRS(i).name & "</th>"
+    next
+        Response.Write "</tr>"
+    While Not objRS.EOF
+        Response.Write "<tr>"
+    for i=0 to fCount
+            Response.Write "<td> " & objRS(i).value & "</td>"
+    next
+        Response.Write "</tr>"
+        objRS.MoveNext
+    Wend
+        Response.Write "</table>"
+        
+    'Close and dereference 
+    objRS.Close
+    Set objRS = Nothing
+    objConn.Close
+    Set objConn = Nothing
+
+'-----
+' Begin HTML output
+%>
+
+<HTML>
+<HEAD>
+    <TITLE>Untitled</TITLE>
+</HEAD>
+
+<BODY>
+
+</BODY>
+</HTML>
+<%
+'----------------------------------------------------------------------
+' End HTML Output
+'----------------------------------------------------------------------
+
+'----------------------------------------------------------------------
+' All ASP post processing code goes here, as well as 
+' sub routines and functions
+'----------------------------------------------------------------------
+
+
+%>

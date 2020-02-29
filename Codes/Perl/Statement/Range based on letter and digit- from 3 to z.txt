@@ -1,0 +1,5 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+print "Going from 3 to z: ", (3 .. 'z'), "\n";

@@ -1,0 +1,10 @@
+The regular arrays allow you to access elements by their index numbers, starting at 0.
+Associative arrays allow you to access elements by key names. 
+An associative array or hash holds a set of key/value pairs. 
+A key name is any arbitrary scalar value.
+Perl uses a percent sign (%) to indicate that a variable is a hash.
+Any value in a hash can be accessed through its key name with the following syntax:
+The dollar sign ($) means that the value held in the hash under a given key name is a scalar value.
+
+
+$hash{keyname}

@@ -1,0 +1,11 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my @months = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
+
+print @months;
+
+@months[3,4] = @months[4,3];
+
+print @months;

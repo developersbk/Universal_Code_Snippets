@@ -1,0 +1,3 @@
+$string = "Hello";
+$ref = \substr($a, 0, 1);
+print $ref;

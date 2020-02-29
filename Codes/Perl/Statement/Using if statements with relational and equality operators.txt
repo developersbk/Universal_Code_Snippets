@@ -1,0 +1,33 @@
+print "Please enter first integer: ";
+$number1 = <STDIN>;
+chomp $number1;
+
+print "Please enter second integer: ";
+$number2 = <STDIN>;
+chomp $number2;
+
+print "The integers satisfy these relationships: \n";
+
+if ( $number1 == $number2 ) {
+   print "$number1 is equal to $number2.\n";
+}
+
+if ( $number1 != $number2 ) {
+   print "$number1 is not equal to $number2.\n";
+}
+
+if ( $number1 < $number2 ) {
+   print "$number1 is less than $number2.\n";
+}
+
+if ( $number1 > $number2 ) {
+   print "$number1 is greater than $number2.\n";
+}
+
+if ( $number1 <= $number2 ) {
+   print "$number1 is less than or equal to $number2.\n";
+}
+
+if ( $number1 >= $number2 ) {
+   print "$number1 is greater than or equal to $number2.\n";
+}

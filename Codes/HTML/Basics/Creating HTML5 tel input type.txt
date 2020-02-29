@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+<title>HTML5 Tel Input Type</title>
+</head>
+<body>
+    <form>
+        <label>
+            Telephone Number: <input type="tel" name="mytelephone" required>
+        </label>
+    </form>
+</body>
+</html>                                		

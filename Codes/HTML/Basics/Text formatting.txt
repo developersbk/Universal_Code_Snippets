@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example of HTML Paragraphs</title>
+</head>
+<body>
+	<p><b>This text is bold</b></p>
+    <p><code>This is computer code</code></p>
+    <p><em>This text is emphasized</em></p>
+    <p><i>This text is italic</i></p>
+    <p><small>This text is small</small></p>
+    <p><mark>This text is marked</mark></p>
+    <p><strong>This text is strongly emphasized</strong></p>
+    <p>This is <sub>subscript</sub> and <sup>superscript</sup></p>
+    <p><ins>This text is inserted to the document</ins></p>
+    <p><del>This text is deleted from the document</del></p>
+</body>
+</html>                                		

@@ -1,0 +1,7 @@
+$hexdigit = 0xA;
+
+vec ($data, 0, 8) = $hexdigit;
+print vec ($data, 3, 1);
+print vec ($data, 2, 1);
+print vec ($data, 1, 1);
+print vec ($data, 0, 1);

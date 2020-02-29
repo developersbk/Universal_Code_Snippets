@@ -1,0 +1,12 @@
+use warnings;
+use strict;
+
+my $variable = <<'DONE';
+Line 1
+Line 2
+
+DONE
+
+print $variable;
+
+   

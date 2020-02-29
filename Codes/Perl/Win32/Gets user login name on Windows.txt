@@ -1,0 +1,7 @@
+#!/usr/bin/perl -w
+
+use Win32;
+
+$username = Win32::LoginName();
+
+print "User name: $username\n";

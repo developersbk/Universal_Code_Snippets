@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+<title>HTML5 Date Input Type</title>
+</head>
+<body>
+    <form>
+        <label>
+            Select Date: <input type="date" name="mydate">
+        </label>
+    </form>
+</body>
+</html>                                		

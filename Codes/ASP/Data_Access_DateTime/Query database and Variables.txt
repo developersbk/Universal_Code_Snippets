@@ -1,0 +1,70 @@
+<%
+Response.Buffer = True
+sDSN = "dsn=Incident"
+ATYPE = trim(request.querystring("ATYPE"))
+If trim(request.querystring("ID")) <> Empty Then
+    SET GENERAL = Server.CreateObject("ADODB.Recordset")
+    GENERAL.ActiveConnection = sDSN
+    GENERAL.Source = "Select * From Incident Where IncidentReportNumber=" & request.querystring("ID")
+    GENERAL.CursorType = 0
+    GENERAL.LockType = 3
+    GENERAL.Open
+    GENERAL_numRows = 0
+    If GENERAL.EOF = True Then
+        sError = "NF"
+        Else
+        InsuranceClaim = trim(GENERAL.Fields.Item("InsuranceClaim").value)
+        IncidentReportNumber = trim(GENERAL.Fields.Item("IncidentReportNumber").value)
+        CoverageYear = GENERAL.Fields.Item("CoverageYear").value
+        IncidentOccurrenceDate = GENERAL.Fields.Item("IncidentOccurrenceDate").value
+        ClaimStatus = trim(GENERAL.Fields.Item("ClaimStatus").value)
+        IncidentReportedDate = GENERAL.Fields.Item("IncidentReportedDate").value
+        SupportingDocuments = trim(GENERAL.Fields.Item("SupportingDocuments").value)
+        LastName = trim(GENERAL.Fields.Item("LastName").value)
+        FirstName = trim(GENERAL.Fields.Item("FirstName").value)
+        Age = trim(GENERAL.Fields.Item("Age").value)
+        Address = trim(GENERAL.Fields.Item("Address").value)
+        City = trim(GENERAL.Fields.Item("City").value)
+        Zip = trim(GENERAL.Fields.Item("Zip").value)
+        HomePhone = trim(GENERAL.Fields.Item("HomePhone").value)
+        WorkPhone = trim(GENERAL.Fields.Item("WorkPhone").value)
+        DOB = GENERAL.Fields.Item("DOB").value
+        Sex = trim(GENERAL.Fields.Item("Sex").value)
+        SSN = trim(GENERAL.Fields.Item("SSN").value)
+        InsuranceType = trim(GENERAL.Fields.Item("InsuranceType").value)
+        Status = trim(GENERAL.Fields.Item("Status").value)
+        NatureIncident = trim(GENERAL.Fields.Item("NatureIncident").value)
+        ServiceType = trim(GENERAL.Fields.Item("ServiceType").value)
+        ProgramInstructor = trim(GENERAL.Fields.Item("ProgramInstructor").value)
+        Supervisor = trim(GENERAL.Fields.Item("Supervisor").value)
+        LocationIncident = trim(GENERAL.Fields.Item("LocationIncident").value)
+        LocationCode = trim(GENERAL.Fields.Item("LocationCode").value)
+        WWW = trim(GENERAL.Fields.Item("WWW").value)
+        InjuryOccur = trim(GENERAL.Fields.Item("InjuryOccur").value)
+        InjuryComments = trim(GENERAL.Fields.Item("InjuryDescribe").value)
+        DoTo = trim(GENERAL.Fields.Item("DueTo").value)
+        DoToDescribe = trim(GENERAL.Fields.Item("DoToDescribe").value)
+        FirstAidGiven = trim(GENERAL.Fields.Item("FirstAidGiven").value)
+        FirstAidBy = trim(GENERAL.Fields.Item("FirstAidBy").value)
+        Doctor = trim(GENERAL.Fields.Item("Doctor").value)
+        DoctorAddress = trim(GENERAL.Fields.Item("DoctorAddress").value)
+        Instructions = trim(GENERAL.Fields.Item("Instructions").value)
+        DateReturn = GENERAL.Fields.Item("DateReturn").value
+        FollowUpCare = trim(GENERAL.Fields.Item("FollowUpCare").value)
+        NameWitness = trim(GENERAL.Fields.Item("NameWitness").value)
+        Author = trim(GENERAL.Fields.Item("Author").value)
+        CompletedBy = trim(GENERAL.Fields.Item("CompletedBy").value)
+        DateComplete = GENERAL.Fields.Item("DateComplete").value
+        CorrectiveAction = trim(GENERAL.Fields.Item("CorrectiveAction").value)
+        Comments = trim(GENERAL.Fields.Item("Comments").value)
+        GENERAL.Close
+        Set General = Nothing
+    End If
+End If
+%>
+
+THEN THE HTML
+
+<input type="text" name="FirstName" size="27" value="<%=FirstName%>" maxlength="15">
+
+AND SO ON...

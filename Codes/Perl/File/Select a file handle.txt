@@ -1,0 +1,9 @@
+
+open (FILEHANDLE, ">hello.txt") or die ("Cannot open hello.txt");
+
+select FILEHANDLE;
+
+print "Hello!";
+close (FILEHANDLE);
+
+   

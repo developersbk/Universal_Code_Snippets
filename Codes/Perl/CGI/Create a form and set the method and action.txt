@@ -1,0 +1,11 @@
+#!/usr/local/bin/perl
+
+use CGI;                             
+
+$co = new CGI;                        
+
+print $co->start_form
+(
+    -method=>'POST', 
+    -action=>"http://www.yourserver.com/user/cgi/cgi2.cgi"
+);

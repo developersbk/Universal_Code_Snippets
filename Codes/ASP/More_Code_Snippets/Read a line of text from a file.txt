@@ -1,0 +1,12 @@
+<% 
+Set objFSO = CreateObject("Scripting.FileSystemObject") 
+Set objFile = objFSO.OpenTextFile("c:\testfile.txt") 
+strText = objFile.ReadLine 
+
+objFile.close 
+Set objFile=nothing 
+Set objFSO=nothing 
+
+%> 
+
+<% =strText %><br>

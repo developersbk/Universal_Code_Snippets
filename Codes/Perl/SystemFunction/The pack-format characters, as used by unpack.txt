@@ -1,0 +1,26 @@
+Character            Description 
+a                    ASCII character string, unstripped 
+A                    ASCII character string with trailing nulls and spaces stripped 
+b                    String of bits, lowest first 
+B                    String of bits, highest first 
+c                    A signed character (range usually -128 to 127) 
+C                    An unsigned character (usually 8 bits) 
+d                    A double-precision floating-point number 
+f                    A single-precision floating-point number 
+h                    Hexadecimal string, lowest digit first 
+H                    Hexadecimal string, highest digit first 
+I                    A signed integer 
+I                    An unsigned integer 
+l                    A signed long integer 
+L                    An unsigned long integer 
+n                    A short integer in network order 
+N                    A long integer in network order 
+p                    A pointer to a string 
+s                    A signed short integer 
+S                    An unsigned short integer 
+u                    Convert (uudecode) a uuencoded string 
+v                    A short integer in VAX (little-endian) order 
+V                    A long integer in VAX order 
+x                    Skip forward a byte 
+X                    Indicates "go back one byte" 
+@                    Go to specified position 

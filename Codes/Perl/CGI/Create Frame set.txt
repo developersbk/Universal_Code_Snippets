@@ -1,0 +1,22 @@
+#!/usr/local/bin/perl
+
+use CGI;
+$co = new CGI;    
+
+print $co->header,
+
+$co->frameset(
+    {-rows=>'40%,60%'},
+
+    $co->frame
+    ({
+        -name=>'top',
+        -src=>'http://www.yourserver.com/username/cgi/a.htm'
+    }),
+
+    $co->frame
+    ({
+        -name=>'bottom',
+        -src=>'http://www.yourserver.com/username/cgi/b.htm'
+    })
+);

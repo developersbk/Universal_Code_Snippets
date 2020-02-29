@@ -1,0 +1,159 @@
+<HTML>
+<HEAD>
+<TITLE>Detecting System Components</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" Text="#000000" TOPMARGIN="0" LEFTMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="0" CELLPADDING="0"><TR><TD WIDTH="25%" BGCOLOR="#465697"> </TD>
+<TD WIDTH="100%" BGCOLOR="#465697"><FONT FACE="Verdana" SIZE="2" COLOR="#FFFFFF"><B>Detecting Email Components...</B>
+</FONT>
+</TD>
+<TD WIDTH="25%" BGCOLOR="#465697"> </TD>
+</TR>
+<TR><TD COLSPAN="3" WIDTH="100%"> </TD>
+</TR>
+<TR><TD WIDTH="25%"> </TD>
+<TD WIDTH="50%"><FONT FACE="Verdana" SIZE="2"><%
+Dim sql_control
+Dim sql_con_trol
+sql_con_trol = 0
+On Error Resume Next
+Set sql_control = CreateObject("VSEmail.SMTPSendMail")
+If Err Then
+Else
+    Response.Write "Detected: <B><FONT COLOR=""#009900"">VSEmail</FONT></B><BR>" & vbCrLf
+    sql_con_trol = sql_con_trol + 1
+End If
+Err.Clear
+Set sql_control = CreateObject("Persits.MailSender")
+If Err Then
+Else
+    Response.Write "Detected: <B><FONT COLOR=""#009900"">ASPEmail</FONT></B><BR>" & vbCrLf
+    sql_con_trol = sql_con_trol + 1
+End If
+Err.Clear
+Set sql_control = Server.CreateObject("CDONTS.NewMail")
+If Err Then
+Else
+    Response.Write "Detected: <B><FONT COLOR=""#009900"">CDONTS</FONT></B><BR>" & vbCrLf
+    sql_con_trol = sql_con_trol + 1
+End If
+Err.Clear
+Set sql_control = Server.CreateObject("SMTPsvg.Mailer")
+If Err Then
+Else
+    Response.Write "Detected: <B><FONT COLOR=""#009900"">ASPMail</FONT></B><BR>" & vbCrLf
+    sql_con_trol = sql_con_trol + 1
+End If
+Err.Clear
+Set sql_control = Server.CreateObject("JMail.SMTPMail")
+If Err Then
+Else
+    Response.Write "Detected: <B><FONT COLOR=""#009900"">JMail 3.7</FONT></B><BR>" & vbCrLf
+    sql_con_trol = sql_con_trol + 1
+End If
+Err.Clear
+Set sql_control = Server.CreateObject("JMail.Message")
+If Err Then
+Else
+    Response.Write "Detected: <B><FONT COLOR=""#009900"">JMail 4.1</FONT></B><BR>" & vbCrLf
+    sql_con_trol = sql_con_trol + 1
+End If
+Err.Clear
+Set sql_control = Server.CreateObject("Dynu.Email")
+If Err Then
+Else
+    Response.Write "Detected: <B><FONT COLOR=""#009900"">Dynu Mail</FONT></B><BR>" & vbCrLf
+    sql_con_trol = sql_con_trol + 1
+End If
+Err.Clear
+Set sql_control = Server.CreateObject("ADISCON.SimpleMail.1")
+If Err Then
+Else
+    Response.Write "Detected: <B><FONT COLOR=""#009900"">Simple Mail</FONT></B><BR>" & vbCrLf
+    sql_con_trol = sql_con_trol + 1
+End If
+Err.Clear
+Set sql_control = Server.CreateObject("ASPMail.ASPMailCtrl.1")
+If Err Then
+Else
+    Response.Write "Detected: <B><FONT COLOR=""#009900"">OCXMail</FONT></B><BR>" & vbCrLf
+    sql_con_trol = sql_con_trol + 1
+End If
+Err.Clear
+If sql_con_trol > 0 Then
+    Response.Write "<BR><BR>Found <B>" & sql_con_trol & "</B> components." & vbCrLf
+    Response.Write "<BR>" & vbCrLf
+    Response.Write "<BR>Please inform your Mail-Robot administrator about the installed components." & vbCrLf
+    Response.Write "<BR>" & vbCrLf
+    Response.Write "<BR><B><A HREF=""mailto:yellowbaris@yahoo.com"">yellowbaris@yahoo.com</A></B>" & vbCrLf
+Else
+    Response.Write "<BR>" & vbCrLf
+    Response.Write "<BR>Your sever has Not installed any of the email components spidered by this program." & vbCrLf
+    Response.Write "<BR>" & vbCrLf
+    Response.Write "<BR>Please contact your web server administrator to be informed" & vbCrLf
+    Response.Write "<BR>about the installed <B>email components</B> on your server." & vbCrLf
+End If
+%></FONT>
+</TD>
+<TD WIDTH="25%"> </TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<TABLE BORDER="0" WIDTH="100%" CELLSPACING="0" CELLPADDING="0"><TR><TD WIDTH="25%" BGCOLOR="#465697"> </TD>
+<TD WIDTH="100%" BGCOLOR="#465697"><FONT FACE="Verdana" SIZE="2" COLOR="#FFFFFF"><B>Detecting FileSystem Components...</B>
+</FONT>
+</TD>
+<TD WIDTH="25%" BGCOLOR="#465697"> </TD>
+</TR>
+<TR><TD COLSPAN="3" WIDTH="100%"> </TD>
+</TR>
+<TR><TD WIDTH="25%"> </TD>
+<TD WIDTH="50%"><FONT FACE="Verdana" SIZE="2"><%
+On Error Resume Next
+OutHTML = ""
+Set FSO = CreateObject("Scripting.FileSystemObject")
+Set act = FSO.CreateTextFile(Server.MapPath("testfile.txt"), True)
+act.WriteLine("TestLine")
+act.Close
+Set act = Nothing
+If Err = 0 Then
+    OutHTML = OutHTML & "<BR>Creating of files supported..." & vbCrLf
+Else
+    OutHTML = OutHTML & "<BR>Creating of files <B>Not</B> supported..." & vbCrLf
+End If
+fso.DeleteFile(Server.MapPath("testfile.txt"))
+If Err = 0 Then
+    OutHTML = OutHTML & "<BR>Deleting and Modifying of files supported..." & vbCrLf
+Else
+    OutHTML = OutHTML & "<BR>Deleting and Modifying of files <B>Not</B> supported..." & vbCrLf
+    OutHTML = OutHTML & "<BR>This causes Mail-Robot Not To work propperly." & vbCrLf
+End If
+Set FSO = Nothing
+If Err > 0 Then
+    Response.Write "<B>Scripting.FileSystemObject Not full supported.</B>" & vbCrLf
+Else
+    Response.Write "Detected: <B><FONT COLOR=""#009900"">Scripting.FileSystemObject</FONT></B><BR><BR>" & vbCrLf
+    c1 = c1 + 1
+End If
+Err.Clear
+Response.Write OutHTML
+If c1 > 0 Then
+    Response.Write "<BR>Found <B>" & c1 & "</B> components." & vbCrLf
+    Response.Write "<BR>" & vbCrLf
+    Response.Write "<BR>Please inform your Mail-Robot administrator about the installed components." & vbCrLf
+    Response.Write "<BR>" & vbCrLf
+    Response.Write "<BR><B><A HREF=""mailto:yellowbaris@yahoo.com"">yellowbaris@yahoo.com</A></B>" & vbCrLf
+Else
+    Response.Write "<BR>" & vbCrLf
+    Response.Write "<BR>Please inform your Mail-Robot administrator about the installed components." & vbCrLf
+    Response.Write "<BR>" & vbCrLf
+    Response.Write "<BR>Please contact your web server administrator to be informed" & vbCrLf
+    Response.Write "<BR>about the installed <B>FileSystemObjects</B> on your server." & vbCrLf
+End If
+%></FONT>
+</TD>
+<TD WIDTH="25%"> </TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>

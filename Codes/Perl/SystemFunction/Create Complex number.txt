@@ -1,0 +1,9 @@
+use Math::Complex;
+
+$c1 = Math::Complex->new(-2,3);
+
+$c2 = Math::Complex->new(4,5);
+
+$c3 = $c1 * $c2;
+
+print "$c1 x $c2 = $c3\n";

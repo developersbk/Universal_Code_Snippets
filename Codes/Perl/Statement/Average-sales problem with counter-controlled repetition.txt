@@ -1,0 +1,12 @@
+$total = 0;                       
+$weekCounter = 1;                 
+
+
+while ( $weekCounter <= 5 ) {    
+
+   print "Enter sales for week $weekCounter: ";
+   chomp( $sales = <STDIN> );     
+
+   $total += $sales;              
+   ++$weekCounter;                
+}

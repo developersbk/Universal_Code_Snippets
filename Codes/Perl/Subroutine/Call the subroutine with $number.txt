@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+
+$number=<>;    # read a number from the keyboard
+chomp $number; # remove linefeed
+
+
+$factorial=factorial($number);
+
+# The subroutine
+sub factorial {
+    $input = shift; # read passed argument
+    return 0 if $input==0;
+    $result=1;
+    foreach (1 .. $input) { # '..' generates a range
+        $result *= $_;
+    }
+    return $result;
+}
+
+print "$number factorial is $factorial\n";

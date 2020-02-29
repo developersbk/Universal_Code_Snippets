@@ -1,0 +1,11 @@
+    #!/usr/local/bin/perl -w
+
+    use File::Basename;
+    use Getopt::Long;
+
+    my $ret = GetOptions ("f|filename:s");
+    my $filename = $opt_f || die "Usage: $0 -f filename\n";
+
+    # Return the basename of the given filename.
+    my $base = basename($filename, "");
+    print "The basename of $filename is $base\n";

@@ -1,0 +1,17 @@
+// Write a program to find factor of any number
+
+<?php
+if(isset($_POST['sub']))
+ {     $j=0;
+   $factor=array(); 
+   $num=$_POST['nm1'];
+   for($i=1;$i<=$num;$i++)  
+       {
+          if($num%$i==0)
+            { 
+             $j++;
+             $factor[$j]=$i;
+            }
+       }
+}
+ ?>

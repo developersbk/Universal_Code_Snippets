@@ -1,0 +1,19 @@
+use DBI;
+my $driver="DBI:mysql";
+my $database="sample_db";
+my $user="root";
+my $host="localhost";
+
+my $dbh = DBI->connect("$driver:$database:$host;user=$user;
+password=quigley1")or die "Can't connect: ". DBI->errstr;
+my $sth=$dbh->prepare("SELECT name FROM Employee WHERE name = ?") or die "Can't prepare sql statement" . DBI->errstr;
+
+$name="Tom";
+$sth->execute($name);
+print "Selected data for team \"$name\".\n\n";
+
+while(my @val = $sth->fetchrow_array()){
+      print "name=$val[0]\n";
+}
+$sth->finish();
+$dbh->disconnect();

@@ -1,0 +1,11 @@
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+
+delete($hash{'fruit'});
+
+if (exists($hash{"fruit"})) {
+    print "Key exists.";
+} else {
+    print "Key does not exist.";
+}

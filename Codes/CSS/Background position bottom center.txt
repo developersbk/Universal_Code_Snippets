@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:subLang='en'>
+    <head>
+        <title>Background Position Bottom Center</title>
+<style type='text/css'>
+div {
+    width: 250px;
+    height: 120px;
+    border: 1px solid rgb(192, 150, 169);
+    margin: 10px;
+    float: left;
+    background-image: url('http://www.lovelylovesayings.com/images/Girl-romantic-kiss.jpg');
+    background-repeat: no-repeat;
+    font: 16px verdana;
+}
+div#bottom-center {background-position: bottom center;}
+</style>
+    </head>
+    <body>
+        <div id='bottom-center'> Outside are the storms and strangers:<br>
+                                 We - Oh, close, safe and warm sleep I and she, I and she . . .<br><br>
+
+                                 Robert Browning
+</div>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+$| = 1;
+my $pid = 0;
+if ( $pid = fork() ) {
+   print( "Parent executing.\n" );
+   sleep( 2 );
+   print( "Parent finished.\n" );
+}
+elsif ( defined( $pid ) ) {
+   print( "Child executing.\n" );
+   sleep( 2 );
+   print( "Child finished.\n" );
+   exit();
+}
+else {
+   die( "Could not fork" );
+}

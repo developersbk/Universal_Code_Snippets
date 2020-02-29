@@ -1,0 +1,8 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+print "Content-Type: text/plain\n";
+print "\n";
+
+print "your browser is:       $ENV{HTTP_USER_AGENT}\n";

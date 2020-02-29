@@ -1,0 +1,13 @@
+$value = 10;
+printifOK ($value);
+
+sub printifOK
+{
+    my $internalvalue = shift(@_);
+
+    if ($internalvalue > 10 ) {
+        print "Value is $value.\n";
+    } else {
+        print "Value is too small.\n";
+    }
+}

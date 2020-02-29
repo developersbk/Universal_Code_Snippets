@@ -1,0 +1,8 @@
+    #!/usr/local/bin/perl -w
+
+    my %cities = ("Toronto" => "East", "Calgary" => "Central", "Vancouver" => 'West');
+
+    for $value (values %cities)
+    {
+       print "Value: $value \n";
+    }

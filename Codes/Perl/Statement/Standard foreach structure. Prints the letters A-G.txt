@@ -1,0 +1,3 @@
+foreach $letter ( 'A' .. 'G' ) {
+   print "$letter";
+}

@@ -1,0 +1,3 @@
+for ($loop_index = 0, $double = 0; $loop_index <= 10; $loop_index++, $double = 2 * $loop_index) {
+    print "Loop index " . $loop_index . " doubled equals " . $double . "\n";
+}

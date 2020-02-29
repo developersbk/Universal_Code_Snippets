@@ -1,0 +1,120 @@
+#grep value!
+
+@a = (1 .. 10);
+
+@b = grep {$_ > 5} @a;
+
+print join(", ", @b)
+
+
+
+#grep with regular rxpression!
+
+print join(" ",(grep {!/^\w{4}$/} (qw(Here are some four letter words.))));
+
+   
+    
+    
+# grep {$_ *= 2}!
+
+@array1 = (1, 1, 1, 1);
+@array2 = grep {$_ *= 2} @array1;
+print @array1[1];
+
+   
+    
+#Using grep with the file-test operators.!
+
+     
+#!/usr/local/bin/perl 
+
+opendir(CURRDIR, ".") || 
+die("Can't open current directory"); 
+@filelist = grep (!/^\./, grep(-r, readdir(CURRDIR))); 
+closedir(CURRDIR); 
+foreach $file (@filelist) { 
+    open (CURRFILE, $file) || die ("Can't open input file $file"); 
+    while ($line = <CURRFILE>) { 
+        if ($line =~ /$ARGV[0]/) { 
+            print ("$file:$line"); 
+        } 
+    } 
+    close (CURRFILE); 
+} 
+
+   
+    
+    
+#grep function with regular expression!
+
+@a = qw(This is a test);
+@b = grep/^\w{4}/, @a;
+print "@b";
+
+   
+    
+#Iterate over matches with foreach and $_ and nested foreach!
+
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+my $text = "one, two, three, four";
+
+foreach ($text =~ /\b(\w+)\b/g) {
+    print "outer: got: $_, matched: $&, extracted: $1 \n";
+    foreach (/(\w)/g) {
+        print "\tinner: got: $_, matched $&, extracted $1 \n";
+    }
+}
+
+   
+
+
+    #Iterate over matches with foreach and $_ and nested while loop!
+
+#!/usr/bin/perl
+use warnings;
+use strict;
+
+my $text = "one, two, three, four";
+while ($text =~ /\b(\w+)\b/g) {
+    print "outer: matched: $&, extracted: $1 \n";
+    while ($1 =~ /(\w)/g) {
+        print "\tinner: matched $&, extracted $1 \n";
+    }
+}
+
+   
+    
+ #A program that loops using a pattern.!
+  
+#!/usr/local/bin/perl 
+
+while ("balata" =~ /.a/g) { 
+   $match = $&; 
+   print ("$match\n"); 
+} 
+
+   
+    
+    
+   
+    
+    
+    
+  
+   
+  
+  
+
+
+  
+    
+    
+    
+  
+   
+    
+  

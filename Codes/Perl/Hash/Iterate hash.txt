@@ -1,0 +1,11 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my %hash = ('Key1' => 'Value1', 'Key2' => 'Value2');
+print "$_ => $hash{$_} \n" foreach keys %hash;
+
+foreach (sort values %hash) {
+    print "Value: $_ \n";
+}

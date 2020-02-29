@@ -1,0 +1,4 @@
+
+print <<EOD
+Here\nis\nthe\ntext.
+EOD

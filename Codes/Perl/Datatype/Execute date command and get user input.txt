@@ -1,0 +1,7 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+print "using a string literal:\n";
+print `date`;
+print "backquotes error status: $?\n";

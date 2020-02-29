@@ -1,0 +1,28 @@
+
+' evaluate the number of business days between two dates
+'
+Function BusinessDateDiff(ByVal StartDate As Date, ByVal EndDate As Date, _
+Optional ByVal SaturdayIsHoliday As Boolean = True) As Long
+Dim incr As Date
+
+' ensure we don't take time part into account
+StartDate = Int(StartDate)
+EndDate = Int(EndDate)
+
+' incr can be +1 or -1
+If StartDate < EndDate Then incr = 1 Else incr = -1
+
+Do Until StartDate = EndDate
+' skip to previous or next day
+StartDate = StartDate + incr
+If Weekday(StartDate) <> vbSunday And (Weekday(StartDate) <> vbSaturday _
+Or Not SaturdayIsHoliday) Then
+' if it's a weekday add/subtract one to the result
+BusinessDateDiff = BusinessDateDiff + incr
+End If
+Loop
+' when the loop is exited the function name
+' contains the correct result
+
+End Function
+

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <title>Example of HTML address tag (check)</title>
+</head>
+<body>
+    <address>
+        Written by <a href="mailto:webmaster@example.com">Jon Doe</a>.<br> 
+        Contact us at:<br>
+        Post Box 210, Hollywood<br>
+        USA
+    </address>
+</body>
+</html>                                 		

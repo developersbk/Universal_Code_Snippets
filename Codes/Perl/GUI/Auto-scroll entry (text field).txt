@@ -1,0 +1,26 @@
+#!/usr/local/bin/perl -w
+use Tk;
+use strict;
+
+my $str = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789";
+
+my $mw = MainWindow->new;
+my $lframe = $mw->Frame->pack(-fill => 'both', -side => 'left', -expand => 1);
+
+my $entry = $mw->Entry(
+    -textvariable => \$str,
+    -width => 12, 
+    -font => "{Comic Sans MS} 72",
+    -relief => 'raised',
+    -highlightthickness => 0,
+)->pack(-expand => 1, -fill => 'x', -side => 'left');
+
+
+my $repeat_id = $mw->repeat(300, \&shift_banner);
+
+MainLoop;
+
+sub shift_banner {
+    my $newstr = substr($str, 1) . substr($str, 0, 1);
+    $str = $newstr;
+}

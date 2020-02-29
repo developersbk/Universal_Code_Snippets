@@ -1,0 +1,13 @@
+VARIABLE       MEANING
+
+AUTH_TYPE      the authentication type to be used.
+
+HTTP_ACCEPT    MIME types that the client understands. 
+
+REMOTE_ADDR    The IP address of the client making the CGI request.
+
+REMOTE_HOST    this variable is set to the client's name.
+
+REMOTE_IDENT   client user's name. 
+
+REMOTE_USER    authentication and the correct protocol is supported by the client

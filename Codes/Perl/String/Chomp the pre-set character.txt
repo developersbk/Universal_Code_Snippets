@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+
+my $string1 = "This is a string";
+print "\$string1 is \"$string1\"";
+print "\n\nChanging \$/ to \"g\" \n\n";
+
+$/ = "g";
+
+# Removing last character if it is equal to "g"
+chomp ( $string1 );
+print "The new \$string1 is \"$string1\"\n";
+
+   

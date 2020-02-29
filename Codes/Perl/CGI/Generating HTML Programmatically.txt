@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use CGI;
+my $cgi=new CGI;
+print $cgi->header(),$cgi->start_html("Simple Examples");
+print $cgi->center("Centered Text");
+print $cgi->p("A Paragraph");
+print $cgi->br();
+print $cgi->b("Bold"),$cgi->i("Italic");
+print $cgi->p("A Paragraph",$cgi->sup("A superscript"));
+print $cgi->end_html();

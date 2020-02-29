@@ -1,0 +1,5 @@
+import fractions  
+  
+for s in ['0.7', '2.5', '9.32', '7e-1']:  
+    f = fractions.Fraction(s)  
+    print('{0:>4} = {1}'.format(s, f))  

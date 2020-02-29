@@ -1,0 +1,8 @@
+#!/usr/bin/perl
+use warnings;
+
+my ($sec, $min, $hour, $day, $month, $year) = localtime();
+print "The time is: $hour:$min.$sec \n";
+$month++;
+$year += 1900;
+print "The date is: $year/$month/$day \n";

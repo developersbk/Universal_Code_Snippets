@@ -1,0 +1,15 @@
+<% 
+Dim strText1 , strText2 
+'our text strings 
+strText1 = "this is string 1" 
+strText2 = "this is string 2" 
+'compare the two strings and store in intResult 
+intResult = strComp(strText1 , strText2) 
+'if strings are identical the display this message 
+If intResult = 0 Then 
+Response.Write "Strings are identical" 
+'if strings are different then display this message 
+Else 
+Response.Write "strings are different" 
+End if 
+%>

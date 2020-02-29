@@ -1,0 +1,18 @@
+#binmode FILEHANDLE
+#binmode FILEHANDLE, DISCIPLINE
+
+$infile="a.gif";
+open( INFILE, "<$infile" );
+open( OUTFILE, ">out.gif" );
+
+binmode( INFILE );  
+binmode( OUTFILE );
+
+while ( read( INFILE, $buffer, 1024 ) ) {
+    print OUTFILE $buffer;
+}
+
+close( INFILE );
+close( OUTFILE );
+
+   

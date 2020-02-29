@@ -1,0 +1,26 @@
+#!/usr/bin/perl -w 
+use CGI;  
+  
+$cgi = CGI->new();  
+print $cgi->header();  
+print $cgi->start_html(-title=>'8-Ball',-BGCOLOR=>'white');   
+print "<h1>Your Answer</h1>\n";  
+#print "Your query was: @ARGV<p>\n";  
+print "The data you passed was:<p>\n";
+@param_names = $cgi->param();
+foreach $p (@param_names) {
+  $value = $cgi->param($p);
+  print "Param $p = $value<p>\n";
+}
+print "Sorry, ask again later.<p>\n";  
+print $cgi->end_html();  
+<html>
+<head>
+<title>Command-Line CGI</title>
+</head>
+<body>
+Ask the
+<A HREF="/cgi-bin/cmdline.cgi?name1=value1&name2=value2">
+param</A>
+</body>
+</html>

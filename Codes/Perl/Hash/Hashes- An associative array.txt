@@ -1,0 +1,5 @@
+% pet = ( "Name"  => "Sneaky",
+          "Type"  => "Cat",
+          "Owner" => "Carol",
+          "Color" => "yellow",
+         );

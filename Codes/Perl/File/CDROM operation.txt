@@ -1,0 +1,8 @@
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+open CDROM, '/dev/cdrom' or die "$!";
+ioctl CDROM, 0x5309, 1;   # the ioctl number for CDROMEJECT
+close CDROM;

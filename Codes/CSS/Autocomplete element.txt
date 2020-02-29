@@ -1,0 +1,9 @@
+<html>
+<title>Autocomplete Example</title>
+<body>
+<form name="myform" method="post" action="">
+   <input type="text" size=40 name="mytext" autocomplete="on">
+   <input type="submit" value="Submit">
+</form>
+</body>
+</html>

@@ -1,0 +1,7 @@
+use Text::Abbrev;
+
+%hash = abbrev qw(Now is the time);
+
+foreach $key (keys %hash) {
+    print "$key => $hash{$key}\n";
+}

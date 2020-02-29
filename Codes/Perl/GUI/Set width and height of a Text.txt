@@ -1,0 +1,17 @@
+use Tk;
+
+$main = MainWindow->new();
+
+$main->Button( -text => "Click Me!",
+    -command => \&display
+)->pack(-side => "left");
+
+$text1 = $main->Text ('-width'=> 40, '-height' => 2
+)->pack;
+
+sub display
+{
+    $text1->insert('end', "Hello!");
+}
+
+MainLoop;

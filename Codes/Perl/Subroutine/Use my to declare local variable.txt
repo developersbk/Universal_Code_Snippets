@@ -1,0 +1,12 @@
+#!/usr/bin/perl -w
+
+$record = 4;
+print "We're at record ", $record, "\n";
+
+{
+    my $record;
+    $record = 7;
+    print "Inside the block: ", $record, "\n";
+}
+
+print "Outside, we're still at record ", $record, "\n";

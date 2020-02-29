@@ -1,0 +1,7 @@
+format STDOUT = 
+@<<<<<<<<<<<@>>>>>>>>>>>>>>>  
+$text1      $text2
+.
+$text1 = "Hello";
+$text2 = "there!";
+write;                        #Uses STDOUT by default.

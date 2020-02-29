@@ -1,0 +1,23 @@
+#  $arrayref  = \@ARGV;
+#  $hashref   = \%ENV;
+
+#  To access an array reference:
+
+#  $arrayref  = \@ARGV;
+#  @sorted = sort( @$arrayref );
+
+
+#!/usr/bin/perl -w
+
+# Reference to an array variable.
+@array = ( 'Tom', 'Jack', 'Wilma');
+
+$arrayref  = \@array;
+
+@sorted = sort( @$arrayref );
+
+print "Array  reference = @sorted\n\n";
+
+   
+    
+    

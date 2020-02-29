@@ -1,0 +1,12 @@
+
+>q/Hello/
+
+q#Hello#
+
+q{Hello}
+
+q[Hello]
+
+q(Hello)
+
+   

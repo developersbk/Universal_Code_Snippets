@@ -1,0 +1,47 @@
+<?xml version = "1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml">
+   <head>
+      <title>A simple XHTML table</title>
+   </head>
+   <body>
+      <table border = "1" width = "50%" summary = "summary">
+         <caption><strong>Price of Phones</strong></caption>
+         <thead>
+            <tr>
+               <th>Phone</th>
+               <th>Price</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>Nokia</td>
+               <td>$120</td>
+            </tr>
+
+            <tr>
+               <td>Apple</td>
+               <td>$160</td>
+            </tr>
+
+            <tr>
+               <td>Lg</td>
+               <td>$80</td>
+            </tr>
+
+            <tr>
+               <td>Sony Ericsson</td>
+               <td>$140</td>
+            </tr>
+         </tbody>
+         <tfoot>
+            <tr>
+               <th>Asus</th>
+               <th>$200</th>
+            </tr>
+         </tfoot>
+
+      </table>
+
+   </body>
+</html> 

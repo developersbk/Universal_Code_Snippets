@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <title>Example of HTML From Textarea</title>
+</head>
+<body>
+    <form>
+        <label for="address">Address:</label>
+        <textarea rows="3" cols="30" name="address" id="address"></textarea>
+    </form>
+</body>
+</html>                                 		

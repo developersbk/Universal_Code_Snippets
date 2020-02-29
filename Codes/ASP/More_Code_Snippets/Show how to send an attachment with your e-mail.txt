@@ -1,0 +1,18 @@
+<% 
+Dim objCDONTS 
+'create an instance of the object 
+Set objCDONTS = Server.CreateObject("CDONTS.NewMail") 
+'senders emial address 
+objCDONTS.From = "myaddress@email.com" 
+'recipients email address 
+objCDONTS.To = "someonelses@email.com" 
+'this is your subject (title of email) 
+objCDONTS.Subject = "here is the file" 
+'file to be attached 
+objCDONTS.AttachFile "d:\myfile.txt" 
+'main text body 
+objCDONTS.Body ="Here is the file we promised" 
+'send the email 
+objCDONTS.Send 
+Set objCDONTS = Nothing 
+%>

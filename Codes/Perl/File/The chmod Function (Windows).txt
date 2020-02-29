@@ -1,0 +1,10 @@
+
+#Format
+
+#chmod(LIST);
+#chmod LIST;
+
+
+$ perl -e '$count=chmod 0755, "foo.p", "boo.p" ;print "$count files changed.\n"'
+
+   

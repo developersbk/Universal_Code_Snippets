@@ -1,0 +1,27 @@
+<% 
+' Make an asp file named File in the directory New Folder
+
+MkFile Server.MapPath("/New Folder/File.asp") 
+%>
+
+source code:
+<%
+Private Sub MkFile(ByVal pathname)
+    Dim objFSO, boolErr, strErrDesc
+    Set objFSO = Server.CreateObject("Scripting.FileSystemObject")
+    If objFSO.FileExists(pathname) Then
+        Err.Raise 5106, "MkFile Statement", "File [" & pathname & "] " & _
+            "Already Exists. Use the Kill statement to delete files."
+    Else
+        On Error Resume Next
+        objFSO.CreateTextFile pathname, 2, True
+        If Err Then 
+            boolErr = True
+            strErrDesc = Err.description
+        End If
+        On Error GoTo 0
+        If boolErr Then Err.Raise 5106, "MkFile Statement", strErrDesc
+    End If
+    Set objFSO = Nothing
+End Sub
+%>

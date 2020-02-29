@@ -1,0 +1,10 @@
+# The basic syntax is: exec program, arguments
+
+
+#!/usr/bin/perl -w
+
+#
+# Using exec.
+#
+
+exec("xterm", "-ls");

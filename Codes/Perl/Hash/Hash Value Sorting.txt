@@ -1,0 +1,12 @@
+#!/usr/local/bin/perl
+
+%Inventory = (a=>45_000.00,b=>120.00,c=> 450_000.00,d=>40.00);
+
+$sortHash = \%Inventory;
+@keyList = sort sortHashByValue keys %Inventory;
+foreach $key (@keyList){
+   print "key==>$key, \tprice==>$Inventory{$key}\n";
+}
+sub sortHashByValue(){
+   $$sortHash{"$a"} <=> $$sortHash{"$b"};
+}

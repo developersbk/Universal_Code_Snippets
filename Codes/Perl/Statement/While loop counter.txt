@@ -1,0 +1,19 @@
+#!c:\perl\bin
+
+print "\n\nHere is the pre-increment example: \n";
+
+$count = 0;
+
+while ($count < 5)
+{
+    print "The value of \$count is " . ++$count . "\n";
+}
+
+print "\n\nHere is the post-increment example: \n";
+
+$count = 0;
+
+while ($count < 5)
+{
+    print "The value of \$count is " . $count++ . "\n";
+}

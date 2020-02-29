@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Add a New Phone Number</title>
+</head>
+
+<body>
+<h2>Add a New Phone No</h2>
+<form name="phoneform" method="post" action="index.pl">
+Forename:<input type="text" name="forename">
+Surname:<input type="text" name="surname">
+Department:<input type="text" name="dept">
+Phone No:<input type="text" name="phone">
+Comments: <textarea name="comments"></textarea>
+<input type="submit" name="submit" value="Add Record">
+
+<input type="reset" name="reset" value="Clear Form and Start Again!">
+</form>
+</font>
+</body>
+</html>
+
+#!c:\perl\bin
+
+print "Content-type: text/html\n\n";
+
+read(STDIN,$tempbuffer,$ENV{'CONTENT_LENGTH'});
+@pairs=split(/&/,$tempbuffer);
+
+foreach $item(@pairs){
+  ($key,$content)=split(/=/,$item,2);
+  $content=~tr/+/ /;
+  $content=~s/%(..)/pack("c",hex($1))/g;
+  $fields{$key}=$content;
+  print "$key";
+  print " contains $content";
+} 

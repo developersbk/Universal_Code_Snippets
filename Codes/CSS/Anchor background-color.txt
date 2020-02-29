@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" subLang="en-US" xml:subLang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Anchor background-color</title>
+<style rel="stylesheet" type="text/css">
+#header {
+  width: 750px;
+  height: 240px;
+  background-image: url(images/header-background.jpg);
+  background-position: top left;
+  background-repeat: no-repeat
+}
+
+#menu {
+  float: left;
+  margin: 40px 0 0 20px;
+}
+
+#menu li {
+  display: inline;
+  list-style-type: none;
+  line-height: 30px;
+}
+
+#menu li a {
+  background-color: pink;
+  background-position: top left;
+  background-repeat: no-repeat;
+  height: 40px;
+  display: block;
+  float: left;
+  font-family: Arial;
+  font-size: 13px;
+  color: orange;
+  text-decoration: none;
+  text-align: center
+}
+
+</style>
+</head>
+<body>
+    <ul id="menu">
+      <li><a href="www.happycodings.com">Home page</a></li>
+      <li><a href="c.happycodings.com">C Codes</a></li>
+      <li><a href="html-css.happycodings.com">HTML CSS Codes</a></li>
+      <li><a href="android.happycodings.com">Android Codes</a></li>
+      <li><a href="java.happycodings.com">Java Codes</a></li>
+    </ul>
+
+</body>
+
+</html>

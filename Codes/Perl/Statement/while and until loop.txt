@@ -1,0 +1,20 @@
+
+#!C:/perl/bin
+
+$loopcounter = 1;
+
+while ($loopcounter < 10)
+{
+    print "loop count = $loopcounter ";
+    $loopcounter++
+}
+
+$loopcounter = 1;
+
+print "\n\nThe Until Loop:\n";
+
+until ($loopcounter > 10)
+{
+    print "loop count = $loopcounter ";
+    $loopcounter++
+}

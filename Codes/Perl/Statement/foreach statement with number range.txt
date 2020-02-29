@@ -1,0 +1,9 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my $number;
+
+foreach $number (1 .. 10) {
+    print "the number is: $number\n";
+}

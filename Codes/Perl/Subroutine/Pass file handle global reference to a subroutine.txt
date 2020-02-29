@@ -1,0 +1,8 @@
+sub printhello
+{
+    my $handle = shift;
+    print $handle "Hello!\n";
+}
+open FILEHANDLE, ">file.tmp" or die "Can't open file.";
+
+printhello(\*FILEHANDLE);

@@ -1,0 +1,38 @@
+#!c:/perl/bin
+use Win32::OLE;
+use Win32::OLE::Const 'Microsoft ActiveX Data Objects';
+
+$table    = "employee";
+$conn = Win32::OLE->new("ADODB.Connection");
+$rs   = Win32::OLE->new("ADODB.Recordset");
+$conn->Open("contact");
+
+print "Content-Type:text/html\n\n";
+print "Contact Database<br>";
+print "<table>";
+print "<tr>";
+print "<th>ID</th>";
+print "<th>First Name</th>";
+print "<th>Last Name</th>";
+print "<th>Town</th>";
+print "<th>Edit?</th>";
+print "</tr>";
+
+$sql = "SELECT * FROM $table";
+$rs->Open($sql, $conn, 1, 1);
+while(!$rs->EOF){
+   $id        = $rs->Fields('id')->value;
+   $firstname = $rs->Fields('firstname')->value;
+   $lastname  = $rs->Fields('lastname')->value;
+   $town      = $rs->Fields('town')->value;
+   print "<tr><td>$id</td><td>$firstname</td><td>$lastname</td><td>$town</td>";
+   print "<form name=editrec" . $id . " method=post action=editcontact.pl>";
+   print "<input type=hidden name=id value=$id>";
+   print "<td><input type=Submit name=submit value=Edit></td>";
+   print "</form>";
+   print "</tr>";
+   $rs->MoveNext;
+  }
+print "</table></div>";
+$rs->Close;
+$conn->Close;

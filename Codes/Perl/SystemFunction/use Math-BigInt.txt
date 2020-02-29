@@ -1,0 +1,5 @@
+use Math::BigInt;
+
+$bi = Math::BigInt->new('111111111111111111');
+
+print $bi * $bi;

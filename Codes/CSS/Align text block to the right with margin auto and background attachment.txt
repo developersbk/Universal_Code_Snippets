@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:subLang='en'>
+    <head>
+        <title>Align text block to the right with margin auto and background-attachment</title>
+        <style rel='stylesheet' type='text/css'>
+body, p {
+    background-color: #0ff;
+    background-image: url('http://www.lovelylovesayings.com/images/Kissing-lying-in-the-rain.jpg');
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+p {
+    border: 1px solid rgb(180, 180, 180);
+    background-image: url('http://www.lovelylovesayings.com/images/Braveheart-giving-flower.jpg');
+    margin: 8px 8px 8px auto;
+    width: 240px;
+    padding: 16px;
+}        
+        </style>
+    </head>
+    <body>
+        <p>Opposites attract, but after marriage, opposites attack.<br>
+           Most of the time, we are attracted to people who don't have<br>
+           the things that we have.<br>
+           Incompatibility is why we get married,<br>
+           but it's also used as a reason to divorce.<br>
+           Incompatibility is just a lack of communication.<br>
+           If we just try to love [our spouse] the way we want to be loved,<br>
+           we are in trouble.<br>
+           Unless you communicate,<br>
+           it's difficult to know how to love another person.<br><br>
+
+           Dr. Charles Lowery
+        </p>
+    </body>
+</html>
+
+

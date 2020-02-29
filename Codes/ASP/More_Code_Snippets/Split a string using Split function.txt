@@ -1,0 +1,11 @@
+<% 
+Dim strText , arrText , intCount 
+'sample string with commas in it 
+strText = "This,is,our,sample,string" 
+'split the string and store in arrText 
+arrText = Split(strText,",") 
+'display all items 
+For intCount = 0 to UBound(arrText) 
+Response.Write arrText(intCount) & "<br>" 
+Next 
+%>

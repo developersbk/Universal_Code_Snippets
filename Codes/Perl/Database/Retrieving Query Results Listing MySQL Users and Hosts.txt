@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+
+use DBI;
+use strict;
+
+my $username = "dbuser";
+my $password = "dbpassword";
+my $dsn = "dbi:mysql:mysql:192.168.1.10";
+my $dbh = DBI->connect($dsn,$username,$password)
+  or die "Cannot connect to database: $DBI::errstr";
+
+my $sth = $dbh->prepare("SELECT user,host FROM mysql.user");
+
+$sth->execute() or die "Cannot execute sth: $DBI::errstr";
+
+while (my($username,$hostname) = $sth->fetchrow_array()) {
+  print "Username is $username. Host is $hostname\n";
+}
+
+$dbh->disconnect();

@@ -1,0 +1,18 @@
+#!/usr/local/bin/perl -w
+
+    use Getopt::Long;
+
+    # $Getopt::Long::debug = 1;
+    # $Getopt::Long::autoabbrev = 1;
+
+    @optl = ("loglevel:i","file=s","trace!");
+    die "Usage. $0 [-loglevel[<int>][-file <name>][-[no]trace]\n"
+       unless GetOptions @optl;
+    print "Trace active\n"
+        if $opt_trace;
+    print "No Trace\n"
+        unless $opt_trace;
+    print "Log file is $opt_file\n"
+        if $opt_file;
+    print "Loglevel value $opt_loglevel\n"
+        if $opt_loglevel > 0;

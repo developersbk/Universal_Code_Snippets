@@ -1,0 +1,6 @@
+$hash{sandwich} = ham;
+$hash{drink} = 'AA';
+
+foreach $key (keys %hash) {
+    print $hash{$key} . "\n";
+}

@@ -1,0 +1,18 @@
+use DBI;
+$dbh=DBI->connect(qq(DBI:mysql:database=sample_db;user=root;password=)) or die "Can't connect";
+$namestring=qq(O'C);
+$namestring=$dbi->quote($string);
+print $namestring;
+$sth=$dbi->prepare("SELECT * FROM Employee WHERE name=$namestring") or die "Can't prepare sql statement" . DBI->errstr;
+$sth->execute();
+
+while(my @val = $sth->fetchrow_array()){
+       print "id=$val[0]\n";
+       print "name=$val[1]\n";
+       print "name=$val[2]\n";
+       print "name=$val[3]\n";
+       print "start_date=$val[4]\n\n";
+}
+
+$sth->finish();
+$dbh->disconnect();

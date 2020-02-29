@@ -1,0 +1,13 @@
+#!/usr/bin/perl -T
+
+use strict;
+use CGI qw/:standard/;
+
+my $retrievedcookie = cookie('testcookie');
+
+print header,
+start_html,
+p("cookie value was $retrievedcookie\n"),
+end_html;
+
+exit;

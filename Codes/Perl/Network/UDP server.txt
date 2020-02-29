@@ -1,0 +1,9 @@
+use IO::Socket;
+
+$socket = IO::Socket::INET->new
+(
+    LocalPort => 4321,
+    Proto => 'udp'
+);
+
+$socket->recv($text, 128);

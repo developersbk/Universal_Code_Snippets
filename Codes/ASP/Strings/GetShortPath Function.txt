@@ -1,0 +1,35 @@
+<%
+Private Function GetShortPath(ByVal sPath)
+    Dim re, fso, s, f
+
+    Set re = New RegExp
+    re.ignorecase = True
+
+    'determine whether or not this is a file
+    re.pattern = ".([A-Zd]{1,5})$"
+
+    Set fso = CreateObject("Scripting.FileSystemObject")
+
+    'if it's a file, grab it. if it's a folder, grab it.
+    If re.test(sPath) Then
+
+        'retrieve handle to the file
+        Set f = fso.GetFile(sPath)
+    Else
+
+        'retrieve handle to the folder
+        Set f = fso.GetFolder(sPath)
+    End If
+
+    'get the short path
+    s = f.ShortPath
+
+    'free all object and handle references
+    Set f = Nothing
+    Set fso = Nothing
+    Set re = Nothing
+
+    'return short path
+    GetShortPath = s
+End Function
+%>

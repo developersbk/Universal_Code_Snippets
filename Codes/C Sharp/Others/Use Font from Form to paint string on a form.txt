@@ -1,0 +1,21 @@
+Use Font from Form to paint string on a form
+
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+class InheritHelloWorld : Form {
+    public static void Main() {
+        Application.Run(new InheritHelloWorld());
+    }
+    public InheritHelloWorld() {
+        Text = "Inherit " + Text;
+    }
+    protected override void OnPaint(PaintEventArgs pea) {
+        Graphics graphics = pea.Graphics;
+
+        graphics.DrawString("I Love Clementine",
+                        Font, Brushes.Black, 0, 100);
+    }
+}
+

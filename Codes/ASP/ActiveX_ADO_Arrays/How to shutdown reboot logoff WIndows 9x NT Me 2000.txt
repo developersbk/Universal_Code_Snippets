@@ -1,0 +1,102 @@
+program shutdown; 
+{$APPTYPE CONSOLE} 
+uses 
+  SysUtils, 
+  Windows; 
+
+var 
+   logoff: boolean = false; 
+   reboot: boolean = false; 
+   warn: boolean = false; 
+   downQuick: boolean = false; 
+   cancelShutdown: boolean = false; 
+   powerOff: boolean = false; 
+   timeDelay: integer = 0; 
+
+function HasParam(Opt: Char): Boolean; 
+var 
+   x: integer; 
+begin 
+     result := false; 
+     for x := 1 to paramCount do 
+         if (paramstr(x) = '-'+opt) or (paramstr(x) = '/'+opt) then result := true; 
+end; 
+
+function GetErrorString: String; 
+var 
+   lz: Cardinal; 
+   err: array[0..512] of Char; 
+begin 
+     lz := GetLastError; 
+     FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, nil, lz, 0, @err, 512, nil); 
+     result := string(err); 
+end; 
+
+procedure DoShutdown; 
+var 
+   rl,flgs: Cardinal; 
+   hToken: Cardinal; 
+   tkp: TOKEN_PRIVILEGES; 
+begin 
+     flgs := 0; 
+     if downQuick then flgs := flgs or EWX_FORCE; 
+     if not reboot then flgs := flgs or EWX_SHUTDOWN; 
+     if reboot then flgs := flgs or EWX_REBOOT; 
+     if poweroff and (not reboot) then flgs := flgs or EWX_POWEROFF; 
+     if logoff then flgs := (flgs and (not (EWX_REBOOT or EWX_SHUTDOWN or EWX_POWEROFF))) or EWX_LOGOFF; 
+     if Win32Platform = VER_PLATFORM_WIN32_NT then begin 
+        if not OpenProcessToken(GetCurrentProcess, TOKEN_ADJUST_PRIVILEGES or TOKEN_QUERY, hToken) then 
+           Writeln('Cannot open process token. ['+GetErrorString+']') 
+        else begin 
+             if LookupPrivilegeValue(nil, 'SeShutdownPrivilege', tkp.Privileges[0].Luid) then begin 
+             tkp.Privileges[0].Attributes := SE_PRIVILEGE_ENABLED; 
+             tkp.PrivilegeCount := 1; 
+             AdjustTokenPrivileges(hToken, False, tkp, 0, nil, rl); 
+             if GetLastError <> ERROR_SUCCESS then 
+                   Writeln('Error adjusting process privileges.'); 
+             end else Writeln('Cannot find privilege value. ['+GetErrorString+']'); 
+        end; 
+{        if CancelShutdown then 
+           if AbortSystemShutdown(nil) = False then 
+              Writeln(\'Cannot abort. [\'+GetErrorString+\']\') 
+           else 
+               Writeln(\'Cancelled.\') 
+        else begin 
+             if InitiateSystemShutdown(nil, nil, timeDelay, downQuick, Reboot) = False then 
+                Writeln(\'Cannot go down. [\'+GetErrorString+\']\') 
+             else 
+                 Writeln(\'Shutting down!\'); 
+        end;} 
+     end; 
+//     else begin 
+          ExitWindowsEx(flgs, 0); 
+//     end; 
+end; 
+
+begin 
+     Writeln('Shutdown v0.3 for Win32 (similar to the Linux version)'); 
+     Writeln('X Software. All Rights Reserved.'); 
+     if HasParam('?') or (ParamCount=0) then begin 
+        Writeln('Usage:    shutdown [-akrhfnc] [-t secs]'); 
+        Writeln('                  -k:      don''t really shutdown, only warn.'); 
+        Writeln('                  -r:      reboot after shutdown.'); 
+        Writeln('                  -h:      halt after shutdown.'); 
+        Writeln('                  -p:      power off after shutdown'); 
+        Writeln('                  -l:      log off only'); 
+        Writeln('                  -n:      kill apps that don''t want to die.'); 
+        Writeln('                  -c:      cancel a running shutdown.'); 
+     end else begin 
+         if HasParam('k') then warn := true; 
+         if HasParam('r') then reboot := true; 
+         if HasParam('h') and reboot then begin 
+            Writeln('Error: Cannot specify -r and -h parameters together!'); 
+            Exit; 
+         end; 
+         if HasParam('h') then reboot := false; 
+         if HasParam('n') then downQuick := true; 
+         if HasParam('c') then cancelShutdown := true; 
+         if HasParam('p') then powerOff := true; 
+         if HasParam('l') then logoff := true; 
+         DoShutdown; 
+     end; 
+end. 

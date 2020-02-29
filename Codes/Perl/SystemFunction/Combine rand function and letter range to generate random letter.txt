@@ -1,0 +1,2 @@
+$letter = ('a' .. 'z')[26 * rand];
+print $letter;

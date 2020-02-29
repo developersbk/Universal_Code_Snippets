@@ -1,0 +1,13 @@
+use XML::Parser;
+
+my $xmlfile = "yourXML.xml";              
+
+my $parser = XML::Parser->new( ErrorContext => 2 );
+eval { $parser->parsefile( $xmlfile ); };
+
+if( $@ ) {
+    $@ =~ s/at \/.*?$//s;               # remove module line number
+    print STDERR "\nERROR in '$file':\n$@\n";
+} else {
+    print STDERR "'$file' is well-formed\n";
+}

@@ -1,0 +1,6 @@
+$codereference = sub {100};
+
+$s = &$codereference;
+
+
+print $s;

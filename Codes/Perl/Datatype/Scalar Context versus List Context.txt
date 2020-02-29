@@ -1,0 +1,32 @@
+#!/usr/local/bin/perl
+
+#list context when lvalue is an array
+@array  = isListOrScalar("lvalue is an array: ");
+
+#scalar context when lvalue is a scalar
+$scalar  = isListOrScalar("lvalue is a scalar: ");
+
+@array = split(/:/,isListOrScalar(" A:B "));
+
+reset (isListOrScalar("reset: "));
+print (isListOrScalar("printing: "));
+print "\n";
+
+kill (isListOrScalar("kill : "));
+print "==\n";
+
+grep (isListOrScalar("parameter 1: "), isListOrScalar("parameter 2: "));
+print "==\n";
+
+grep (1,isListOrScalar("The grep function"));
+print "==\n";
+
+grep (isListOrScalar("grep function"),1);
+sub isListOrScalar($){
+   my ($callingString) = @_;
+   if (wantarray){
+      print "$callingString LIST\n";
+   }else {
+      print "$callingString SCALAR\n";
+   }
+}

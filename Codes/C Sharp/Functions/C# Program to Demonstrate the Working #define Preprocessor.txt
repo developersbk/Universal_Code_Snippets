@@ -1,0 +1,22 @@
+/*
+ * C# Program to Demonstrate the Working #define Preprocessor
+ */
+#define B
+#define A
+#undef A
+using System;
+class Program
+{
+    static void Main()
+    {
+#if A
+        Console.WriteLine("'A' is Displayed Based on the undef Directive ");
+#elif B
+        Console.WriteLine("'B' is Displayed Based on the undef Directive");
+#endif
+        Console.ReadLine();
+    }
+}
+
+/*
+'B' is Displayed Based on the undef Directive

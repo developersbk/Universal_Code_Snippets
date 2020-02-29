@@ -1,0 +1,12 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+while (<STDIN>) {
+    if ($_ eq "done\n") {
+       last;
+    }
+    print "You entered: $_";
+}
+
+print "All done!\n";

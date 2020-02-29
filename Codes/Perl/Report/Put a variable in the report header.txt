@@ -1,0 +1,28 @@
+    #!/usr/local/bin/perl -w
+
+    use English;
+
+    while (<ARGV>)
+    {
+        chomp;
+        ($number,$type,$name,$price,$desc) = split (/\|/);
+        write;
+    }
+
+    format STDOUT_TOP=
+    Count Item #  Item Type  Item Name      Price     Description   Page @>>>>>>
+    $FORMAT_PAGE_NUMBER
+    ------------------------------------------------------------------------------
+
+    .
+
+    format STDOUT=
+    @>>>> @|||||| @<<<<<<<<< @<<<<<<<<<<<<< $@####.##
+    ^<<<<<<<<<<<<<<<<<<<<<<<<<
+    $.,$number,$type,$name,$price,$desc
+    ~^<<<<<<<<<<<<<<<<<<<<<<<<<
+    $desc
+    ~^<<<<<<<<<<<<<<<<<<<<<<<<<
+    $desc
+
+    .

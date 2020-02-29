@@ -1,0 +1,10 @@
+<%
+Set objFSO=Server.CreateObject("Scripting.FileSystemObject")
+Set objFolder=objFSO.GetFolder(Server.MapPath("/testfolder"))
+For each myFiles in objFolder.files
+%> 
+<% =myFiles.Name %><br>
+
+<%
+Next
+%>

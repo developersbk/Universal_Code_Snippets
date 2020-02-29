@@ -1,0 +1,6 @@
+use integer;
+
+$s1 = 11;
+$s2 = 11.2;
+
+print "\$s1 = \$s2" if ($s1 == $s2);

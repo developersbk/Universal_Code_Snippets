@@ -1,0 +1,8 @@
+sub printem
+{
+    print shift;
+}
+
+$coderef = \&printem;
+
+print (ref $coderef);

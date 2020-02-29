@@ -1,0 +1,18 @@
+#!/usr/bin/perl -w
+
+use Win32::Registry;
+
+$key_name = "SOFTWARE\\YourKey";
+
+$status = $HKEY_LOCAL_MACHINE->Create( $key_name, $keyobj );
+
+if ($status) {
+
+    $keyobj->SetValueEx( 'Value',  # Name
+        0,        # Reserved. 
+        REG_SZ,   # Type
+        'Comments' );
+
+
+    $keyobj->Close();
+}

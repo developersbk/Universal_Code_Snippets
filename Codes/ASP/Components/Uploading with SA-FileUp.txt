@@ -1,0 +1,61 @@
+<HTML><HEAD>
+<TITLE>uploadsimple</TITLE>
+</HEAD><body bgcolor="#FFFFFF">
+<form enctype="multipart/form-data" method="post" action="uploadsimplerespond.asp">
+<TABLE WIDTH="100%">
+<TR>
+<TD ALIGN="RIGHT" VALIGN="TOP">Filename:</TD>
+
+<TD ALIGN="LEFT"><Input Type="FILE" NAME="FILE1">
+</TD>
+</TR>
+<TR>
+<TD ALIGN="RIGHT"> </TD>
+<TD ALIGN="LEFT"><Input Type="SUBMIT" NAME="SUB1" VALUE="Upload File"></TD>
+</TR>
+<TR>
+<TD ALIGN="RIGHT"> </TD>
+<TD ALIGN="LEFT">
+<B><I><SMALL>Note: If a button labeled "Browse..." does Not appear, Then your
+browser does Not support File Upload. For Internet Explorer 3.02 users, a
+free add-On Is available from Microsoft. If you <b>Do Not see a Browse... button</b> 
+<A HREF="http://www.microsoft.com/msdownload/ieplatform/iewin95/iewin95.asp" TARGET="_new">click here To go To Microsoft's Site and get your free file upload add-on</A>.
+Select "Internet Explorer 3.02 File Upload Add-On for Windows 95 & NT".
+</SMALL></I></B>
+</TD>
+</TR>
+</TABLE>
+</form>
+</BODY></HTML>
+
+
+The Form Definition
+To enable file upload, include an Input tag of <Type="FILE"> In your HTML form. 
+
+When using a form To upload files, you must Set the following attributes:
+
+The FORM tag must include the attribute ENCTYPE="multipart/form-data". 
+The <Input Type="FILE"> must include the NAME attribute. 
+The Server-side Processing
+The responder To the form will look like this:
+
+<HTML><HEAD>
+<TITLE>Uploadsimplerespond</TITLE>
+</HEAD><BODY>
+Thank you For uploading your file.<br>
+<% Set upl = Server.CreateObject("SoftArtisans.FileUp")
+upl.Path = Server.MapPath ("/upload/tests")
+upl.SaveAs "upload.tst"%><BR>
+Total Bytes Written: <%=upl.TotalBytes%>
+</BODY></HTML>
+
+
+To process the upload On the server,
+
+In the response page (In this Case, uploadsimplerespond.asp) create an instance of the SA-FileUp object. 
+<% Set upl = Server.CreateObject("SoftArtisans.FileUp") %>
+Save the file In a directory On the web server. 
+<% upl.SaveAs "C:	empupload.out" %>
+The TotalBytes Property contains the size In bytes of the uploaded file. 
+
+The directory On the web server must have Read, Write, And Delete NTFS permissions For the anonymous Or authenticated user. Otherwise, SA-FileUp will Not be able To Write files into that directory. Talk To your web master about setting the appropriate permissions. 

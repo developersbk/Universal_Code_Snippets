@@ -1,0 +1,5 @@
+#!/usr/bin/perl -w
+
+print 'ex\\ er\\' , ' ci\' se\'' , "\n";
+
+   

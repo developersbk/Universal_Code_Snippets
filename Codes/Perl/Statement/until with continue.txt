@@ -1,0 +1,6 @@
+$loop_index = 1;
+until ($loop_index > 10) {
+    print "Hello!\n";
+} continue {
+    $loop_index++;
+}

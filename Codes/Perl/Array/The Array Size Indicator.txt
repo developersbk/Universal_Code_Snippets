@@ -1,0 +1,15 @@
+$[ = 9999;      #This loop doesn't run because @checksThisMonth returns the array size, which is less than 1501.
+
+for ($i = $[;               #initialization list
+     $i < @checksThisMonth; #conditional expression
+     $i++){                 #increment list
+
+   print "$checksThisMonth[$i]";
+
+}
+
+#This loop runs because $#checksThisMonth returns the last cell index.
+
+for ($i = $[; $i <= $#checksThisMonth; $i++){
+    print "$checksThisMonth[$i]";
+}

@@ -1,0 +1,18 @@
+Escape Sequence             Description 
+\a                          Bell (beep) 
+\b                          Backspace 
+\cn                         The Ctrl+n character 
+\e                          Escape 
+\E                          Ends the effect of \L, \U or \Q 
+\f                          Form feed 
+\l                          Forces the next letter into lowercase 
+\L                          All following letters are lowercase 
+\n                          Newline 
+\r                          Carriage return 
+\Q                          Do not look for special pattern characters 
+\t                          Tab 
+\u                          Force next letter into uppercase 
+\U                          All following letters are uppercase 
+\v                          Vertical tab 
+
+   

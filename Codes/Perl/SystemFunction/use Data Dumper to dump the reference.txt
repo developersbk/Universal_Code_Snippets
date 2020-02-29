@@ -1,0 +1,8 @@
+use Data::Dumper;
+
+$scalar = 0;
+$hashref = {};
+$arrayref = [$scalar, $hashref];
+$hashref->{arrayref} = $arrayref;
+
+print Data::Dumper->Dump([$arrayref, $hashref], [qw(arrayref hashref)]);

@@ -1,0 +1,13 @@
+use IO::Socket;
+
+$socket = IO::Socket::INET->new
+(
+    PeerAddr => 'yourserver.com',
+    PeerPort => 1116,
+    Proto    => "tcp",
+    Type     => SOCK_STREAM
+) or die "Could not open port.\n";
+
+print $socket "Hello from the client!\n";
+
+close($socket);

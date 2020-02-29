@@ -1,0 +1,15 @@
+# The syntax is (name, altnames, addrtype, len, addrs) = gethostbyname (inname); 
+
+
+#!/usr/local/bin/perl 
+
+$machine ="123.1.1.1"; 
+if (!(($name, $altnames, $addrtype, $len, @addrlist) = gethostbyname ($machine))) { 
+    die ("Machine name $machine not found.\n"); 
+} 
+print ("Equivalent addresses:\n"); 
+for ($i = 0; $i < @addrlist; $i++) { 
+    @addrbytes = unpack("C4", $addrlist[$i]); 
+    $realaddr = join (".", @addrbytes); 
+    print ("\t$realaddr\n"); 
+} 

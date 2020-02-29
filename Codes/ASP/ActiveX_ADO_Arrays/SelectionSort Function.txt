@@ -1,0 +1,22 @@
+<%
+Private Function SelectionSort(ByVal unsortedarray)
+    Dim Front, Back, I, Loc, Selcom
+    Dim Temp, Selswap, Arrsize
+    Arrsize = UBound(unsortedarray)
+    For Front = 0 To Arrsize - 1
+        Loc = Front
+        For Back = Front To Arrsize
+            Selcom = Selcom + 1
+            If unsortedarray(Loc) > _
+             unsortedarray(Back) Then
+                Loc = Back
+            End If
+        Next
+        Selswap = Selswap + 1
+        Temp = unsortedarray(Loc)
+        unsortedarray(Loc) = unsortedarray(Front)
+        unsortedarray(Front) = Temp
+    Next
+    SelectionSort = unsortedarray
+End Function
+%>

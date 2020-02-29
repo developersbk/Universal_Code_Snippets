@@ -1,0 +1,16 @@
+
+
+$degrees = 2;
+
+($degrees += 100) *= 700;
+
+print $degrees;
+
+
+$degrees = 2;
+
+$degrees += 100;
+$degrees *= 700;
+
+
+print $degrees;

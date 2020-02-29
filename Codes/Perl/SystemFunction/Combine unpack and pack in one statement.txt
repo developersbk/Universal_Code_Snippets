@@ -1,0 +1,3 @@
+$decimal = 4;
+$binary = unpack("B32", pack("N", $decimal));
+print $binary;

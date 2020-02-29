@@ -1,0 +1,52 @@
+<%@ Language=VBScript
+	EnableSessionState=False %>
+<%
+Option Explicit
+Dim oConn ' as adodb.Connection
+Dim oRs ' as ADODB.Recordset
+Dim oRsCity ' as ADODB.Recordset
+Dim strClientCity ' as string
+Dim strSQL ' as string
+Dim strCity ' as string
+
+set oConn = server.createobject("ADODB.Connection")
+Call oConn.Open("Provider=SQLOledb;Data Source=(local);Initial Catalog=Tryit; Integrated Security=SSPI;")
+
+'Set oRs = Server.CreateObject("Adodb.recordset")
+'strSQL = "Select fldCity from tblClientDetail where clname = N'Fred'" 
+'Call oRs.Open(strsql, oConn, adOpenForwardOnly, adLockReadOnly, adCmdText)
+'if not oRs.EOF then
+'	strClientCity=objRS("fldCity")
+'end if
+'Call oRs.Close()
+'Set oRs = Nothing
+
+strClientCity = "Delhi"
+
+Set oRsCity = Server.CreateObject("Adodb.recordset")
+strSQL = "Select name from Cities Order by Name" 
+Call oRsCity.Open(strsql, oConn, adOpenForwardOnly, adLockReadOnly, adCmdText)
+%>
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+
+<form name="frmLogin" method="post" action="modifyClient.asp">
+select combobox:<br>
+<select class="textboxes1" name="city" style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt;">
+<%
+Call Response.Write("<option value=''")
+If oRsCity.EOF Then Call Response.Write(" Selected='yes'")
+Call Response.Write(">Select</option>" & vbCrLf)
+Do until oRsCity.EOF
+	strCity = oRsCity.Fields(0).Value
+	Call Response.Write("<option value='" & Server.HTMLEncode(strCity) & "'")
+	If strClientCity = strCity Then Call Response.Write(" Selected='yes'")
+	Call Response.Write(">" & strCity & "</option>" & vbCrLf)
+	Call oRsCity.MoveNext()
+loop
+%>
+</select>
+</BODY>
+</HTML>

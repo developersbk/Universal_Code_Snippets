@@ -1,0 +1,154 @@
+<html><head>
+<title>iskeyword.asp</title>
+</head><body bgcolor="#FFFFFF">
+<Form action = "iskeywordRespond.asp" method="get">
+Choose The Word You Want To Search For::<p>
+Search Word: <Input NAME="Keyword" size ="30"><br>
+<Input Type="submit" value="Find The Documents!">
+</form>
+</body></html>
+
+
+The iskeywordrespond.asp looks like this:
+
+<html><head>
+<title>iskeywordrespond.asp</title>
+</head>
+<body>
+<%
+Set objQuery = Server.CreateObject("ixsso.query")
+Set objUtil = Server.CreateObject("ixsso.util")
+my_keyword=request("keyword")
+
+' keyword search
+myquery=myquery & "$CONTENTS " & my_keyword 
+
+' Exclude specific folders
+%>
+<!--#include virtual="/search/exclude.asp"-->
+
+<%
+' Exclude specific filenames
+myquery=myquery & " and not #filename indexmaster.asp"
+myquery=myquery & " and not #filename index.asp"
+myquery=myquery & " and not #filename indexold.asp"
+
+' Exclude specific extensions
+myquery=myquery & " and not #filename *.|(txt|,inc|,htm|,mdb|,cnt|,class|,toc|,html|,css|)"
+
+'myquery="$CONTENTS dsn"
+
+objQuery.Query=myQuery
+objQuery.Columns = "Vpath, DocTitle, Filename, Characterization, Contents,DocKeyWords, Rank"
+'objquery.Columns = "DocTitle, vpath, filename, size, write, characterization, rank"
+objQuery.SortBy = "Rank [d]"
+objQuery.MaxRecords = 50
+objquery.catalog="learnasp"
+'objUtil.AddScopeToQuery objQuery, "/", "deep"
+objquery.LocaleID = objutil.ISOToLocaleID("EN-US")
+
+
+linebr="<br>" & vbCrLf
+Set rstemp = objQuery.CreateRecordSet("nonsequential")
+Do UNTIL rstemp.eof
+For Each key In rstemp.fields
+keyname=LCase(key.name)
+Select Case keyname
+Case "vpath"
+Response.Write "<a href='"
+Response.Write key
+Response.Write "'>" & key & "</a>" & linebr
+Case Else
+Response.Write "<b>" & keyname & ":</b>" & linebr 
+Response.Write key & linebr
+End Select
+Next
+Response.Write "<br><hr>"
+rstemp.movenext
+Loop
+' clean up
+rstemp.close
+Set rstemp=Nothing
+Set objQuery = Nothing
+Set objUtil = Nothing
+%>
+</body>
+</html>
+
+
+It has To exclude many folders On my site And the following file excludes directories:
+
+<%
+
+
+myquery=myquery & " and not #Vpath = **_* "
+myquery=myquery & " and not #Vpath = *_contents* "
+myquery=myquery & " and not #Vpath = *_raw* "
+
+myquery=myquery & " and not #Vpath = *ads* "
+myquery=myquery & " and not #Vpath = *aspace* "
+myquery=myquery & " and not #Vpath = *advicedraft* "
+'myquery=myquery & " and not #Vpath = *asplists* "
+myquery=myquery & " and not #Vpath = *aspmagazine
+ew* "
+myquery=myquery & " and not #Vpath = *aspfuture* "
+myquery=myquery & " and not #Vpath = *asptraining* "
+myquery=myquery & " and not #Vpath = *aspynews* "
+myquery=myquery & " and not #Vpath = *activeserverpages* "
+
+myquery=myquery & " and not #Vpath = *contribute* "
+myquery=myquery & " and not #Vpath = *cst* "
+myquery=myquery & " and not #Vpath = *charlescarrolldraft* "
+myquery=myquery & " and not #Vpath = *charlesteam* "
+
+
+myquery=myquery & " and not #Vpath = *dcline* "
+myquery=myquery & " and not #Vpath = *drafts* "
+
+myquery=myquery & " and not #Vpath = *experiments* "
+
+myquery=myquery & " and not #Vpath = *genericdb* "
+
+
+
+myquery=myquery & " and not #Vpath = *future* "
+
+myquery=myquery & " and not #Vpath = *home* "
+myquery=myquery & " and not #Vpath = *how* "
+
+myquery=myquery & " and not #Vpath = *images* "
+
+myquery=myquery & " and not #Vpath = *library* "
+myquery=myquery & " and not #Vpath = *learncover* "
+myquery=myquery & " and not #Vpath = *learnsecurityrisk* "
+
+myquery=myquery & " and not #Vpath = *
+aoko* "
+
+myquery=myquery & " and not #Vpath = *private* "
+myquery=myquery & " and not #Vpath = *perlscript* "
+
+myquery=myquery & " and not #Vpath = *
+eference* "
+myquery=myquery & " and not #Vpath = *
+edesign* "
+
+myquery=myquery & " and not #Vpath = *search* "
+myquery=myquery & " and not #Vpath = *searchasplists* "
+myquery=myquery & " and not #Vpath = *secret* "
+myquery=myquery & " and not #Vpath = *sites* "
+myquery=myquery & " and not #Vpath = *search* "
+myquery=myquery & " and not #Vpath = *speedsitelaws* "
+myquery=myquery & " and not #Vpath = *start* "
+
+myquery=myquery & " and not #Vpath = *	rash* "
+myquery=myquery & " and not #Vpath = *	est* "
+
+myquery=myquery & " and not #Vpath = *upload* "
+myquery=myquery & " and not #Vpath = *upload	ests* "
+
+myquery=myquery & " and not #filename indexmaster.asp"
+myquery=myquery & " and not #filename index.asp"
+myquery=myquery & " and not #filename indexold.asp"
+myquery=myquery & " and not #filename *.|(txt|,inc|,htm|,mdb|,cnt|,class|,toc|,html|,css|)"
+%>

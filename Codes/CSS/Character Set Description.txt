@@ -1,0 +1,29 @@
+Character Set Description
+
+ISO-8859-1      Latin alphabet part 1 Covering North America, Western Europe, Latin America, the Caribbean, Canada, Africa
+
+ISO-8859-2      Latin alphabet part 2 Covering Eastern Europe
+
+ISO-8859-3      Latin alphabet part 3 Covering SE Europe, Esperanto, miscellaneous others
+
+ISO-8859-4      Latin alphabet part 4 Covering Scandinavia/Baltics (and others not in ISO-8859-1)
+
+ISO-8859-5      Latin/Cyrillic alphabet part 5
+
+ISO-8859-6      Latin/Arabic alphabet part 6
+
+ISO-8859-7      Latin/Greek alphabet part 7
+
+ISO-8859-8      Latin/Hebrew alphabet part 8
+
+ISO-8859-9      Latin 5 alphabet part 9 (same as ISO-8859-1 except Turkish characters replace Icelandic ones)
+
+ISO-8859-10     Latin 6 Latin 6 Lappish, Nordic, and Eskimo
+
+ISO-8859-15     The same as ISO-8859-1 but with more characters added
+
+ISO-2022-JP     Latin/Japanese alphabet part 1
+
+ISO-2022-JP-2   Latin/Japanese alphabet part 2
+
+ISO-2022-KR     Latin/Korean alphabet part 1

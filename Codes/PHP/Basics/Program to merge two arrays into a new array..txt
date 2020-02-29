@@ -1,0 +1,9 @@
+<?php
+
+	$arr1 = array('a','b','c');
+	$arr2 = array('d','e','f');
+	
+	$newarr = array_merge($arr1,$arr2);
+	print_r($newarr);
+	
+?>

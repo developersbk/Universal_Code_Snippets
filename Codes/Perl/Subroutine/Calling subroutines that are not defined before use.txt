@@ -1,0 +1,9 @@
+print "Using & and ():\n";
+&definedAfterWithoutArguments();            
+
+
+# subroutine with no arguments defined after it is used
+sub definedAfterWithoutArguments
+{
+   print "definedAfterWithoutArguments\n";
+}

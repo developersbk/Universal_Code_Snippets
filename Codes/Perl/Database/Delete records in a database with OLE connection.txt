@@ -1,0 +1,17 @@
+use Win32::OLE;
+use Win32::OLE::Const 'Microsoft ActiveX Data Objects';
+
+$table = "addresstable";
+$conn = Win32::OLE->new("ADODB.Connection");
+$rs   = Win32::OLE->new("ADODB.Recordset");
+
+print "Content-type: text/html\n\n";
+
+$conn->Open("address");
+
+$conn->Execute("DELETE * FROM $table WHERE firstname='A'");
+
+print "Record Deleted ...";
+
+$rs->Close;
+$conn->Close;

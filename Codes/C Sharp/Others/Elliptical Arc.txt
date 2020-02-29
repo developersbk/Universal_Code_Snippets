@@ -1,0 +1,31 @@
+Elliptical Arc
+
+<Window  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="SDKSample.SampleViewer"
+    Title="  Examples" >
+
+   <Canvas> 
+          <Path Stroke="Blue" StrokeThickness="1">
+            <Path.Data>
+              <PathGeometry>
+                <PathGeometry.Figures>
+                  <PathFigureCollection>
+                    <PathFigure StartPoint="10,100">
+                      <PathFigure.Segments>
+                        <PathSegmentCollection>
+                          <ArcSegment Size="100,50" RotationAngle="50" IsLargeArc="True" SweepDirection="CounterClockwise" Point="180,90" />
+                        </PathSegmentCollection>
+                      </PathFigure.Segments>
+                    </PathFigure>
+                  </PathFigureCollection>
+                </PathGeometry.Figures>
+              </PathGeometry>
+            </Path.Data>
+          </Path>
+   </Canvas> 
+
+
+</Window>
+

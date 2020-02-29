@@ -1,0 +1,10 @@
+while (<>) {
+    chomp;
+    unless (/^q/i) {
+        print;
+    } else {
+        exit;
+    }
+}
+
+   

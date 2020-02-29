@@ -1,0 +1,161 @@
+<%@ Language=VBScript %>
+<%
+Set oConn = Server.CreateObject("OpenX2.Connection")
+Set oCommand = Server.CreateObject("OpenX2.Command")
+Dim sResult, sRetrieveSQL, sSetTextSize
+Dim bError
+Dim i
+sSetTextSize = "SET TEXTSIZE "
+sRetrieveSQL = "SELECT publishers.pub_name, publishers.city, publishers.state, publishers.country, pub_info.pub_id, pub_info.pr_info FROM pub_info, publishers WHERE ( pub_info.pub_id = publishers.pub_id ) ORDER BY publishers.pub_name"
+
+On Error Goto 0
+
+Sub ProcessErr
+  If Err.number <> 0 Then
+    bError = true
+    sResult = ""
+    If oConn.ErrorCode <> 0 Then
+      sResult = "OpenX2 Connection Error: " & oConn.ErrorInfo & ". Error #" & oConn.ErrorCode & " (" & oConn.ErrorCodeEx & ")<br />"
+    Else
+      If oCommand.ErrorCode <> 0 Then
+        sResult = "OpenX2 Command Error: " & oCommand.ErrorInfo & ". Error #" & oCommand.ErrorCode & " (" & oCommand.ErrorCodeEx & ")<br />"
+      End If
+    End If
+    If sResult = "" Then
+      Rem you may reRaise the Error here if you want to allow IIS process rest of errors
+      sResult = "ASP Error: #" & CStr(Err.Number) & ". " & Err.description & "<br />"
+    End If
+  End If
+End Sub
+
+Sub ProcessQuery
+  i = 0
+  oConn.Connect("ms_ox1")
+  oCommand.Connection = oConn
+  oConn.autoCommit = true
+  oCommand.CommandText = sSetTextSize & "12000"
+  oCommand.Execute
+  oCommand.CommandText = sRetrieveSQL
+  oCommand.Execute
+  Do While oCommand.MoveNext
+    sResult = sResult & "<tr>"
+    sResult = sResult & "<td style='font-size: 10pt; cursor: hand;' onClick='ShowDesc(row" & oCommand.FieldValueAsString(5) & ")'><b>Show/Hide Info</b></td>"
+    sResult = sResult & "<td style='font-size: 10pt;'>" & oCommand.FieldValueAsString(1) & " </td>"
+    sResult = sResult & "<td style='font-size: 10pt;'>" & oCommand.FieldValueAsString(2) & " </td>"
+    sResult = sResult & "<td style='font-size: 10pt;'>" & oCommand.FieldValueAsString(3) & " </td>"
+    sResult = sResult & "<td style='font-size: 10pt;'>" & oCommand.FieldValueAsString(4) & " </td>"
+    sResult = sResult & "</tr>"
+    sResult = sResult & "<tr id='row" & oCommand.FieldValueAsString(5) & "' class='hiddentr'>"
+    sResult = sResult & "<td colspan='5'>" & oCommand.FieldValueAsString(6) & " </td>"
+    sResult = sResult & "</tr>"
+    i = i + 1
+    If i = 3 Then
+      Exit Do
+    End If
+  Loop
+  oCommand.CommandText = sSetTextSize & "0"
+  oCommand.Execute
+End Sub
+
+REM // Main Processing
+On Error Resume Next
+ProcessQuery
+ProcessErr
+
+%>
+
+<html>
+  <head><title>OpenX2 Test #10 - TEXT (CLOb/LongChar) Fields Reading </title>
+  <STYLE TYPE="text/css">
+    tr.visibletr { font-size: 8pt; visibility: visible; position: static; }
+    tr.hiddentr { font-size: 8pt; visibility: hidden; position: absolute; }
+  </STYLE>
+<script type="text/javascript" language="JavaScript">
+<!--
+
+function ShowDesc(theTR)
+{
+  if(theTR)  {
+    if(theTR.className == "visibletr")
+      theTR.className = "hiddentr";
+    else
+      theTR.className = "visibletr";
+  }
+}
+
+-->
+</script>
+
+</head>
+  <body>
+    <table border="1">
+      <tr>
+        <td><b>Info</b></td>
+        <td><b>Name</b></td>
+        <td><b>City</b></td>
+        <td><b>State</b></td>
+        <td><b>Country</b></td>
+      </tr>
+      <%=sResult%>
+    </table>
+  </body>
+</html>
+
+
+
+ASP file to retrieve image from the database (OX2ImageVB.asp)
+
+
+<%@ Language=VBScript %>
+<%
+Set oConn = Server.CreateObject("OpenX2.Connection")
+Set oCommand = Server.CreateObject("OpenX2.Command")
+Dim sResult, sRetrieveSQL, sSetTextSize
+Dim bError
+Dim pub_id
+pub_id = Request("pub_id")
+sSetTextSize = "SET TEXTSIZE "
+sRetrieveSQL = "SELECT pub_info.logo FROM pub_info WHERE pub_info.pub_id = '" & pub_id & "'"
+
+On Error Goto 0
+
+Sub ProcessErr
+  If Err.number <> 0 Then
+    bError = true
+    sResult = ""
+    If oConn.ErrorCode <> 0 Then
+      sResult = "OpenX2 Connection Error: " & oConn.ErrorInfo & ". Error #" & oConn.ErrorCode & " (" & oConn.ErrorCodeEx & ")<br />"
+    Else
+      If oCommand.ErrorCode <> 0 Then
+        sResult = "OpenX2 Command Error: " & oCommand.ErrorInfo & ". Error #" & oCommand.ErrorCode & " (" & oCommand.ErrorCodeEx & ")<br />"
+      End If
+    End If
+    If sResult = "" Then
+      Rem you may reRaise the Error here if you want to allow IIS process rest of errors
+      sResult = "ASP Error: #" & CStr(Err.Number) & ". " & Err.description & "<br />"
+    End If
+  End If
+End Sub
+
+Sub ProcessQuery
+  oConn.Connect("ms_ox1")
+  oCommand.Connection = oConn
+  oConn.autoCommit = true
+  oCommand.CommandText = sSetTextSize & "32768"
+  oCommand.Execute
+  oCommand.CommandText = sRetrieveSQL
+  oCommand.Execute
+  If Not oCommand.isEmpty Then
+    Response.Clear
+    Response.ContentType = "image/gif"
+    Response.BinaryWrite(oCommand.FieldValueAsBinary(1))
+  End If
+  oCommand.CommandText = sSetTextSize & "0"
+  oCommand.Execute
+End Sub
+
+REM // Main Processing
+On Error Resume Next
+ProcessQuery
+ProcessErr
+%>

@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+
+    <title>Cursor Wait</title>
+    <style type="text/css">
+
+    body {margin: 20%;}
+    a:link {cursor: wait;}
+
+    </style>
+
+  </head>
+  <body>
+
+  <div id="content">
+
+<h2>Code Examples</h2>
+
+<p>A <a href="http://www.happycodings.com">A Link</a>. <a href="http://www.happycodings.com">Code Examples</a></p>
+
+  </div>
+
+  </body>
+</html>
+

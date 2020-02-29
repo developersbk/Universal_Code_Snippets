@@ -1,0 +1,10 @@
+print 0 .. 10,"\n";
+
+@alpha=('A' .. 'Z');
+print  "@alpha";'
+
+@a=('a'..'z', 'A'..'Z');
+print  "@a\n";'
+
+@n=( -5 .. 20 );
+print "@n\n";'

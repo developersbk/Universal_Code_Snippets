@@ -1,0 +1,9 @@
+<% 
+set objMail=Server.CreateObject("CDONTS.NewMail")
+objMail.To="sample@emailaddress.com"
+objMail.From="from@otheremail.com"
+objMail.Subject="Place the subject here"
+objMail.Body="Place body text here"
+objMail.Send
+set objMail=Nothing
+%>

@@ -1,0 +1,33 @@
+use Tk;
+
+$main = MainWindow->new();
+
+$dialog = $main->DialogBox(
+    -title => "Dialog box",
+    -buttons => ["OK", "Cancel"]
+);
+
+$entry = $dialog->add(
+    "Entry", -width => 40
+)->pack;
+
+$main->Button( 
+    -text => "Show dialog box",
+    -command => \&show
+)->pack;
+
+$text1 = $main->Text (
+    -width => 40, 
+    -height => 2
+)->pack();
+
+MainLoop;
+
+sub show 
+{
+    $result = $dialog->Show;
+    if ($result eq "OK") {
+        $text1->delete('1.0','end');
+        $text1->insert('end', $entry->get);
+    }
+}

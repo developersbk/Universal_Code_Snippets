@@ -1,0 +1,10 @@
+format STDOUT =
+English: ^<<<<<
+       $text
+German: ^<<<<<<<<<
+       $text
+French: ^<<<<<<<<
+       $text
+.
+
+$text = "Hello!Guten Tag!Bonjour!";

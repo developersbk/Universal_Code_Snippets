@@ -1,0 +1,147 @@
+<%@Language="vbscript" %>
+<HTML>
+<HEAD>
+<TITLE>Remove Duplicate Records</TITLE>
+<STYLE Type="text/css">
+BODY { background-color: #336699; font-family: Verdana; font-size: 10pt; color: #FFFFFF }
+TD { font-family: Verdana; font-size: 10pt; color: #000000 }
+</STYLE>
+</HEAD>
+<BODY>
+<%
+Const adOpenForwardOnly = 0
+Const adLockReadOnly = 1
+Const adCmdTableDirect = &H0200
+Const adCmdText = &H0001
+sPassword = "admin" ' fill in your desired password here
+If Request("password") <> "" Then
+    Session("Password") = Request("password")
+End If
+If Session("Password") <> sPassword Then
+    Response.Write "<HTML><BODY><FORM ACTION=""removeduplicates.asp"" METHOD=""post"">Password: (CaSe SeNsiTivE) <INPUT TYPE=""password"" NAME=""password""><INPUT TYPE=""submit""></FORM>"
+Else
+    Dim sdbPath
+    Dim sdbTable
+    Dim spriKey
+    Dim sdbField
+    Dim strSQL
+    Dim strConn
+    Dim rs
+    Dim ttCount
+    Dim i
+    Dim totalFound
+    Dim lookFor
+    Dim tempVal
+    Dim foundDups
+    Dim tempArr
+    Dim prCount
+    Dim File
+    Dim Posi
+    Dim delDub
+    delDub = False
+    File = Request.ServerVariables("SCRIPT_NAME")
+    File = StrReverse(File)
+    Posi = InStr(File, "/")
+    File = Left(File, Posi - 1)
+    File = StrReverse(File)
+    If Request.Form("db") <> "" Then
+        On Error Resume Next
+        DSNName = Request.Form("db")
+        sdbTable = Request.Form("tb")
+        spriKey = Request.Form("pk")
+        sdbField = Request.Form("fn")
+        sdbPath = "DBQ=" & Server.MapPath(DSNName) & ";Driver={Microsoft Access Driver (*.mdb)};"
+        strSQL = "SELECT COUNT(*) AS ttCount FROM " & sdbTable
+        Set strConn = Server.CreateObject("ADODB.Connection")
+        strConn.Open sdbPath
+        Set rs = Server.CreateObject("ADODB.Recordset")
+        rs.CursorLocation = adUseClient
+        rs.Open(strSQL), strConn, adOpenForwardOnly, adLockReadOnly, adCmdText
+        Set rs = strConn.Execute(strSQL)
+        tempArr = ""
+        totalFound = rs("ttCount")
+        rs.Close
+        Set rs = Nothing
+        totalFound = CInt(totalFound)
+        Response.Write totalFound
+        Response.Write " records" & vbCrLf
+        Response.Write "<HR>" & vbCrLf
+        strSQL = "SELECT " & sdbField & "," & spriKey & " FROM " & sdbTable & " ORDER BY " & sdbField
+        Set rs = Server.CreateObject("ADODB.Recordset")
+        rs.CursorLocation = adUseClient
+        rs.Open(strSQL), strConn, adOpenForwardOnly, adLockReadOnly, adCmdText
+        If Err = 0 Then
+            For i = 0 To (totalFound - 1)
+                rs.MoveFirst
+                rs.Move(i)
+                lookFor = rs.fields(sdbField)
+                If lookFor = tempVal Then
+                    foundDups = rs.fields(spriKey)
+                    tempArr = tempArr & foundDups & ","
+                End If
+                tempVal = lookFor
+            Next
+            rs.Close
+            Set rs = Nothing
+            If tempArr <> "" Then
+                Response.Write "Primary Key ID containing duplicate data in the selected field:" & vbCrLf
+            Response.Write "<BR>" & vbCrLf
+            End If
+            If tempArr = "" Then
+                Response.Write "No duplicate records found." & vbCrLf
+            Else
+                tempArr = Left(tempArr, Len(tempArr) - 1)
+                Response.Write tempArr
+                tempArr = Split(tempArr, ",", -1, 1)
+                prCount = UBound(tempArr)
+                prCount = prCount + 1
+                Response.Write "<BR>" & vbCrLf
+                For i = 0 To (prCount - 1)
+                strSQL = "DELETE FROM " & sdbTable & " WHERE " & spriKey & " = " & tempArr(i)
+                    strConn.Execute(strSQL)
+                Next
+            End If
+            delDub = True
+        Else
+            Response.Write Err.description
+        End If
+        strConn.Close
+        Set strConn = Nothing
+        If Err = 0 And delDub = True And tempArr <> "" Then
+            Response.Write "<BR><B>" & prCount & "</B> duplicate record"
+            If prCount <> 1 Then
+                Response.Write "s"
+            End If
+            Response.Write " deleted successfully." & vbCrLf
+        End If
+    End If
+%>
+<HR><BR><DIV ALIGN="center"><B>Remove duplicate database records</B></DIV>
+<FORM ACTION="<%=File %>" METHOD="post">
+<TABLE CELLPADDING="4" CELLSPACING="1" ALIGN="center" WIDTH="50%" STYLE="border: 1px outset" BGCOLOR="#FFFFFF">
+<TR>
+<TD WIDTH="50%" BGCOLOR="#E9E9E9">Database:</TD>
+<TD WIDTH="50%" BGCOLOR="#E9E9E9">
+<Input Type="text" SIZE="25" NAME="db" STYLE="text-align: right"><B>.mdb</B></TD></TR>
+<TR>
+<TD WIDTH="50%" BGCOLOR="#E9E9E9">Table Name:</TD>
+<TD WIDTH="50%" BGCOLOR="#E9E9E9">
+<Input Type="text" SIZE="25" NAME="tb"></TD></TR>
+<TR>
+<TD WIDTH="50%" BGCOLOR="#E9E9E9">Field Name:</TD>
+<TD WIDTH="50%" BGCOLOR="#E9E9E9">
+<Input Type="text" SIZE="25" NAME="fn"></TD></TR>
+<TR>
+<TD WIDTH="50%" BGCOLOR="#E9E9E9">Primary Key:</TD>
+<TD WIDTH="50%" BGCOLOR="#E9E9E9">
+<Input Type="text" SIZE="25" NAME="pk"></TD></TR>
+<TR>
+<TD WIDTH="50%" BGCOLOR="#E9E9E9"> </TD>
+<TD WIDTH="50%" BGCOLOR="#E9E9E9">
+<Input Type="submit" VALUE="Remove Duplicates"></TD></TR></TABLE></FORM>
+<HR>
+<%
+End If
+%>
+</BODY>
+</HTML>

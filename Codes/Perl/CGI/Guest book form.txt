@@ -1,0 +1,70 @@
+<HTML>
+<BODY>
+<H1>Please add to my guest book...</H1>
+<FORM METHOD = POST ACTION ="guestbook.cgi">
+<BR>
+Please enter your name: 
+<P>
+<INPUT TYPE = "TEXT" NAME = "username">
+</INPUT>
+<BR>
+Please enter your comments: 
+<P>
+<TEXTAREA NAME = "comments"></TEXTAREA>
+<BR>
+<BR>
+<INPUT TYPE = SUBMIT VALUE = "Send">
+<INPUT TYPE = RESET VALUE = "Reset">
+</FORM>
+</BODY>
+</HTML>
+
+
+
+#File: guestbook.cgi
+
+#!/usr/bin/perl
+
+use CGI;                             
+
+$co = new CGI;                        
+open (BOOK, "+<book.htm") or die "Could not open guest book.";
+seek (BOOK, -length($co->end_html), 2);
+$date = `date`;
+chop($date); 
+$username = $co->param('username');
+$username =~ s/</&lt;/g;
+$text = $co->param('comments');
+$text =~ s/</&lt;/g;
+print BOOK 
+$co->h3
+(
+    "New comments by ", $username, " on ", $date,
+    $co->p,
+    $text,
+),
+$co->hr,
+$co->end_html;
+close BOOK;
+print $co->header,                    
+$co->start_html
+(
+    -title=>'Guest Book Example', 
+    -author=>'your name', 
+    -BGCOLOR=>'white', 
+    -LINK=>'red'
+);
+print
+$co->center
+(
+    $co->h1('Thanks for adding to the guest book!')
+),
+"If you want to take a look at the guest book, ", 
+$co->a
+(
+    {href=>"http://www.yourserver.com/user/cgi/book.htm"},
+    "click here"
+), 
+".",
+$co->hr,
+$co->end_html;

@@ -1,0 +1,19 @@
+<html>
+<head>
+<style>
+    .time{ behavior: url(#default#time2);}
+</style>
+</head>
+<body bgcolor="pink">
+<span class=time style="color:red;" begin="0" dur="3"
+    timeaction="display">
+    <h3>Love Sayings</h3>
+    <p>A man reserves his true and deepest love not for the species of woman<br>
+       in whose company he finds himself electrified and enkindled,<br>
+       but for that one in whose company he may feel tenderly drowsy.<br><br>
+
+George Jean Nathan .</p>
+</span>
+</body>
+</html>
+

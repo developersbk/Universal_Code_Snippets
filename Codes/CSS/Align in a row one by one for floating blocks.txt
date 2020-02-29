@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:subLang='en'>
+    <head>
+        <title>Align in a row one by one for floating blocks</title>
+        <style rel='stylesheet' type='text/css'>
+div#container {
+    font: 13px Verdana;
+    margin: 0 20px;
+    background: pink;
+    width: 400px;
+}
+div#float {
+    background: rgb(202, 202, 202);
+    float: left;
+    border: 1px solid black;
+    width: 105px;
+    height: 60px;
+}
+p {
+    margin-left: 86px;
+    border: 1px solid blue;
+}        
+        </style>
+    </head>
+    <body>
+        <div id='container'>
+            <div id='float'>
+                 You will find, as you look back upon your life,<br>
+                 that the moments when you really lived are the moments<br>
+                 when you have done things in the spirit of love.<br><br>
+
+                 Henry Drummond
+            </div>
+            <p>
+                 I love thee, I love but thee<br>
+                 With a love that shall not die<br>
+                 Till the sun grows cold<br>
+                 And the stars grow old.<br><br>
+
+                 Willam Shakespeare
+            </p>
+        </div>
+    </body>
+</html>

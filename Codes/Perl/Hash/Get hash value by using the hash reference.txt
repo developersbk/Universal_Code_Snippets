@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my %hash = ( A => "AA",
+             B => "BB",
+             C => "CC",
+             D => "DD",
+             E => "EE" );
+
+my $hashReference = \%hash;
+
+print( "\$\$hashReference{ A } = $$hashReference{ A }\n" );

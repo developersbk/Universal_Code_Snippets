@@ -1,0 +1,12 @@
+OUTER: foreach $row ( 1 .. 10 ) {
+
+   INNER: foreach $column ( 1 .. 10 ) {
+
+             if ( $row < $column ) {
+                print "\n";
+                next OUTER;
+             }
+
+             print "$column   ";
+          }
+       }

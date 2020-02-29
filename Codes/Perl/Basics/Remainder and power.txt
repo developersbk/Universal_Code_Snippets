@@ -1,0 +1,26 @@
+#!C:\perl\bin
+
+$b = 7;
+$size = 25;
+$othervalue = 12;
+$mass = 10;
+$acceleration = 14;
+$minutes = 600;
+$num = 12;
+
+$a = $b + 5;
+
+$size = $size - $othervalue;
+print "\$size = $size\n\n";
+
+$speed = $mass * $acceleration;
+print "\$speed = $speed\n\n";
+
+$hours = $minutes / 60;
+print "\$hours = $hours\n\n";
+
+$remainder = 5 % 2;
+print "\$remainder = $remainder\n\n";
+
+$square = $num ** 2;
+print "\$square = $square\n\n";

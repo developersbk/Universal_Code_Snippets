@@ -1,0 +1,10 @@
+#Format:
+
+#eof(FILEHANDLE)
+#eof()
+#eof
+
+open ( DB, "data.txt") || die "Can't open emp.names: $!";
+while(<DB>){
+    print if (/Norma/ .. eof);      # .. is the range operator
+}

@@ -1,0 +1,4 @@
+while (<>) {
+    print "Initial lowercase: " . lcfirst;
+    print "Initial uppercase: " . ucfirst;
+}

@@ -1,0 +1,12 @@
+system "stty cbreak </dev/tty >&1";
+
+print "Type an up arrow:";
+$c1 = getc;       
+$c2 = getc;       
+$c3 = getc;       
+
+if ((ord($c1) == 27) && ($c2 eq '[') && ($c3 eq 'A')) {        
+    print "You typed an up arrow.";
+} else {
+    print "You did not type an up arrow.";
+}

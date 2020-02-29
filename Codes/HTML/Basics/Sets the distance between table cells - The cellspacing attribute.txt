@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <title>Example of HTML table cellspacing</title>
+</head>
+<body>
+    <table border="1" cellspacing="10">
+        <caption>User Information</caption>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>john@mail.com</td>
+        </tr>
+    </table>
+    <p><strong>Note:</strong> The CSS <code><a href="#" target="_top">margin</a></code> property is the better way to control spacing between table cells.</p>
+</body>
+</html>                                 		

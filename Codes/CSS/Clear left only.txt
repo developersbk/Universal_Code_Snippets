@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+   <html>
+        <head>
+            <title>Clear Left Only</title>
+            <style type='text/css'>
+                body {
+                    margin: 0;
+                    padding: 9px;
+                }
+                p {
+                    border: 1px solid pink;
+                    background: rgb(120, 102, 200);
+                    line-height: 1em;
+                    padding: 12px;
+                }
+                p#left {
+                    width: 200px;
+                    float: left;
+                    margin: 8px;
+                }
+                p#right {
+                    width: 250px;
+                    float: right;
+                    margin: 8px;
+                }
+                p#clear {
+                    clear: left;
+                }
+            </style>
+        </head>
+        <body>
+            <p id='left'>
+                Love means to commit oneself without guarantee,<br>
+                to give oneself completely in the hope<br>
+                that our love will produce love in the loved person.<br>
+                Love is an act of faith,<br>
+                and whoever is of little faith is also of little love.<br><br>
+
+                Erich Fromm
+            </p>
+            <p id='right'>
+                All thoughts, all passions, all delights Whatever stirs this mortal frame<br>
+                All are but ministers of Love And feed his sacred flame.<br><br>
+
+                Samuel Taylor Coleridge
+            </p>
+            <p>
+                Never marry but for love; but see that thou lovest what is lovely.<br><br>
+
+                William Penn
+            </p>
+            <p id='clear'>
+                Love is a light that never dims Like the deepest passion is the ultimate sin<br><br>
+
+                Mary B. Coger   
+            </p>
+        </body>
+    </html>

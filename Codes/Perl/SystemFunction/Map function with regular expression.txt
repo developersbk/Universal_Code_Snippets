@@ -1,0 +1,3 @@
+@a = qw(This is a test);
+@b = map/^(\w{4})/, @a;
+print "@b";

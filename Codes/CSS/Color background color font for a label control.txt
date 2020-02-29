@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Color Background Color Font For A Label Control</title>
+<style type="text/css">
+
+label {
+ background-color: pink;
+ color: blue;
+ font-weight: normal;
+}
+
+</style>
+</head>
+
+<body>
+   <form method="post">
+   <label for="pc">pc</label>
+   <input type="text" name="pc" id="pc" value="" /><br />
+   <label for="phone">phone</label>
+   <input type="text" name="phone" id="phone" value="" /> <br /> 
+     <input type="submit" name="Submit" value="Submit" class="buttonSubmit" />
+  </form>
+</body>
+
+</html>

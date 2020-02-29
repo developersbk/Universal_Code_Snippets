@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Cascade Example</title>
+        <style type='text/css'>
+      div {
+          text-align: left;
+          color: pink;
+      }
+      div {
+          text-align: center;
+          color: green;
+      }
+        </style>
+    </head>
+    <body>
+    <div id='parentdiv'>
+          Arguments out of a pretty mouth are unanswerable.<br><br>
+
+          Joseph Addison
+
+    </div>
+    </body>
+</html>

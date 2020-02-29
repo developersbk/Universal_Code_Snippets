@@ -1,0 +1,9 @@
+<% 
+Dim strLength 
+strLength = "this is our text string" 
+'return the length of the string strLength 
+Response.Write Len(strLength) 
+response.Write "<br>" 
+'return the length of the string strLength in bytes 
+Response.Write LenB(strLength) 
+%>

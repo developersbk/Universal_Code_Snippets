@@ -1,0 +1,34 @@
+#!/usr/local/bin/perl
+
+use CGI;
+
+$co = new CGI;    
+
+print $co->header,
+
+$co->start_html('Image Map Example'),
+
+$co->h1('Image Map Example'),
+
+$co->start_form,
+
+$co->image_button
+(
+    -name => 'map',
+    -src=>'map.gif'
+),
+
+$co->p,
+
+$co->end_form,
+
+$co->hr;
+
+if ($co->param())
+{
+    $x = $co->param('map.x');
+    $y = $co->param('map.y');
+    print "You clicked the map at ($x, $y)";
+}
+
+print $co->end_html;

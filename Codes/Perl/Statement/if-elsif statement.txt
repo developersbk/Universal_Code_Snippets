@@ -1,0 +1,25 @@
+#if ( expression ){
+#       statements;
+#elsif ( expression ){
+#       statements;
+#}
+#elsif (expression){
+#       statements;
+#else{
+#       statements;
+#}
+
+
+$day_of_week = int(rand(7)) + 1;
+print "Today is: $day_of_week\n";
+if ( $day_of_week >=1 && $day_of_week <=4 ) {
+   print "from 9 am to 9 pm\n";
+}
+elsif ( $day_of_week == 5) {
+   print "from 9 am to 6 pm\n";
+}
+else {
+   print "weekends\n";
+}
+
+   

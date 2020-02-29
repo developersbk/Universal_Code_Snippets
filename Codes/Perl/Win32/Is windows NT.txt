@@ -1,0 +1,8 @@
+#!/usr/bin/perl -w
+use Win32;
+
+$isnt = Win32::IsWinNT();
+
+if ($isnt) {
+    print "Running Windows NT\n";
+}

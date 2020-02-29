@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my @array = qw( A B C D E );
+my %hash = ( A => "AA",
+             B => "BB",
+             C => "CC",
+             D => "DD",
+             E => "EE" );
+
+my $arrayReference = \@array;
+my $hashReference = \%hash;
+
+sub returnReference
+{
+   return \@array;
+}
+
+
+print ( "\$hashReference->{ duck } = $hashReference->{ duck }\n\n" );

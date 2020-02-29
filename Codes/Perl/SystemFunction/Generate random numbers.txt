@@ -1,0 +1,7 @@
+#!/usr/bin/perl 
+print "Content-Type: text/html \n\n"; 
+$random_number = rand(10); 
+print "<p>Your Auto Lucky Number from 1 to 10 is $random_number.</p>\n"; 
+$random_integer = int(rand(10)) + 1; 
+print "<p>Your Auto Lucky Integer from 1 to 10 is $random_integer.</p>\n"; 
+print "Click the Reload button on your browser to get a new random number."; 

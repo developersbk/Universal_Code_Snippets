@@ -1,0 +1,8 @@
+    #!/usr/local/bin/perl -w
+
+    my %cities = ("Toronto" => "East", "Calgary" => "Central", "Vancouver" => 'West');
+
+    while ( ($key, $value) = each %cities )
+    {
+       print "Key: $key Value: $value \n";
+    }

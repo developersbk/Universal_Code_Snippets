@@ -1,0 +1,11 @@
+#A BEGIN subroutine is executed immediately, before the rest of the file is even parsed. 
+#If you have multiple BEGINs, they will be executed in the order they were defined.
+#The END subroutine is executed when all is done. 
+#Multiple END blocks are executed in reverse order.
+#The keyword sub is not necessary when using these special subroutines.
+
+#!/bin/perl
+
+chdir("/mydir") || die "Can't cd: $!\n";
+BEGIN{ print "Welcome to my Program.\n"};
+END{ print "Bailing out somewhere near line ",__ LINE__," So long.\n"};

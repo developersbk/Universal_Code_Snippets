@@ -1,0 +1,8 @@
+#If a scalar has neither a valid string nor a valid numeric value, it is undefined. 
+#The defined function checks for the validity of a variable's value. 
+#defined Function returns 1 if the variable has a value and null if it does not. 
+#defined Function also checks the validity of arrays, subroutines, and null strings.
+
+
+$name="A";
+print "OK \n" if defined $name;

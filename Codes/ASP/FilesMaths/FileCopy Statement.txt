@@ -1,0 +1,23 @@
+<%
+Private Sub FileCopy(ByVal source, ByVal destination)
+    Dim objFSO, objToCopy, boolErr, strErrDesc
+    On Error Resume Next
+    Set objFSO = Server.CreateObject("scripting.filesystemobject")
+    If InStr( Right( source, 4 ), "." ) Then
+         ' probably a file
+        Set objToCopy = objFSO.GetFile(source)
+    Else
+         ' probably a directory or folder
+        Set objToCopy = objFSO.GetFolder(source)
+    End If
+    objToCopy.Copy destination
+    If Err Then 
+        boolErr = True
+        strErrDesc = Err.description
+    End If
+    Set objToCopy = Nothing
+    Set objFSO = Nothing
+    On Error GoTo 0
+    If boolErr Then Err.Raise 5104, "FileCopy Statement", strErrDesc
+End Sub
+%>

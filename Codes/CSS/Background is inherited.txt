@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"xml: subLang="en"subLang="en">
+<head>
+<title>Background is inherited</title>
+<style type="text/css">
+body,p {
+  font-family: arial, sans-serif;
+  color: blue;
+}
+body {
+  margin: 2px;
+  padding: 2px;
+  background-color: white;
+}
+p {
+  font-size: 16px;
+  line-height: 1.2em;
+}
+
+
+#MainText {
+  padding: 8px;
+  margin: 4px;
+  background-color: pink;
+  border: 1px solid green;
+}
+
+
+</style>
+</head>
+<body>
+<div id="MainText">
+<p>My most brilliant achievement was my ability to be able<br>
+to persuade my wife to marry me.<br><br>
+
+Winston Churchill</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<HTML>
+<head><Title>Clear Example</Title></head>
+<BODY>
+<img src="http://www.happycodings.com/image/happy.gif" 
+     alt="This is a float-right image" 
+     width="200"
+     height="80"
+     style="float:right">
+     BR Clear
+<br clear="left">
+
+<img src="http://www.happycodings.com/image/happy.gif" 
+     alt="This is a float-left image" 
+     width="240" 
+     height="80"
+     style="float:left">
+Here is the br element
+
+<img src="http://www.happycodings.com/image/happy.gif" 
+     alt="This is a float-left image"
+     width="300" 
+     height="180" 
+     style="float:left">
+
+</BODY>
+</HTML>

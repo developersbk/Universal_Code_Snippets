@@ -1,0 +1,30 @@
+Template             Description
+a                    An ASCII string (null padded)
+A                    An ASCII string (space padded)
+b                    A bit string (low-to-high order, like vec)
+B                    A bit string (high-to-low order)
+c                    A signed char value
+C                    An unsigned char value
+d                    A double-precision float in the native format
+f                    A single-precision float in the native format
+h                    A hexadecimal string (low nybble first, to high)
+H                    A hexadecimal string (high nybble first)
+i                    A signed integer
+I                    An unsigned integer
+l                    A signed long value
+L                    An unsigned long value
+n                    A short in "network" (big-endian) order
+N                    A long in "network" (big-endian) order
+p                    A pointer to a null-terminated string
+P                    A pointer to a structure (fixed-length string)
+q                    A signed 64-bit value
+Q                    An unsigned 64-bit value
+s                    A signed short value (16-bit)
+S                    An unsigned short value (16-bit)
+u                    A uuencoded string
+v                    A short in "VAX" (little-endian) order
+V                    A long in "VAX" (little-endian) order
+w                    A BER compressed unsigned integer in base 128, high bit first
+x                    A null byte
+X                    Back up a byte
+@                    Null fill to absolute position

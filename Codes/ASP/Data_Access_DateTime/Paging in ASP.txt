@@ -1,0 +1,52 @@
+<html>
+
+<head>
+<!-- #Include file="adovbs.inc" -->
+<title>SQL</title>
+</head>
+
+<body>
+<%
+    Dim CurrentPage,RowCount,i
+    CurrentPage=TRIM(Request("CurrentPage"))
+    
+    if CurrentPage="" then CurrentPage=1
+    
+        Set ObjCon=Server.CreateObject("ADODB.Connection")
+        Set ObjRec=Server.CreateObject("ADODB.Recordset")
+
+        ObjCon.Open "driver={SQL SERVER};server=mahesh;uid=sa;database=test"
+    
+        ObjRec.CursorType=adOpenStatic
+        ObjRec.PageSize=5
+        
+        dim tsql
+    
+        tsql=""
+    
+        tsql="Select * from Student " 
+        
+        ObjRec.Open tsql,ObjCon
+       
+       ObjRec.AbsolutePage=cINT(CurrentPage)
+        
+        RowCount=0
+    
+        While Not ObjRec.Eof and RowCount<ObjRec.PageSize
+
+            for i=0 to ObjRec.Fields.Count-1 
+                objRec(i)
+           Next 
+            RowCount=RowCount+1         
+            ObjRec.MoveNext
+            
+        Wend
+                
+for i= 0 to ObjRec.PageCount
+%>
+<a href="Paging.asp?CurrentPage=<% =i %>"><% =i %></a>
+
+<% Next %>
+</body>
+
+</html>

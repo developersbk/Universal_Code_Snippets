@@ -1,0 +1,15 @@
+#!/usr/bin/perl -w
+
+# Associative array or hash keys.
+$hash{"Name"} = "G ";
+$hash{"Address"} = "1 Penn.";
+$hash{"City"} = "W";
+
+@key_names = keys(%hash);
+
+print "Key names are: @key_names\n\n";
+
+# Now, access each element from the list.
+foreach $key (@key_names) {
+     print "$key holds $hash{$key}\n";
+}

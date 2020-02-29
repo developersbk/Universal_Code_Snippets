@@ -1,0 +1,71 @@
+#!/usr/bin/perl -w
+
+use Tk;
+
+use Tk::FileSelect;
+
+$main = MainWindow->new();
+
+$menubar = $main->Frame(-relief=>"raised",
+                        -borderwidth=>2);
+
+$filebutton = $menubar->Menubutton(-text=>"File",
+                                   -underline => 0);  # F in File
+
+$filemenu = $filebutton->Menu();
+
+$filebutton->configure(-menu=>$filemenu);
+
+$filemenu->command(-command => \&open_choice,
+                   -label => "Open...",
+                   -underline => 0); # O in Open
+
+$filemenu->command(-command => \&dump_choice,
+                   -label => "Dump",
+                   -underline => 0); # D in Dump
+
+$filemenu->separator();
+
+$filemenu->command(-label => "Exit",
+                   -command => \&exit_choice,
+                   -underline => 1);  # "x" in Exit
+
+$filebutton->pack(-side=>"left");
+
+$menubar->pack(-side=>"top", -fill=>"x");
+
+$text = $main->Scrolled('Text',
+                        -relief      => "sunken",
+                        -borderwidth => 2,
+                        -setgrid     => "true",
+                        -scrollbars  => 'se' );
+
+$text->pack(-side=>"top", 
+            -expand => 1,
+            -fill => 'both');
+
+$file_dialog = $main->FileSelect(-directory => ".");
+
+MainLoop();
+sub exit_choice {
+    print "You chose the Exit choice!\n";
+    exit;
+}
+
+sub open_choice {
+    $filename = $file_dialog->Show();
+    
+    if ($filename ne "" ) {
+        open (FILE, $filename);
+        # Clear Text widget.
+        $text->delete("1.0", "end");
+        while ($txt = <FILE>) {
+            $text->insert("end", $txt);
+        }
+        close(FILE);
+    }
+}
+
+sub dump_choice {
+    print $text->get("1.0", "end");
+}

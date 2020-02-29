@@ -1,0 +1,6 @@
+use Math::BigInt;
+
+$bi1 = Math::BigInt->new('111111111111111111');
+$bi2 = Math::BigInt->new('111111111111111112');
+
+print "\$bi2 > \$bi1" if $bi2 > $bi1;

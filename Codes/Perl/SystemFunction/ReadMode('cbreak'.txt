@@ -1,0 +1,11 @@
+use Term::ReadKey;
+
+ReadMode('cbreak');
+
+if (defined ($char = ReadKey(-1)) ) {
+    print "This key was waiting: $char.";
+} else {
+    print "Sorry, no key was waiting.";
+}
+
+ReadMode('normal'); 

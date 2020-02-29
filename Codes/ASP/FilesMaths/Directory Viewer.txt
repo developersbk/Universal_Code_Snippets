@@ -1,0 +1,208 @@
+<%@ Language=VBScript %>
+<%
+' Always display the navigation path? 
+Const bShowPath = True     'False
+' Always display the root directory? 
+Const bShowRoot = False     'True
+
+' Page font tag
+Const sFont = "<font face=""Verdana, Arial, Helvetica"" size=""2"">"
+' Column header font tag
+Const sColFont = "<font face=""Verdana, Arial, Helvetica"" size=""2"" COLOR=""#FFFFFF"">"
+' Column header color
+Const TblHeader = "#BFBFBF" 'Grey
+
+' Directory grid alternating colors
+Const FileRow1 = "#b6cbeb"  'Dark Blue
+Const FileRow2 = "#cadfff"  'Light Blue
+Const FolderRow1 = "#879966"    'Dark Green
+Const FolderRow2 = "#c5e095"    'Light Green
+
+' Some nice color pairs
+'#91619b    'Dark Purple
+'#be9cc5    'Light Purple
+'#b6cbeb    'Dark Blue
+'#cadfff    'Light Blue
+'#879966    'Dark Green
+'#c5e095    'Light Green
+'#a7342a    'Dark Red
+'#df867f    'Light Red
+'#f8bc03    'Dark Yellow
+'#f8e094    'Light Yellow
+
+
+
+' ***** Begin Script
+Dim sError
+On Error Resume Next
+sDirectory = Trim(sDirectory)
+If Right(sDirectory,1) <> "/" Then sDirectory = sDirectory & "/" 
+
+' ***** Get subfolder from passed querystring
+sDir = sDirectory & Request.QueryString("dir")
+sDir = Trim(sDir)
+If Right(sDir,1) <> "/" Then sDir = sDir & "/"
+
+' ***** Important! Make sure the subfolder path is in the shared folder. This keeps 
+' users from browsing directories outside of the shared. ie: dir=../
+' You may want to include some logging code if this happens, here we just
+' put the user back into the default directory.
+sFolder = Server.MapPath( sDir )
+sDirFolder = Server.MapPath( sDirectory )
+sSubFolder = Right(sDir,Len(sDir)-Len(sDirectory))
+If InStr( sFolder , sDirFolder ) = 0 Then 
+sFolder = sDirFolder
+sSubFolder = ""
+sError = sError & " Path not authorized;"
+End If
+
+
+' ***** Load the file system and navigate to our shared folder.
+Set objFileObject = Server.CreateObject("Scripting.FileSystemObject")
+Set objFolder = objFileObject.GetFolder( sFolder )
+
+' ***** Oops, missing or misspelled folder path.
+If IsEmpty( objFolder ) Then 
+sFolder = sDirFolder
+sSubFolder = ""
+sDir = sDirectory 
+Set objFolder = objFileObject.GetFolder( sFolder )
+sError = sError & " Folder not found;"
+End If
+
+%>
+<HTML><BODY BGCOLOR="#FFFFFF" Text="#000000" LINK="#000000" VLINK="#000000">
+
+<font face="Verdana, Arial, Helvetica" size="2">
+<BR><B>Welcome To my file archive:</B><BR><BR></font>
+
+
+<TABLE BORDER=0 bgcolor="#f0f0f0" CELLPADDING=0 CELLSPACING=1>
+<% ' ***** Feel free to edit the above table tag
+
+' ***** Build path navigation
+aNames = Split( sSubFolder , "/")
+If bShowPath Then
+If UBound( aNames ) > 0 Or bShowRoot Then %>
+<TR BGCOLOR="#ffffff">
+<TD><%= sFont %> </font></TD>
+<TD COLSPAN="4"><%= sFont %>
+<B>  <A HREF="<%= Request.ServerVariables("SCRIPT_NAME") %>"><%= Left(sDirectory,len(sDirectory)-1) %></A></B>
+<% End If
+
+For count = 0 To UBound( aNames ) -1 
+aURL = aURL & aNames(count) & "/"
+%> <%= sChevron %> <B><A HREF="<%= Request.ServerVariables("SCRIPT_NAME") %>?dir=<%= Server.URLEncode( aURL ) %>"><%= aNames(count) %></A></B><%
+Next %></font></TD></TR><% 
+End If 
+
+For count = 0 To UBound( aNames ) -2
+aDirUp = aDirUp & aNames(count) & "/"
+Next %>
+
+<TR BGCOLOR="<%= TblHeader %>">
+<TD BGCOLOR="#ffffff"><A HREF="<%= Request.ServerVariables("SCRIPT_NAME") %>?dir=<%= Server.URLEncode( aDirUp ) %>"><font face="Wingdings" COLOR="<%= TblHeader %>">�</font></a></TD>
+<TD><%= sColFont %>  <B>Filename:</B>  </FONT></TD>
+<TD><%= sColFont %>  <B>Size:</B>  </FONT></TD>
+<TD><%= sColFont %>  <B>File Type:</B>  </FONT></TD>
+<TD><%= sColFont %>  <B>Date created:</B>  </FONT></TD>
+<%
+' ***** Iterate through the subfolders in our shared folder.
+For Each objFile In objFolder.SubFolders 
+
+' ***** Alternate between these two row colors.
+If iAlternate = 0 Then 
+Response.Write "<TR BGCOLOR=""" & FolderRow1 & """>" 
+iAlternate = 1
+Else 
+Response.Write "<TR BGCOLOR=""" & FolderRow2 & """>"
+iAlternate = 0 
+End If
+
+' ***** Display folder with link to navigate
+%> <TD align="center" BGCOLOR="<%= TblHeader %>"><font face="Wingdings" COLOR="#ffffff">0</font></TD>
+<TD><%= sFont %>  <A HREF="<%= Request.ServerVariables("SCRIPT_NAME") %>?dir=<%= Server.URLEncode( sSubFolder & objFile.Name )%>"><%= objFile.Name %></A>  </font></TD>
+<TD align="right"><%= sFont %>  <%= ByteConversion( objFile.Size ) %>  </font></TD>
+<TD><%= sFont %>  <%= objFile.Type %>  </font></TD>
+<TD><%= sFont %>  <%= objFile.DateCreated %>  </font></TD>
+</TR>
+<%
+' ***** Next Folder
+Next
+
+' ***** Iterate through the files in our shared folder / subfolder.
+For Each objFile In objFolder.Files
+
+sFileName = objFile.name
+
+' ***** Only continue if it's a valid extension
+If ( IsValidFile (sFileName) ) Then 
+
+' ***** Alternate between these two row colors.
+' We'll use the same counter variable to continue alternating between 
+' the light / dark shade according to the previous folder row color.
+If iAlternate = 0 Then 
+Response.Write "<TR BGCOLOR=""" & FileRow1 & """>" 
+iAlternate = 1
+Else 
+Response.Write "<TR BGCOLOR=""" & FileRow2 & """>"
+iAlternate = 0 
+End If
+' ***** Display file with link to execute / dowload.
+%> <TD align="center" BGCOLOR="<%= TblHeader %>"><font face="Wingdings" COLOR="#ffffff"><</font></TD>
+<TD><%= sFont %>  <A HREF="<%= sDir %><%= sFileName %>"><%= sFileName %></A>  </font></TD>
+<TD ALIGN=Right><%= sFont %>  <%= ByteConversion( objFile.Size ) %>  </font></TD>
+<TD><%= sFont %>  <%= objFile.Type %>  </font></TD>
+<TD><%= sFont %>  <%= objFile.DateCreated %>  </font></TD>
+</TR><%
+End If
+
+' ***** Next File
+Next 
+
+' ***** Clean up those nasty memory leaks
+Set objFileObject = Nothing
+Set objFolder = Nothing
+
+' ***** Iterate through and approve extensions
+Function IsValidFile(FileName)
+If Not AllowExt <> "" Or LCase( AllowExt ) = "all" Then
+IsValidFile = True
+Else
+aAllowExt = Split( AllowExt & "," , ",")
+IsValidFile = False
+For iCnt = 0 To UBound( aAllowExt ) -1
+If Right( FileName , Len( FileName ) - InStrRev( FileName , "." ) ) = Trim(aAllowExt( iCnt )) Then IsValidFile = True
+Next
+End If
+If DenyExt <> "" Then
+aDenyExt = Split( DenyExt & "," , ",")
+For iCnt = 0 To UBound( aDenyExt ) -1
+If Right( FileName , Len( FileName ) - InStrRev( FileName , "." ) ) = Trim(aDenyExt( iCnt )) Then IsValidFile = False
+Next
+End If
+End Function 
+
+' ***** Display friendly byte size
+Function ByteConversion(NumberOfBytes)
+If NumberOfBytes < 1024 Then 
+sDisplayBytes = NumberOfBytes & " Bytes"
+End If
+If NumberOfBytes >= 1024 Then 
+sDisplayBytes = FormatNumber( NumberOfBytes / 1024, 2) & " KB"
+End If
+If NumberOfBytes > 1048576 Then 
+sDisplayBytes = FormatNumber( NumberOfBytes / 1048576, 2) & " MB"
+End If
+Response.Write sDisplayBytes 
+End Function 
+
+' ***** Did we encounter an Error?
+If Err <> 0 Or sError <> "" Then
+Response.Write "<TR><TD bgcolor=""#ffffff"" colspan=""5""><font face=""Verdana, Arial, Helvetica"" color=""red"" size=""1"">ERROR: " & sError & Space(1) & "ASP: " & Err.description & ";</font></TD></TR>"
+End If
+
+
+%>
+</TABLE>
+</BODY></HTML>

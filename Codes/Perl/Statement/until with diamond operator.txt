@@ -1,0 +1,3 @@
+until (($line = <>) eq 'q\n') {
+    print $line;
+}

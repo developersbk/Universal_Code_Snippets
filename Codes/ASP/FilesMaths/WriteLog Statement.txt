@@ -1,0 +1,27 @@
+example usage:
+<% 
+Dim strErrEvent
+
+On Error Resume Next
+    ... some code Or event that may fail due To an Error
+If Err Then
+     ' in the event of an error, write the page path, 
+     ' error number and error description to the log file...
+    strErrEvent =   Request.ServerVariables("PATH_INFO") & vbTab & _
+                Err.number & vbTab & Err.description
+    WriteLog Server.MapPath("/website_errors.txt"), strErrEvent
+End If
+On Error GoTo 0
+%>
+source code:
+<%
+Private Sub WriteLog(ByVal pathname, ByVal logevent)
+    Dim objFSO, objFile
+    Set objFSO = Server.CreateObject("Scripting.FileSystemObject")
+    Set objFile = objFSO.OpenTextFile(pathname, 8, True)
+    objFile.WriteLine Now() & vbTab & logevent
+    objFile.Close
+    Set objFile = Nothing
+    Set objFSO = Nothing
+End Sub
+%>

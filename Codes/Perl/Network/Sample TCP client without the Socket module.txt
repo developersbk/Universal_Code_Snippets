@@ -1,0 +1,26 @@
+#!/usr/bin/perl -w
+
+$PF_INET = 2;
+$SOCK_STREAM = 1;
+
+$port = 9999;
+
+$pattern = 'S n C4 x8';
+
+$this_addr = pack($pattern,$PF_INET, 0, 0,0,0,0);
+
+$serv_addr = pack($pattern, $PF_INET, $port, 127,0,0,1);
+
+$proto = getprotobyname("tcp");
+
+socket(SOCKET, $PF_INET, $SOCK_STREAM, $proto) or die "Can't create socket: $!";
+
+bind(SOCKET, $this_addr) or die "Can't bind: $!";
+
+connect(SOCKET, $serv_addr) or die "Can't connect: $!";
+
+while ($data = <SOCKET>) {
+    print $data;
+}
+
+close (SOCKET);

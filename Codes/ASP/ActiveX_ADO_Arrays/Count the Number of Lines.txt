@@ -1,0 +1,30 @@
+<!-- #Include file="connect_strings.asp" -->
+<!-- #Include file="adovbs.inc" -->
+<%
+Dim strSql, rsScript
+strSql = "SELECT ScriptCode FROM Scripts"
+Set rsScript = objConn.Execute(strSql) 'execute sql call
+%>
+<html>
+<head>
+</head>
+<body>
+
+<%
+
+Dim CodeLine, StrCode, StrAll, CountAll, LineCount
+CodeLine = "" 
+Do Until rsScript.EOF
+    StrCode = (rsScript("ScriptCode"))
+    CodeLine = "" & CodeLine & StrCode
+    rsScript.MoveNext
+Loop
+StrAll = Trim(Server.HTMLEncode(CodeLine))
+CountAll = Split(StrAll,vbLf, -1, 1)
+StrAll = ""
+LineCount = UBound(CountAll)
+Response.Write LineCount
+%>
+</body>
+</html>
+<% Call DBConnClose(ObjConn) %>

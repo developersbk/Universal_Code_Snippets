@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example of Linking Audio Files</title>
+</head>
+<body>
+    <p><a href="../audio/sea.mp3">Track 1</a></p>
+    <p><a href="../audio/wind.mp3">Track 2</a></p>
+</body>
+</html>                                		

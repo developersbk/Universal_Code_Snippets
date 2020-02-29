@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+<title>HTML5 Time Input Type</title>
+</head>
+<body>
+    <form>
+        <label>
+            Select Time: <input type="time" name="mytime">
+        </label>
+    </form>
+</body>
+</html>                                		

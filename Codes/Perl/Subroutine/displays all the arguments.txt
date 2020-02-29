@@ -1,0 +1,9 @@
+displayArguments( "A", "B", 2, 15, 73, 2.79 );
+
+# output the subroutine arguments using special variable @_
+sub displayArguments
+{
+   # the following statement displays all the arguments
+   print "All arguments: @_\n";
+
+}

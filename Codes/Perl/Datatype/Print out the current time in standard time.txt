@@ -1,0 +1,12 @@
+    #!/usr/local/bin/perl -w
+
+    my $time = time;
+
+    my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime ($time);
+
+    my $newtime = $time - ($isdst * 3600);
+    my $stdtime = localtime ($newtime);
+    my $daytime = localtime ($time);
+
+    print "The current daylight time is: $daytime\n";
+    print "The current standard time is: $stdtime\n";

@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Check Box Width</title>
+<style type="text/css">
+
+.checkbox {
+   width: 200px;
+}
+
+</style>
+</head>
+
+<body>
+   <form action="login.php" method="post">
+   <label for="username">Username</label>
+   <input type="text" name="username" id="username" value="" /><br />
+   <label for="passname">Password</label>
+   <input type="text" name="passname" id="passname" value="" /><br />
+   <label for="recall">Remember you</label> 
+   <input type="checkbox" name="recall" id="recall"  class="checkbox" /><br />
+   <input type="submit" name="Submit" value="Submit" class="buttonSubmit" />
+  </form>
+</body>
+
+</html>

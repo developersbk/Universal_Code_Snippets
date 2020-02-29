@@ -1,0 +1,14 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my %where = (
+     A     => "AA",
+     B     => "BB",
+     C     => "CC",
+     D     => "DD"
+);
+
+foreach (values %where) {
+    print "someone lives in $_\n";
+}

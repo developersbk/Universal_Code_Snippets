@@ -1,0 +1,13 @@
+Type                     Format               Example
+
+Integer                  NN                   12
+
+Floating point           NN.NN                342.176
+
+Scientific               NN.NNENN             42.04E-6
+
+Big number               NN_NNN_NNN           6_000_000
+
+Hexadecimal              0xNNNN               0xFFD3
+
+Octal                    0NNN                 0374

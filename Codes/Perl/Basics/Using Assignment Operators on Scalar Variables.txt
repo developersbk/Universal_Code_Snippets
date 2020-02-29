@@ -1,0 +1,16 @@
+#How do you place data in a scalar variable? 
+#You use the assignment operator.
+
+$variable1 = 5;
+
+#String assignments work much the same way:
+
+$variable1 = "Hello there!";
+
+#Besides single assignments, you can create multiple assignments in the same statement like this:
+
+$x = $y = $z = 1;
+print join (", ", $x, $y, $z);
+
+   
+    

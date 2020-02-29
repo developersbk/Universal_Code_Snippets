@@ -1,0 +1,18 @@
+#Match case!
+
+#!/usr/bin/perl -w
+
+use strict;
+
+$_ = "Case";
+
+if (/case/) {
+    print "found\n";
+} else {
+    print "not found\n";
+}
+
+   
+    
+    
+  

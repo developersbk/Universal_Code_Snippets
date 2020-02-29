@@ -1,0 +1,21 @@
+#!/usr/bin/perl -w
+
+use Socket;
+
+$port = 9999;
+$proto = getprotobyname("tcp");
+socket(SOCKET, PF_INET, SOCK_STREAM, $proto) or die "Can't create socket: $!";
+$host = 'localhost';
+print "Connecting to $host\n";
+
+$iaddr = inet_aton($host);
+
+$paddr = sockaddr_in($port, $iaddr);
+
+connect(SOCKET, $paddr) or die "Can't connect: $!";
+
+while ($data = <SOCKET>) {
+    print $data;
+}
+
+close (SOCKET);

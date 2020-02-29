@@ -1,0 +1,13 @@
+
+
+Octal   Binary       Permissions            Meaning
+0       000          none                   All turned off
+1       001          --x                    Execute
+2       010          -w-                    Write
+3       011          -wx                    Write, execute
+4       100          r--                    Read
+5       101          r-x                    Read, execute
+6       110          rw-                    Read, write
+7       111          rwx                    Read, write, execute
+
+   

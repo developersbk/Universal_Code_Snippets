@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+foreach (split "\n", <<LINES) {
+    Line 1
+    Line 2
+    Line 3
+    LINES;
+       print "Got: $_ \n";
+}

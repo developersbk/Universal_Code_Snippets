@@ -1,0 +1,87 @@
+<SCRIPT language=javascript>
+Function mOvr(src,clrOver){ 
+    If (!src.contains(event.fromElement)){ 
+        src.style.cursor = 'hand'; 
+        src.bgColor = clrOver; 
+    } 
+} 
+Function mOut(src,clrIn){ 
+    If (!src.contains(event.toElement)){ 
+        src.style.cursor = 'default'; 
+        src.bgColor = clrIn; 
+    } 
+} 
+Function mClk(src){ 
+    If(event.srcElement.tagName=='TD')
+        src.children.tags('A')[0].click();
+}
+</SCRIPT>
+<HTML>
+<HEAD>
+<TITLE>Clock</TITLE>
+<BODY bgColor="#ffffff" onload="return window_onload()" onunload="return window_onunload()" marginheight="0" topmargin="0" leftmargin="0" marginwidth="0">
+<SCRIPT>
+var ClockTicks="";
+var LocalTimerNormalBackground="#FFFFFF";
+var LocalTimerHighlightBackground="#FF0000";
+var HighlightPointer="default";
+Function StartClocks(){
+If(ClockTicks==""){
+ClockTicks=window.setInterval("PutTime()",1000);
+}
+else{
+StopClocks();
+}
+}
+Function StopClocks(){
+If(ClockTicks!=""){
+window.clearInterval(ClockTicks);
+ClockTicks="";
+}
+}
+Function PutTime(){
+var LocalDate=New Date();
+var LocalHours=LocalDate.getHours() + "";
+var LocalMinutes=LocalDate.getMinutes() + "";
+var LocalSeconds=LocalDate.getSeconds() + "";
+If(LocalHours.length==1){
+LocalHours="0" + LocalHours;
+}
+If(LocalMinutes.length==1){
+LocalMinutes="0" + LocalMinutes;
+}
+If(LocalSeconds.length==1){
+LocalSeconds="0" + LocalSeconds;
+}
+LocalTimer.innerHTML=LocalHours + ":" + LocalMinutes + ":" + LocalSeconds;
+LocalTimer.title="LOCAL: " + LocalDate.toLocaleString();
+}
+</SCRIPT>
+<SCRIPT ID="clientEventHandlersJS" LANGUAGE="javascript">
+<!--
+Function window_onload() {
+StartClocks();
+}
+Function window_onunload() {
+StopClocks();
+}
+Function LocalTimer_onmouseout() {
+LocalTimer.style.backgroundColor=LocalTimerNormalBackground;
+}
+Function LocalTimer_onmouseover() {
+LocalTimer.style.backgroundColor=LocalTimerHighlightBackground;
+}
+//-->
+</SCRIPT>
+</HEAD>
+<FONT size = "4" align = Right color = firebrick>
+<!-- To use With asp page -->
+<%
+Dim a
+a=Date()
+Response.Write FormatDateTime(a,1) 
+%>
+Time ::
+<span ID="LocalTimer" style="COLOR: #0000ff; CURSOR: default" LANGUAGE="javascript"></span></FONT>
+</BODY>
+</HTML>

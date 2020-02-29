@@ -1,0 +1,10 @@
+    $Pattern = "perl";
+    $File = "myfile";
+    open (FILE,$File) || die "Can't open $File, $!\n";
+    while(<FILE>) {
+        if (/$Pattern/o) {
+            print "$File: $_";
+            last;
+        }
+    }
+    close(FILE);

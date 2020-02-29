@@ -1,0 +1,7 @@
+<% 
+Dim intCharacter1 , intCharacter2 
+intCharacter1 = "86" 
+intCharacter2 = "64" 
+Response.Write "The character for 86 is " & Chr(intCharacter1) 
+Response.Write "The character for 64 is " & Chr(intCharacter2) 
+%>

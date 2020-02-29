@@ -1,0 +1,4 @@
+import random  
+  
+for x in range(6):  
+    print(random.randrange(10, 100, 2), end=' ')

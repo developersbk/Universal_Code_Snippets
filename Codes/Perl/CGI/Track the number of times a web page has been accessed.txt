@@ -1,0 +1,23 @@
+#!perl
+
+use CGI qw( :standard );
+open( COUNTREAD, "counter.dat" );
+   $data = <COUNTREAD>;
+   $data++;
+close( COUNTREAD );
+
+open( COUNTWRITE, ">counter.dat" );
+   print COUNTWRITE $data;
+close( COUNTWRITE );
+
+print header;
+print "<CENTER>";
+print "<STRONG>You are visitor number</STRONG><BR>";
+
+for ( $count = 0; $count < length( $data ); $count++ )
+{
+   $number = substr( $data, $count, 1 );
+   print "<IMG SRC = \"images/counter/$number.jpg\">";
+}
+
+print "</CENTER>";

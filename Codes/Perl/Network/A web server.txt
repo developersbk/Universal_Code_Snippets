@@ -1,0 +1,27 @@
+use HTTP::Daemon;  
+
+$HTTPserver = HTTP::Daemon->new(Timeout => 600);
+
+print "My URL is: ", $HTTPserver->url, ".\n";
+
+while ($HTTPclient = $HTTPserver->accept) {
+    $HTTPclient->autoflush(1);
+    print $HTTPclient 
+'<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Welcome to my Web server!</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<H1>Welcome to my Web server!</H1>
+</CENTER>
+
+</FORM>
+
+</BODY>
+
+</HTML>';
+
+$HTTPclient->close;
+}

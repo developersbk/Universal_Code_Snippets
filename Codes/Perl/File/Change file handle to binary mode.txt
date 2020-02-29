@@ -1,0 +1,11 @@
+
+open (FILEHANDLE, ">data.txt") 
+    or die ("Cannot open data.txt");
+
+binmode FILEHANDLE;
+
+print FILEHANDLE "Hello\nthere!";
+
+close (FILEHANDLE);
+
+   

@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+
+
+use warnings;
+use strict;
+use Data::Dumper;
+use XML::Parser;
+
+my $xml =<<"DONE";
+<letter><contact type = "from"><name>Tom</name>
+   <phone>111-1234</phone></contact>
+   <salutation format = "formal">Dear Sir:</salutation>
+</letter>
+DONE
+
+my $parser = new XML::Parser( Style => 'Tree', ErrorContext => 2 );
+
+my $tree = $parser->parse( $xml );
+
+print( Data::Dumper->Dump( [ $tree ] ) );

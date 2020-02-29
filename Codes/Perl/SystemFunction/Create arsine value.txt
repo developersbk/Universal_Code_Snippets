@@ -1,0 +1,7 @@
+$asine = POSIX::asin $sine;
+
+$reconversion = 180 / 3.14159265358979;
+
+$degrees = $asine * $reconversion;
+
+print "The arcsine of $sine = ", $degrees, " degrees.";

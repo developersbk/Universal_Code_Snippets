@@ -1,0 +1,8 @@
+#!/usr/bin/perl
+
+use strict;
+my %hash = ( key => "data" );
+
+print( 'ref(\*hash) = ', ref( \*hash ), "\n" );
+
+   

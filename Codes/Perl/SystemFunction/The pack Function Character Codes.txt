@@ -1,0 +1,106 @@
+Character Code           Meaning
+
+a                        Convert to its ASCII character value; pad empty characters with null
+
+A                        Convert to its ASCII character value; pad empty characters with spaces
+
+b                        Convert to a bit string from low to high order bit
+
+B                        Convert to a bit string from high to low order bit
+
+c                        Convert to a signed character
+
+C                        Convert to an unsigned character
+
+d                        Convert to a double-precision (floating-point number in the native platform format)
+
+f                        Convert to a single-precision (floating-point number in the native platform format)
+
+h                        Convert a hex string, putting the lower order nibble first
+
+H                        Convert a hex string to ASCII characters, putting the high order nibble first
+
+i                        Convert to signed integer format
+
+I                        Convert to unsigned integer format
+
+l                        Convert to signed long format
+
+L                        Convert to unsigned long format
+
+n                        Convert to short big endian order
+
+N                        Convert to long big endian order
+
+p                        Convert a pointer to string format
+
+P                        Convert a pointer to a fixed-length string
+
+s                        Convert to signed short format
+
+S                        Convert to unsigned short format
+
+v                        Convert to short little endian format
+
+V                        Convert to long little endian format
+
+u                        Convert to uu encoded format
+
+x                        Insert null byte
+
+X                        Back up one byte
+
+@                        Null fill to absolute position
+
+
+
+
+#!/usr/local/bin/perl
+
+$packed = pack "a10" , "Test";
+
+print "$packed Null Padded\n\n";
+
+print "pad empty characters with spaces\n\n";
+
+$packed = pack "A10" , "Test";
+
+print "$packed Space Padded\n\n";
+
+$packed = pack "b32" , "01000101010100100100100101000011";
+
+print "$packed The right most bit is the most significant\n\n";
+
+$packed = pack "B32" , "01000101010100100100100101000011";
+
+print "$packed The left most bit is the most significant\n\n";
+
+$packed = pack "c4", 0x45, 0x52, 0x49, 0x43;
+
+print "$packed Numbers (hex) to ASCII, unsigned\n\n";
+
+$packed = pack "C4", , 101, 114, 105, 99;
+
+print "$packed Numbers (decimal) to ASCII, signed\n\n";
+
+$packed = pack "h8", "11111111111";
+
+print "$packed Hex low Nibble first to  ASCII\n\n";
+
+$packed = pack "H8", "1111111111";
+
+print "$packed Hex High Nibble first to ASCII\n\n";
+
+$packed = pack "d", , 101.134;
+
+print "$packed Double Precision native format packed for shipment\n\n";
+
+$packed = pack "f", , 101.134;
+
+print "$packed Single Precision native format packed for shipment\n\n";
+
+$packed = pack "i5", , "97","98","99","100","101";
+
+print "$packed Unsigned Packed Integers\n\n";
+
+$packed = pack "I5", , "97","98","99","100","101";

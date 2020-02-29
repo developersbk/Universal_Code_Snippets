@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>background image repeat and position for anchor link hover</title>
+<style type="text/css">
+
+a:link:hover { 
+ display: block;
+ width: 160px;
+ height: 40px;
+ background-image: url(background-image.jpg);
+ background-repeat: no-repeat;
+ background-position: top left;
+}
+
+</style>
+</head>
+
+<body>
+
+  <a href="http://www.happycodings.com"><span>happycodings</span></a>
+  
+</body>
+</html>
+

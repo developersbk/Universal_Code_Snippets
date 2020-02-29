@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Adding underline for labels</title>
+<style type="text/css">
+form em {
+ text-decoration: underline;
+ font-style: normal;
+ font-size:10; 
+ font-family:Verdana
+
+}
+</style>
+</head>
+
+<body>
+   <form id="messageform" name="messageform" method="post" action="/">
+   <label for="formtitle" accesskey="t"><em>T</em>itle</label>
+   <select name="formtitle" id="formtitle">
+    <option value="ms">Ms.</option>
+    <option value="mrs">Mrs.</option>
+    <option value="miss">Miss</option>
+    <option value="mr">Mr.</option>
+   </select>
+   <label for="formname" accesskey="n"><em>N</em>ame</label>
+   <input type="text" name="formname" id="formname" />
+   <label for="formemail" accesskey="e"><em>E</em>mail</label>
+   <input type="text"  name="formemail" id="formemail" />
+   <label for="formstate" accesskey="a">St<em>a</em>te/Province</label> 
+   <input type="text" name="formstate" id="formstate" />
+   <label for="formcountry" accesskey="y">Countr<em>y</em></label>
+   <input type="text" name="formcountry" id="formcountry" />
+   <label for="formmsg" accesskey="m"><em>M</em>essage</label>
+   <textarea name="formmsg" id="formmsg" rows="8" cols="16"></textarea>
+   <input type="submit" name="submit" value="send" class="submit" />
+  </form>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+#!/bin/perl
+
+sub MAX {
+     my($max) = shift(@_);
+     foreach $foo ( @_ ){
+         $max = $foo if $max < $foo;
+         print $max,"\n";
+     }
+     $max;
+}
+sub MIN {
+     my($min) = pop( @_ );
+     foreach $foo ( @_ ) {
+         $min = $foo if $min > $foo;
+         print $min,"\n";
+     }
+     return $min;
+}
+
+my $biggest = &MAX ( 2, 3, 4, 10, 100, 1 );
+my $smallest= &MIN ( 200, 2, 12, 40, 2, 20 );
+print "$biggest / $smallest.\n";

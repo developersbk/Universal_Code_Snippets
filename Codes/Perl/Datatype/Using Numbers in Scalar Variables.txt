@@ -1,0 +1,13 @@
+Perl numeric data types. 
+Type              Example
+Integer           123 
+Floating          1.23 
+Scientific        1.23E4 
+Hex               0x123 
+Octal             0123 
+Binary            0b101010 
+Underlines        1_234_567 
+
+The underlined formats digits in a number in groups, such as 1,234,567 
+$variable1 = 1_234_567;
+          

@@ -1,0 +1,5 @@
+$scalar = 1;
+
+${*scalar{SCALAR}} = 5;
+
+print $scalar;

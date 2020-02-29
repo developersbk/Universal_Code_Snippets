@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my %hash = ('Key1' => 'Value1', 'Key2' => 'Value2');
+my $key = 'Key1';
+
+if (exists $hash{$key}) {
+    if (defined $hash{$key}) {
+        print "$key exists and is defined as $hash{$key} \n";
+    } else {
+        print "$key exists but is not defined \n";
+    }
+} else {
+    print "$key does not exist\n";
+}

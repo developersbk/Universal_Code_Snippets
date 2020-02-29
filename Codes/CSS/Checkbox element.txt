@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<TITLE>Checkbox Element</TITLE>
+</HEAD>
+
+<BODY>
+<h1>Feedback Form</h1>
+<FORM METHOD = "POST" ACTION = "/cgi-bin/mail">
+
+<INPUT TYPE = "hidden" NAME = "recipient" VALUE = "happycodings.com@gmail.com">
+<INPUT TYPE = "hidden" NAME = "subject"   VALUE = "Feedback Form">
+<INPUT TYPE = "hidden" NAME = "redirect"  VALUE = "main.html"> 
+
+<P><STRONG>Name: </STRONG>
+<INPUT NAME = "name" TYPE = "text" SIZE = "30"></P>
+<P><STRONG>Comments:</STRONG> 
+<TEXTAREA NAME = "comments" ROWS = "8" COLS = "40"></TEXTAREA>
+</P>
+<P><STRONG>Email Address:</STRONG> 
+<INPUT NAME = "email" TYPE = "password" SIZE = "30"></P>
+
+<P><STRONG>Categories you liked:</STRONG><BR>
+
+Android 
+<INPUT NAME = "things" TYPE = "checkbox" VALUE = "Android">
+C++
+<INPUT NAME = "things" TYPE = "checkbox" VALUE = "C++">
+Java
+<INPUT NAME = "things" TYPE = "checkbox" VALUE = "Java">
+Csharp 
+<INPUT NAME = "things" TYPE = "checkbox" VALUE = "Csharp">
+Php 
+<INPUT NAME = "things" TYPE = "checkbox" VALUE = "Php">
+</P>
+
+<INPUT TYPE = "submit" VALUE = "Submit Your Entries">
+<INPUT TYPE = "reset" VALUE = "Clear Your Entries">
+</FORM>
+
+</BODY>
+</HTML>  

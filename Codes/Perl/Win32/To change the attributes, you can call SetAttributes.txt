@@ -1,0 +1,50 @@
+use Win32::File;
+
+Win32::File::SetAttributes($name, $attr);
+
+#!/usr/bin/perl -w
+
+use Win32::File;
+
+$name  = "yourFile.txt";
+$attr  = 0;
+
+Win32::File::GetAttributes($name, $attr) or die "Can't get attributes for $name.";
+
+print "File attributes: $attr\n";
+
+if ($attr & READONLY) {
+    print "$name is read only.\n";
+}
+
+if ($attr & ARCHIVE) {
+    print "$name has ARCHIVE set.\n";
+}
+
+if ($attr & HIDDEN) {
+    print "$name is hidden.\n";
+}
+
+if ($attr & SYSTEM) {
+    print "$name has SYSTEM set.\n";
+}
+
+if ($attr & COMPRESSED) {
+    print "$name has COMPRESSED set.\n";
+}
+
+if ($attr & DIRECTORY) {
+    print "$name has DIRECTORY set.\n";
+}
+
+if ($attr & NORMAL) {
+    print "$name has NORMAL set.\n";
+}
+
+if ($attr & OFFLINE) {
+    print "$name has OFFLINE set.\n";
+}
+
+if ($attr & TEMPORARY) {
+    print "$name has TEMPORARY set.\n";
+}

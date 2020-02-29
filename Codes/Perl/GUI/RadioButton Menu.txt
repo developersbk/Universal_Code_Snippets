@@ -1,0 +1,80 @@
+use Tk; 
+               
+my $main = MainWindow->new;        
+
+my $menubar = $main->Frame;
+
+$menubar->pack(-fill => 'x');
+
+my $filemenu = $menubar->Menubutton(-text => 'File');
+
+$filemenu->command(
+    -label       => 'Open', 
+    -command     => sub {$text1->insert('1.0', "You chose open.\n")},
+    -accelerator => 'Ctrl+O',
+);
+
+$main->bind('<Control-o>' => sub {$text1->insert('1.0', "You chose open.\n")});
+
+$filemenu->cascade(-label => 'Check buttons');
+$filemenu->cascade(-label => 'Radio buttons');
+
+my $checkcascade = $filemenu->cget(-menu); 
+my $checkmenu = $checkcascade->Menu;
+$filemenu->entryconfigure('Check buttons', -menu => $checkmenu);
+
+$checkmenu->checkbutton(-label => 'Check 1', -variable => \$check1,
+    -command => sub {$text1->insert('1.0', "You chose check 1.\n")});
+$checkmenu->checkbutton(-label => 'Check 2', -variable => \$check2,
+    -command => sub {$text1->insert('1.0', "You chose check 2.\n")});
+$checkmenu->checkbutton(-label => 'Check 8', -variable => \$check8,
+    -command => sub {$text1->insert('1.0', "You chose check 8.\n")});
+
+my $radiocascade = $filemenu->cget(-menu); 
+my $radiomenu = $radiocascade->Menu;
+$filemenu->entryconfigure('Radio buttons', -menu => $radiomenu);
+
+$radiomenu->radiobutton(-label => 'Radio 1', -variable => \$radio1,
+    -command => sub {$text1->insert('1.0', "You chose radio 1.\n")});
+$radiomenu->radiobutton(-label => 'Radio 2', -variable => \$radio1,
+    -command => sub {$text1->insert('1.0', "You chose radio 2.\n")});
+$radiomenu->separator;
+$radiomenu->radiobutton(-label => 'Radio 5', -variable => \$radio2,
+    -command => sub {$text1->insert('1.0', "You chose radio 5.\n")});
+$radiomenu->radiobutton(-label => 'Radio 6', -variable => \$radio2,
+    -command => sub {$text1->insert('1.0', "You chose radio 6.\n")});
+$radiomenu->separator;
+
+$filemenu->command('-label' => 'Exit', '-command' => sub {exit});
+
+$filemenu->pack(-side => 'left');
+
+$editmenu = $menubar->Menubutton('-text' => 'Edit')->pack('-side' => 
+'left');
+
+$editmenu->command(-label => 'Search', 
+    -background => "red",
+    -command => sub
+    {$text1->delete('1.0', 'end');
+    $text1->insert('end', "You chose search.");});
+
+$editmenu->command(-label => 'Replace', 
+    -background => "orange",
+    -command => sub
+    {$text1->delete('1.0', 'end');
+    $text1->insert('end', "You chose replace.");});
+
+$editmenu->command(-label => 'Find', 
+    -background => "yellow",
+    -command => sub
+    {$text1->delete('1.0', 'end');
+    $text1->insert('end', "You chose find.");});
+
+
+$editmenu->pack(-side => 'left');
+
+$text1 = $main->Text;
+
+$text1->pack(-fill => 'both');
+
+MainLoop;

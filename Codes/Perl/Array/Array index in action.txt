@@ -1,0 +1,7 @@
+#!c:/perl/bin
+
+@ships=('B', 'T', 'H');
+
+print "@ships[0] \n";
+print "@ships[1] \n";
+print "@ships[2] \n";

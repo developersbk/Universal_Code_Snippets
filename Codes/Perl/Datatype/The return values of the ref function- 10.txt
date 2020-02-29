@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+
+use strict;
+
+print( 'ref(10) = ', ref( 10 ), "\n" );   # undefined

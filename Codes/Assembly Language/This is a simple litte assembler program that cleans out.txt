@@ -1,0 +1,218 @@
+;*      This is a simple litte assembler program that cleans out        *
+;*      the documents folder in the start menu.                         *
+;*      This is version 1.2                                             *
+;*      There's no command line switches and stuff.                     *
+;*      It gives NO messages if everything goes allright.               *
+;*      It check for a environment variable called CLEANDIR and CD:s    *
+;*      down to that dir if the variable is found. If not it uses       *
+;*      the default WINDOWS\RECENT directory and deletes(UNLINKS)       *
+;*      EVERYTHING it finds there, and CD:s back to where it started    *
+;*      from.                                                           *
+;************************************************************************
+
+                                        ;some euqates for readability
+kbd             equ     16h             ;keyboard irq
+msdos           equ     21h             ;MSDOS irq
+
+reset           equ     0dh             ;disk reset
+dfopen          equ     0fh             ;open disk file
+dfclose         equ     10h             ;close disk file
+searchf         equ     11h             ;search first
+searchn         equ     12h             ;search next
+seqread         equ     14h             ;sequential disk read
+seqwrite        equ     15h             ;     "       "  write
+getdisk         equ     19h             ;get current disk(default)
+setdta          equ     1ah             ;set disk transfer area address
+setdir          equ     3bh             ;set current directory
+createf         equ     3ch             ;create file with handle
+openf           equ     3dh             ;open file with handle
+closef          equ     3eh             ;close file with handle
+readf           equ     3fh             ;read from file with handle
+writef          equ     40h             ;write to file with handle
+unlink          equ     41h             ;UNLINK(delete file)
+getdir          equ     47h             ;get current directory
+allocmem        equ     48h             ;allocate memory
+freemem         equ     49h             ;free memory
+changebs        equ     4ah             ;change block size
+findfirst       equ     4eh             ;find first file
+findnext        equ     4fh             ;find next file
+exit            equ     4c00h           ;msdos exit
+
+envir           equ     2ch             ;offset ENVIRONMENT block
+
+[BITS 16]                               ;NASM STUFF !?
+[ORG  100h]
+
+        mov     ax,cs                   ;get code segment
+        mov     ds,ax                   ;use it now
+        mov     [comseg],ds
+        mov     [extseg],es
+
+;************************ setup and preparing ***************************
+main:
+        mov     ah,setdta               ;set our DTA-area
+        mov     dx,mydta                ;buffer for it
+        int     msdos                   ;call dos
+
+        mov     ah,getdisk              ;get default drive
+        int     msdos                   ;call dos
+        add     al,41h                  ;drive in al, make it ASCII
+        mov     byte [curdir],al        ;fill buffer with name (A:..etc)
+        mov     byte [path],al          ;and default path
+        
+        mov     word [curdir+1],":\"    ;copy separator to path
+        mov     si,curdir               ;pointer path buffer
+        add     si,3                    ;offset doscall part
+        mov     ah,getdir               ;get current dir
+        mov     dl,0                    ;0 = default
+        int     msdos                   ;call dos
+        jnc     diskok                  ;ok
+        mov     bx,errt0                ;could not find current dir ?? If You
+        jmp     errout                  ;get an error here You probably have
+diskok:                                 ;forgot to turn on Your computer.
+        call    getenv                  ;check out if any ENV var
+        cmp     dx,-1                   ;was it there
+        je      findfile                ;yeahh
+        mov     dx,path                 ;noo way, use default path
+        mov     ah,setdir               ;cd down
+        int     msdos                   ;call dos
+        jnc     findfile                ;all ok
+        mov     bx,errt1                ;error
+        jmp     errout                  ;skip
+
+;*************************** the delete file loop ***********************
+findfile:
+        mov     ah,findfirst            ;see if the files out there
+        mov     cx,0fh                  ;all files
+        mov     dx,files                ;our NULL terminated filname(*.*)
+        int     msdos                   ;do the stuff
+        jnc     delit                   ;all ok, must delete first file
+        jmp     goback                  ;error, CD back and skip
+found:                                  ;found something
+        mov     dx,files                ;files (*.*)
+        mov     ah,findnext             ;the function
+        int     msdos                   ;call dos
+        jc      goback                  ;no more files, quit
+delit:
+        mov     ah,unlink               ;UNLINK (delete) file
+        mov     dx,mydta                ;pointer Disk Transfer Area
+        add     dx,30                   ;offset Filename
+        int     msdos                   ;delete it
+        jnc     found                   ;deleted ok
+
+        mov     bx,errt2                ;could not delete it ????
+        call    write                   ;let us know
+        mov     bx,mydta                ;show wich file
+        add     bx,30                   ;offset filename in DTA
+        call    write                   ;write out filename
+        mov     bx,linefeed             ;linefeed
+        jmp     errout                  ;and skip
+goback:
+        mov     ah,setdir               ;CD back to origin
+        mov     dx,curdir               ;path to dir
+        int     msdos                   ;do it
+        jnc     quit                    ;all ok, proceed
+        mov     bx,errt1                ;error, get text
+        
+;*************************** errorexit ***********************
+errout: call    write                   ;show errormessage
+quit:
+        xor     eax,eax                 ;clean out that
+        mov     ax,exit                 ;MS-DOS successful exit
+        int     msdos                   ;back to the operating system
+
+;***************** get ENVIRONMENT var if any *****************
+getenv:
+        push    es                      ;now check if there's any 
+        push    ds                      ;environment variable
+
+        mov     es,[es:+2Ch]            ;ES:DI points at environment
+        xor     di,di                   ;which is paragraph-aligned
+floop:
+        cmp     byte [es:di],0          ;if we got 2 zeroes in a row
+        jne     goon                    ;we are at the end of the ENV
+        cmp     byte [es:di+1],0        ;variables
+        je      eout
+goon:                           
+equal:  cmp     byte [es:di],'C'        ;is it our variable ?
+        jne     flop
+        inc     byte di
+        cmp     byte [es:di],'L'
+        jne     flop
+        inc     byte di
+        cmp     byte [es:di],'E'
+        jne     flop
+        inc     byte di
+        cmp     byte [es:di],'A'
+        jne     flop
+        inc     byte di
+        cmp     byte [es:di],'N'
+        jne     flop
+        inc     byte di
+        cmp     byte [es:di],'D'
+        jne     flop
+        inc     byte di
+        cmp     byte [es:di],'I'
+        jne     flop
+        inc     byte di
+        cmp     byte [es:di],'R'
+        jne     flop
+sign:   inc     byte di                 ;dump the R
+        inc     byte di                 ;dump the =
+
+        mov     ax,es                   ;make DS:DX point to string we found
+        mov     ds,ax
+        mov     si,di
+        mov     bx,si
+        mov     dx,bx                    
+        mov     ah,setdir               ;func Set Current Directory(CD)
+        int     msdos                   ;do it
+        jnc     envok                   ;all ok, proceed
+        mov     dx,0                    ;clear flag (use default dir)
+        jmp     eout                    ;return
+                        
+flop:   inc     byte di                 ;next byte
+        cmp     byte [es:di],0          ;a 0 ?
+        jne     flop                    ;noo
+        inc     byte di                 ;yeahh, dump it 
+        jmp     floop                   ;check if two
+envok:  mov     dx,-1
+eout:   pop     ds
+        pop     es
+        ret
+
+;*************************************************************************
+;*       Writes out the NULL terminated text supplied in BX.             *
+;*       OR writes out data,BX and size,CX if called at lwrite.          *
+;*************************************************************************
+write:  pusha
+        mov     si,bx                   ;copy to SI
+        mov     cx,0                    ;clear count
+wloop:  lodsb                           ;load AL with SI
+        cmp     al,0                    ;end of line ?
+        je      lwrite                   ;yeahh
+        inc     cx                      ;no, incrase byte count
+        jmp     wloop                   ;test next byte
+lwrite: mov     dx,bx                   ;text address in DX
+        mov     bx,1                    ;filehandle standard output = 1
+        mov     ah,writef               ;MS-DOS writefile with handle is 040
+        int     msdos                   ;write buffer to standard output
+        popa
+        ret                             ;done
+
+;************************ DATA and BSS stuff ***************************
+
+comseg:         dw      0
+extseg:         dw      0
+utext:          db      "XXX",13,10,0
+errt0:          db      "Could not find current directory !",13,10,0
+errt1:          db      "Directory not found.",13,10,0
+errt2:          db      "Could not delete ",0
+path:           db      " :\WINDOWS\RECENT",0  ;default path without DRIVE
+files:          db      "*.*",0
+linefeed:       db      13,10,0
+
+mydta           times 128 db 0   ;use 128 bytes as DTA      NASM stuff !
+curdir          times  68 db 0   ;use 64 + 4 bytes for current dir
+
+        END

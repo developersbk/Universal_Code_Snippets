@@ -1,0 +1,32 @@
+#!/usr/bin/perl -w
+
+#
+# Reads DBM file, printing entries.
+# 
+# Usage:
+#  Perl dbmread.pl database
+
+
+# Print format for STDOUT.
+format STDOUT=
+@<<<<<<<<<<<<  @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+$key, $value
+.
+
+
+format STDOUT_TOP=
+Program        File Name            page @<<<
+$%
+.
+
+
+$database  = $ARGV[0];
+
+
+$mode = 0666;
+dbmopen(%execs, $database, $mode) or die "Cant open \"$database\" due to $!";
+while ( ($key,$value) = each(%execs) ) {
+    write;
+}
+
+dbmclose(%execs);

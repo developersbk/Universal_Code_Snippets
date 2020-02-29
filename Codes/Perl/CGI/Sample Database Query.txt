@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<TITLE>Sample Database Query</TITLE>
+</HEAD>
+<BODY>
+   <STRONG>Querying an ODBC database.</STRONG>
+   
+   <FORM METHOD = "POST" ACTION = "index.pl">
+      <INPUT TYPE = "TEXT" NAME = "QUERY" SIZE = 40 VALUE = "SELECT * FROM Authors"><BR><BR>
+      <INPUT TYPE = "SUBMIT" VALUE = "Send Query">
+   </FORM>
+</BODY>
+</HTML>
+
+#!perl
+
+use Win32::ODBC;
+use CGI qw( :standard );
+
+$queryString = param( "QUERY" );
+$dataSourceName = "Products";
+
+print header, start_html( "Search Results" );
+
+if ( !( $data = new Win32::ODBC( $dataSourceName ) ) )
+{
+   print "Error connecting to $dataSourceName: ";
+   print Win32::ODBC::Error();
+   exit;
+}
+
+if ( $data->Sql( $queryString ) )
+{
+   print "SQL failed. Error: ", $data->Error();
+   $data->Close();
+   exit;
+}
+
+print "Search Results";
+print "<TABLE>";
+
+for ( $counter = 0; $data->FetchRow(); $counter++ )
+{
+   %rowHash = $data->DataHash();
+ 
+   print <<End_Row;
+   <TR>
+   <TD>$rowHash{'ID'}</TD>
+   <TD>$rowHash{'FirstName'}</TD>
+   <TD>$rowHash{'LastName'}</TD>
+   <TD>$rowHash{'Phone'}</TD>
+   </TR>
+End_Row
+}
+
+print <<End_Results;
+</TABLE>
+<BR>Your search yielded <B>$counter</B> results.<BR><BR>
+<FONT SIZE = 2>
+Please email comments to
+<A href = "mailto:d\@d.com">Associates, Inc.</A>.
+End_Results
+
+print end_html;
+$data->Close();

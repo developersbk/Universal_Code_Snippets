@@ -1,0 +1,22 @@
+#!/usr/bin/perl -w
+
+$pid = fork();
+
+if ($pid == 0) {
+   print  "We're in the child process.";
+
+   exit(0);  # Terminate child.
+
+} elsif (! defined $pid) {  
+   print "Not defined: means an error.";
+} else {
+   print "Parent process.";
+
+   print "Do something...";
+
+   # Reap child.  
+   $id = wait();  
+
+   # Do something after child dies.
+   print "Child $id is dead.\n";
+}

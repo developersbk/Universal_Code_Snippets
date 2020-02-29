@@ -1,0 +1,14 @@
+($name, $passwd, $uid,$gid, $quota, $comment,$gcos, $dir, $shell) = getpwnam($username);
+
+            
+
+Value      Contains
+$name      User name.
+$passwd      Encrypted password.
+$uid      User ID.
+$gid      Group ID.
+$quota      Allowed disk quota, often used for other purposes. 
+$comment      Generally unused.
+$gcos      Often contains full user name.
+$dir      User's home directory.
+$shell      Program that gets launched for the user as the login shell. 

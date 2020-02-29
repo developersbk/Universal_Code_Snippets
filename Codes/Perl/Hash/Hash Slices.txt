@@ -1,0 +1,13 @@
+%officer= ("NAME"=> "A",
+           "SSN" => "123456",
+           "DOB" => "05/19/2009"
+          );
+
+@info=qw(Tom Jack 50000);
+@officer{'BRANCH', 'TITLE', 'SALARY'}=@info; 
+@sliceinfo = @officer{'NAME','BRANCH','TITLE'};
+print "new value: @sliceinfo\n\n";
+
+foreach $key ('NAME', 'SSN', 'DOB', 'BRANCH', 'TITLE', 'SALARY'){
+      printf "Key: %-10sValue: %-15s\n", $key, $officer{$key};
+}

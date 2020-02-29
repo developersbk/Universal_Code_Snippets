@@ -1,0 +1,39 @@
+    #!/usr/local/bin/perl -w
+    use English;
+
+    $pageCount = 0;
+    $pageItemCount = 0;
+
+    $FORMAT_LINES_PER_PAGE = 20;
+
+    while (<ARGV>)
+    {
+        chomp;
+        ($number,$type,$name,$price,$desc) = split (/\|/);
+        write;
+        $pageCount++;
+        $pageItemCount++;
+        if ($FORMAT_LINES_LEFT <= 3)
+        {
+            print "Item Count For This Page $pageItemCount\n";
+            $pageItemCount = 0;
+            $FORMAT_LINES_LEFT = 0;
+        }
+    }
+
+    print "Item Count For This Page $pageItemCount\n";
+    exit;
+
+    format STDOUT_TOP= Count Item #  Item Type  Item Name      Price    Description   Page@>>>>>>
+    $FORMAT_PAGE_NUMBER
+    -----------------------------------------------------------------------
+    .
+
+    format STDOUT=
+    @>>>> @|||||| @<<<<<<<<< @<<<<<<<<<<<<< @####.##
+    ^<<<<<<<<<<<<<<<<<<<<<<<<<
+    $pageCount,$number,$type,$name,$price,$desc
+    ~^<<<<<<<<<<<<<<<<<<<<<<<<<
+    $desc
+    ~^<<<<<<<<<<<<<<<<<<<<<<<<<
+    $desc

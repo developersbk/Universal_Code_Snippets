@@ -1,0 +1,12 @@
+$subLang = <STDIN>;
+
+chomp($subLang);
+
+
+if ( $subLang eq "perl" ) {
+    print "Congratulations, you choose perl!\n";
+} elsif ( $subLang eq "Tcl" ) {
+        print "Tcl is great, too.\n";
+} else {
+    print "Well, use $subLang if you feel ";
+}

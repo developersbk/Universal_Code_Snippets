@@ -1,0 +1,27 @@
+#!/usr/bin/perl -w
+
+use Win32::OLE;
+
+$class = 'Excel.Application';
+
+$app = Win32::OLE->new( $class ) or die "Cannot connect to Excel, $!";
+
+
+# Make application visible.
+$app->{'Visible'} = 1;
+
+# Create a new workbook.
+$app->Workbooks->Add();
+
+
+# Set values in a "range".
+$app->Range("A1")->{'Value'} = "A";
+$app->Range("B1")->{'Value'} = "B";
+$app->Range("B2")->{'Value'} = "C";
+$app->Range("C2")->{'Value'} = "D";
+$app->Range("A3")->{'Value'} = "E";
+$app->Range("B3")->{'Value'} = 10;
+$app->Range("C3")->{'Value'} = 10;
+
+# Leave Excel running. Use $app->Quit() to exit.
+#$app->Quit();

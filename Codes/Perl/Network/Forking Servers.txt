@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+use warnings;
+use IO::Socket;
+my $servsock = IO::Socket::INET->new( Listen => 5,LocalPort => 5000);
+sub reap { 
+   wait(); 
+   $SIG{CHLD} = \&reap;
+} # catch and handle children dying
+$SIG{CHLD} = \&reap;
+while($client = $servsock->accept()) {
+    if ($pid = fork()) {
+        close $servsock; 
+    } else {
+        close $client; #let the child deal with the client socket
+    }
+}

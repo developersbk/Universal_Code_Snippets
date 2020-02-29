@@ -1,0 +1,20 @@
+$total = 0;
+$weekCounter = 0;
+
+print "Enter sales for week or enter quit: ";  
+chomp( $sales = <STDIN> );
+
+until ( $sales eq 'quit' ) {            
+   $weekCounter++;
+   $total += $sales;
+   print "Enter sales for week or enter quit: ";     
+   chomp( $sales = <STDIN> );
+}
+
+if ( $weekCounter != 0 ) {
+   $average = $total / $weekCounter;
+   print "\nSales averaged $average computers per week.\n";
+}
+else {
+   print "\nNo sales figures were entered.\n";
+}

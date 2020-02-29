@@ -1,0 +1,13 @@
+
+#Format
+
+#closedir (DIRHANDLE);
+#closedir DIRHANDLE;
+
+
+opendir(DIR, "..") || die "Can't open: $!\n";
+@parentfiles=readdir(DIR);
+closedir(DIR);
+foreach $file ( @parentfiles ){ 
+   print "$file\n";
+}

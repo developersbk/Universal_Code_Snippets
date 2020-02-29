@@ -1,0 +1,45 @@
+<html>
+<body>
+<form action="index.pl" method=get>
+Name: <BR>
+<input type="text" size=50 name=name>Salary ($####.##): <BR>
+<INPUT TYPE="text" SIZE=30 NAME=Salary>Birth date (mm/dd/yy): <BR>
+<input type="text" size=30 name=birthdate><P/>
+<input type=submit value="Submit Query">
+<INPUT TYPE=RESET VALUE="Reset">
+</form>
+</body></html>
+
+
+//File: index.pl
+   
+
+#!c:/perl/bin/perl
+print "Content-type: text/html\n\n";
+print <<HTML;
+ <html><title>Decoding the Input Data</title>
+ <body>
+ HTML
+ print "Decoding the query string";
+$inputstring=$ENV{QUERY_STRING}};
+print "<B>Before decoding:</B>";
+print "<P>$inputstring";
+@key_value=split(/&/,$inputstring);
+foreach $pair ( @key_value){
+   ($key, $value) = split(/=/, $pair);
+   $value=~s/%(..)/pack("C", hex($1))/ge;
+   $value =~ s/\n/ /g;
+   $value =~ s/\r//g;
+   $value =~ s/\cM//g;
+   $input{$key}=$value ; # Creating a hash
+}
+print "<HR>";
+print "<P><B>After decoding:</B><P>";
+   while(($key, $value)=each(%input)){
+   print "$key: <I>$value</I><BR>";
+}
+print <<HTML;
+<hr>
+</body>
+</html>
+HTML

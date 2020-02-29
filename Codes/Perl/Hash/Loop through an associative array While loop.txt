@@ -1,0 +1,9 @@
+    while(<>) {
+        chop;
+        ($Header, $Value) = split(/:/,$_,2);
+        $Value =~ s/^\s+//;          # remove trailing whitespace
+        $Heading{$Header} = $Value;
+    }
+    while ( ($Head,$Val) = each %Heading) {
+        print "$Head --> $Val\n";
+    }

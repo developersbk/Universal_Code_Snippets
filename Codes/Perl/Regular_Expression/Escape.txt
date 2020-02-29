@@ -1,0 +1,123 @@
+#A word-count program that handles multiple spaces and tabs between words.!
+
+#!/usr/local/bin/perl 
+
+$wordcount = 0; 
+$line = <STDIN>; 
+while ($line ne "") { 
+   chop ($line); 
+   @words = split(/[\t ]+/, $line); 
+   $wordcount += @words; 
+   $line = <STDIN>; 
+} 
+print ("Total number of words: $wordcount\n"); 
+
+   
+    
+#Escape Sequences for Special Characters!
+
+To include a backslash in a pattern, specify two backslashes: 
+/\\+/ 
+
+This pattern tests for one or more occurrences of \ in a string. 
+
+   
+    
+#Escape sequences, \n and \t!
+
+while(<DATA>){
+    print if s/\n/\t/;
+}
+__DATA__
+    AA AA AQA 101
+
+  
+   
+    
+# Match the new line character!
+
+$_ = "This text\nhas multiple lines.";
+s/^/BOL/g;
+s/$/EOL/g;
+print;
+
+   
+    
+    
+    
+  #Skip blank lines and comments!
+
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+while (<>) {
+    chomp;   # strip trailing linefeed from $_
+    next if /^(\s*(#.*)?)?$/;   # skip blank lines and comments
+    print "Got: $_ \n";
+}
+
+   
+    
+    
+  #Match multiline patterns?!
+
+    #!/usr/local/bin/perl -w
+    use strict;
+
+    $/ = "";   # Paragraph mode
+
+    while(<>) {
+      print $1 if /(lines.*\n.*spaces)/s;
+    }
+
+   
+    
+    #Multiplies every integer in a file by 2!
+
+#!/usr/local/bin/perl 
+
+$count = 0; 
+while ($ARGV[$count] ne "") { 
+   open (FILE, "$ARGV[$count]"); 
+   @file = <FILE>; 
+   $linenum = 0; 
+   while ($file[$linenum] ne "") { 
+      $file[$linenum] =~ s/\d+/$& * 2/eg; 
+      $linenum++; 
+   } 
+   close (FILE); 
+   open (FILE, ">$ARGV[$count]"); 
+   print FILE (@file); 
+   close (FILE); 
+   $count++; 
+} 
+
+   
+    
+    
+    
+  
+
+    
+  
+  
+  
+  
+  
+   
+    
+  
+   
+    
+  
+   
+    
+  
+    
+    
+  
+    
+    
+  

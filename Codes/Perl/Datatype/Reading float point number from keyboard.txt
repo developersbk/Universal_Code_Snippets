@@ -1,0 +1,10 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+print "Currency converter\n\nPlease enter the exchange rate: ";
+my $yen = <STDIN>;
+
+print "49518 Yen is ", (49_518/$yen), " dollars\n";
+
+   

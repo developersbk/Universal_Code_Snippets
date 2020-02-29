@@ -1,0 +1,8 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+my @band = qw(A B C D);
+my $ref = \@band;
+print "Band members before: @band\n";
+pop @{$ref};
+print "Band members after: @band\n";

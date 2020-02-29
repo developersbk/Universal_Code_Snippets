@@ -1,0 +1,26 @@
+#!/usr/bin/perl -w  
+
+use IO::Socket;  
+  
+$port = 999;  
+
+$num_args = scalar( @ARGV );  
+  
+$host = 'localhost';  
+
+print "Connecting to $host\n";
+  
+$client_socket = IO::Socket::INET->new(
+     PeerPort  => $port,
+     PeerAddr  => $host,
+     Proto     => 'tcp',
+     Type      => SOCK_STREAM )
+     or die "Cannot open socket: $!";
+
+# Read data from server.
+$msg = <$client_socket>;
+
+print "Recieved message from server:\n";
+print "$msg\n";
+       
+$client_socket->close();

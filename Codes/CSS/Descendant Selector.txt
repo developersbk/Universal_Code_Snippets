@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Descendant Selector</title>
+<style type="text/css">
+
+div *.myclass { 
+    font-size:1.4em; 
+    font-weight:bold; 
+}  
+
+</style>
+</head>
+<body> 
+<p class="myclass">p.myclass</p> 
+<div id="myid"> 
+<ol> 
+<li>div ol li - How we treasure (and admire) the people who acknowledge us! Julie Morgenstern</li> 
+<li>div ol li - How we treasure (and admire) the people who acknowledge us! Julie Morgenstern</li> 
+<li> 
+<p class="myclass">div ol li p.myclass - How we treasure (and admire) the people who acknowledge us! Julie Morgenstern</p> 
+</li> 
+</ol> 
+</div> 
+</body> 
+</html>

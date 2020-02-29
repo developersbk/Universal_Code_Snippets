@@ -1,0 +1,6 @@
+#Format:
+#dbmopen(hash, dbfilename, mode);
+#tie(hash, Module , dbfilename, flags, mode);
+
+dbmopen(%myhash, "mydbmfile", 0666);
+tie(%myhash,SDBM_File, "mydbmfile", O_RDWR|O_CREAT,0640);

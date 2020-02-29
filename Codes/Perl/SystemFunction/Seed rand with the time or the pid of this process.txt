@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+$num=10;
+srand(time|$$);  
+while($num){    
+     $lotto = int(rand(10)) + 1;
+     print "The random number is $lotto\n";
+     sleep 3;
+     $num--;
+}

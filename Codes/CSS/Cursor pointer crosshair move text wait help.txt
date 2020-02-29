@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" subLang="en" xml:subLang="en">
+
+<head>
+  <title>Cursor Pointer Crosshair Move Text Wait Help</title>
+<style type='text/css'>
+.pointer {cursor: pointer;} 
+.crosshair {cursor: crosshair;}
+.move {cursor: move;} 
+.text {cursor: text;} 
+.wait {cursor: wait;} 
+.help {cursor: help} 
+</style>
+
+</head>
+
+<body>
+<h1>Cursors</h1>
+
+<p class="pointer">This cursor is the pointer cursor - Love is the exchange of two fantasies and the contact of two skins. Nicholas Chamfort</p>
+<p class="crosshair">This cursor is the crosshair cursor - Love is the exchange of two fantasies and the contact of two skins. Nicholas Chamfort</p>
+<p class="move">This cursor is the move cursor - Love is the exchange of two fantasies and the contact of two skins. Nicholas Chamfort</p>
+<p class="text">This cursor is the text cursor - Love is the exchange of two fantasies and the contact of two skins. Nicholas Chamfort</p>
+<p class="wait">This cursor is the wait cursor - Love is the exchange of two fantasies and the contact of two skins. Nicholas Chamfort</p>
+<p class="help">This cursor is the help cursor - Love is the exchange of two fantasies and the contact of two skins. Nicholas Chamfort</p>
+
+
+</body>
+</html>

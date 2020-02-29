@@ -1,0 +1,7 @@
+$str = formline <<'EOD', right, center, left;
+Here's some text justification...
+----------------------------
+@<<<<<<<<@|||||||@>>>>>>>>>>
+EOD
+
+print "$^A\n";

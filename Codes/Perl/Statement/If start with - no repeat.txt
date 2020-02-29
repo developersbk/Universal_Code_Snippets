@@ -1,0 +1,5 @@
+
+NUMBER: while (<>) {
+    next NUMBER if /^-/;      
+    print; 
+}

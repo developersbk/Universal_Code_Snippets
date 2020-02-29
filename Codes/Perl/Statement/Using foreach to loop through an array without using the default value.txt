@@ -1,0 +1,9 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my $element;
+
+foreach $element ('zero', 'one', 'two') {
+    print "the element is: $element\n";
+}

@@ -1,0 +1,15 @@
+#!usr/bin/perl
+
+use strict;
+use warnings;
+
+print "Opening file for output:\n";
+open OUTFILE, ">file.txt" or die "Can't find file.txt : $!";
+print "Outputting to file.\n";
+print OUTFILE "There was an old lady\n";
+close OUTFILE or die "Can not close file.txt : $!";
+
+print "It now reads:\n";
+open INFILE, "file.txt" or die "Can not open file.txt : $!";
+print while (<INFILE>);
+close INFILE or die "Can not close file.txt : $!";

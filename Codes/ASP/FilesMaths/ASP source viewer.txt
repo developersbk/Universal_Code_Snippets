@@ -1,0 +1,17 @@
+<%option explicit%>
+<%  
+Const ForReading=1
+Dim fso,ts,file,i
+file=Request.QueryString("file")
+Set fso = Server.CreateObject("Scripting.FileSystemObject")
+Set ts = fso.OpenTextFile( Server.MapPath(file), ForReading)
+%>
+<H1><CENTER><%=file%></CENTER></H1>
+<%
+While Not ts.AtEndOfStream
+i=i+1
+Response.Write "<B>" & i & ". </B>" & Server.HTMLEncode(ts.readline) & "<BR>"
+Wend
+Set ts=Nothing
+Set fso=Nothing
+%>

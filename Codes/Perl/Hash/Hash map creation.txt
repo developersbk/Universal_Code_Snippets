@@ -1,0 +1,10 @@
+#!C:/Perl/Bin
+
+%animals = (H=> 'h', S=> 's', G=> 'g');
+
+print "$animals{'Shark'} \n\n";
+
+foreach $creature(keys %animals)
+{
+     print "$creature \n";
+}

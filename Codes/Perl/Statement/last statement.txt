@@ -1,0 +1,9 @@
+FOREVER: for (;;) {
+    chomp($line = <>);
+
+    if ($line eq 'q') {
+        last FOREVER;
+    } else {
+        print "You typed: $line\n";
+    }
+}

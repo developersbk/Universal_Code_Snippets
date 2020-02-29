@@ -1,0 +1,8 @@
+#!c:/perl/bin
+
+@mynumbers = (1..20, 25..40);
+
+for($loopcount=0; $loopcount<40; $loopcount++)
+{
+        print "@mynumbers[$loopcount] \n";
+}

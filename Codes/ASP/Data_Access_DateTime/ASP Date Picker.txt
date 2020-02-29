@@ -1,0 +1,149 @@
+
+<%@ Language=VBScript %>
+<%
+Option Explicit
+Const TOP_COORDINATE = 30
+Dim curDate
+Dim daysCount
+Dim lastDay
+Dim firstDay
+Dim i
+Dim topC
+Dim leftC
+Dim tempDate
+Dim curMonth
+Dim curYear
+Dim calHTML
+Dim pDate
+Dim curMonthText
+Dim rowCount
+Dim nextMonth
+Dim prevMonth
+Dim retControl
+    curDate = Request("date")
+    retControl = Request("ctl")
+    If IsDate(curDate) Then pDate = FormatDateTime(curDate, 0)
+    If curDate = "" Then 
+        curDate = Now()
+    Else
+        If IsDate(curDate) Then curDate = Month(curDate) & "/" & Day(curDate) & "/" & Year(curDate)
+    End If
+    If IsDate(curDate) Then
+        curMonth = Month(curDate)
+        curMonthText = TextMonth(curMonth) & "-" & Year(curDate)
+        curYear = Year(curDate)
+        firstDay = curMonth & "/" & "01" & "/" & curYear
+        lastDay = DateAdd("d", -1, DateAdd("m", 1, firstDay))
+        nextMonth = DateAdd("m", 1, firstDay)
+        nextMonth = FormatDateTime(Month(nextMonth) & "/" & Day(curDate) & "/" & Year(nextMonth), 0) & _
+        "&ctl=" & retControl
+        prevMonth = DateAdd("m", -1, firstDay)
+        prevMonth = FormatDateTime(Month(prevMonth) & "/" & Day(curDate) & "/" & Year(prevMonth), 0) & _
+        "&ctl=" & retControl
+        daysCount = CInt(Day(lastDay))
+        For i = 1 To daysCount
+            tempDate = curMonth & "/" & i & "/" & curYear
+            leftC = calcLeft(DatePart("w", tempDate, vbMonday))
+            topC = calcTop(tempDate)
+            calHTML = calHTML & _
+            "<DIV style='text-align: center; position: absolute; width: 50px; left: " & leftC & "px; top: " & topC & _
+            "px; font-family: Tahoma, Arial; cursor: hand; "
+            If FormatDateTime(tempDate, vbShortDate) = FormatDateTime(Now, vbShortDate) Then
+                calHTML = calHTML & "background-color: orange; color: white"
+            Else
+                calHTML = calHTML & "background-color: #faf0e6; color: black"
+            End If
+            If FormatDateTime(tempDate, vbShortDate) = FormatDateTime(pDate, vbShortDate) Then
+                calHTML = calHTML & "; border: solid blue 1px"
+            End If
+            calHTML = calHTML & "' onClick=" & Chr(34) & "onDateSelected('" & _
+            fNumber(Month(tempDate)) & "/" & fNumber(Day(tempDate)) & "/" & Year(tempDate) & _
+            "')" & Chr(34) & ">" & Day(tempDate) & "</DIV>" & vbCrLf
+        Next
+    End If
+Function fNumber(fNum)
+    If Len(CStr(fNum)) < 2 Then 
+        fNumber = "0" & CStr(fNum)
+    Else
+        fNumber = fNum
+    End If
+End Function
+Function calcLeft(wDay)
+    calcLeft = ((wDay - 1) * 50) + 2
+End Function
+Function calcTop(wDate)
+    
+    Dim mStartDate
+    Dim mStartWeekDay
+    Dim dRow
+        mStartDate = Month(wDate) & "/" & "01/" & Year(wDate)
+        mStartWeekDay = DatePart("w", mStartDate, vbMonday)
+        dRow = ((mStartWeekDay + CInt(DateDiff("d", mStartDate, wDate)))  7) + 1
+        If Weekday(wDate, vbMonday) = 7 Then dRow = dRow - 1
+        calcTop = ((dRow - 1) * 20) + 1 + TOP_COORDINATE
+        If dRow > rowCount Then rowCount = dRow
+End Function
+Function TextMonth(dMonth)
+    Select Case dMonth
+        Case 1: TextMonth = "January"
+        Case 2: TextMonth = "February"
+        Case 3: TextMonth = "March"
+        Case 4: TextMonth = "April"
+        Case 5: TextMonth = "May"
+        Case 6: TextMonth = "June"
+        Case 7: TextMonth = "July"
+        Case 8: TextMonth = "August"
+        Case 9: TextMonth = "September"
+        Case 10: TextMonth = "October"
+        Case 11: TextMonth = "November"
+        Case 12: TextMonth = "December"
+    End Select
+End Function
+%>
+<HTML>
+<HEAD>
+<TITLE>Date picker</TITLE>
+<LINK REL="stylesheet" Type="text/css" HREF="../site_css.css">
+<SCRIPT language="JavaScript">
+    Function onDateSelected(lDate) {
+        var cObj = eval("opener.window.document." + hostCtl.value);
+        If (cObj != Null) {
+            cObj.value = lDate;
+            cObj.focus();
+        }
+        self.window.close();
+    }window.open
+    Function initPos() {
+        curMonth.style.top = (calRows.value * 20) + 30;
+        window.resizeTo(360, parseInt(curMonth.style.top, 10) + parseInt(curMonth.clientHeight, 10) + 50);
+    }
+</SCRIPT>
+</HEAD>
+<BODY topmargin="0" leftmargin="0" onLoad="initPos()">
+<Input Type="hidden" id="calRows" name="calRows" value="<%=rowCount%>">
+<Input Type="hidden" id="hostCtl" name="hostCtl" value="<%=retControl%>">
+<DIV style="position: absolute; left: 2px; top: 2px; width: 350px">
+<TABLE width="350">
+<TR style="background-color: darkblue; color: white">
+    <TD width="50" align="center"><B>mon</B></TD>
+    <TD width="50" align="center"><B>tue</B></TD>
+    <TD width="50" align="center"><B>wed</B></TD>
+    <TD width="50" align="center"><B>thu</B></TD>
+    <TD width="50" align="center"><B>fri</B></TD>
+    <TD width="50" align="center"><B>sat</B></TD>
+    <TD width="50" align="center"><B>sun</B></TD>
+</TR>
+</TABLE>
+<%=calHTML%>
+</DIV>
+<DIV id="curMonth" style="position: absolute; left: 2px; width: 350px; text-align: center;">
+<TABLE width="350">
+    <TR style="background-color: black; color: white">
+        <TD width="100"><A href="calendar.asp?date=<%=prevMonth%>">Previous</A></TD>
+        <TD align="center" width="150"><B><%=curMonthText%></B></TD>
+        <TD width="100" align="right"><A href="calendar.asp?date=<%=nextMonth%>">Next</A></TD>
+    </TR>
+</TABLE>
+</DIV>
+</BODY>
+</HTML>

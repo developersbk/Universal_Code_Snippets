@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+
+
+use warnings;
+use strict;
+
+my $variable = 9;
+my $reference1 = \$variable;
+print( "$variable, $reference1, $$reference1\n" );
+my $reference2 = \$reference1;
+print( "$variable, $reference1, $$reference1, $reference2, ", "$$reference2, $$$reference2\n" );
+my $reference3 = \\\\$variable;
+print( "$reference3, $$reference3, $$$reference3,\n", "   $$$$reference3, $$$$$reference3\n" );

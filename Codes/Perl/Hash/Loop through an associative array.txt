@@ -1,0 +1,10 @@
+    while(<>) {
+        chop;
+        ($Header, $Value) = split(/:/,$_,2);
+        $Value =~ s/^\s+//;          # remove trailing whitespace
+        $Heading{$Header} = $Value;
+    }
+
+    foreach $Head (sort keys %Heading) {
+        print "$Head --> $Heading{$Head}\n";
+    }

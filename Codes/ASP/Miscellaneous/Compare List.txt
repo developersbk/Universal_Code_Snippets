@@ -1,0 +1,24 @@
+Function CompareList(Arg As Variant, ParamArray Values() As Variant) As Boolean
+Dim index As Long
+If IsObject(Arg) Then
+' comparison between objects
+For index = 0 To UBound(Values)
+If Not IsObject(Values(index)) Then
+' argument isn't an object, skip it
+ElseIf Arg Is Values(index) Then
+CompareList = index
+Exit Function
+End If
+Next
+Else
+' comparison between non-object values
+For index = 0 To UBound(Values)
+If IsObject(Values(index)) Then
+' argument is an object, skip it
+ElseIf Arg = Values(index) Then
+CompareList = index
+Exit Function
+End If
+Next
+End If
+End Function

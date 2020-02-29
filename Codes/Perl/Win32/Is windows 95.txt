@@ -1,0 +1,8 @@
+#!/usr/bin/perl -w
+use Win32;
+
+$is95 = Win32::IsWin95();
+
+if ($is95) {
+    print "Running Windows 95\n";
+}

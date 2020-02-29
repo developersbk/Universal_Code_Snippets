@@ -1,0 +1,3 @@
+use POSIX;
+
+print POSIX::tan(atan2 (1, 1));

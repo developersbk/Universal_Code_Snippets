@@ -1,0 +1,23 @@
+<html>
+   <head>
+      <title>bgsound element example</title>
+      <bgsound src="soundfile.wav" loop="4">
+      <script language="javascript">
+          function stopSound() {
+               document.all.tags("bgsound")[0].volume = -10000; 
+          } 
+          function restartStop() {
+               document.all.tags("bgsound")[0].volume = 0;
+          } 
+      </script>
+   </head>
+   <body>
+   test the your wav file.
+   <br><br><br><br><br><br>
+   
+   <button type="button" onClick="stopSound()">Stop the music</button>
+   <br>
+   <button type="button" onClick="restartStop()">Restart the music</button> 
+</body>
+</html>
+

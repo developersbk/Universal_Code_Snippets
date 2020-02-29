@@ -1,0 +1,8 @@
+#! /usr/local/bin/perl
+
+($day, $month, $dayOfMonth, $rest) = split(/\s+/,localtime(time),4);
+print "Day==>$day, Month==>$month, Day of Month==>$dayOfMonth,Remainder==>$rest\n";
+($hour, $minute, $second, $rest) = split (/:/,$rest,4);
+print "Hour==>$hour, Minute==>$minute, Second==>$second,Remainder==>$rest\n";
+($second, $year) = split(/\s+/,$second);
+print "Second==>$second, Year==>$year\n";

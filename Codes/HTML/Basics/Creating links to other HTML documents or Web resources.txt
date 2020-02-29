@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example of HTML Links</title>
+</head>
+<body>
+	<p><a href="http://www.tutorialrepublic.com/">Tutorial Republic</a></p>
+    <p><a href="../images/kites.jpg"><img src="../images/kites-thumb.jpg" alt="kites"></a></p>
+    <p><a href="http://www.google.com/" target="_blank">Google Search</a></p>
+</body>
+</html>                                		

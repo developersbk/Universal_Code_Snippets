@@ -1,0 +1,13 @@
+%mixed_bag = (
+    Scalar1 => 3,
+    Scalar2 => "A",
+    List1 => [1, 2, 3],
+    Hash1 => { A => 'a', C => 'c' },
+    List2 => ['A','B', ['C','D'], 'E', 'F'],
+    Scalar3 => $my_object,
+    Hash2 => { Time => [ gmtime ],Date => scalar(gmtime), 
+    },
+    List3 => @my_list[0..2],
+);
+
+print $mixed_bag{List2}[2][1]; 

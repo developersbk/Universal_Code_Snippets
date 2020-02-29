@@ -1,0 +1,94 @@
+<%
+Class DirSrch
+    Private strTmp1, strTmp2, gblMatches, bExecuted
+
+    Private Sub Class_Initialize()
+        bExecuted = False
+    End Sub
+
+    Private Function FindDir(ByVal directory, ByVal DirToFind)
+        If Len( directory ) = 0 And Len( dirtofind ) = 0 Then 
+            FindDir = "" & vbCrLf
+            Exit Function
+        End If
+        Dim objFSO, fldr, folder, tmp
+        Set objFSO = Server.CreateObject(_
+         "Scripting.FileSystemObject")
+        Set fldr = objfso.getfolder(directory)
+        For Each folder In fldr.subfolders
+            If UCase( folder.name ) = _
+             UCase( DirToFind ) Then
+                tmp = tmp & folder.path & vbCrLf
+            ElseIf InStr( UCase( folder.path ), _
+             UCase( DirToFind ) ) Then
+                tmp = tmp & folder.path & vbCrLf
+            Else
+                ' tmp = join(tmp, vbCrLf)
+                tmp = tmp & FindDir( _
+                 folder.path, DirToFind )
+            End If
+        Next
+        Set fldr = Nothing
+        Set objfso = Nothing
+        FindDir = tmp
+    End Function
+
+    Public Sub Execute()
+        Dim a, b
+        a = Split( FindDir( StartDirectory, _
+            LookingFor ), vbCrLf )
+        b = UBound(a) - 1
+        ReDim Preserve a(b)
+        gblMatches = a
+        bExecuted = True
+    End Sub
+
+    Public Function MatchingDirs()
+        If Not bExecuted Then
+            Err.Raise 5199, "DirSrch Class", _
+                "Cannot Call 'MatchingDirs' before " & _
+                "calling the 'Execute' method."
+            Exit Function
+        End If
+        MatchingDirs = gblMatches
+    End Function
+
+    Public Function CountMatches()
+        If Not bExecuted Then
+            Err.Raise 5199, "DirSrch Class", _
+                "Cannot Call 'CountMatches' before " & _
+                "calling the 'Execute' method."
+            Exit Function
+        End If
+        CountMatches = CLng( UBound( gblMatches ) + 1 )
+    End Function
+
+    Public Property Let StartDirectory(ByVal strInput)
+        strTmp1 = strInput
+    End Property
+
+    Public Property Let LookingFor(ByVal strInput)
+        strTmp2 = strInput
+    End Property
+
+    Public Property Get StartDirectory()
+        If Len( strTmp1 ) = 0 Then 
+            Err.Raise 5199, "DirSrch Class", _
+                "You must set the 'StartDirectory' property " & _
+                "before calling the 'Execute' method."
+            Exit Property
+        End If
+        StartDirectory = strTmp1
+    End Property
+
+    Public Property Get LookingFor()
+        If Len( strTmp2 ) = 0 Then 
+            Err.Raise 5199, "DirSrch Class", _
+                "You must set the 'LookingFor' property " & _
+                "before calling the 'Execute' method."
+            Exit Property
+        End If
+        LookingFor = strTmp2
+    End Property
+End Class
+%>

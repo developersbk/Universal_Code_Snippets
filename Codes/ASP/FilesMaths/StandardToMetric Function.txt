@@ -1,0 +1,40 @@
+<%
+Private Function StandardToMetric(ByVal StandardMeasure, _
+ByVal Conversion, ByVal ExtensionType)
+    Dim tmp, multiplier, extension, ext
+    Select Case UCase( Conversion )
+        Case "IN-CM"    : multiplier = 2.54 : _
+            extension = "centimeters" : ext = "cm"
+        Case "FT-CM"    : multiplier = 30.48 : _
+            extension = "centimeters" : ext = "cm"
+        Case "IN-M" : multiplier = 0.00254 : _
+            extension = "meters" : ext = "m"
+        Case "YD-M" : multiplier = 0.914 : _
+            extension = "meters" : ext = "m"
+        Case "MI-KM"    : multiplier = 1.609 : _
+            extension = "kilometers" : ext = "km"
+        Case "OZ-G" : multiplier = 28.35 : _
+            extension = "grams" : ext = "g"
+        Case "LBS-G"    : multiplier = 453.59 : _
+            extension = "grams" : ext = "g"
+        Case "OZ-KG"    : multiplier = 0.028 : _
+            extension = "kilograms" : ext = "kg"
+        Case "LBS-KG"   : multiplier = 0.454 : _
+            extension = "kilograms" : ext = "kg"
+        Case "PT-L" : multiplier = 0.473 : _
+            extension = "liters" : ext = "L"
+        Case "QT-L" : multiplier = 0.946 : _
+            extension = "liters" : ext = "L"
+        Case "GAL-L"    : multiplier = 3.785 : _
+            extension = "liters" : ext = "L"
+    End Select
+    tmp = FormatNumber(multiplier * StandardMeasure, 2)
+    Select Case CInt(ExtensionType)
+        Case 0   : tmp = Trim( tmp )
+        Case 1   : tmp = tmp & " " & ext
+        Case 2   : tmp = tmp & " " & extension
+        Case Else : tmp = Trim( tmp )
+    End Select
+    StandardToMetric = tmp
+End Function
+%>

@@ -1,0 +1,7 @@
+use Getopt::Long;
+
+GetOptions("file=s"  => \$file);
+
+if ($file) {
+    print "File name: $file\n";
+}

@@ -1,0 +1,13 @@
+open INFILEHANDLE, "<data.uue";
+open OUTFILEHANDLE, ">data.dat";
+
+binmode OUTFILEHANDLE;    #Necessary in MS DOS!
+
+while (defined($line = <INFILEHANDLE>)) {
+    print OUTFILEHANDLE unpack('u*', $line);
+}
+
+close INFILEHANDLE;
+close OUTFILEHANDLE;
+
+   

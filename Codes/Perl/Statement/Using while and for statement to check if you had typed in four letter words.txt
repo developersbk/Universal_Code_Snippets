@@ -1,0 +1,7 @@
+while (<>) {
+    for (split) {
+        if (/^\w{4}$/) {
+            print "You shouldn't use four letter words.\n";
+        }
+    }
+}

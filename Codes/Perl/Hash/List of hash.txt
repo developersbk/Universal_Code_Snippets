@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+
+my (@list_of_hashes, %hash_of_lists, %mixed_bag, $my_object);
+my @my_list = (1,2,3,4,5);
+
+@list_of_hashes = (
+   { Monday=>1, Tuesday=>2, Wednesday=>3, Thursday=>4, Friday=>5 },
+   { Red=>0xff0000, Green=>0x00ff00, Blue=>0x0000ff },
+);
+print "$list_of_hashes[0]{Tuesday}.", "\n";

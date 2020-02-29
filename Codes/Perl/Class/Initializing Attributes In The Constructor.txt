@@ -1,0 +1,22 @@
+package Person;
+use warnings;
+use strict;
+sub new {
+    my $class = shift;
+    my $self = {@_};
+    bless($self, $class);
+    return $self;
+}
+1;
+
+
+
+#!/usr/bin/perl
+use Person;
+my $object = Person->new (
+    surname => "G",
+    forename => "G",
+    address => "Apts.",
+    occupation => "tester"
+);
+print "This person's surname: ", $object->surname, "\n";

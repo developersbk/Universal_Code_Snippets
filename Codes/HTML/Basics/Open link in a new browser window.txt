@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <title>Example of linking images</title>
+</head>
+<body>
+    <p><a href="http://www.w3.org/" target="_blank">W3C</a> This is a link to a website on the World Wide Web.</p>
+</body>
+</html>                                		

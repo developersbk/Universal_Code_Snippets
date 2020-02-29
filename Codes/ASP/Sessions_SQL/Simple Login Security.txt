@@ -1,0 +1,39 @@
+<%@ LANGUAGE="VBSCRIPT" %>
+<!--#include file="dataconn.asp"-->
+<% 
+Dim login_input
+Dim password_input
+login_input = Request.QueryString("box1")
+password_input = Request.QueryString("box2")
+If login_input = "" Then
+Response.Redirect ("intrusion.asp")
+End If
+Set rs_main = Server.CreateObject("ADODB.Recordset")
+theQuery = "SELECT * FROM Login where UserName='" & Request.QueryString("box1") &"'"
+
+cmdTemp.CommandText = theQuery
+cmdTemp.CommandType = 1
+Set cmdTemp.ActiveConnection = DataConn
+rs_main.Open cmdTemp, , 1, 3
+If login_input <> (rs_main("UserName")) Then
+Response.Redirect ("intrusion.asp")
+Else
+Set level = (rs_main("UserLevel"))
+Set thepass = (rs_main("UserPassword"))
+If password_input = thepass Then
+Response.Cookies("PutYouOnLockdown")("clearance") = "yes"
+Response.Cookies("PutYouOnLockdown")("theuserlevel") = ("Main" & (level) & ".asp?ID=" & (login_input))
+    Response.Cookies("PutYouOnLockdown").expires = Now() + 1
+Response.Redirect ("Main" & (level) & ".asp?ID=" & (login_input))
+Else
+Response.Redirect ("intrusion.asp")
+End If
+End If
+%>
+<%
+
+rs_main.Close
+DataConn.Close
+Set DataConn = Nothing
+%>
+

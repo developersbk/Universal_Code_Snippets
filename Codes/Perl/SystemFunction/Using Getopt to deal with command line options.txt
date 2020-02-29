@@ -1,0 +1,25 @@
+#!/usr/bin/perl -w
+
+
+
+use Getopt::Std;
+
+Getopt::Std::getopts( 'a:b:c:de' );
+
+# Options appear in variables named opt_option, e.g., opt_a.
+if ( defined( $opt_a ) ) {
+    print "-a flag set to $opt_a\n";
+}
+if ( defined( $opt_b ) ) {
+    print "-b flag set to $opt_b\n";
+}
+if ( defined( $opt_c ) ) {
+    print "-c flag set to $opt_c\n";
+}
+
+if ( defined( $opt_d ) ) {
+    print "-d flag set to $opt_d\n";
+}
+if ( defined( $opt_e ) ) {
+    print "-e flag set to $opt_e\n";
+}

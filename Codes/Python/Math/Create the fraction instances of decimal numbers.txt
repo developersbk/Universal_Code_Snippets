@@ -1,0 +1,11 @@
+iimport decimal  
+import fractions  
+values = [  
+    decimal.Decimal('0.2'),  
+    decimal.Decimal('0.7'),  
+    decimal.Decimal('2.5'),  
+    decimal.Decimal('3.0'),  
+]  
+  
+for d in values:  
+    print('{} = {}'.format(d, fractions.Fraction(d))) 

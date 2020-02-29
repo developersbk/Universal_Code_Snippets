@@ -1,0 +1,165 @@
+Display States according to Country selection...
+
+------we should have two tables in sql-------
+
+table: tblcountry
+ create table tblcountry
+ (
+  countryid varchar(20) primary key,
+  country varchar(20)
+ )
+insert into tblcountry values('1','Canada')
+insert into tblcountry values('2','USA')
+insert into tblcountry values('3','Nepal')
+
+table: tblState
+ create table tblstate
+ (
+  stateid varchar(20) primary key,
+  state varchar(20),
+  countryid varchar(20) foreign key references tblcountry(countryid)
+ )
+
+insert into tblstate values('1','Alaska','2')
+insert into tblstate values('2','Puerto Rico','2')
+insert into tblstate values('3','Saint Thomas','2')
+
+--------------run above codes on sql-------------
+------------------------------------------------------->
+
+<!-------real coding goes from here-------------------->
+
+<!--#include file="adovbs.inc"-->
+<%
+
+ ConnString="Provider=SQLOLEDB.1;Persist Security Info=False;"
+ ConnString=ConnString & "User ID=sa;Initial Catalog=master;"
+ ConnString=ConnString & "Data Source=computername"
+
+ 'give your computer name instead of computername
+ 'on "Data Source=computername" on above string
+
+ Set Conn=server.createobject("ADODB.Connection")
+ Conn.open ConnString
+
+ Set rs=Server.CreateObject("ADODB.RECORDSET")
+  rs.Open "select * from tblstate",Conn,3
+
+ Response.write "<script language=javascript>"& vbcrlf
+ Response.write "var i=0;" & vbcrlf
+ Response.write "stateIDList=new Array();" & vbcrlf
+ Response.write "statelists=new Array();" & vbcrlf
+ for i=0 to rs.RecordCount-1
+  Response.write "stateIDList["&i&"]='" & rs("countryid") & "';" & vbcrlf
+  Response.write "statelists["&i&"]='" & rs("state") & "';" & vbcrlf
+ rs.MoveNext
+ Next
+ rs.Close
+ Response.write  vbcrlf & "</script>"
+strSQL="select * from tblcountry order by country"
+rs.Open strSQL,Conn
+
+StrCountry=rs("countryid")
+
+     Set rsstate=server.createobject("ADODB.RECORDSET")
+     rsstate.CursorLocation=adUseClient
+     strSQL="select * from tblstate where countryid='" & StrCountry & "'"
+     rsstate.Open strSQL,Conn
+%>
+<html>
+<body>
+<form name=frm>
+<tr height=25>
+ <td width=90 class=dblue>
+ <font face="Verdana, Arial, Helvetica" size="1" color="darkblue">
+   Country
+ </font>
+ </td>
+ <td width="180">
+  <font face=verdana,arial size=1.8>
+  <select name=cmbcountry onchange="javascript:Loadstate()">
+  <Option value="">---------- Select Country --------</Option>
+  <% For i=1 to rs.RecordCount %>
+  <Option value="<%=rs.Fields("countryid")%>"
+  <%if cint(rs("countryid"))=cint(StrCountry) then%>Selected<%End if%>>
+  <%=rs.Fields("country")%>
+  </Option>
+  <%rs.MoveNext
+  Next
+  rs.Close
+  %>
+  </select>
+  </font>
+ </td>
+ <td width=90 class=dblue>
+  <font face="Verdana, Arial, Helvetica" size="1" color="darkblue">
+    State/Province</font>
+ </td>
+ <td class=dblue width="200">
+  <select name="cmbstate" onchange="javascript:BlankState()">
+  <%if rsstate.RecordCount<>0 then%>
+  <%Do while not rsstate.EOF%>
+  <option value="<%=rsstate("stateid")%>"><%=rsstate("state")%></option>
+  <%rsstate.movenext
+  loop
+  else
+  %>
+ <option value="">------- County/State N/A -------</option>
+ <%end if%>
+ </select>
+ <%
+ rsstate.close
+ Set RsState=nothing
+ Conn.close
+ Set Conn=nothing
+ %>
+ </td>
+</tr>
+</form>
+</body>
+</html>
+<Script language=javascript>
+var k=100;
+var m;
+
+function clear_dropdowns()
+{
+  document.frm.cmbstate.options[0] = new Option('---------------','')
+  document.frm.cmbstate.selectedIndex=0
+}
+
+function Loadstate()
+{
+clear_dropdowns();
+StatesValue=new Array();
+
+for (var i=k;0<=i;i--)
+  document.frm.cmbstate.options[i]=null;
+m=0;
+for(j=0;j<stateIDList.length;j++)
+ {
+  if(document.frm.cmbcountry
+  [document.frm.cmbcountry.selectedIndex].value==stateIDList[j])
+    {
+    StatesValue[m]=statelists[j];
+    m++;
+    }
+ }
+if(m==0)
+ document.frm.cmbstate.options
+ [m]=new Option('------- County/State N/A -------','');
+else
+ {
+ for(k=0;k<StatesValue.length;k++)
+  document.frm.cmbstate.options
+  [k]=new Option(StatesValue[k],StatesValue[k]);
+  document.frm.cmbstate.options[k]=new Option('                                                   ',' ');
+ }
+}
+
+function BlankState()
+{
+if(document.frm.cmbstate.value==" ")
+ document.frm.cmbstate.selectedIndex=0;
+}
+</Script>

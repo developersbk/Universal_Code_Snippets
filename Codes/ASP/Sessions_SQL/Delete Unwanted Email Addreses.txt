@@ -1,0 +1,59 @@
+<%@Language="vbscript" %>
+<%
+Const adOpenForwardOnly = 0
+Const adLockReadOnly = 1
+Const adCmdText = &H0001
+Const adUseClient = 3
+If Request.QueryString("md") = "dl" And Request.Form("sAddress") <> "" And Request.Form("dbName") <> "" Then
+    DSNName = Request.Form("dbName") & ".mdb"
+    Set Con = Server.CreateObject("ADODB.Connection")
+    Con.Open "DRIVER={Microsoft Access Driver (*.mdb)};DBQ=" & Server.MapPath(DSNName)
+    strAddresses = Request.Form("sAddress")
+    splitAddress = Split(strAddresses, ",")
+    Set Table = Con.OpenSchema (20)
+    Do While Not Table.EOF
+        TblName = Table("Table_Name")
+        'The condition below excludes the system tables from beeing processed
+        If UCase(Left(TblName,4)) <> "MSYS" And UCase(Left(TblName,3)) <> "SYS" And UCase(Left(TblName,4)) <> "RTBL" Then
+            strSQL = "SELECT * FROM " & TblName
+            Set rs = Server.CreateObject("ADODB.Recordset")
+            rs.CursorLocation = adUseClient
+            rs.Open (strSQL), Con, adOpenForwardOnly, adLockReadOnly, adCmdText
+            For Each fldName In rs.Fields
+                If fldName.Name = "EMail" Then
+                    For i = 0 To UBound(splitAddress)
+                        oneAddress = Trim(splitAddress(i))
+                        strSQL = "DELETE FROM " & TblName & " WHERE EMail = '" & oneAddress & "'"
+                        Con.Execute(strSQL)
+                    Next
+                End If
+            Next
+            rs.Close
+            Set rs = Nothing
+        End If
+        Table.MoveNext
+    Loop
+    Con.Close
+    Set Con = Nothing
+End If
+%>
+<HTML>
+<HEAD>
+<TITLE>Delete Multiple Addresses</TITLE>
+</HEAD>
+<BASEFONT FACE="Verdana">
+<BODY BGCOLOR="#000080" Text="#FFFFFF">
+<BR>
+<DIV ALIGN="center"><B>Delete Multiple Addresses</B>
+<FORM ACTION="deladdre.asp?md=dl" METHOD="post">Database Name:
+<Input Type="text" NAME="dbName" STYLE="text-align: right"><B>.mdb</B>
+<BR>
+<BR>Paste all unwanted addresses into the textarea below, separated by a comma<B>,</B>
+<BR>
+<TEXTAREA COLS="80" ROWS="8" NAME="sAddress"></TEXTAREA>
+<Input Type="submit" VALUE="Delete Addresses"></FORM>
+<SMALL><B>Note:</B> This action will delete the selected addresses from all tables of the selected database.</SMALL>
+<BR>
+<BR>This file must be located In the same folder of the database.</DIV>
+</BODY>
+</HTML>

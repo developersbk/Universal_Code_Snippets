@@ -1,0 +1,2 @@
+$result = "123" < "45";  #the strings 123 and 45 are converted to integers, and 123 is compared to 45. 
+$result = "123" lt "45"; #123 is alphabetically compared to 45. 

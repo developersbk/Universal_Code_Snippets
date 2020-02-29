@@ -1,0 +1,27 @@
+Function BinToInt(binvalue)
+Dim i, s, v, neg, ilen, value
+
+value = Null
+
+If IsBin(binvalue) Then
+value = 0
+s = binvalue
+ilen = Len(s)
+If (ilen=32) Then
+v = Left(s, 1)
+neg = (CByte(v) = 1)
+If neg Then
+s = BinNot(s)
+End If
+End If
+s = StrReverse(s)
+For i = 1 To ilen
+value = value + CByte(Mid(s, i, 1)) * Power(2, i-1)
+Next
+If neg Then
+value = -(value + 1)
+End If
+End If
+
+BinToInt = value
+End Function

@@ -1,0 +1,27 @@
+#!/usr/local/bin/perl
+
+
+
+$integerValue = 10;
+$floatingPointValue = 11.43;
+$scientificValue = 42.03E-04;
+$nationalDebt = 6_000_000_000_000;
+$divisionValue = 23/7;
+$hexValue = 0x0F3;
+$octalValue = 037;
+
+$itotal = $integerValue + $hexValue;
+$ftotal = $floatingPointValue + $integerValue;
+$dtotal = $divisionValue + $octalValue;
+
+print "Integer \t $integerValue\n";
+print "Floating Point \t $floatingPointValue\n";
+print "Scientific \t $scientificValue\n";
+print "National Debt \t $nationalDebt\n";
+print "Division \t $divisionValue\n";
+print "Hex \t\t $hexValue\n";
+print "Octal \t\t $octalValue\n";
+print "\n\n";
+print "itotal = $itotal\n";
+print "ftotal = $ftotal\n";
+print "dtotal = $dtotal\n";

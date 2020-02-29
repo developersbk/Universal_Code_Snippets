@@ -1,0 +1,10 @@
+#!C:/perl/bin
+
+$number = 105;
+
+print "\n\nBefore chop = $number \n";
+
+$number2 = chop($number);
+
+print "Result after chop function = $number2 \n\n";
+print "Original string \$number after chop = $number \n";

@@ -1,0 +1,4 @@
+# Format: Expression2 unless Expression1;
+
+$x=5;
+print $x unless $x == 6;

@@ -1,0 +1,8 @@
+Name                 Value                          
+AUTH_TYPE            if server supports user authentication  
+CONTENT_LENGTH       The number of bytes passed from the server
+CONTENT_TYPE         MIME type
+DOCUMENT ROOT        The directory from which the server serves Web documents   /index.html
+GATEWAY_INTERFACE    The revision of the CGI
+HTTP_ACCEPT          The MIME types accepted by the client
+HTTP_CONNECTION      The preferred HTTP connection type

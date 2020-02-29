@@ -1,0 +1,9 @@
+use File::Find;
+use Win32::File;
+
+&File::Find::find(\&wanted,"C:\\httpd", "C:\\testing");
+sub wanted{
+      (Win32::File::GetAttributes($_,$attr)) &&
+      ($attr & DIRECTORY) &&
+      print "$File::Find::name\n";
+}

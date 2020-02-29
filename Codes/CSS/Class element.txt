@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>Class Element</title>
+<style>.myclass { font-family:verdana; 
+                  font-weight:bold; 
+                  font-size:24px;
+                  color:pink; } 
+</style>
+</head>
+<body>
+<p class="myclass"> 
+I honestly think it is better to be a failure at something<br>
+you love than to be a success at something you hate.<br><br>
+
+George Burns
+</p>
+</body>
+</html>

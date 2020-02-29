@@ -1,0 +1,4 @@
+$factorial = 1;
+for (my $loop_index = 1; $loop_index <= 6; $loop_index++) {
+    $factorial *= $loop_index;
+}

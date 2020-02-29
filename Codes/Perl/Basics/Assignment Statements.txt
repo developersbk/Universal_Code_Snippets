@@ -1,0 +1,14 @@
+
+variable=expression;
+
+
+$salary=50000;                   # Scalar assignment
+@months=('Mar', 'Apr', 'May');   # Array assignment
+%states= (                       # Hash assignment
+       'CA' =>  'California',
+       'NM'  => 'New Mexico',
+            );
+
+   
+    
+    

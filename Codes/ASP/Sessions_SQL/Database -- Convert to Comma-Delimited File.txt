@@ -1,0 +1,79 @@
+<html><head>
+<TITLE>dbconvert.asp</TITLE>
+</head><body bgcolor="#FFFFFF">
+<%
+whichname="/upload/tests/authors.txt"
+myDSN="DSN=Student;uid=student;pwd=magic"
+mySQL="select * from authors where au_id<100"
+showblank=""
+shownull="<null>"
+linestart=Chr(34)
+lineend=Chr(34)
+delimiter=Chr(34) & "," & Chr(34)
+delimitersub=""
+
+whichFN=Server.MapPath(whichname)
+
+Set fstemp = Server.CreateObject("Scripting.FileSystemObject")
+Set filetemp = fstemp.CreateTextFile(whichFN, True)
+' true = file can be over-written if it exists
+' false = file CANNOT be over-written if it exists
+
+Set conntemp=Server.CreateObject("adodb.connection")
+conntemp.open myDSN
+Set rstemp=conntemp.execute(mySQL)
+
+' this code detects if data is empty
+If rstemp.eof Then
+Response.Write "No data to convert for SQL statement<br>"
+Response.Write mySQL & "<br>"
+connection.close
+Set connection=Nothing
+Response.End
+End If
+
+Do UNTIL rstemp.eof
+thisline=linestart
+For Each whatever In rstemp.fields
+thisfield=whatever.value
+If IsNull(thisfield) Then
+thisfield=shownull
+End If
+If Trim(thisfield)="" Then
+thisfield=showblank
+End If
+thisfield=Replace(thisfield,delimiter,delimitersub)
+thisline=thisline & thisfield & delimiter 
+Next
+tempLen=Len(thisline)
+tempLenDelim=Len(delimiter)
+thisline=Mid(thisline,1,tempLEN-tempLenDelim) & lineend
+filetemp.WriteLine(thisline) 
+' response.write thisline & "<br>"
+rstemp.movenext
+Loop
+filetemp.Close
+Set filetemp=Nothing
+Set fstemp=Nothing
+rstemp.close
+Set rstemp=Nothing
+conntemp.close
+Set conntemp=Nothing
+
+If Err.number=0 Then
+Response.Write "File was converted sucessfully!<br>"
+Response.Write "Converted file is at <a href='" 
+Response.Write whichname & "'>" & whichname & "</a>"
+Else
+Response.Write "VBScript Errors Occured!<br>"
+Response.Write "Error Number=#<b>" & Err.number & "</b><br>"
+Response.Write "Error Desc. =<b>" & Err.description & "</b><br>"
+Response.Write "Help Path =<b>" & err.helppath & "</b><br>"
+Response.Write "Native Error=<b>" & err.nativeerror & "</b><br>"
+Response.Write "Error Source =<b>" & Err.source & "</b><br>"
+Response.Write "SQL State=#<b>" & err.sqlstate & "</b><br>"
+End If
+
+
+%>
+</body></html>

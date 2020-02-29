@@ -1,0 +1,4 @@
+
+@array = (1, 2, 3);
+$array[5] = "Here is a new element!";
+print "$array[5]\n";

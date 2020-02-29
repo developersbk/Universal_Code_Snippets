@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Class assigns a user-defined semantic meaning to an element</title>
+<style type="text/css">
+.paragraph2{margin-bottom:36px;}
+
+</style>
+</head>
+<body>
+  <h2>Love is born of faith, lives on hope, and dies of charity. 
+ Love is born of faith, lives on hope, and dies of charity. 
+ Love is born of faith, lives on hope, and dies of charity. 
+ Love is born of faith, lives on hope, and dies of charity.  
+ Love is born of faith, lives on hope, and dies of charity. 
+ Love is born of faith, lives on hope, and dies of charity. 
+  </h2>
+  <p class="paragraph2">Love is born of faith, lives on hope, and dies of charity.</p>
+  <p>Love is born of faith, lives on hope, and dies of charity.</p>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<%
+Dim objFSO, msg
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+If objFSO.DriveExists("C:") Then
+msg = ("Drive exists.")
+Else
+msg = ("Drive doesn't exist.")
+End If
+Response.Write msg
+%>

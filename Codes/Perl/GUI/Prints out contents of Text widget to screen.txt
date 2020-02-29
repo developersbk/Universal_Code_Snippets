@@ -1,0 +1,63 @@
+#!/usr/bin/perl -w
+
+use Tk;
+
+$main = MainWindow->new();
+
+$menubar = $main->Frame(-relief => "raised",
+                        -borderwidth => 2);
+
+$filebutton = $menubar->Menubutton(-text => "File",
+                                   -underline => 0);  # F in File
+
+$filemenu = $filebutton->Menu();
+
+$filebutton->configure(-menu=>$filemenu);
+
+$filemenu->command(-command => \&open_choice,
+                   -label     => "Open...",
+                   -underline => 0); # O in Open
+
+$filemenu->command(-command => \&dump_choice,
+                   -label     => "Print",
+                   -underline => 0); # P in Print
+
+$filemenu->command(-label => "Exit",
+                   -command   => \&exit_choice,
+                   -underline => 1);  # "x" in Exit
+
+$filebutton->pack(-side=>"left");
+
+$menubar->pack(-side=>"top", -fill=>"x");
+
+
+$text = $main->Scrolled('Text',
+                        -relief      => "sunken",
+                        -borderwidth => 2,
+                        -setgrid     => "true",
+                        -scrollbars  => 'se' );
+                    
+$text->insert("1.0","this is a test.");
+
+$text->pack(-side   =>"top", 
+            -expand => 1,
+            -fill   => 'both');
+
+MainLoop();
+
+sub exit_choice {
+    print "You chose the Exit choice!\n";
+    exit;
+}
+
+sub open_choice {
+    $status->configure(-text=>"Open file.");
+
+    print "Open file\n";
+}
+
+sub dump_choice {
+    $status->configure(-text=>"Dumping text...");
+
+    print $text->get("1.0", "end");
+}

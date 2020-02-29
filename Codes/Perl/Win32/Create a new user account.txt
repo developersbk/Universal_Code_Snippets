@@ -1,0 +1,33 @@
+#!/usr/bin/perl -w
+
+use Win32::NetAdmin;
+
+$host = '';
+
+$username = "userName";
+$password = "password";
+
+$comment  = "your comments";
+
+# User's home directory.
+$homedir = "C:\\users\\" . $username;
+
+
+$logon_script = "";
+
+$flags = UF_SCRIPT | UF_NORMAL_ACCOUNT;
+
+$status = Win32::NetAdmin::UserCreate($host,$username,$password,
+             0, # Password age. Ignored.
+             USER_PRIV_USER,  # Must use this value.
+             $homedir,$comment,$flags,$logon_script);
+
+if ($status) {
+   print "Added $username account.\n";
+} else {
+   print_error();
+}
+
+sub print_error {
+    print Win32::FormatMessage( Win32::GetLastError() );
+}

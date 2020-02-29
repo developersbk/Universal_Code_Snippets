@@ -1,0 +1,20 @@
+You can perform some basic text formatting using escape characters. 
+
+An escape character is a special character that you preface with a backslash (\). 
+It indicates that the escape character is a special character that should be specially interpreted.
+
+Escape characters. 
+Escape Character     Means
+\"     Double quotation mark
+\t      Tab
+\n      Newline
+\r      Return
+\f      Form feed
+\b      Backspace
+\a      Alarm (bell)
+\e      Escape
+\033      Octal char
+\x1b      Hex char
+\c[      Control char
+
+   

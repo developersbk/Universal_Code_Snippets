@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:subLang="en" subLang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Add border line to title text</title>
+  <style type="text/css" media="screen">
+  #divID h1 {
+    color: #fff;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #489;
+  }
+  </style>
+</head>
+<body>
+
+<div id="divID">
+  <h1>Man loves little and often: Woman much and rarely.</h1>
+</div>
+
+</body>
+</html>

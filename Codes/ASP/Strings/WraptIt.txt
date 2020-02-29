@@ -1,0 +1,43 @@
+Function WrapIt(varString,varNumChar,boolBreak)
+' Word Wraps a string varString at end o
+' f word nearest column position varNumCha
+' r
+' If boolBreak is true then the wrap wil
+' l take place at position varNumChar rega
+' rdless
+varString=Trim(varString)
+varSetBR = "<BR>"
+result=""
+varString=Replace(varString,Chr(13)+Chr(10),Chr(10))
+While varString<>""
+If Len(varString)<=varNumChar Then
+line=varString
+varString=""
+Else
+varTemp1=Left(varString,varNumChar)
+iCount=InStrRev(varTemp1," ")
+varInPlace=InStr(varTemp1,"chr(10)")
+If (iCount=0) And Not boolBreak Then iCount=InStr(varString," ")
+If (varInPlace=0) And Not boolBreak Then varInPlace=InStr(varString,Chr(10))
+If (varInPlace<ICount) And (varInPlace>0) Then
+finish=j-1
+start=varInPlace+1
+ElseIf iCount=0 Then
+finish=varNumChar
+start=varNumChar+1
+Else
+finish=iCount
+start=iCount+1
+End If
+line=Left(varString,finish)
+varString=LTrim(Mid(varString,start))
+End If
+'if result="" then result=line else
+result=result&Chr(10)&line
+Wend
+     If Left(result,1) = Chr(10) Then
+        result = Right(result,(Len(result)-1))
+         End If
+WrapIt=Replace(result,Chr(10),varSetBR)
+        
+End Function

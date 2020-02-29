@@ -1,0 +1,16 @@
+<% 
+function OddOrEven(ByVal intNumber) 
+If (intNumber MOD 2 = 0 ) Then 
+Response.Write ("Your number is even<br>") 
+Else 
+Response.Write ("Your number is odd<br>") 
+End If 
+end function 
+%> 
+
+Now we will test this function 
+
+<% 
+OddOrEven(2) 
+OddOrEven(97) 
+%> 

@@ -1,0 +1,41 @@
+#!/usr/bin/perl -w
+
+use Tk;
+
+$quality    = "letter";
+
+$main = MainWindow->new();
+
+$label = $main->Label(-text => "Print Options");
+
+$label->pack();
+
+$frame = $main->Frame(-relief=>"groove",
+                      -borderwidth=>2);
+
+$radio1 = $frame->Radiobutton(-text=>"Draft",
+                              -variable=>\$quality,
+                              -value=>"draft");
+$radio1->pack(-side=>"top");
+
+$radio2 = $frame->Radiobutton(-text=>"Letter",
+                              -variable=>\$quality,
+                              -value=>"letter");
+$radio2->pack(-side=>"top");
+
+$frame->pack();
+
+$button = $main->Button(-text => "Exit",
+                        -command => \&exit_button);
+$button->pack();
+
+MainLoop();
+
+sub exit_button {
+    if ( $both_sides eq "both") {
+        print "Print both sides.\n";
+    } else {
+        print "Print single-sided.\n";
+    }
+    exit;
+}

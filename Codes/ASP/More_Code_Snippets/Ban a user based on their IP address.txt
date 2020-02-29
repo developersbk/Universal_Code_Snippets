@@ -1,0 +1,8 @@
+
+<% 
+Dim bannedIP = Request.ServerVariables("REMOTE_ADDR") 
+'this is the IP to ban here
+If bannedIP = "100.100.100.100" Then 
+Response.Redirect ("banned.php") 
+End If 
+%> 

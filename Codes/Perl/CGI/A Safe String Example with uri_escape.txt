@@ -1,0 +1,16 @@
+#!/usr/bin/perl -T
+
+use strict;
+use URI::Escape;
+use CGI qw/:standard/;
+
+my $unsafestring = "\$5/[3454]/this is a windows filename.asp";
+my $safestring = uri_escape($unsafestring);
+
+print header,
+      start_html("start"),
+      p("unsafe URL is: $unsafestring\n"),
+      p("url_escape() function:$safestring\n"),
+      end_html;
+
+exit;

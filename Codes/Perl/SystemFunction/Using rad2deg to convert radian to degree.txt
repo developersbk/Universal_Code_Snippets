@@ -1,0 +1,3 @@
+use Math::Trig;
+
+print "Pi in degrees = ", rad2deg pi, "\n";

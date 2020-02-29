@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <title>Example of HTML pre tag</title>
+</head>
+<body>
+    <pre>
+    The pre
+        element preserves      spaces,
+            line-breaks, tabs...
+    </pre>
+</body>
+</html>                                 		

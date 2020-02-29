@@ -1,0 +1,13 @@
+<html>
+
+<head><title>Div Tag Page Break After</title></head>
+
+<body>
+<div style="page-break-after:'always'; background-color:red; width:600; height:120">
+      Love doesn't make the world go 'round.<br>
+      Love is what makes the ride worthwhile.<br><br>
+
+      Franklin P. Jones
+</div>
+</body>
+</html>

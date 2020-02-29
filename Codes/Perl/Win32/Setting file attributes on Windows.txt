@@ -1,0 +1,23 @@
+GetAttributes provides a scalar numeric value with special flags for the attributes. 
+
+The basic syntax is 
+
+use Win32::File;
+
+Win32::File::GetAttributes($name, $attr);
+The GetAttributes function returns false (0) on failure and true (non-zero value) on success. 
+The GetAttributes function does not set the $! variable on the error. 
+The $attr variable gets filled with a number of bit flags indicating the various attributes. 
+
+The following tabls lists the constant value defined in Win32::File 
+
+Constant        Meaning
+ARCHIVE         This flag can be used by backup programs.
+COMPRESSED      File has been compressed by Windows. You cannot set this attribute.
+DIRECTORY       File is a directory. You cannot set this attribute.
+HIDDEN          A file that doesn't appear in listings of the directory.
+NORMAL          A normal file. 
+OFFLINE         Data for the file is not available due to some operating system condition.
+READONLY        File is read only. 
+SYSTEM          A system file. 
+TEMPORARY       File was marked as a temporary file.

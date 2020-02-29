@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Limit File Size</title>
+</head>
+<body>
+Thank you For uploading your file.<br>
+<% Set upl = Server.CreateObject(SoftArtisans.FileUp) %>
+<% upl.MaxBytes = 1000 '--- limit the upload size to 1000 bytes %>
+The maximum file size that you are permitted To upload Is <%=upl.MaxBytes%> bytes.<br>
+<% upl.SaveAs C:	empupload.out %>
+Total Bytes Written: <%=upl.TotalBytes%><br>
+Server File Name: <%=upl.ServerName%><br>
+Total Bytes Transmitted: <%=Request.TotalBytes%>
+</body>
+</html>
+
+
+Restricting File Types
+Use SA-FileUp's ContentType property and a Select condition to save only files of a specific type. 
+
+<html>
+<head>
+<title>Limit File Type</title>
+</head>
+<body>
+<% Set upl = Server.CreateObject("SoftArtisans.FileUp") 
+
+'--- Parse out the file name
+FName = Mid(upl.UserFilename, InStrRev(upl.UserFilename, ) + 1)
+
+'--- Retrieve the file's content type and assign it to a variable
+FCONT = upl.ContentType
+
+'--- Restrict the file types saved using a Select condition
+Select Case LCase(FCONT) 
+Case "image/gif"
+upl.Save 
+Response.Write <P> & FName & has been saved.
+
+Case image/pjpeg 
+upl.Save 
+Response.Write <P> & FName & has been saved.
+
+Case Else
+upl.delete
+Response.Write <P> & You may only upload gif And jpeg files.<BR>
+Response.End 
+End Select
+
+%>
+</body>
+</html>
+

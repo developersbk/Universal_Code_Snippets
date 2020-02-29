@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html subLang="en">
+<head>
+    <title>Example of HTML abbreviations</title>
+</head>
+<body>
+    <p>The <abbr title="Hyper Text Markup Language">HTML</abbr> is the publishing language of the World Wide Web.</p>
+    <p>The <acronym title="Hyper Text Markup Language">HTML</acronym> is the publishing language of the World Wide Web.</p>
+    <p><strong>Warning:</strong> The &lt;acronym&gt; tag has been removed in HTML5 and shouldn't be used anymore. Use the &lt;abbr&gt; tag instead.</p>
+</body>
+</html>                                 		

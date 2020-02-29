@@ -1,0 +1,2 @@
+use Math::Trig;
+print "The arccosine of 1 = ", acos(1), "\n";

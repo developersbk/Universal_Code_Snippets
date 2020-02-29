@@ -1,0 +1,11 @@
+<% 
+dropdown = "example1,example2,example3,example4" 
+%> 
+<Select Name="drop"> 
+<% 
+list = Split(dropdown, ",") 
+For i = 0 to UBound(list) 
+%> 
+<option value="<%=list(i)%>"><%=list(i)%> 
+<%Next%> 
+</Select>

@@ -1,0 +1,35 @@
+#!/usr/bin/perl -w
+
+# Usage:
+#  Perl readDB.pl database
+
+use SDBM_File;
+use Fcntl;
+
+# Print format for STDOUT.
+format STDOUT=
+@<<<<<<<<<<<<<<<<<<  @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+$key, $value  
+.
+
+$database  = $ARGV[0];
+
+$mode = 0666;
+
+$flags =  O_RDONLY | binary(); 
+
+tie(%execs, 'SDBM_File', $database, $flags, $mode) or die "Can't open \"$database\" due to $!";
+
+while ( ($key,$value) = each(%execs) ) {
+    write;
+}  
+
+untie(%execs);
+
+sub binary() {
+  return O_BINARY if is_windows();
+}
+
+sub is_windows() {
+    return $^O =~ /^(MS)?Win/;
+}

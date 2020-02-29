@@ -1,0 +1,8 @@
+#!/usr/local/bin/perl -w
+
+my %cities = ("Toronto" => "East", "Calgary" => "Central", "Vancouver" => 'West');
+
+for $key (keys %cities)
+{
+   print "Key: $key Value: $cities{$key} \n";
+}

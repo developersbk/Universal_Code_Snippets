@@ -1,0 +1,13 @@
+   
+Specifier          Description 
+%c                 Single character 
+%d                 Integer in decimal (base-10) format 
+%e                 Floating-point number in scientific notation 
+%f                 Floating-point number in "normal" (fixed-point) notation 
+%g                 Floating-point number in compact format 
+%o                 Integer in octal (base-8) format 
+%s                 Character string 
+%u                 Unsigned integer 
+%x                 Integer in hexadecimal (base-16) format 
+
+   

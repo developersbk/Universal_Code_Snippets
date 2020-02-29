@@ -1,0 +1,56 @@
+<%
+    choice=request("c")
+    order=request("order")  
+    response.write "<BR>"
+%>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<form name="form1" method="post" action="ListControl.asp">
+<input type=hidden name=choice size=30>
+<input type=hidden name=ACS size=30>
+<%
+    Set ObjCon=Server.CreateObject("ADODB.Connection")
+    Set ObjRec=Server.CreateObject("ADODB.Recordset")   
+    ObjCon.Provider="MICROSOFT.JET.OLEDB.4.0"
+    ObjCon.Open server.mappath("intranet.mdb")      
+    dim tsql
+    
+    
+    if choice="" then 
+        tsql="select *  from bookmaster"        
+    else
+        'tsql="select *  from bookmaster order by " & choice & " desc"
+        tsql="select *  from bookmaster order by " & choice &" "& order
+    end if  
+    ObjRec.open tsql,objCon,3,1       
+    
+  if not ObjRec.bof and not ObjRec.eof then 
+%>      
+<table border="1">  
+                <% for i = 0 to ObjRec.Fields.Count-1 %>                        
+                <%  if Order="Asc" then %>
+                    <a href="ASP+List Control.asp?C=<% =ObjRec.Fields(i).Name %>&Order=Desc"><td bgcolor="#FFD6C1"><% =ObjRec.Fields(i).Name %></td><a>                 
+                <%  else %>                                             
+                    <a href="ASP+List Control.asp?C=<% =ObjRec.Fields(i).Name %>&Order=Asc"><td bgcolor="#FFD6C1"><% =ObjRec.Fields(i).Name %></td><a>                  
+                <%  end if %>
+                
+                <% Next %>
+    <% ObjRec.MoveFirst %>
+        <% While Not ObjRec.Eof %>
+                <tr>
+                <% for i = 0 to ObjRec.Fields.Count-1 %>
+                    <td bgcolor="#EBEBEB"><% =ObjRec(i) %></td>
+                <% Next %>
+    <% ObjRec.MoveNext %>
+                </tr>
+    <% Wend %>
+</table>
+<% else %>
+        No Records Found
+<% end if %>    
+</form>
+</body>
+</html>

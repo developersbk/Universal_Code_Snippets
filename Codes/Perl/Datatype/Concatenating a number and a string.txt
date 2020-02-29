@@ -1,0 +1,7 @@
+$string = "Top 10";
+$number = 10.0;
+print "Number is 10.0 and string is 'Top 10'\n\n";
+
+$concatenate = $number . $string;     
+                                      
+print "Concatenating a number and a string: $concatenate\n";

@@ -1,0 +1,3 @@
+while (<>) {
+    print "Too small!\n" unless $_ > 100;
+}

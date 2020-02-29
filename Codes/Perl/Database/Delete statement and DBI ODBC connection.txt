@@ -1,0 +1,17 @@
+#!C:/perl/bin
+
+use DBI;
+
+$dbhandle = DBI->connect("dbi:ODBC:address");
+
+$sqlstatement="DELETE * FROM emp WHERE address='I'";
+
+print "Content-type: text/html \n\n";
+
+$statementhandle = $dbhandle->prepare($sqlstatement);
+
+$statementhandle->execute || die "<br><br>Could not execute SQL statement ... <br>";
+print "<br><br>Executed ...<br>";
+
+$dbhandleandle->disconnect();
+$statementhandle->finish();

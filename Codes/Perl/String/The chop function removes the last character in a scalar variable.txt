@@ -1,0 +1,20 @@
+#The chop function removes the last character of each word in an array. 
+#The chop function returns value is the character it chopped. 
+#The chomp function was introduced in Perl 5 to remove the last character in a scalar variable and the last character of each word in an array only if that character is the newline.
+
+#Using chomp protects you from inadvertently removing some character other than the newline.
+
+
+print "What is your name? ";
+$name = <STDIN>;
+print "$name.\n";
+chop($name);   # Removes the last character.
+print "$name.\n\n";
+chop($name);
+print "$name has been chopped a little too much.\n";
+print "What is your age?  ";
+chomp($age=<STDIN>); # Removes the last character if it is the newline.
+chomp($age);         
+print "$age!\n";
+
+   

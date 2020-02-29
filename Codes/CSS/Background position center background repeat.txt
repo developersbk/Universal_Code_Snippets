@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" subLang="en" xml:subLang="en">
+<head>
+  <title>background-position center background-repeat</title>
+<style type="text/css">
+
+h1, h2, h3 {
+ font-size: 24px;
+ background-image: url(background-image.jpg);
+ background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-position: center;
+ padding: 2em;
+ text-align: center;
+ color: pink;
+}
+p {
+ text-align: justify;
+}
+
+</style>
+</head>
+
+<body>
+  <h1>Love Sayings Love Quotes Love Proverbs</h1>
+
+  <p>Outside are the storms and strangers:
+     We - Oh, close, safe and warm sleep I and she, I and she . . .
+     Robert Browning</p>
+
+  <p>Clarity of mind means clarity of passion, too;
+     this is why a great and clear mind loves ardently
+     and sees distinctly what it loves.
+     Blaise Pascal</p>
+
+  <p>A loving heart is the beginning of all knowledge.
+     Thomas Carlyle</p>
+
+  <p>Take away love, and our earth is a tomb.
+     Robert Browning</p>
+
+  <p>My bounty is as boundless as the sea,
+     My love as deep;
+     The more I give to thee
+     The more I have,
+     For both are infinite.
+     William Shakespeare</p>
+
+  <p>Love is always open arms.
+     If you close your arms about love,
+     you will find that you are left holding only yourself.
+     Leo Buscaglia</p>
+
+  <p>My heart to you is given:
+     Oh, do give yours to me;
+     We'll lock them up together,
+     And throw away the key.
+     Frederick Saunders</p>
+
+</body>
+</html>

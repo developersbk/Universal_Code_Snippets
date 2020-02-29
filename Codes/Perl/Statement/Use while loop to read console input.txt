@@ -1,0 +1,8 @@
+while ($_ = <>) {
+    print $_;
+}
+while (<>) {
+    print;
+}
+
+   

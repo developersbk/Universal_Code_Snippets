@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Color rgb(255, 255, 255)</title>
+        <style type='text/css' media='all'>
+            body {
+                font-size: 16px;
+            }
+            h1 {
+                font-size: 24px;
+                background: rgb(202, 192, 169);
+                padding: 20px;
+                border: thin solid rgb(0, 0, 0);
+            }
+            p {
+                font-size: 12px;
+                padding: 10px;
+                border: thin solid rgb(0, 0, 0);
+                background: rgb(102, 169, 128);
+                color: rgb(255, 255, 255);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Love Sayings</h1>
+        <p>I have learned not to worry about love;<br>
+           but to honor its coming with all my heart.<br><br>
+
+           Alice Walker
+        </p>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>blockquote p before blockquote p after</title>
+  <style type="text/css">
+
+blockquote p:before {
+ content: "\201C"; 
+ font-size: 12px;
+ font-weight: normal;  
+ font-family: Georgia, "Times New Roman";
+}
+blockquote p:after {
+ content: "\201D"; 
+ font-size: 13px;
+ font-weight: bold;
+ font-family: Georgia, Times, serif;
+}
+cite:before {
+ content: "\2014 ";
+}
+
+cite {
+  display: block;
+  text-align: center;
+}
+
+  </style>
+
+</head>
+
+<body>
+
+<blockquote>
+ <p>Such is the inconsistency of real love,<br>
+    that it is always awake to suspicion, however unreasonable;<br>
+    always requiring new assurances from the object of its interest.<br><br>
+
+    Ann Radcliffe, The Mysteries of Udolpho</p>
+ <cite>Emerson</cite>
+</blockquote>
+
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<CENTER>
+<%
+Dim P 'Payment
+Dim I 'Interest
+Dim L 'Loan Term In Years
+Dim J 
+Dim N
+Dim M
+Dim H
+Dim C
+Dim Q
+Dim X
+'Set the Conter for the Ammoritization
+X=0
+'Hard Code Some Loan Values HERE
+'Replace these with your variables
+'Total of Loan Amount
+P=100000
+'Interest Rate
+I=7
+'Loan term in years
+L=30
+'Calculate Monthly Interest
+J=I/(12 * 100)
+'Length of loan in Months
+N=L * 12
+'Now the magic.....
+M = P * ( J / (1 - (1 + J) ^ -N))
+Response.Write "<B>Monthly Payment: " & Round(M, 2) & "</B><BR>"
+Response.Write "<TABLE cellSpacing=1 cellPadding=1 width=""55%"" bgColor=silver border=0>"
+Response.Write "<TD bgColor=#708090>Interest Paid</TD>"
+Response.Write "<TD bgColor=#708090>Principal Paid</TD>"
+Response.Write "<TD bgColor=#708090>Remaing Balance</TD></TR>"
+Response.Write "<TR>"
+'Loop through And Get the Monthly Paymen
+' ts for the length of the loan 
+Do While X < N
+H=P*J
+Response.Write "<TD bgColor=silver>" & Round(H, 2) & "</TD>"
+C=M-H
+Response.Write "<TD bgColor=silver>" & Round(C, 2) & "</TD>"
+Q=P-C
+Response.Write "<TD bgColor=silver>" & Round(Q, 2) & "</TD></TR>"
+P=Q
+X=X+1
+Loop
+%>
+</TABLE>
+</CENTER>

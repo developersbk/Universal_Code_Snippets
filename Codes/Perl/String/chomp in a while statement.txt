@@ -1,0 +1,5 @@
+while (chomp($input = <>)) {
+
+    print "You typed: $input\n" unless $input eq 'L';
+
+}

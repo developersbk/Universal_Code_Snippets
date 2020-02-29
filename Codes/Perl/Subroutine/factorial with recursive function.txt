@@ -1,0 +1,50 @@
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+sub fibonaccil {
+    my ($count, $aref) = @_;
+
+    unless ($aref) {
+        # first call - initialize
+        $aref = [1,1];
+        $count -= scalar(@{$aref});
+    }
+
+    if ($count--) {
+        my $next = $aref->[-1] + $aref->[-2];
+        push @{$aref}, $next;
+        return fibonaccil($count, $aref);
+    } else {
+        return wantarray?@{$aref}: $aref->[-1];
+    }
+}
+
+print scalar(fibonaccil(10)), "\n";
+print scalar(fibonaccil(10, [2, 4])), "\n";
+my @sequence = fibonaccil(10);
+print "Sequence: @sequence \n";
+
+
+sub fibonacci2 {
+    my ($count, $internal) = @_;
+
+    if ($count <= 2) {
+        return $internal ? [1,1] : 1;
+    } else {
+        my $result = fibonacci2($count -1, 'internal'); 
+        my $next = $result->[-1] + $result->[-2];
+
+        if ($internal) {
+            push @{$result}, $next;
+            return $result;
+        } else {
+            return $next;
+        }
+    }
+}
+
+foreach (1..20) {
+    print "Element $_ is ", fibonacci2($_), "\n";
+}

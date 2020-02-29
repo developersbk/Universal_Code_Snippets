@@ -1,0 +1,9 @@
+<% 
+Dim objFSO , objFile 
+Set objFSO = Server.CreateObject("Scripting.FileSystemObject") 
+Set objFile = objFSO.OpenTextFile(Server.MapPath("testfile.txt") , 1) 
+Response.Write (objFile.Read(10)) 
+objFile.Close 
+Set objFSO = Nothing 
+Set objFile = Nothing 
+%>

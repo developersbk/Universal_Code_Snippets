@@ -1,0 +1,10 @@
+#!C:\perl\bin
+
+$age = $myage = $herage = $hisage = 25;
+
+print "\$age = $age\n\n";
+print "\$myage = $myage\n\n";
+print "\$herage = $herage\n\n";
+print "\$hisage = $hisage\n\n";
+
+   

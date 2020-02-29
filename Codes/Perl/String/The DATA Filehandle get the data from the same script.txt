@@ -1,0 +1,36 @@
+#while(<DATA>){
+#    Do something with the data here
+#}
+#__DATA__
+#    The actual data
+
+
+#Or you could use the $_ explicitly
+
+#while($_=<DATA>){
+#    Do something with the data here
+#}
+#__DATA__
+#    The actual data
+
+
+#Or use another variable instead of $_ as follows:
+
+#while($inputline=<DATA>){
+#    Do something with the data here
+#}
+#__DATA__
+#    The actual data
+
+while(<DATA>){
+     print if /A/;     # Print the line if it matches A
+}
+__DATA__
+    A
+    B
+    I
+    N
+    J
+    K
+
+   

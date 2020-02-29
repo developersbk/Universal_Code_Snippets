@@ -1,0 +1,25 @@
+Function RandomArray(alen, LBound, UBound)
+Dim i, j, exists, nextrand, newrandom, result
+
+result = Null
+
+If (alen >= 1) Then
+ReDim result(alen - 1)
+Randomize
+For i = 0 To alen - 1 
+nextrand = True
+Do While nextrand
+exists = False
+newrandom = Int((UBound - LBound + 1) * Rnd + LBound)
+For j = 0 To i - 1 
+exists = exists Or (result(j) = newrandom)
+Next
+If (Not exists) Then
+nextrand = False
+result(i) = newrandom
+End If
+Loop
+Next
+End If
+RandomArray = result
+End Function

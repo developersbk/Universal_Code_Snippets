@@ -1,0 +1,13 @@
+@numbers = ( 1 .. 10 );
+print "\@numbers: @numbers\n\n";
+
+# multiply every number by 2
+foreach ( @numbers ) {
+   push( @doubledNumbers, $_ * 2 );
+}
+
+print "Double each number:\n",
+      "foreach: @doubledNumbers\n";
+
+@doubledNumbers2 = map( $_ * 2, @numbers );
+print "map:     @doubledNumbers2\n";

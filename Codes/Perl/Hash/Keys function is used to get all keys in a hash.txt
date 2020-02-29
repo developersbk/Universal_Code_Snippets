@@ -1,0 +1,14 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my %where = (
+     G     => "Dallas",
+     L     => "Exeter",
+     I     => "Reading",
+     S     => "Oregon"
+);
+
+foreach (keys %where) {
+    print "$_ lives in $where{$_}\n";
+}

@@ -1,0 +1,22 @@
+<HTML XMLNS:Customtag>
+<head>
+<style>
+@media all {
+    customtag\:pink { color: pink; }
+    customtag\:gray { color: gray; }
+    customtag\:aqua { color: aqua; }
+}
+</style>
+</head>
+<body>
+<customtag:pink>
+customtag:pink tags. Love is the big booming beat which covers up the noise of hate. Margaret Cho 
+</customtag:pink>
+<customtag:gray>
+closing customtag:gray tags. Love is the big booming beat which covers up the noise of hate. Margaret Cho 
+</customtag:gray>
+<customtag:aqua>
+customtag:aqua tags. Love is the big booming beat which covers up the noise of hate. Margaret Cho 
+</customtag:aqua>
+</body>
+</html>

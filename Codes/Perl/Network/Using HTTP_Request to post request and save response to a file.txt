@@ -1,0 +1,13 @@
+use LWP::UserAgent;
+
+$user_agent = new LWP::UserAgent;
+
+$request = new HTTP::Request('GET', 'http://www.cpan.org/doc/FAQs/index.html');
+
+$response = $user_agent->request($request);
+
+open FILEHANDLE, ">file.txt";
+
+print FILEHANDLE $response->{_content};
+
+close FILEHANDLE;

@@ -1,0 +1,1 @@
+print join(", ", (map {my $value = $_; $value *= 2} (1 .. 10)));

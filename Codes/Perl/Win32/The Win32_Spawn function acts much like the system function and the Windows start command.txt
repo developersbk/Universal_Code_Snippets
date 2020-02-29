@@ -1,0 +1,26 @@
+#Win32::Spawn( $ApplicationName,$CommandLine,$ProcessId);
+          
+#$CommandLine holds the command line to run.this value could be "notepad" or "notepad your.pl". 
+#$ProcessId value is set to the Windows ID of the process that gets launched. 
+#Win32::Spawn function returns 1 on success and 0 on failure. 
+
+
+
+#!/usr/bin/perl -w
+use Win32;
+
+#$ApplicationName = 'c:/winnt/system32/notepad.exe';
+#$ApplicationName = "C:\\WINDOWS\\NOTEPAD.EXE";
+$ApplicationName = 'c:\winnt\system32\notepad.exe';
+
+#$CommandLine = "notepad";
+$CommandLine = "notepad spawn.pl";
+
+
+$status = Win32::Spawn( $ApplicationName,$CommandLine,$ProcessId );
+
+if ( $status != 0 ) {
+    print "Launched process with ID $ProcessId.\n";
+} else {
+    print "Failed to launch process.\n";
+}

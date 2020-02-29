@@ -1,0 +1,10 @@
+while(<DATA>){
+      print unless /N/;  # Print line if it doesn't match N
+}
+__DATA__
+    A
+    B
+    I
+    N
+    J
+    K

@@ -1,0 +1,32 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Switch;
+
+my $perl = "Perl";
+my %hash = ( "A" => 2, "B" => 3 );
+my $cref = sub { $_[0] eq "C" };
+sub testcase { $_[0] eq "D" };
+my @array = (2..4);
+
+my @values=qw[
+    1 perl Perl 3 6 pErl PerL pERL pERl peRL PERL php
+];
+
+foreach my $input (@values) {
+    switch ($input) {
+        case 1                     { print "literal number" }
+        case "perl"                { print "literal string" }
+        case ($perl)               { print "string variable" }
+        case (\@array)             { print "array variable reference" }
+        case [5..9]                { print "literal array reference" }
+        case (%hash)               { print "hash key" }
+        case { "PerL" => "Value" } { print "hash reference key" }
+        case { $_[0] eq "pERL" }   { print "anonymous sub" }
+        case ($cref)               { print "anonymous code reference" }
+        case (\&testcase)          { print "named code reference" }
+        case /^perl/i              { print "regular expression" }
+        else                       { print "not known" }
+    }
+    print "\n";
+}

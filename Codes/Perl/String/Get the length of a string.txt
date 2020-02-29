@@ -1,0 +1,6 @@
+#!C:/perl/bin
+
+$stringvalue = "Perl is a great language";
+$stringlength = length($stringvalue);
+
+print "\n\nThe length of the string is: $stringlength\n\n";

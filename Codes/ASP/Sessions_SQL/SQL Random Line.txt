@@ -1,0 +1,70 @@
+Function SQLRandomLines(proc, params, fname, count)
+Dim i, j, k, rid, rs, result, records, reccount, normalized
+
+On Error Resume Next
+
+PushError
+
+SQLRandomLines = Null
+
+Set rs = iOpen(proc, params)
+If CheckPopError Then
+Exit Function
+End If
+
+If rs.EOF Then
+rs.Close
+Set rs = Nothing
+Exit Function
+End If
+
+records = rs.GetRows(adGetRowsRest)
+If CheckPopError Then
+Exit Function
+End If
+
+rid = -1
+For i = 0 To rs.Fields.Count - 1 
+If (rs.Fields(i).Name = fname) Then
+rid = i
+End If
+Next 
+If (rid < 0) Or (rid > rs.Fields.Count - 1) Then
+rid = -1
+End If
+rs.Close
+Set rs = Nothing
+
+If (rid = -1) Then
+Exit Function
+End If
+reccount = UBound(records, 2) - LBound(records, 2) + 1
+
+If (reccount >= count) Then
+normalized = RandomArray(count, LBound(records, 2), UBound(records, 2))
+For i = LBound(normalized) To UBound(normalized)
+normalized(i) = records(rid, normalized(i))
+Next
+Else
+normalized = RandomArray(reccount, LBound(records, 2), UBound(records, 2))
+For i = LBound(normalized) To UBound(normalized)
+normalized(i) = records(rid, normalized(i))
+Next
+End If
+
+ReDim result(UBound(records, 1), UBound(normalized))
+For k = LBound(records, 2) To UBound(records, 2)
+For i = LBound(normalized) To UBound(normalized)
+If (CStr(records(rid, k)) = CStr(normalized(i))) Then
+For j = LBound(records, 1) To UBound(records, 1)
+If (TypeName(records(j, k)) = "String") Then
+result(j, i) = VarTrimStr(records(j, k))
+Else
+result(j, i) = records(j, k)
+End If
+Next
+End If
+Next
+Next
+SQLRandomLines = result
+End Function
